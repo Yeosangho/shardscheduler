@@ -469,7 +469,7 @@ class ShardScheduler(torch.optim.Optimizer):
                         pre_offset = offset
 
                         if(param_wrap.end_idx == param_wrap.org_size):
-                            if(param.data_ptr() == self.profile_layer[0].data_ptr()):
+                            #if(param.data_ptr() == self.profile_layer[0].data_ptr()):
                                     #print('after ar')
                                     #print(param.shape)
                                     #print(param.grad.sum())  
