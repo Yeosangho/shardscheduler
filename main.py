@@ -395,7 +395,7 @@ class Trainer:
 					count += 1
 					if(count == 10):
 						break
-			torch.cuda.synchronize()
+			#torch.cuda.synchronize()
 			print(time.time() -start)
 			print("1111")
 			if(self.health_check_scheduler_thread.locked()):
