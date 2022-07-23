@@ -1,0 +1,9 @@
+*.pyc
+*.csv
+*.json
+*.tar
+*.tar.gz
+cifar10-data
+!layer_bench.csv
+!net_bench.csv
+!schedule.json

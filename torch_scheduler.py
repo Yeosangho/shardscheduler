@@ -356,7 +356,7 @@ class ShardScheduler(torch.optim.Optimizer):
 
                         
                         pre_offset = offset
-                        #if(param_wrap.end_idx == param_wrap.shard_size):
+                        if(param_wrap.end_idx == param_wrap.shard_size):
                         #    print("!!!!!!!!!!!!!!!!!!!!!!!!")
 
                             #param.data =  param._full_param_padded
