@@ -1,0 +1,150 @@
+		target_comm_params = self.get_patial_param_list([params_list[0]])
+		comm = Comm('AG', target_comm_params)
+		task = Task(None, 'BWTOFW', [comm])
+		self._schedule_comm_init.append(task)
+
+		idx = 1
+		for param in params_list[:-1] :
+			comp_param = param
+			target_comm_params = self.get_patial_param_list([params_list[idx]])
+			comm = Comm('AG', target_comm_params )
+			task = Task(comp_param, 'FW', [comm])
+			self._schedule_comm_init.append(task)
+
+			idx += 1
+
+		target_comm_params = self.get_patial_param_list(params_list)
+
+		len_target_comm_params = len(target_comm_params)
+		comm = Comm('AG', target_comm_params)
+		task  = Task(None, 'FWTOBW', [comm])
+		self._schedule_comm_init.append(task)			
+
+
+		target_comp = params_list[29]
+		target_comms = self.get_patial_param_list(params_list[30:40])
+		comm = Comm('RS', target_comms)
+		task  = Task(target_comp, 'BW', [comm])
+		self._schedule_comm_init.append(task)
+
+
+		comms = []
+		target_comm_params = self.get_patial_param_list(params_list[:30])
+		len_target_comm_params = len(target_comm_params)
+		comm = Comm('RS', target_comm_params)
+		comms.append(comm)
+
+		target_comm_params = self.get_patial_param_list(params_list[40:])
+		len_target_comm_params = len(target_comm_params)
+		comm = Comm('RS', target_comm_params)
+		comms.append(comm)
+
+		target_comm_params = self.get_patial_param_list(params_list[:50])
+		comm = Comm('AG', target_comm_params)
+		comms.append(comm)
+
+		target_comm_params = self.get_patial_param_list(params_list[50:], start_ratio=0.0, end_ratio=0.41)
+		comm = Comm('AG', target_comm_params)
+		comms.append(comm)
+
+		#target_comm_params = self.get_patial_param_list(params_list[:70])
+		#comm = Comm('AG', target_comm_params)
+		#comms.append(comm)
+
+		task = Task(None, 'BWTOFW', comms)
+		self._schedule_comm_init.append(task)
+
+
+		####################################################################
+		#make test scheduling(backward)
+		#10번 foward 연산을 11,12 params AG와 overlap
+		#10번 forward 연산을 7,8,9 AG FSDP와 overlap
+
+		target_comp = params_list[29]
+		comms = []
+		#target_comm_params = self.get_patial_param_list(params_list[70:])
+		target_comm_params = self.get_patial_param_list(params_list[50:], start_ratio=0.41, end_ratio=1.0)
+		comm = Comm('AG', target_comm_params)
+		comms.append(comm)
+
+		target_comm_params = self.get_patial_param_list(params_list[1:28])
+		comm = Comm('AG', target_comm_params)
+		comms.append(comm)
+
+
+		task  = Task(target_comp, 'FW', comms)
+
+
+		self._scheduled_comms.append(task)
+
+
+		self.profile_target_layer.append(params_list[20])
+		#FWTOBW
+		#여기에는 나머지 AGFSDP 통신 정의
+		comms = []
+		target_comm_params = self.get_patial_param_list(params_list[:1])
+		len_target_comm_params = len(target_comm_params)
+		comm = Comm('AG', target_comm_params)
+		comms.append(comm)
+
+		target_comm_params = self.get_patial_param_list(params_list[28:])
+		len_target_comm_params = len(target_comm_params)
+		comm = Comm('AG', target_comm_params)
+		comms.append(comm)
+
+		task  = Task(None, 'FWTOBW',comms)
+		self._scheduled_comms.append(task)
+		#make test scheduling(backward)
+		#backward_params =  reversed(list(self.sharded_module.named_parameters()))
+
+		#5번 param backward 연산을 11,12 backward params의 RS 와 overlap
+		target_comp = params_list[29]
+		#target_comms = self.get_patial_param_list(params_list[30:40])
+		target_comm_params = self.get_patial_param_list(params_list[30:40], start_ratio=0.0, end_ratio=0.75)
+		comm = Comm('RS', target_comm_params)
+		task  = Task(target_comp, 'BW', [comm])
+		self._scheduled_comms.append(task)
+
+
+		#BWTOFW
+		#여기에는 나머지 AG와 RS 통신 정의
+		comms = []
+		target_comm_params = self.get_patial_param_list(params_list[:30])
+		len_target_comm_params = len(target_comm_params)
+		comm = Comm('RS', target_comm_params)
+		comms.append(comm)
+
+		target_comm_params = self.get_patial_param_list(params_list[30:40], start_ratio=0.75, end_ratio=1.0)
+		comm = Comm('RS', target_comm_params)
+		comms.append(comm)
+
+		target_comm_params = self.get_patial_param_list(params_list[40:])
+		len_target_comm_params = len(target_comm_params)
+		comm = Comm('RS', target_comm_params)
+		comms.append(comm)
+
+		#target_comm_params = self.get_patial_param_list(params_list[:70])
+		target_comm_params = self.get_patial_param_list(params_list[:50])
+		comm = Comm('AG', target_comm_params)
+		comms.append(comm)
+
+		target_comm_params = self.get_patial_param_list(params_list[50:], start_ratio=0.0, end_ratio=0.41)
+		comm = Comm('AG', target_comm_params)
+		comms.append(comm)
+
+		#target_comm_params = params_list[40:]
+		#comm = Comm('AG', target_comm_params)
+		#comms.append(comm)
+
+		task = Task(None, 'BWTOFW', comms)
+		self._scheduled_comms.append(task)
+
+
+		for task in self._scheduled_comms :
+			for comm in task.comms :
+				for param_wrap in comm.params : 
+					param = param_wrap.param
+					if(comm.commType == 'AG'):
+						if(self._locks[comm.commType][param].locked() == False):
+							self._locks[comm.commType][param].acquire()
+		#self._locks['BWTOFW'].release()	
