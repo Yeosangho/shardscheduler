@@ -1,4 +1,5 @@
 import csv
+import functools
 backward_ts = 0
 comm_ts = 0
 
