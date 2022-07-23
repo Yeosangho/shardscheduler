@@ -35,6 +35,7 @@ import copy
 import gc
 import csv
 from test_cases import *
+from algo import schedule
 
 
 def run(health_check_main_proc, health_check_scheduler_thread, group, world_size, rank, trainer):
@@ -250,6 +251,7 @@ class Trainer:
 		adaptive_sdp['DP'] = dp_num
 		adaptive_sdp['SDP'] = sdp_num
 
+		schedule()
 
 		with enable_wrap(**self.wrap_params):
 			self.sharded_module = auto_wrap(adaptive_sdp, self.model)
