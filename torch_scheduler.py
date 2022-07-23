@@ -294,15 +294,15 @@ class ShardScheduler(torch.optim.Optimizer):
         for task in schedule:        
             if(self._stop_event.is_set()):
                 break           
-            print(task.compType)
+            #print(task.compType)
             if(task.compType == 'FW' or task.compType == 'BW'):
                 self._wait_unlock(self._locks[task.compType][task.comp], self._conditions[task.compType][task.comp])  
             else:
                 self._wait_unlock(self._locks[task.compType], self._conditions[task.compType])  
             for comm in task.comms : 
-                print(f"{comm} {len(comm.params)} ")
-                if(len(comm.params)> 43):
-                    print(comm.params[42])
+                #print(f"{comm} {len(comm.params)} ")
+                #if(len(comm.params)> 43):
+                #    print(comm.params[42])
                 #print(comm.commType)
                 if(comm.commType == "AG"): #AG recover original parameter 
 
@@ -356,8 +356,8 @@ class ShardScheduler(torch.optim.Optimizer):
 
                         
                         pre_offset = offset
-                        if(param_wrap.end_idx == param_wrap.shard_size):
-                            print("!!!!!!!!!!!!!!!!!!!!!!!!")
+                        #if(param_wrap.end_idx == param_wrap.shard_size):
+                        #    print("!!!!!!!!!!!!!!!!!!!!!!!!")
 
                             #param.data =  param._full_param_padded
                             param.data = listed_full_param.view(-1)
@@ -394,7 +394,7 @@ class ShardScheduler(torch.optim.Optimizer):
                         #    
                         #    print(p.grad.shape)
                         #    print(p.grad.sum())
-                        print(shard_size)
+                        #print(shard_size)
                         self.bucket.push(params=grad_chunks,
                                         grad=grad,
                                         param = p,
@@ -430,9 +430,9 @@ class ShardScheduler(torch.optim.Optimizer):
                             #    print(param.shape)
                             #    print(param.grad.sum())
                             
-                            print(count)
-                            print(param_wrap.shard_size)
-                            print(param_wrap.org_size)   
+                            #print(count)
+                            #print(param_wrap.shard_size)
+                            #print(param_wrap.org_size)   
                             self._post_reduction_hook(param, param.grad.data)
                             self._finalize_parameters(param)
                             self._adam(param)
@@ -470,9 +470,9 @@ class ShardScheduler(torch.optim.Optimizer):
 
                         if(param_wrap.end_idx == param_wrap.org_size):
                             if(param.data_ptr() == self.profile_layer[0].data_ptr()):
-                                    print('after ar')
-                                    print(param.shape)
-                                    print(param.grad.sum())  
+                                    #print('after ar')
+                                    #print(param.shape)
+                                    #print(param.grad.sum())  
                             self._adam(param)
                             self._zero_one_grad(param)
                             self._release_lock(self._locks['AR'][param], self._conditions['AR'][param])
@@ -527,8 +527,8 @@ class ShardScheduler(torch.optim.Optimizer):
             p.grad = p._cpu_grad
         elif hasattr(p, "_saved_grad_shard"):
             assert p.device == p._saved_grad_shard.device
-            print(f"finalize parameter p.grad.shape {p.grad.shape}")
-            print(f"finalize parameter p.grad.shpae {p._saved_grad_shard.shape}")
+            #f"finalize parameter p.grad.shape {p.grad.shape}")
+            #print(f"finalize parameter p.grad.shpae {p._saved_grad_shard.shape}")
             p.grad = p._saved_grad_shard
     
         if hasattr(p, "_saved_grad_shard"):
