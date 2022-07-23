@@ -1,3 +1,4 @@
+import csv
 backward_ts = 0
 comm_ts = 0
 
