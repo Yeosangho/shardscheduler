@@ -346,8 +346,7 @@ def schedule(adaptive_sdp):
             #for comm in ordered_comm_ops:
                 #print(comm)
             target_comm = ordered_comm_ops[0]
-            if(target_comm.type == 'ag_fsdp'):
-                print(target_comm.type)
+
             target_comp = ordered_comp_ops[0]
             #print(f"target_comm {target_comm}")
             #print(f"target_comp {target_comp}")
@@ -401,7 +400,10 @@ def schedule(adaptive_sdp):
         schedule_comp['scheduled_comm']['ag_fsdp'] = []
 
         for comm_type in comm_ops : 
-
+            if(comm_type == 'ar'):
+                print(comp.scheduled_comm[comm_type])
+            if(comm_type == 'ag_fsdp'):
+                print(comp.scheduled_comm[comm_type])
             for comm, param in zip(comp.scheduled_comm[comm_type], comp.scheduled_params[comm_type]):
                 comm_dict = {}
                 comm_dict['name'] = comm.name
@@ -427,7 +429,10 @@ def schedule(adaptive_sdp):
     for comm_type in comm_ops:
 
         for comm in non_overlappable_comms :
-        
+            if(comm.type == 'ar'):
+                print('BWTOFW AR')
+            if(comm.type == 'ag_fsdp'):
+                print('BWTOFW ag_fsdp')        
             comm_dict = {}
             comm_dict['name'] = comm.name
             comm_dict['idx'] = comm.idx
@@ -451,7 +456,10 @@ def schedule(adaptive_sdp):
     for comm_type in comm_ops:
 
         for comm in non_overlappable_comms :
-        
+            if(comm.type == 'ar'):
+                print('FWTOBW AR')
+            if(comm.type == 'ag_fsdp'):
+                print('FWTOBW ag_fsdp')            
             comm_dict = {}
             comm_dict['name'] = comm.name
             comm_dict['idx'] = comm.idx
