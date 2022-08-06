@@ -777,6 +777,7 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 				exist_task = None			
 				for task in task_dict[comp_type] :
 					if(task.idx == idx ):
+						print("!!!!!!!")
 						exist_task = task
 				if(exist_task == None):
 					task = Task(comp_param, comp_type, comms, idx)	
@@ -802,8 +803,8 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 
 
 
-	for comm in scheduled_comms:
-		print(comm)
+	#for comm in scheduled_comms:
+	#	print(comm)
 	#import os
 	#os._exit(0)
 	for task in scheduled_comms :
