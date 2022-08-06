@@ -783,7 +783,9 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 						print(f"!!!!!!! {task.idx} {idx}")
 				if(exist_task != None):
 					exist_task.comms.extend(comms)
-						
+				else:
+					task = Task(comp_param, comp_type, comms, idx)	
+					task_dict[comp_type].append(task)					
 
 	#Sorting scheudle BWTOFW -> FW -> FWTOBW -> BW
 	#find BWTOFW
