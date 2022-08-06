@@ -346,7 +346,8 @@ def schedule(adaptive_sdp):
             #for comm in ordered_comm_ops:
                 #print(comm)
             target_comm = ordered_comm_ops[0]
-            print(target_comm.type)
+            if(target_comm.type == 'ag_fsdp'):
+                print(target_comm.type)
             target_comp = ordered_comp_ops[0]
             #print(f"target_comm {target_comm}")
             #print(f"target_comp {target_comp}")
