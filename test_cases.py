@@ -653,15 +653,15 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 	target_comm_params = []
 	
 	#AG scheduled_comms_init 
-	#ag_init_params = []
-	#for dp_type, params in  zip(layer_dp_list, params_list):
-	#	if(dp_type == 'fsdp' or dp_type == 'sdp'):
-	#		ag_init_params.append(params)
+	ag_init_params = []
+	for dp_type, params in  zip(layer_dp_list, params_list):
+		if(dp_type == 'fsdp' or dp_type == 'sdp'):
+			ag_init_params.append(params)
 #
-	#target_comm_params = get_patial_param_list(ag_init_params)
-	#comm = Comm('AG', target_comm_params)
-	#task = Task(None, 'BWTOFW', [comm])
-	#scheduled_comms_init.append(task)	
+	target_comm_params = get_patial_param_list(ag_init_params)
+	comm = Comm('AG', target_comm_params)
+	task = Task(None, 'BWTOFW', [comm])
+	scheduled_comms_init.append(task)	
 
 	comps_by_type = {}
 	comps_by_type['FW'] = []
