@@ -214,6 +214,7 @@ def schedule(adaptive_sdp):
             time = alpha + beta * param_nums[key] *4  * 2 #32bit
             comm_ar = CommOp(key, idx, param_nums[key], 'ar', time)
             comm_ar_list.append(comm_ar)
+            print("???")
             total_comm_times += time 
             comm_list.append(comm_ar)
 
@@ -260,6 +261,7 @@ def schedule(adaptive_sdp):
                 overlappable_comms.append(comm_ag)
 
         for comm_ar in comm_ar_list:
+            print("!!!!!!!!!")
             print(comm_ar)
             if comm_ar.idx > comp.idx :
                 overlappable_comms.append(comm_ar) 
