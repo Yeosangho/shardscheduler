@@ -337,6 +337,7 @@ def schedule(adaptive_sdp):
         ordered_comm_ops = sorted(schedulable_comms, key=functools.cmp_to_key(compare), reverse=True) #schedulable_comms.sort( key=compare)
         ordered_comm_ops = sorted(ordered_comm_ops, key=lambda x:x.get_possible_schedulable_time())
         print(ordered_comm_ops)
+        import os
         os._exit(1)
 
         if(len(ordered_comm_ops) == 0):
