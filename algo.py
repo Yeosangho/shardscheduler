@@ -249,6 +249,7 @@ def schedule(adaptive_sdp):
             comm_list.append(comm_rs)
             comm_list.append(comm_ag_fsdp)
 
+    print(len(param_nums))
     print(dp_start_idx)
     print(dp_end_idx)
     print(f"comm_ar_list {comm_ar_list}")
