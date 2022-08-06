@@ -43,7 +43,7 @@ class CompOp:
     def __repr__(self):
         return f"{self.name}, {self.idx}, {self.type}, {self.overlappable_time} {len(self.scheudled_comm['ag'])} {len(self.scheudled_comm['rs'])} {len(self.scheudled_comm['ar'])} {len(self.scheudled_comm['ag_fsdp'])}"
 class CommOp:
-    def __init__(self, name, idx, param_num, type, comm_type):
+    def __init__(self, name, idx, param_num, comm_type, time):
         self.name = name
         self.idx = idx
         self.type = comm_type
