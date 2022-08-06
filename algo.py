@@ -249,10 +249,7 @@ def schedule(adaptive_sdp):
             comm_list.append(comm_rs)
             comm_list.append(comm_ag_fsdp)
 
-    print(len(param_nums))
-    print(dp_start_idx)
-    print(dp_end_idx)
-    print(f"comm_ar_list {comm_ar_list}")
+
 
     #1 Mod Initialize CompOps
     for comp in comp_ops:
@@ -265,8 +262,7 @@ def schedule(adaptive_sdp):
                 overlappable_comms.append(comm_ag)
 
         for comm_ar in comm_ar_list:
-            print("!!!!!!!!!")
-            print(comm_ar)
+
             if comm_ar.idx > comp.idx :
                 overlappable_comms.append(comm_ar) 
                 
@@ -275,8 +271,7 @@ def schedule(adaptive_sdp):
             if comm_ag_fsdp.idx < comp.idx :
                 overlappable_comms.append(comm_ag_fsdp)                                
         comp.set_schedulable_comms(overlappable_comms)
-    print("!")
-    os._exit(0)
+
 
 
     #2. Find schedulable range of each comm op. 
@@ -411,10 +406,7 @@ def schedule(adaptive_sdp):
         schedule_comp['scheduled_comm']['ag_fsdp'] = []
 
         for comm_type in comm_ops : 
-            if(comm_type == 'ar'):
-                print(comp.scheduled_comm[comm_type])
-            if(comm_type == 'ag_fsdp'):
-                print(comp.scheduled_comm[comm_type])
+
             for comm, param in zip(comp.scheduled_comm[comm_type], comp.scheduled_params[comm_type]):
                 comm_dict = {}
                 comm_dict['name'] = comm.name
@@ -440,10 +432,7 @@ def schedule(adaptive_sdp):
     for comm_type in comm_ops:
 
         for comm in non_overlappable_comms :
-            if(comm.type == 'ar'):
-                print('BWTOFW AR')
-            if(comm.type == 'ag_fsdp'):
-                print('BWTOFW ag_fsdp')        
+   
             comm_dict = {}
             comm_dict['name'] = comm.name
             comm_dict['idx'] = comm.idx
@@ -467,10 +456,7 @@ def schedule(adaptive_sdp):
     for comm_type in comm_ops:
 
         for comm in non_overlappable_comms :
-            if(comm.type == 'ar'):
-                print('FWTOBW AR')
-            if(comm.type == 'ag_fsdp'):
-                print('FWTOBW ag_fsdp')            
+       
             comm_dict = {}
             comm_dict['name'] = comm.name
             comm_dict['idx'] = comm.idx
