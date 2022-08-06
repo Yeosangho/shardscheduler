@@ -328,7 +328,8 @@ class Trainer:
 
 		make_schedule_from_json(params_list, self._schedule_comm_init, self._scheduled_comms, self._locks, adaptive_sdp_modules)
 		#make_schedule_wfbp_sdp(params_list, self._schedule_comm_init, self._scheduled_comms, self._locks)
-		os._exit(1)
+		#os._exit(1)
+		dist.barrier()
 		print(f"before init optimizer  {torch.cuda.memory_allocated() / 1024 /1024}") 
 		#self.optimizer = torch.optim.SGD(self.sharded_module.parameters() , lr=0.001, momentum=0.9, nesterov=True)
 		self.optimizer = torch.optim.Adam(self.sharded_module.parameters(), lr=0.001, betas=(0.9, 0.999), eps=1e-08, weight_decay=0, amsgrad=False)
