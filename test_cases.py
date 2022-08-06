@@ -803,8 +803,8 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 
 
 
-	#for comm in scheduled_comms:
-	#	print(comm)
+	for comm in scheduled_comms:
+		print(comm)
 	#import os
 	#os._exit(0)
 	for task in scheduled_comms :
