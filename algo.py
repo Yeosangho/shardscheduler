@@ -271,6 +271,7 @@ def schedule(adaptive_sdp):
             if comm_ag_fsdp.idx < comp.idx :
                 overlappable_comms.append(comm_ag_fsdp)                                
         comp.set_schedulable_comms(overlappable_comms)
+    print("!")
     os._exit(0)
 
 
