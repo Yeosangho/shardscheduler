@@ -281,7 +281,7 @@ class ShardScheduler(torch.optim.Optimizer):
 
         #try :
         with torch.cuda.stream(self.comm_stream):
-            self.run_schedule(self.scheduled_comms_init, init=False)
+            self.run_schedule(self.init_schedules, init=False)
             #exit()
             print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
             while not self._stop_event.is_set():
