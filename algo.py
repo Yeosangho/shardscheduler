@@ -39,9 +39,9 @@ class CompOp:
         self.scheduled[comm.type].append(comm)
 
     def __str__(self):
-        return f"{self.name}, {self.idx}, {self.type}, {self.overlappable_time} {len(self.scheudled_comm['ag'])} {len(self.scheudled_comm['rs'])} {len(self.scheudled_comm['ar'])} {len(self.scheudled_comm['ag_fsdp'])}"
+        return f"{self.name}, {self.idx}, {self.type}, {self.overlappable_time} {len(self.scheduled_comm['ag'])} {len(self.scheduled_comm['rs'])} {len(self.scheduled_comm['ar'])} {len(self.scheduled_comm['ag_fsdp'])}"
     def __repr__(self):
-        return f"{self.name}, {self.idx}, {self.type}, {self.overlappable_time} {len(self.scheudled_comm['ag'])} {len(self.scheudled_comm['rs'])} {len(self.scheudled_comm['ar'])} {len(self.scheudled_comm['ag_fsdp'])}"
+        return f"{self.name}, {self.idx}, {self.type}, {self.overlappable_time} {len(self.scheduled_comm['ag'])} {len(self.scheduled_comm['rs'])} {len(self.scheduled_comm['ar'])} {len(self.scheduled_comm['ag_fsdp'])}"
 class CommOp:
     def __init__(self, name, idx, param_num, comm_type, time):
         self.name = name
@@ -400,7 +400,7 @@ def schedule(adaptive_sdp):
 
         for comm_type in comm_ops : 
 
-            for comm, param in zip(comp.scheudled_comm[comm_type], comp.scheduled_params[comm_type]):
+            for comm, param in zip(comp.scheduled_comm[comm_type], comp.scheduled_params[comm_type]):
                 comm_dict = {}
                 comm_dict['name'] = comm.name
                 comm_dict['idx'] = comm.idx
@@ -410,7 +410,7 @@ def schedule(adaptive_sdp):
                 comm_dict['overlappable_param'] = comm.overlappable_param_num
                 comm_dict['time'] = comm.time
                 comm_dict['residual_time'] = comm.residual_time
-                schedule_comp['scheudled_comm'][comm_type].append(comm_dict)
+                schedule_comp['scheduled_comm'][comm_type].append(comm_dict)
 
         schedule_list.append(schedule_comp)
 
@@ -435,7 +435,7 @@ def schedule(adaptive_sdp):
             comm_dict['time'] = comm.time
             comm_dict['residual_time'] = comm.residual_time
             if(comm.type == comm_type):
-                schedule_comp['scheudled_comm'][comm_type].append(comm_dict)
+                schedule_comp['scheduled_comm'][comm_type].append(comm_dict)
 
     schedule_list.append(schedule_comp)
 
@@ -459,7 +459,7 @@ def schedule(adaptive_sdp):
             comm_dict['time'] = comm.time
             comm_dict['residual_time'] = comm.residual_time
             if(comm.type == comm_type):
-                schedule_comp['scheudled_comm'][comm_type].append(comm_dict)
+                schedule_comp['scheduled_comm'][comm_type].append(comm_dict)
 
     schedule_list.append(schedule_comp)
 
