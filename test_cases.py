@@ -780,7 +780,7 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 						exist_task = task
 				if(exist_task == None):
 					task = Task(comp_param, comp_type, comms, idx)	
-					task_dict[comp_op].append(task)
+					task_dict[comp_type].append(task)
 				else:
 					exist_task.comms.extend(comms)
 						
