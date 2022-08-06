@@ -294,7 +294,7 @@ class ShardScheduler(torch.optim.Optimizer):
         for task in schedule:        
             if(self._stop_event.is_set()):
                 break           
-            #print(task.compType)
+            print(task.compType)
             if(task.compType == 'FW' or task.compType == 'BW'):
                 self._wait_unlock(self._locks[task.compType][task.comp], self._conditions[task.compType][task.comp])  
             else:

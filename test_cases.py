@@ -769,7 +769,7 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 							target_comm_params.append(PartiableParam(param, start_ratio, end_ratio, comm['idx']))
 							comm_ratio[comm_op][param] = end_ratio
 				if(len(target_comm_params) > 0):
-					comm_merge = Comm('AG_FSDP', target_comm_params)
+					comm_merge = Comm('AG', target_comm_params)
 					comms.append(comm_merge)
 			if(len(comms) > 0):
 				idx = comp['idx'] if 'idx' in comp else None
@@ -811,7 +811,7 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 	for task in scheduled_comms :
 		for comm in task.comms :
 			for param_wrap in comm.params : 
-				param = param_wrap.param
+				param = param_wrap.param				
 				if(comm.commType == 'AG'):
 					if(locks[comm.commType][param].locked() == False):
 						locks[comm.commType][param].acquire()
