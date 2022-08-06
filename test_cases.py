@@ -653,15 +653,15 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 	target_comm_params = []
 	
 	#AG scheduled_comms_init 
-	ag_init_params = []
-	for dp_type, params in  zip(layer_dp_list, params_list):
-		if(dp_type == 'fsdp' or dp_type == 'sdp'):
-			ag_init_params.append(params)
-
-	target_comm_params = get_patial_param_list(ag_init_params)
-	comm = Comm('AG', target_comm_params)
-	task = Task(None, 'BWTOFW', [comm])
-	scheduled_comms_init.append(task)	
+	#ag_init_params = []
+	#for dp_type, params in  zip(layer_dp_list, params_list):
+	#	if(dp_type == 'fsdp' or dp_type == 'sdp'):
+	#		ag_init_params.append(params)
+#
+	#target_comm_params = get_patial_param_list(ag_init_params)
+	#comm = Comm('AG', target_comm_params)
+	#task = Task(None, 'BWTOFW', [comm])
+	#scheduled_comms_init.append(task)	
 
 	comps_by_type = {}
 	comps_by_type['FW'] = []
@@ -686,7 +686,11 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 		print(comp)
 
 	#현재는 하나의 레이어에서 이루어지는 동일한 유형의 통신은 모두 병합하도록 정의되어있음 -> 이 부분은 버퍼사이즈에 따라 분할되도록  수정 필요 .
-
+	task_dict = {}
+	task_dict['BWTOFW'] = []
+	task_dict['FW'] = []
+	task_dict['FWTOBW'] = []
+	task_dict['BW'] = []
 	comps_by_type['BW'] = list(reversed(comps_by_type['BW']))
 
 	comm_ratio = {}
@@ -729,7 +733,7 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 			if(len(comms) > 0):
 				idx = comp['idx'] if 'idx' in comp else None
 				task = Task(comp_param, comp_type, comms, idx)	
-				scheduled_comms.append(task)
+				task_dict[comp_type].append(task)
 
 	comm_ratio = {}
 	comm_ratio['ag_fsdp'] = {}
@@ -771,15 +775,33 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 				idx = comp['idx'] if 'idx' in comp else None
 				#find comp is scheduled in previous steps
 				exist_task = None			
-				for task in scheduled_comms :
-					if(task.compType == 'comp_type' and task.idx == idx ):
+				for task in task_dict['comp_type'] :
+					if(task.idx == idx ):
 						exist_task = task
 				if(exist_task == None):
 					task = Task(comp_param, comp_type, comms, idx)	
-					scheduled_comms.append(task)
+					task_dict[comp_op].append(task)
 				else:
 					exist_task.comms.extend(comms)
 						
+
+	#Sorting scheudle BWTOFW -> FW -> FWTOBW -> BW
+	#find BWTOFW
+	scheduled_comms.extend(task_dict['BWTOFW'])
+
+	fw_ops = sorted(task_dict['FW'], key=lambda x: x.idx)
+
+	bw_ops = sorted(task_dict['BW'], key=lambda x: x.idx, reverse=True)
+
+	scheduled_comms.extend(fw_ops)
+
+	scheduled_comms.extend(task_dict['FWTOBW'])
+
+	scheduled_comms.extedn(bw_ops)
+
+
+
+	#Init scheudle -> Exclude RS, AR from BWTOFW and FW
 
 
 	for comm in scheduled_comms:

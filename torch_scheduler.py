@@ -281,16 +281,16 @@ class ShardScheduler(torch.optim.Optimizer):
 
         #try :
         with torch.cuda.stream(self.comm_stream):
-            self.run_schedule(self.init_schedules)
+            self.run_schedule(self.schedules, init=True)
             #exit()
             print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
             while not self._stop_event.is_set():
-                self.run_schedule(self.schedules)
+                self.run_schedule(self.schedules, init=False)
         #except RuntimeError as error :
         #    print(error)
         #    self.health_check_lock.acquire()
 
-    def run_schedule(self, schedule):
+    def run_schedule(self, schedule, init=False):
         for task in schedule:        
             if(self._stop_event.is_set()):
                 break           
@@ -372,7 +372,7 @@ class ShardScheduler(torch.optim.Optimizer):
                             #torch.cuda.synchronize()
                     self.bucket.flush()
 
-                elif(comm.commType== "RS"): #after backward
+                elif(comm.commType== "RS" and init == False): #after backward
                     
                     for partiable_param in comm.params:
                         p = partiable_param.param
@@ -443,7 +443,7 @@ class ShardScheduler(torch.optim.Optimizer):
                             #param.sum()    
 
                     self.bucket.flush()
-                elif(comm.commType== "AR"):
+                elif(comm.commType== "AR" and init==False):
                     for partiable_param in comm.params:
                         p = partiable_param.param
                         grad = p.grad.data                       
