@@ -254,9 +254,11 @@ def schedule(adaptive_sdp):
     for comp in comp_ops:
         overlappable_comms = []
         for comm_rs in comm_rs_list :
+            print('rs')
             if comm_rs.idx > comp.idx :
                 overlappable_comms.append(comm_rs)
         for comm_ag in comm_ag_list :
+            print('ag')
             if comm_ag.idx > comp.idx :
                 overlappable_comms.append(comm_ag)
 
@@ -268,6 +270,7 @@ def schedule(adaptive_sdp):
                 
 
         for comm_ag_fsdp in comm_ag_fsdp_list:
+            print('fsdp')
             if comm_ag_fsdp.idx < comp.idx :
                 overlappable_comms.append(comm_ag_fsdp)                                
         comp.set_schedulable_comms(overlappable_comms)
