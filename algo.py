@@ -259,15 +259,16 @@ def schedule(adaptive_sdp):
                 overlappable_comms.append(comm_ag)
 
         for comm_ar in comm_ar_list:
+            print(comm_ar)
             if comm_ar.idx > comp.idx :
                 overlappable_comms.append(comm_ar) 
-                print(comm_ar)
-                os._exit(0)
+                
 
         for comm_ag_fsdp in comm_ag_fsdp_list:
             if comm_ag_fsdp.idx < comp.idx :
                 overlappable_comms.append(comm_ag_fsdp)                                
         comp.set_schedulable_comms(overlappable_comms)
+    os._exit(0)
 
 
     #2. Find schedulable range of each comm op. 
