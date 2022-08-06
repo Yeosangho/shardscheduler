@@ -138,14 +138,14 @@ def schedule(adaptive_sdp):
     #print(beta)
     #1. adaptive shard on dp ---> sdp 
     # later layer has higher priority 
-    dp_start_idx = adaptive_sdp['sdp'] + adaptive_sdp['fsdp']
-    dp_end_idx = adaptive_sdp['sdp'] + adaptive_sdp['fsdp'] + adaptive_sdp['dp']
-    #2. adaptive shard on sdp ---> fsdp 
-    # earlier layer has higher priority 
-    fsdp_start_idx = 0
-    fsdp_end_idx = adaptive_sdp['fsdp']
-    sdp_start_idx =  adaptive_sdp['fsdp']
-    sdp_end_idx = adaptive_sdp['fsdp'] + adaptive_sdp['sdp'] 
+    #dp_start_idx = adaptive_sdp['sdp'] + adaptive_sdp['fsdp']
+    #dp_end_idx = adaptive_sdp['sdp'] + adaptive_sdp['fsdp'] + adaptive_sdp['dp']
+    ##2. adaptive shard on sdp ---> fsdp 
+    ## earlier layer has higher priority 
+    #fsdp_start_idx = 0
+    #fsdp_end_idx = adaptive_sdp['fsdp']
+    #sdp_start_idx =  adaptive_sdp['fsdp']
+    #sdp_end_idx = adaptive_sdp['fsdp'] + adaptive_sdp['sdp'] 
 
     total_comm_times = 0
     comm_times_ag_rs = {}
