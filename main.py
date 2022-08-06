@@ -251,7 +251,7 @@ class Trainer:
 		adaptive_sdp['DP'] = dp_num
 		adaptive_sdp['SDP'] = sdp_num
 
-		schedule()
+		schedule(adaptive_sdp)
 
 		with enable_wrap(**self.wrap_params):
 			self.sharded_module = auto_wrap(adaptive_sdp, self.model)
@@ -325,8 +325,8 @@ class Trainer:
 
 		self.profile_target_layer.append(params_list[20])
 		#make_schedules_adaptive_sdp_auto(params_list, self._schedule_comm_init, self._scheduled_comms, self._locks, adaptive_sdp_modules)
-		#make_schedule_from_json(params_list, self._schedule_comm_init, self._scheduled_comms, self._locks, adaptive_sdp_modules)
-		make_schedule_wfbp_sdp(params_list, self._schedule_comm_init, self._scheduled_comms, self._locks)
+		make_schedule_from_json(params_list, self._schedule_comm_init, self._scheduled_comms, self._locks, adaptive_sdp_modules)
+		#make_schedule_wfbp_sdp(params_list, self._schedule_comm_init, self._scheduled_comms, self._locks)
 		#  os._exit(1)
 		print(f"before init optimizer  {torch.cuda.memory_allocated() / 1024 /1024}") 
 		#self.optimizer = torch.optim.SGD(self.sharded_module.parameters() , lr=0.001, momentum=0.9, nesterov=True)

@@ -76,8 +76,10 @@ def get_layer_len(comp_ops):
 
         
 
-def schedule():
+def schedule(adaptive_sdp):
     #schedule
+
+
     total_comp_times = 0
     total_backward_times = 0
     total_forward_times = 0
@@ -134,20 +136,33 @@ def schedule():
     #print(param_nums)
     #print(alpha)
     #print(beta)
+    #1. adaptive shard on dp ---> sdp 
+    # later layer has higher priority 
+    dp_start_idx = adaptive_sdp_modules['sdp'] + adaptive_sdp_modules['fsdp']
+    dp_end_idx = adaptive_sdp_modules['sdp'] + adaptive_sdp_modules['fsdp'] + adaptive_sdp_modules['dp']
+    #2. adaptive shard on sdp ---> fsdp 
+    # earlier layer has higher priority 
+    fsdp_start_idx = 0
+    fsdp_end_idx = adaptive_sdp_modules['fsdp']
+    sdp_start_idx =  adaptive_sdp_modules['fsdp']
+    sdp_end_idx = adaptive_sdp_modules['fsdp'] + adaptive_sdp_modules['sdp'] 
 
     total_comm_times = 0
     comm_times_ag_rs = {}
     comm_ag_list = []
     comm_rs_list = []
+    comm_ar_list = []
+    comm_ag_fsdp_list = []
     comm_list = []
-    idx = 0
-    for key in param_nums:
+    #idx = 0
+    for idx, key in enumerate(param_nums):
         time = alpha + beta * param_nums[key] *4 #32bit
+        
         comm_ag = CommOp(key, idx, param_nums[key], 'ag', time)
         comm_ag_list.append(comm_ag)
         comm_rs = CommOp(key, idx, param_nums[key], 'rs', time)
         comm_rs_list.append(comm_rs)
-        idx += 1
+        
         total_comm_times += time * 2
         comm_list.append(comm_ag)
         comm_list.append(comm_rs)
