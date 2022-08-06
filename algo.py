@@ -463,11 +463,11 @@ def schedule(adaptive_sdp):
 
     schedule_list.append(schedule_comp)
 
-    scheudle_dict = {}
-    scheudle_dict['dp_type'] = layer_dp_type_list
+    schedule_dict = {}
+    schedule_dict['dp_type'] = layer_dp_type_list
     schedule_dict['schedule'] = schedule_list
     #print(schedule_list)
     import json 
     with open("schedule.json", "w") as json_file:
-        json.dump(scheudle_dict, json_file)
+        json.dump(schedule_dict, json_file)
     overlappable_times += comp.overlappable_time
