@@ -647,10 +647,18 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 	with open("schedule.json", "r") as schedule_json:
 		schedule_json = json.load(schedule_json)
 	
+	layer_dp_list = schedule_json['dp_type']
+	schedule_list = schedule_json['schedule']
+
 	target_comm_params = []
 	
 	#AG scheduled_comms_init 
-	target_comm_params = get_patial_param_list(params_list)
+	ag_init_params = []
+	for dp_type, params in  zip(layer_dp_list, params_list):
+		if(dp_type == 'fsdp' or dp_type == 'sdp'):
+			ag_init_params.append(params)
+
+	target_comm_params = get_patial_param_list(ag_init_params)
 	comm = Comm('AG', target_comm_params)
 	task = Task(None, 'BWTOFW', [comm])
 	scheduled_comms_init.append(task)	
@@ -659,8 +667,10 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 	comps_by_type['FW'] = []
 	comps_by_type['BW'] = []
 	comps_by_type["BWTOFW"] = []
+	comps_by_type["FWTOBW"] = []
 
-	for comp in schedule_json:
+
+	for comp in schedule_list:
 		print(comp)
 		print(comp['type'])
 		if(comp['type'] == 'forward'):
@@ -669,20 +679,25 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 			comps_by_type['BW'].append(comp)
 		elif(comp['type'] == 'bwtofw'):
 			comps_by_type["BWTOFW"].append(comp)
+		elif(comp['type'] == 'fwtobw'):
+			comps_by_type["FWTOBW"].append(comp)
 
 	for comp in comps_by_type['FW']:
 		print(comp)
 
+	#현재는 하나의 레이어에서 이루어지는 동일한 유형의 통신은 모두 병합하도록 정의되어있음 -> 이 부분은 버퍼사이즈에 따라 분할되도록  수정 필요 .
 
 	comps_by_type['BW'] = list(reversed(comps_by_type['BW']))
 
 	comm_ratio = {}
 	comm_ratio['ag'] = {}
 	comm_ratio['rs'] = {}
+	comm_ratio['ar'] = {}
 
-	comm_ops = ['rs', 'ag']
-	comp_types = ['BW','BWTOFW', 'FW']
+	comm_ops = ['rs', 'ag', 'ar']
+	comp_types = ['BW','BWTOFW', 'FW',]
 	
+
 	for comp_type in comp_types : 
 		for comp in comps_by_type[comp_type]:
 			comp_param = params_list[int(comp['idx'])] if 'idx' in comp else None 
@@ -716,6 +731,62 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 				idx = comp['idx'] if 'idx' in comp else None
 				task = Task(comp_param, comp_type, comms, idx)	
 				scheduled_comms.append(task)
+
+	comm_ratio = {}
+	comm_ratio['ag_fsdp'] = {}
+
+	comm_ops = ['ag_fsdp']
+	comp_types = ['FW','FWTOBW', 'BW',]
+	
+
+	for comp_type in comp_types : 
+		for comp in comps_by_type[comp_type]:
+			comp_param = params_list[int(comp['idx'])] if 'idx' in comp else None 
+
+			comms = []
+			for comm_op in comm_ops:
+				comm_key = f'scheduled_{comm_op}'
+				target_comm_params = []
+				for comm in comp[comm_key]:
+					param = params_list[int(comm['idx'])]
+
+					start_ratio = 0.0
+					end_ratio = 0.0
+					if(comm['org_size'] == comm['param']):
+						target_comm_params.append(PartiableParam(param, idx=int(comm['idx'])))
+						start_ratio = 0.0
+						end_ratio = 1.0
+					else:
+						if(param in comm_ratio[comm_op]):
+							start_ratio = comm_ratio[comm_op][param]
+						else:
+							start_ratio = 0.0
+						current_ratio = comm['param'] / comm['org_size']
+						end_ratio = round(start_ratio + current_ratio, 4)
+						if( start_ratio < end_ratio):
+							target_comm_params.append(PartiableParam(param, start_ratio, end_ratio, comm['idx']))
+							comm_ratio[comm_op][param] = end_ratio
+				if(len(target_comm_params) > 0):
+					comm_merge = Comm('AG' target_comm_params)
+					comms.append(comm_merge)
+			if(len(comms) > 0):
+				idx = comp['idx'] if 'idx' in comp else None
+				#find comp is scheduled in previous steps
+				exist_task = None			
+				for task in scheduled_comms :
+					if(task.compType == 'comp_type' and task.idx == idx ):
+						exist_task = task
+				if(exist_task == None):
+					task = Task(comp_param, comp_type, comms, idx)	
+					scheduled_comms.append(task)
+				else:
+					exist_task.comms.extend(comms)
+						
+
+
+
+
+
 
 	for comm in scheduled_comms:
 		print(comm)
