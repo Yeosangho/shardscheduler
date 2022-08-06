@@ -261,6 +261,8 @@ def schedule(adaptive_sdp):
         for comm_ar in comm_ar_list:
             if comm_ar.idx > comp.idx :
                 overlappable_comms.append(comm_ar) 
+                print(comm_ar)
+                os._exit(0)
 
         for comm_ag_fsdp in comm_ag_fsdp_list:
             if comm_ag_fsdp.idx < comp.idx :
