@@ -277,7 +277,7 @@ def schedule(adaptive_sdp):
         elif(comm.type == 'rs'):
             overlappable_comps.extend(forward_ops[:comm.idx])
             overlappable_comps.extend(backward_ops[:comm.idx])
-        elif(comm.type == 'ar')
+        elif(comm.type == 'ar'):
             overlappable_comps.extend(forward_ops[:comm.idx])
             overlappable_comps.extend(backward_ops[:comm.idx])
         elif(comm.type == 'ag_fsdp'):
