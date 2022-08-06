@@ -93,7 +93,7 @@ def schedule_ops(target_comm, target_comp, comp_ops, alpha, beta):
     param_num = target_comm.overlappable_param_num
 
     over_param_num = 0
-    if(len(target_comp.scheduled_comm[]) > 0):
+    if(len(target_comp.scheduled_comm[comm_type]) > 0):
         time = time - alpha
         #print("fusion")
     #time = time - alpha
@@ -411,7 +411,7 @@ def schedule(adaptive_sdp):
                 comm_dict['time'] = comm.time
                 comm_dict['residual_time'] = comm.residual_time
                 schedule_comp['scheudled_comm'][comm_type].append(comm_dict)
-                
+
         schedule_list.append(schedule_comp)
 
     schedule_comp = {}

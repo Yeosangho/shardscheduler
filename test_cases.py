@@ -703,9 +703,8 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 			comp_param = params_list[int(comp['idx'])] if 'idx' in comp else None 
 			comms = []
 			for comm_op in comm_ops:
-				comm_key = f'scheduled_{comm_op}'
 				target_comm_params = []
-				for comm in comp[comm_key]:
+				for comm in comp['scheduled_comm'][comm_op]:
 					param = params_list[int(comm['idx'])]
 
 					start_ratio = 0.0
@@ -745,9 +744,8 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 
 			comms = []
 			for comm_op in comm_ops:
-				comm_key = f'scheduled_{comm_op}'
 				target_comm_params = []
-				for comm in comp[comm_key]:
+				for comm in comp['scheduled_comm'][comm_op]:
 					param = params_list[int(comm['idx'])]
 
 					start_ratio = 0.0
