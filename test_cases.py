@@ -773,13 +773,14 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 					comms.append(comm_merge)
 			if(len(comms) > 0):
 				idx = comp['idx'] if 'idx' in comp else None
+				
 				#find comp is scheduled in previous steps
 				exist_task = None			
 				for task in task_dict[comp_type] :
+					
 					if(task.idx == idx ):
-						print("!!!!!!!")
 						exist_task = task
-
+						print(f"!!!!!!! {task.idx} {idx}")
 				if(exist_task != None):
 					exist_task.comms.extend(comms)
 						
