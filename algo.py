@@ -319,7 +319,7 @@ def schedule(adaptive_sdp):
                 elif(item1.type == 'rs'):
                     return -1
                 elif(item1.type == 'ag_fsdp'):
-                    return 1
+                    return -1
                 else:
                     return 0
             elif ordered_comp_ops[0].type == 'backward' and item1.type != item2.type:
@@ -336,7 +336,8 @@ def schedule(adaptive_sdp):
 
         ordered_comm_ops = sorted(schedulable_comms, key=functools.cmp_to_key(compare), reverse=True) #schedulable_comms.sort( key=compare)
         ordered_comm_ops = sorted(ordered_comm_ops, key=lambda x:x.get_possible_schedulable_time())
-
+        print(ordered_comm_ops)
+        os._exit(1)
 
         if(len(ordered_comm_ops) == 0):
             print("impossible to overlap!")
@@ -346,9 +347,7 @@ def schedule(adaptive_sdp):
             #for comm in ordered_comm_ops:
                 #print(comm)
             target_comm = ordered_comm_ops[0]
-            if(target_comm.type == 'ar'):
-                print(target_comm.type)
-                os._exit(0)
+
             target_comp = ordered_comp_ops[0]
             #print(f"target_comm {target_comm}")
             #print(f"target_comp {target_comp}")
