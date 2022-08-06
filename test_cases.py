@@ -797,7 +797,7 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 
 	scheduled_comms.extend(task_dict['FWTOBW'])
 
-	scheduled_comms.extedn(bw_ops)
+	scheduled_comms.extend(bw_ops)
 
 
 
