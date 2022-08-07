@@ -807,21 +807,22 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 	scheduled_comms.extend(task_dict['BWTOFW'])
 
 
-	task_dict['BWTOFW_INIT'] = copy.deepcopy(task_dict['BWTOFW'])
+	task_init_list = copy.deepcopy(task_dict['BWTOFW'][0])
 	for task in task_dict['BW']:
 		for comm in task.comms : 
 			if(comm.type == 'AG' and comm.fsdp == False):
-				task_dict['BWTOFW_INIT'][0].comms.append(comm)
+				task_init_list.comms.append(comm)
 	
-	scheduled_comms_init.append(task_dict['BWTOFW_INIT'])
+	scheduled_comms_init.append(task_init_list)
 				
 
 
-	for comm in scheduled_comms:
-		print(comm)
-	
-	#import os
-	#os._exit(0)
+	#for comm in scheduled_comms:
+	#	print(comm)
+	print(task_init_list)
+	print(task_dict['BWTOFW'])
+	import os
+	os._exit(0)
 	for task in scheduled_comms :
 		for comm in task.comms :
 			for param_wrap in comm.params : 
