@@ -830,7 +830,7 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 						if( start_ratio < end_ratio):
 							target_comm_params.append(PartiableParam(param, start_ratio, end_ratio, comm['idx']))
 							comm_ratio[comm_op][param] = end_ratio
-							if(end_ratio == 0.9999 or end_ratio == 1.0001 )
+							if(end_ratio == 0.9999 or end_ratio == 1.0001 ):
 								print(comm['idx'])
 				if(len(target_comm_params) > 0):
 					comm_merge = Comm('AG', target_comm_params, fsdp=True)
