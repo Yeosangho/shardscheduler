@@ -1,4 +1,5 @@
 import copy 
+import math
 
 class Task:
 	def __init__(self,  comp,  compType, comms, idx=0):
