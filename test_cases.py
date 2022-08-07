@@ -790,7 +790,8 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 	task = Task(None, 'FWTOBW', [comm])	
 	for idx, param in enumerate(params_list[1:]):
 		target_comm_params = get_patial_param_list([params_list[idx]])
-		comm = Comm('AG', target_comm_params)		
+		comm = Comm('AG', target_comm_params)	
+		exist_task = None	
 		for task in task_dict['BW'] :
 			
 			if(task.idx == idx ):
