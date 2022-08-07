@@ -781,6 +781,7 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 
 	comm_ratio = {}
 	comm_ratio['ag_fsdp'] = {}
+	comm_param_num = {}
 	comm_param_num['ag_fsdp'] = {}
 	comm_ops = ['ag_fsdp']
 	comp_types = ['FW','FWTOBW', 'BW',]
