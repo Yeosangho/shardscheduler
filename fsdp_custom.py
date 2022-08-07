@@ -1238,11 +1238,6 @@ class FullyShardedDataParallel(nn.Module):
             # _post_backward_callback_queued defined. Accidentally accessing this field
             # will assert on all other instances, giving us a nice bug checker.
             self._post_backward_callback_queued = False
-        def _pre_backward_hook_schedule(*unused: Any) -> None:
-            print(f"fsdp pre backward hook ")          
-            for p in self.params : 
-                self._wait_unlock(self._locks['AG'][p], self._conditions['AG'][p])
-                self._release_lock(self._locks['BW'][p], self._conditions['BW'][p])
 
         def _pre_backward_hook(*unused: Any) -> None:
             # try to queue final backward callback only once for root, so
@@ -1280,7 +1275,10 @@ class FullyShardedDataParallel(nn.Module):
                 #print(f"backward {p.sum()}") 
             #else:
             #self._use_full_params()
-
+            print(p)
+            for p in self.params : 
+                self._wait_unlock(self._locks['AG'][p], self._conditions['AG'][p])
+                self._release_lock(self._locks['BW'][p], self._conditions['BW'][p])
 
             # Only run the ``self._prep_grads_for_backward`` once per iteration (i.e. in case
             # it is multiple outputs or multiple forward passes).
@@ -1302,10 +1300,6 @@ class FullyShardedDataParallel(nn.Module):
                 self.training_state = TrainingState.BACKWARD_PRE
             self.assert_state([TrainingState.BACKWARD_PRE, TrainingState.BACKWARD_POST])
 
-        def _register_hook_comm(t: torch.Tensor) -> torch.Tensor:
-            if t.requires_grad:
-                t.register_hook(_pre_backward_hook_schedule)
-            return t
 
         def _register_hook(t: torch.Tensor) -> torch.Tensor:
             if t.requires_grad:
@@ -1316,7 +1310,6 @@ class FullyShardedDataParallel(nn.Module):
         #print(outputs)
 
         outputs = apply_to_tensors(_register_hook, outputs)
-        outputs[-1] = apply_to_tensors(_register_hook_comm, outputs[-1])
 
         return outputs
 
