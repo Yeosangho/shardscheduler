@@ -102,7 +102,7 @@ def schedule_ops(target_comm, target_comp, comp_ops, alpha, beta):
     if(time > target_comp.overlappable_time ):
         if(len(target_comp.scheduled_comm[comm_type]) == 0):
             if(target_comp.overlappable_time > alpha):
-                overlapped_param_num = (target_comp.overlappable_time - alpha) / (beta*4 * ar_factor)
+                overlapped_param_num = int((target_comp.overlappable_time - alpha) / (beta*4 * ar_factor))
                 target_comp.overlappable_time = 0 
                 comp_ops.remove(target_comp)
                 target_comp.scheduled_comm[comm_type].append(target_comm)
@@ -113,7 +113,7 @@ def schedule_ops(target_comm, target_comp, comp_ops, alpha, beta):
                 target_comp.schedulable_comms.remove(target_comm)
         else:
             #print("111")
-            overlapped_param_num = (target_comp.overlappable_time ) / (beta*4 * ar_factor)
+            overlapped_param_num = int((target_comp.overlappable_time ) / (beta*4 * ar_factor))
             #if(param_num - over_param_num > 0):
             target_comp.overlappable_time = 0 
             comp_ops.remove(target_comp)
