@@ -838,16 +838,16 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 
 	bw_ops = sorted(task_dict['BW'], key=lambda x: x.idx, reverse=True)
 
-	scheduled_comms.extend(fw_ops)
 
 	scheduled_comms.extend(task_dict['FWTOBW'])
-
 	scheduled_comms.extend(bw_ops)
-
 	scheduled_comms.extend(task_dict['BWTOFW'])
+	scheduled_comms.extend(fw_ops)
+
 
 
 	scheduled_comms_init.extend(task_dict['INIT'])
+	scheduled_comms_init.extend(fw_ops)
 				
 
 
