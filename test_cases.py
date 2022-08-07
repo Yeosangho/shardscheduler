@@ -786,7 +786,7 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 	comp_types = ['FW','FWTOBW', 'BW',]
 
 	target_comm_params = get_patial_param_list(params_list)
-	comm = Comm('AG', target_comm_params, ag_fsdp)
+	comm = Comm('AG', target_comm_params)
 	task = Task(None, 'FWTOBW', [comm])	
 
 	#for comp_type in comp_types : 
