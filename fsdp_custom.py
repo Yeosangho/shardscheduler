@@ -1292,9 +1292,7 @@ class FullyShardedDataParallel(nn.Module):
             # Transition to BACKWARD_PRE state if currently IDLE. We can transition from BACKWARD_POST
             # to IDLE when FSDP is within activation checkpointing and called multiple times, due to the
             # extra forward pass for re-computation.
-            for p in self.params :
-                #if(not self.health_check_main_proc.locked()):
-                self._acquire_lock(self._locks['AG'][p])
+
                      
 
 
@@ -1374,6 +1372,9 @@ class FullyShardedDataParallel(nn.Module):
         alignment is created by :func:`_shard_parameters_`, which ensures that
         the local optimizer only sees the relevant parameter shard.
         """
+        #if(not self.health_check_main_proc.locked()):
+        self._acquire_lock(self._locks['AG'][param])
+
         # First hook callback will see PRE state. If we have multiple params,
         # then subsequent hook callbacks will see POST state.
         memory_allocated = torch.cuda.memory_allocated() / 1024 /1024
