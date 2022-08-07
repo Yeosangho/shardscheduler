@@ -1238,6 +1238,11 @@ class FullyShardedDataParallel(nn.Module):
             # _post_backward_callback_queued defined. Accidentally accessing this field
             # will assert on all other instances, giving us a nice bug checker.
             self._post_backward_callback_queued = False
+        def _pre_backward_hook_schedule(*unused: Any) -> None:
+            print(f"fsdp pre backward hook ")          
+            for p in self.params : 
+                self._wait_unlock(self._locks['AG'][p], self._conditions['AG'][p])
+                self._release_lock(self._locks['BW'][p], self._conditions['BW'][p])
 
         def _pre_backward_hook(*unused: Any) -> None:
             # try to queue final backward callback only once for root, so
@@ -1269,10 +1274,7 @@ class FullyShardedDataParallel(nn.Module):
             #self._rebuild_full_params_zero3()
             #for p in self.params:
             #    print(f"pre backward hook {p.shape}")   
-            print(f"fsdp pre backward hook ")          
-            for p in self.params : 
-                self._wait_unlock(self._locks['AG'][p], self._conditions['AG'][p])
-                self._release_lock(self._locks['BW'][p], self._conditions['BW'][p])
+
                 #torch.cuda.synchronize()
 
                 #print(f"backward {p.sum()}") 
@@ -1300,6 +1302,11 @@ class FullyShardedDataParallel(nn.Module):
                 self.training_state = TrainingState.BACKWARD_PRE
             self.assert_state([TrainingState.BACKWARD_PRE, TrainingState.BACKWARD_POST])
 
+        def _register_hook_comm(t: torch.Tensor) -> torch.Tensor:
+            if t.requires_grad:
+                t.register_hook(_pre_backward_hook_schedule)
+            return t
+
         def _register_hook(t: torch.Tensor) -> torch.Tensor:
             if t.requires_grad:
                 t.register_hook(_pre_backward_hook)
@@ -1308,6 +1315,7 @@ class FullyShardedDataParallel(nn.Module):
         # Attach hooks to Tensor outputs.
         print(outputs)
 
+        outputs[0] = apply_to_tensors(_register_hook_comm, outputs[0])
         outputs = apply_to_tensors(_register_hook, outputs)
 
         return outputs
