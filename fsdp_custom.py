@@ -1209,9 +1209,9 @@ class FullyShardedDataParallel(nn.Module):
         #    self.is_first_itr = False
 
         outputs = self._register_pre_backward_hooks(outputs)
-        #for p in self.params :
-            #if(not self.health_check_main_proc.locked()):
-        #    self._acquire_lock(self._locks['AG'][p])     
+        for p in self.params :
+            if(not self.health_check_main_proc.locked()):
+                self._acquire_lock(self._locks['AG'][p])     
         # Done with a forward pass.
         self.training_state = TrainingState.IDLE
 
@@ -1278,7 +1278,7 @@ class FullyShardedDataParallel(nn.Module):
    
             for p in self.params : 
                 print(f"prebackward hook fsdp {p.shape}")
-                self._wait_unlock(self._locks['AG'][p], self._conditions['AG'][p])
+                #self._wait_unlock(self._locks['AG'][p], self._conditions['AG'][p])
                 self._release_lock(self._locks['BW'][p], self._conditions['BW'][p])
                 print(f"unlock fsdp {p.shape}")
             # Only run the ``self._prep_grads_for_backward`` once per iteration (i.e. in case
