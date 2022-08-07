@@ -1167,14 +1167,14 @@ class ShardedDataParallel(nn.Module):
         for p in self.params : 
             #print(f"before rebuild full params {p._full_param_padded.shape}")
             #if(p.data_ptr() == self.profile_layer[0].data_ptr()):
-            #print(f"before unlock :: forward shape : {p.shape} sum : {p.sum()} {p._orig_size}")
+            print(f"before unlock :: forward shape : {p.shape} sum : {p.sum()} {p._orig_size}")
             #before_shape = p.shape
             self._wait_unlock(self._locks['AG'][p], self._conditions['AG'][p])
             #print(f"after unlock :: forward shape : {p.shape} sum : {p.sum()} {p._orig_size}") 
 
             self._release_lock(self._locks['FW'][p], self._conditions['FW'][p])
             #if(p.data_ptr() == self.profile_layer[0].data_ptr()):
-            #print(f"after unlock :: forward shape : {p.shape} sum : {p.sum()} {p._orig_size}") 
+            print(f"after unlock :: forward shape : {p.shape} sum : {p.sum()} {p._orig_size}") 
             #if(self.health_check_main_proc.locked()): 
             #    raise Exception("AllGather is failed!")
             #if(before_shape == p.shape == p._orig_size):
