@@ -781,7 +781,7 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 
 	comm_ratio = {}
 	comm_ratio['ag_fsdp'] = {}
-
+	comm_param_num['ag_fsdp'] = {}
 	comm_ops = ['ag_fsdp']
 	comp_types = ['FW','FWTOBW', 'BW',]
 
@@ -826,13 +826,16 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 						else:
 							start_ratio = 0.0
 						current_ratio = comm['param'] / comm['org_size']
-						end_ratio = round(start_ratio + current_ratio, 20)
+						end_ratio = round(start_ratio + current_ratio, 4)
 						if( start_ratio < end_ratio):
-							target_comm_params.append(PartiableParam(param, start_ratio, end_ratio, comm['idx']))
-							comm_ratio[comm_op][param] = end_ratio
-							if(end_ratio == 0.9999999999999999 ):
-								print(comm['idx'])
-								comm_ratio[comm_op][param] = 1.0
+
+							comm_param_num[comm_op][param] += comm['param']
+							if(math.abs(comm['org_size'] - comm_param_num[comm_op][param]) < 1.0 ):
+								target_comm_params.append(PartiableParam(param, start_ratio, 1.0, comm['idx']))
+								comm_ratio[comm_op][param] = 1.0								
+							else:
+								target_comm_params.append(PartiableParam(param, start_ratio, end_ratio, comm['idx']))
+								comm_ratio[comm_op][param] = end_ratio
 				if(len(target_comm_params) > 0):
 					comm_merge = Comm('AG', target_comm_params, fsdp=True)
 					comms.append(comm_merge)

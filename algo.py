@@ -1,7 +1,6 @@
 import csv
 import functools
 import os
-import math
 backward_ts = 0
 comm_ts = 0
 
@@ -51,7 +50,6 @@ class CommOp:
         self.type = comm_type
         self.time = time
         self.residual_time = time 
-        self.orig_param_num = param_num
         self.param_num = param_num
         self.overlappable_param_num = param_num
         self.schedulable_comps = []
@@ -95,7 +93,6 @@ def schedule_ops(target_comm, target_comp, comp_ops, alpha, beta):
     
     time = alpha + beta * target_comm.overlappable_param_num * 4 * ar_factor
     param_num = target_comm.overlappable_param_num
-    unit = math.ceil(target_comm.orig_param_num * 0.0001)
 
     over_param_num = 0
     if(len(target_comp.scheduled_comm[comm_type]) > 0):
@@ -109,12 +106,8 @@ def schedule_ops(target_comm, target_comp, comp_ops, alpha, beta):
                 target_comp.overlappable_time = 0 
                 comp_ops.remove(target_comp)
                 target_comp.scheduled_comm[comm_type].append(target_comm)
-                if(target_comm.overlappable_param_num - overlapped_param_num < unit):
-                    target_comp.scheduled_params[comm_type].append(target_comm.overlappable_param_num)
-                    target_comm.set_scheduled_comp(target_comp, target_comm.overlappable_param_num , target_comp.overlappable_time) 
-                else:
-                    target_comp.scheduled_params[comm_type].append(overlapped_param_num)
-                    target_comm.set_scheduled_comp(target_comp, overlapped_param_num, target_comp.overlappable_time)  
+                target_comp.scheduled_params[comm_type].append(overlapped_param_num)
+                target_comm.set_scheduled_comp(target_comp, overlapped_param_num, target_comp.overlappable_time)  
             else:
                 #print("111")
                 target_comp.schedulable_comms.remove(target_comm)
@@ -127,13 +120,7 @@ def schedule_ops(target_comm, target_comp, comp_ops, alpha, beta):
             target_comp.scheduled_comm[comm_type].append(target_comm)
             target_comp.scheduled_params[comm_type].append(overlapped_param_num)
 
-            if(target_comm.overlappable_param_num - overlapped_param_num < unit):
-                target_comp.scheduled_params[comm_type].append(target_comm.overlappable_param_num)
-                target_comm.set_scheduled_comp(target_comp, target_comm.overlappable_param_num , target_comp.overlappable_time) 
-            else:
-                target_comp.scheduled_params[comm_type].append(overlapped_param_num)
-                target_comm.set_scheduled_comp(target_comp, overlapped_param_num, target_comp.overlappable_time)  
-           # target_comm.set_scheduled_comp(target_comp, overlapped_param_num, target_comp.overlappable_time)  
+            target_comm.set_scheduled_comp(target_comp, overlapped_param_num, target_comp.overlappable_time)  
             #print(target_comm.overlappable_param_num)
 
     elif(time <= target_comp.overlappable_time) :
