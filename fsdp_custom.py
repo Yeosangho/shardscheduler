@@ -1269,7 +1269,7 @@ class FullyShardedDataParallel(nn.Module):
             #self._rebuild_full_params_zero3()
             #for p in self.params:
             #    print(f"pre backward hook {p.shape}")   
-            print(f"fsdp pre backward hook {p.shape}")          
+            print(f"fsdp pre backward hook ")          
             for p in self.params : 
                 self._wait_unlock(self._locks['AG'][p], self._conditions['AG'][p])
                 self._release_lock(self._locks['BW'][p], self._conditions['BW'][p])

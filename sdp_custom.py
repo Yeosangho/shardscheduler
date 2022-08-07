@@ -1288,7 +1288,7 @@ class ShardedDataParallel(nn.Module):
             #if self.reshard_after_forward:
             #self._rebuild_full_params_zero3()
             #for p in self.params:
-            print(f"sdp pre backward hook {p.shape}")            
+            print(f"sdp pre backward hook ")            
             for p in self.params : 
                 self._release_lock(self._locks['BW'][p], self._conditions['BW'][p])
 
