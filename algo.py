@@ -1,6 +1,7 @@
 import csv
 import functools
 import os
+import math
 backward_ts = 0
 comm_ts = 0
 
@@ -49,6 +50,7 @@ class CommOp:
         self.idx = idx
         self.type = comm_type
         self.time = time
+        self.orig_size = param_num
         self.residual_time = time 
         self.param_num = param_num
         self.overlappable_param_num = param_num
@@ -93,7 +95,7 @@ def schedule_ops(target_comm, target_comp, comp_ops, alpha, beta):
     
     time = alpha + beta * target_comm.overlappable_param_num * 4 * ar_factor
     param_num = target_comm.overlappable_param_num
-
+    unit = math.ceil(target_comm.orig_size * 0.0001)
     over_param_num = 0
     if(len(target_comp.scheduled_comm[comm_type]) > 0):
         time = time - alpha
@@ -103,6 +105,8 @@ def schedule_ops(target_comm, target_comp, comp_ops, alpha, beta):
         if(len(target_comp.scheduled_comm[comm_type]) == 0):
             if(target_comp.overlappable_time > alpha):
                 overlapped_param_num = (target_comp.overlappable_time - alpha) / (beta*4 * ar_factor)
+                if(target_comm.overlappable_param_num - overlapped_param_num < unit):
+                    overlapped_param_num = target_comm.overlappable_param_num
                 target_comp.overlappable_time = 0 
                 comp_ops.remove(target_comp)
                 target_comp.scheduled_comm[comm_type].append(target_comm)
@@ -114,6 +118,8 @@ def schedule_ops(target_comm, target_comp, comp_ops, alpha, beta):
         else:
             #print("111")
             overlapped_param_num = (target_comp.overlappable_time ) / (beta*4 * ar_factor)
+            if(target_comm.overlappable_param_num - overlapped_param_num < unit):
+                overlapped_param_num = target_comm.overlappable_param_num
             #if(param_num - over_param_num > 0):
             target_comp.overlappable_time = 0 
             comp_ops.remove(target_comp)
