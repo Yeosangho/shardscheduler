@@ -1209,9 +1209,9 @@ class FullyShardedDataParallel(nn.Module):
         #    self.is_first_itr = False
 
         outputs = self._register_pre_backward_hooks(outputs)
-        for p in self.params :
+        #for p in self.params :
             #if(not self.health_check_main_proc.locked()):
-            self._acquire_lock(self._locks['AG'][p])     
+        #    self._acquire_lock(self._locks['AG'][p])     
         # Done with a forward pass.
         self.training_state = TrainingState.IDLE
 
