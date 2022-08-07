@@ -1321,7 +1321,9 @@ class ShardedDataParallel(nn.Module):
             return t
 
         # Attach hooks to Tensor outputs.
-        outputs = apply_to_tensors(_register_hook, outputs)
+        
+        outputs[0] = apply_to_tensors(_register_hook, outputs[0])
+        #outputs = apply_to_tensors(_register_hook, outputs)
 
         return outputs
 
