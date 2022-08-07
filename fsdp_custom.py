@@ -1276,8 +1276,9 @@ class FullyShardedDataParallel(nn.Module):
             #else:
             #self._use_full_params()
             print("prebackward hook sdp")
+            print(f"{len(self.params)} self.params")
             for p in self.params : 
-                print(len(self.params))
+                
                 self._wait_unlock(self._locks['AG'][p], self._conditions['AG'][p])
                 self._release_lock(self._locks['BW'][p], self._conditions['BW'][p])
 
