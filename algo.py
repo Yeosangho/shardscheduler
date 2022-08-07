@@ -209,7 +209,7 @@ def schedule(adaptive_sdp):
     layer_dp_type_list = []
     #idx = 0
     for idx, key in enumerate(param_nums):
-        if(dp_start_idx < idx and dp_end_idx >= idx):
+        if(dp_start_idx <= idx and dp_end_idx > idx):
             layer_dp_type_list.append('dp')
             time = alpha + beta * param_nums[key] *4  * 2 #32bit
             comm_ar = CommOp(key, idx, param_nums[key], 'ar', time)
@@ -218,7 +218,7 @@ def schedule(adaptive_sdp):
             total_comm_times += time 
             comm_list.append(comm_ar)
 
-        elif(sdp_start_idx <= idx and sdp_end_idx >= idx):
+        elif(sdp_start_idx <= idx and sdp_end_idx > idx):
             layer_dp_type_list.append('sdp')
 
             time = alpha + beta * param_nums[key] *4 #32bit
