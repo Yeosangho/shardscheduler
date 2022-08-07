@@ -794,14 +794,14 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 		exist_task = None	
 		for task in task_dict['BW'] :
 			
-			if(task.idx == idx ):
+			if(task.idx == idx+1 ):
 				exist_task = task
 				print(f"!!!!!!! {task.idx} {idx}")
 		if(exist_task != None):
 			exist_task.comms.append(comm)
 		else:
 			task = Task(param, 'BW', [comm], idx+1)	
-			task_dict[comp_type].append(task)					
+			task_dict['BW'].append(task)					
 
 
 	#for comp_type in comp_types : 
