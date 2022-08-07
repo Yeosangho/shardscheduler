@@ -869,9 +869,7 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 				
 	for key in comm_ratio['ag_fsdp']:
 		if(comm_ratio['ag_fsdp'][key] != 1.0):
-			print(key)
-			import os 
-			os._exit(0)
+			print(comm_ratio['ag_fsdp'][key])
 
 	for comm in scheduled_comms:
 		print(comm)
