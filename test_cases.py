@@ -855,8 +855,8 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 	#	print(comm)
 	#print(task_init_list)
 	#print(task_dict['BWTOFW'])
-	import os
-	os._exit(0)
+	#import os
+	#os._exit(0)
 	for task in scheduled_comms :
 		for comm in task.comms :
 			for param_wrap in comm.params : 
