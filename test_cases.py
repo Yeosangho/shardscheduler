@@ -691,11 +691,51 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 
 	#현재는 하나의 레이어에서 이루어지는 동일한 유형의 통신은 모두 병합하도록 정의되어있음 -> 이 부분은 버퍼사이즈에 따라 분할되도록  수정 필요 .
 	task_dict = {}
+	task_dict['INIT'] = []
 	task_dict['BWTOFW'] = []
 	task_dict['FW'] = []
 	task_dict['FWTOBW'] = []
 	task_dict['BW'] = []
 	comps_by_type['BW'] = list(reversed(comps_by_type['BW']))
+
+
+	comm_ratio = {}
+	comm_ratio['ag'] = {}
+
+	comm_ops = ['ag']
+	comp_types = ['BW','BWTOFW']
+	
+	comms = []
+	for comp_type in comp_types : 
+		for comp in comps_by_type[comp_type]:
+			
+			for comm_op in comm_ops:
+				target_comm_params = []
+				for comm in comp['scheduled_comm'][comm_op]:
+					param = params_list[int(comm['idx'])]
+					start_ratio = 0.0
+					end_ratio = 0.0
+					if(comm['org_size'] == comm['param']):
+						target_comm_params.append(PartiableParam(param, idx=int(comm['idx'])))
+						start_ratio = 0.0
+						end_ratio = 1.0
+					else:
+						if(param in comm_ratio[comm_op]):
+							start_ratio = comm_ratio[comm_op][param]
+						else:
+							start_ratio = 0.0
+						current_ratio = comm['param'] / comm['org_size']
+						end_ratio = round(start_ratio + current_ratio, 4)
+						if( start_ratio < end_ratio):
+							target_comm_params.append(PartiableParam(param, start_ratio, end_ratio, comm['idx']))
+							comm_ratio[comm_op][param] = end_ratio
+				if(len(target_comm_params) > 0):
+					comm_merge = Comm(comm_op.upper(), target_comm_params)
+					comms.append(comm_merge)
+
+	task = Task(None, 'BWTOFW', comms, None)	
+	task_dict['INIT'].append(task)
+
 
 	comm_ratio = {}
 	comm_ratio['ag'] = {}
@@ -807,20 +847,14 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 	scheduled_comms.extend(task_dict['BWTOFW'])
 
 
-	task_init_list = copy.deepcopy(task_dict['BWTOFW'][0])
-	for task in task_dict['BW']:
-		for comm in task.comms : 
-			if(comm.type == 'AG' and comm.fsdp == False):
-				task_init_list.comms.append(comm)
-	
-	scheduled_comms_init.append(task_init_list)
+	scheduled_comms_init.extend(task_dict['INIT'])
 				
 
 
 	#for comm in scheduled_comms:
 	#	print(comm)
-	print(task_init_list)
-	print(task_dict['BWTOFW'])
+	#print(task_init_list)
+	#print(task_dict['BWTOFW'])
 	import os
 	os._exit(0)
 	for task in scheduled_comms :
