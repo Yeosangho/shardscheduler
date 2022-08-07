@@ -1,9 +1,12 @@
+import copy 
+
 class Task:
-	def __init__(self,  comp,  compType, comms, idx=0):
+	def __init__(self,  comp,  compType, comms, idx=0, fsdp=False):
 		self.comp = comp
 		self.idx=idx
 		self.compType = compType
 		self.comms = comms
+		self.fsdp = fsdp
 	def __repr__(self):
 		return f"{self.idx}, {self.compType}, {self.comms}"
 
@@ -769,7 +772,7 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 							target_comm_params.append(PartiableParam(param, start_ratio, end_ratio, comm['idx']))
 							comm_ratio[comm_op][param] = end_ratio
 				if(len(target_comm_params) > 0):
-					comm_merge = Comm('AG_FSDP', target_comm_params)
+					comm_merge = Comm('AG', target_comm_params, fsdp=True)
 					comms.append(comm_merge)
 			if(len(comms) > 0):
 				idx = comp['idx'] if 'idx' in comp else None
@@ -789,7 +792,6 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 
 	#Sorting scheudle BWTOFW -> FW -> FWTOBW -> BW
 	#find BWTOFW
-	scheduled_comms.extend(task_dict['BWTOFW'])
 
 	fw_ops = sorted(task_dict['FW'], key=lambda x: x.idx)
 
@@ -801,15 +803,24 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 
 	scheduled_comms.extend(bw_ops)
 
+	scheduled_comms.extend(task_dict['BWTOFW'])
 
+
+	task_dict['BWTOFW_INIT'] = copy.deecopy(task_dict['BWTOFW'])
+	for task in task_dict['BW']:
+		for comm in task.comms : 
+			if(comm.type == 'AG' and comm.fsdp == False):
+				task_dict['BWTOFW_INIT'][0].comms.append(comm)
 	
-	 
+	scheduled_comms_init.append(task_dict['BWTOFW_INIT'])
+				
 
 
 	for comm in scheduled_comms:
 		print(comm)
-	import os
-	os._exit(0)
+	
+	#import os
+	#os._exit(0)
 	for task in scheduled_comms :
 		for comm in task.comms :
 			for param_wrap in comm.params : 
