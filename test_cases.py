@@ -836,7 +836,7 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 								param_num = 0.0							
 							current_param = comm['param'] + param_num
 							comm_param_num[comm_op][param] = current_param
-							if(abs(comm['org_size'] - current_param) < 1 ):
+							if(abs(end_ratio - 1) <= 0.0001 ):
 								target_comm_params.append(PartiableParam(param, start_ratio, 1.0, comm['idx']))
 								comm_ratio[comm_op][param] = 1.0								
 							else:
