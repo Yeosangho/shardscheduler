@@ -785,9 +785,23 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 	comm_ops = ['ag_fsdp']
 	comp_types = ['FW','FWTOBW', 'BW',]
 
-	target_comm_params = get_patial_param_list(params_list)
+	target_comm_params = get_patial_param_list([params_list[-1]])
 	comm = Comm('AG', target_comm_params)
 	task = Task(None, 'FWTOBW', [comm])	
+	for idx, param in enumerate(params_list[1:]):
+		target_comm_params = get_patial_param_list([params_list[idx]])
+		comm = Comm('AG', target_comm_params)		
+		for task in task_dict['BW'] :
+			
+			if(task.idx == idx ):
+				exist_task = task
+				print(f"!!!!!!! {task.idx} {idx}")
+		if(exist_task != None):
+			exist_task.comms.append(comm)
+		else:
+			task = Task(param, 'BW', [comm], idx+1)	
+			task_dict[comp_type].append(task)					
+
 
 	#for comp_type in comp_types : 
 	#	for comp in comps_by_type[comp_type]:
