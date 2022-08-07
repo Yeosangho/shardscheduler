@@ -807,7 +807,7 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 	scheduled_comms.extend(task_dict['BWTOFW'])
 
 
-	task_dict['BWTOFW_INIT'] = copy.deecopy(task_dict['BWTOFW'])
+	task_dict['BWTOFW_INIT'] = copy.deepcopy(task_dict['BWTOFW'])
 	for task in task_dict['BW']:
 		for comm in task.comms : 
 			if(comm.type == 'AG' and comm.fsdp == False):
