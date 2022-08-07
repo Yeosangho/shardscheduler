@@ -829,19 +829,11 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 							start_ratio = 0.0
 						current_ratio = comm['param'] / comm['org_size']
 						end_ratio = round(start_ratio + current_ratio, 4)
+						if(abs(end_ratio - 1) <= 0.0001 and abs(end_ratio -1) > 0.0):
+							end_ratio = 1.0 
 						if( start_ratio < end_ratio):
-							if(param in comm_param_num[comm_op]):
-								param_num = comm_param_num[comm_op][param]
-							else:
-								param_num = 0.0							
-							current_param = comm['param'] + param_num
-							comm_param_num[comm_op][param] = current_param
-							if(abs(end_ratio - 1) <= 0.0001 and abs(end_ratio -1) > 0.0):
-								target_comm_params.append(PartiableParam(param, start_ratio, 1.0, comm['idx']))
-								comm_ratio[comm_op][param] = 1.0								
-							else:
-								target_comm_params.append(PartiableParam(param, start_ratio, end_ratio, comm['idx']))
-								comm_ratio[comm_op][param] = end_ratio
+							target_comm_params.append(PartiableParam(param, start_ratio, end_ratio, comm['idx']))
+							comm_ratio[comm_op][param] = end_ratio
 				if(len(target_comm_params) > 0):
 					comm_merge = Comm('AG', target_comm_params, fsdp=True)
 					comms.append(comm_merge)
