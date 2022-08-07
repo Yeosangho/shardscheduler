@@ -785,69 +785,69 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 	comm_ops = ['ag_fsdp']
 	comp_types = ['FW','FWTOBW', 'BW',]
 
-	target_comm_params = get_patial_param_list([params_list[-1]])
-	comm = Comm('AG', target_comm_params)
-	task_fwtobw = Task(None, 'FWTOBW', [comm])	
-	for idx, param in enumerate(params_list[1:]):
-		target_comm_params = get_patial_param_list([params_list[idx]])
-		comm = Comm('AG', target_comm_params)	
-		exist_task = None	
-		for task in task_dict['BW'] :
-			
-			if(task.idx == idx+1 ):
-				exist_task = task
-				print(f"!!!!!!! {task.idx} {idx}")
-		if(exist_task != None):
-			exist_task.comms.append(comm)
-		else:
-			task = Task(param, 'BW', [comm], idx+1)	
-			task_dict['BW'].append(task)					
+	#target_comm_params = get_patial_param_list([params_list[-1]])
+	#comm = Comm('AG', target_comm_params)
+	#task_fwtobw = Task(None, 'FWTOBW', [comm])	
+	#for idx, param in enumerate(params_list[1:]):
+	#	target_comm_params = get_patial_param_list([params_list[idx]])
+	#	comm = Comm('AG', target_comm_params)	
+	#	exist_task = None	
+	#	for task in task_dict['BW'] :
+	#		
+	#		if(task.idx == idx+1 ):
+	#			exist_task = task
+	#			print(f"!!!!!!! {task.idx} {idx}")
+	#	if(exist_task != None):
+	#		exist_task.comms.append(comm)
+	#	else:
+	#		task = Task(param, 'BW', [comm], idx+1)	
+	#		task_dict['BW'].append(task)					
 
 
-	#for comp_type in comp_types : 
-	#	for comp in comps_by_type[comp_type]:
-	#		comp_param = params_list[int(comp['idx'])] if 'idx' in comp else None 
+	for comp_type in comp_types : 
+		for comp in comps_by_type[comp_type]:
+			comp_param = params_list[int(comp['idx'])] if 'idx' in comp else None 
 #
-	#		comms = []
-	#		for comm_op in comm_ops:
-	#			target_comm_params = []
-	#			for comm in comp['scheduled_comm'][comm_op]:
-	#				param = params_list[int(comm['idx'])]
+			comms = []
+			for comm_op in comm_ops:
+				target_comm_params = []
+				for comm in comp['scheduled_comm'][comm_op]:
+					param = params_list[int(comm['idx'])]
 #
-	#				start_ratio = 0.0
-	#				end_ratio = 0.0
-	#				if(comm['org_size'] == comm['param']):
-	#					target_comm_params.append(PartiableParam(param, idx=int(comm['idx'])))
-	#					start_ratio = 0.0
-	#					end_ratio = 1.0
-	#				else:
-	#					if(param in comm_ratio[comm_op]):
-	#						start_ratio = comm_ratio[comm_op][param]
-	#					else:
-	#						start_ratio = 0.0
-	#					current_ratio = comm['param'] / comm['org_size']
-	#					end_ratio = round(start_ratio + current_ratio, 4)
-	#					if( start_ratio < end_ratio):
-	#						target_comm_params.append(PartiableParam(param, start_ratio, end_ratio, comm['idx']))
-	#						comm_ratio[comm_op][param] = end_ratio
-	#			if(len(target_comm_params) > 0):
-	#				comm_merge = Comm('AG', target_comm_params, fsdp=True)
-	#				comms.append(comm_merge)
-	#		if(len(comms) > 0):
-	#			idx = comp['idx'] if 'idx' in comp else None
-	#			
-	#			#find comp is scheduled in previous steps
-	#			exist_task = None			
-	#			for task in task_dict[comp_type] :
-	#				
-	#				if(task.idx == idx ):
-	#					exist_task = task
-	#					print(f"!!!!!!! {task.idx} {idx}")
-	#			if(exist_task != None):
-	#				exist_task.comms.extend(comms)
-	#			else:
-	#				task = Task(comp_param, comp_type, comms, idx)	
-	#				task_dict[comp_type].append(task)					
+					start_ratio = 0.0
+					end_ratio = 0.0
+					if(comm['org_size'] == comm['param']):
+						target_comm_params.append(PartiableParam(param, idx=int(comm['idx'])))
+						start_ratio = 0.0
+						end_ratio = 1.0
+					else:
+						if(param in comm_ratio[comm_op]):
+							start_ratio = comm_ratio[comm_op][param]
+						else:
+							start_ratio = 0.0
+						current_ratio = comm['param'] / comm['org_size']
+						end_ratio = round(start_ratio + current_ratio, 4)
+						if( start_ratio < end_ratio):
+							target_comm_params.append(PartiableParam(param, start_ratio, end_ratio, comm['idx']))
+							comm_ratio[comm_op][param] = end_ratio
+				if(len(target_comm_params) > 0):
+					comm_merge = Comm('AG', target_comm_params, fsdp=True)
+					comms.append(comm_merge)
+			if(len(comms) > 0):
+				idx = comp['idx'] if 'idx' in comp else None
+				
+				#find comp is scheduled in previous steps
+				exist_task = None			
+				for task in task_dict[comp_type] :
+					
+					if(task.idx == idx ):
+						exist_task = task
+						print(f"!!!!!!! {task.idx} {idx}")
+				if(exist_task != None):
+					exist_task.comms.extend(comms)
+				else:
+					task = Task(comp_param, comp_type, comms, idx)	
+					task_dict[comp_type].append(task)					
 
 	#Sorting scheudle BWTOFW -> FW -> FWTOBW -> BW
 	#find BWTOFW
@@ -856,8 +856,8 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 
 	bw_ops = sorted(task_dict['BW'], key=lambda x: x.idx, reverse=True)
 
-	scheduled_comms.append(task_fwtobw)
-	#scheduled_comms.extend(task_dict['FWTOBW'])
+	#scheduled_comms.append(task_fwtobw)
+	scheduled_comms.extend(task_dict['FWTOBW'])
 	scheduled_comms.extend(bw_ops)
 	scheduled_comms.extend(task_dict['BWTOFW'])
 	scheduled_comms.extend(fw_ops)
@@ -867,7 +867,11 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 	scheduled_comms_init.extend(task_dict['INIT'])
 	scheduled_comms_init.extend(fw_ops)
 				
-
+	for key in comm_ratio['ag_fsdp']:
+		if(comm_ratio['ag_fsdp'][key] != 1.0):
+			print(key)
+			import os 
+			os._exit(0)
 
 	for comm in scheduled_comms:
 		print(comm)
