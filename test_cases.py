@@ -658,10 +658,10 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 		if(dp_type == 'fsdp' or dp_type == 'sdp'):
 			ag_init_params.append(params)
 #
-	target_comm_params = get_patial_param_list(ag_init_params)
-	comm = Comm('AG', target_comm_params)
-	task = Task(None, 'BWTOFW', [comm])
-	scheduled_comms_init.append(task)	
+	#target_comm_params = get_patial_param_list(ag_init_params)
+	#comm = Comm('AG', target_comm_params)
+	#task = Task(None, 'BWTOFW', [comm])
+	#scheduled_comms_init.append(task)	
 
 	comps_by_type = {}
 	comps_by_type['FW'] = []
@@ -769,7 +769,7 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 							target_comm_params.append(PartiableParam(param, start_ratio, end_ratio, comm['idx']))
 							comm_ratio[comm_op][param] = end_ratio
 				if(len(target_comm_params) > 0):
-					comm_merge = Comm('AG', target_comm_params)
+					comm_merge = Comm('AG_FSDP', target_comm_params)
 					comms.append(comm_merge)
 			if(len(comms) > 0):
 				idx = comp['idx'] if 'idx' in comp else None
@@ -802,12 +802,14 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 	scheduled_comms.extend(bw_ops)
 
 
+	
+	 
 
 
 	for comm in scheduled_comms:
 		print(comm)
-	#import os
-	#os._exit(0)
+	import os
+	os._exit(0)
 	for task in scheduled_comms :
 		for comm in task.comms :
 			for param_wrap in comm.params : 
