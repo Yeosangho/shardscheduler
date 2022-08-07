@@ -1,12 +1,11 @@
 import copy 
 
 class Task:
-	def __init__(self,  comp,  compType, comms, idx=0, fsdp=False):
+	def __init__(self,  comp,  compType, comms, idx=0):
 		self.comp = comp
 		self.idx=idx
 		self.compType = compType
 		self.comms = comms
-		self.fsdp = fsdp
 	def __repr__(self):
 		return f"{self.idx}, {self.compType}, {self.comms}"
 
@@ -28,9 +27,11 @@ class PartiableParam:
 
 
 class Comm:
-	def __init__(self, commType, params):
+	def __init__(self, commType, params, fsdp=False):
 		self.commType = commType
 		self.params = params
+		self.fsdp = fsdp
+
 	def __repr__(self):
 		return f"{self.commType}, {self.params}"	
 
