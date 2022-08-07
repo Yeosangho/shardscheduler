@@ -1306,6 +1306,9 @@ class FullyShardedDataParallel(nn.Module):
             return t
 
         # Attach hooks to Tensor outputs.
+        print(outputs)
+        import os 
+        os._exit(0)
         outputs = apply_to_tensors(_register_hook, outputs)
 
         return outputs
