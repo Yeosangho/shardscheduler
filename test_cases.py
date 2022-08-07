@@ -787,7 +787,7 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 
 	target_comm_params = get_patial_param_list([params_list[-1]])
 	comm = Comm('AG', target_comm_params)
-	task = Task(None, 'FWTOBW', [comm])	
+	task_fwtobw = Task(None, 'FWTOBW', [comm])	
 	for idx, param in enumerate(params_list[1:]):
 		target_comm_params = get_patial_param_list([params_list[idx]])
 		comm = Comm('AG', target_comm_params)	
@@ -856,7 +856,7 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 
 	bw_ops = sorted(task_dict['BW'], key=lambda x: x.idx, reverse=True)
 
-	scheduled_comms.append(task)
+	scheduled_comms.append(task_fwtobw)
 	#scheduled_comms.extend(task_dict['FWTOBW'])
 	scheduled_comms.extend(bw_ops)
 	scheduled_comms.extend(task_dict['BWTOFW'])
