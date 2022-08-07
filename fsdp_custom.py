@@ -1294,8 +1294,8 @@ class FullyShardedDataParallel(nn.Module):
             # to IDLE when FSDP is within activation checkpointing and called multiple times, due to the
             # extra forward pass for re-computation.
 
-                     
-            self._acquire_lock(self._locks['AG'][param])
+            for p in self.params :           
+                self._acquire_lock(self._locks['AG'][p])
 
             if self.training_state == TrainingState.IDLE:
                 self.training_state = TrainingState.BACKWARD_PRE
