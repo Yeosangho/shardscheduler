@@ -769,8 +769,6 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 							start_ratio = 0.0
 						current_ratio = comm['param'] / comm['org_size']
 						end_ratio = round(start_ratio + current_ratio, 4)
-						if(abs(end_ratio - 1) <= 0.0001 and abs(end_ratio -1) > 0.0):
-							end_ratio = 1.0 
 						if( start_ratio < end_ratio):
 							target_comm_params.append(PartiableParam(param, start_ratio, end_ratio, comm['idx']))
 							comm_ratio[comm_op][param] = end_ratio
@@ -782,7 +780,7 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 				task = Task(comp_param, comp_type, comms, idx)	
 				task_dict[comp_type].append(task)
 
-
+	comm_ratio = {}
 	comm_ratio['ag_fsdp'] = {}
 	comm_param_num = {}
 	comm_param_num['ag_fsdp'] = {}
@@ -874,24 +872,12 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 
 	scheduled_comms_init.extend(task_dict['INIT'])
 	scheduled_comms_init.extend(fw_ops)
-	
 	#scheduled_comms_init = scheduled_comms
 				
 	for key in comm_ratio['ag_fsdp']:
 		if(comm_ratio['ag_fsdp'][key] != 1.0):
 			print(comm_ratio['ag_fsdp'][key])
-	for key in comm_ratio['ag']:
-		if(comm_ratio['ag'][key] != 1.0):
-			print(comm_ratio['ag'][key])
-
-
-	for key in comm_ratio['rs']:
-		if(comm_ratio['rs'][key] != 1.0):
-			print(comm_ratio['rs'][key])
-	#import os
-	#os._exit(0)
-
-
+	#os._exit()
 
 	for comm in scheduled_comms:
 		print(comm)
