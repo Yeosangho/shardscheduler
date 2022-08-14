@@ -132,6 +132,9 @@ class ShardScheduler(torch.optim.Optimizer):
         # Poll whether the tensor is ready for allreduce or whether the allreduce is finished.
         self.event_queue = queue.Queue()
         self.all_reduce_stream = torch.cuda.Stream()
+
+        self.scheduler_ready = threading.Lock()
+
         self._poller = threading.Thread(target=self._poll_FSDP, args=( ))
         #self._poller.excepthook = self.custom_hook
 
@@ -281,6 +284,7 @@ class ShardScheduler(torch.optim.Optimizer):
 
         #try :
         with torch.cuda.stream(self.comm_stream):
+            self.scheduler_ready.acquire()
             self.run_schedule(self.init_schedules , init=True)
             #exit()
             print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
@@ -291,14 +295,16 @@ class ShardScheduler(torch.optim.Optimizer):
         #    self.health_check_lock.acquire()
 
     def run_schedule(self, schedule, init=False):
-        for task in schedule:        
+        for task in schedule:   
+            print(f"before {task.compType}")
+     
             if(self._stop_event.is_set()):
                 break           
             if(task.compType == 'FW' or task.compType == 'BW'):
                 self._wait_unlock(self._locks[task.compType][task.comp], self._conditions[task.compType][task.comp])  
             else:
                 self._wait_unlock(self._locks[task.compType], self._conditions[task.compType])  
-            print(task.compType)
+            print(f"after {task.compType}")
 
             for comm in task.comms : 
                 #print(f"{comm} {len(comm.params)} ")

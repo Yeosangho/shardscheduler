@@ -436,7 +436,7 @@ class Trainer:
 			lock.release()
 		with condition :
 			condition.notify_all()	
-	def _wait_unlock(self, lock, condition):
+	def wait_unlock(self, lock, condition):
 	    if not lock.locked():
 	        None 
 	    else :
@@ -530,7 +530,9 @@ if __name__ == '__main__':
 		#thread = threading.Thread(target=run2, args=(comm_stream, group, world_size, rank))
 		#thread.start()					
 		print("2")
-		#time.sleep(1)
+		while not trainer.optimizer.scheduler_ready.locked():
+			time.sleep(1)
+			
 		trainer.benchmark_step()	
 	except RuntimeError as error :
 		print(f"RuntimeError {error}")
