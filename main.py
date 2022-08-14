@@ -244,8 +244,8 @@ class Trainer:
 			fsdp_num = count - len_module
 
 		fsdp_num =  0
-		sdp_num = 0
-		dp_num =  int(len_module) 
+		sdp_num = 1
+		dp_num =  int(len_module) -1
 		adaptive_sdp = {}
 		adaptive_sdp['FSDP'] = fsdp_num
 		adaptive_sdp['DP'] = dp_num
