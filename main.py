@@ -388,8 +388,8 @@ class Trainer:
 					print(f"before backward  {torch.cuda.memory_allocated() / 1024 /1024}") 
 	#		
 					loss.backward()
-					if self._locks['BWTOFW'].locked():   
-						self._release_lock(self._locks['BWTOFW'], self._conditions['BWTOFW'])
+					#if self._locks['BWTOFW'].locked():   
+					#	self._release_lock(self._locks['BWTOFW'], self._conditions['BWTOFW'])
 
 					print(f"after backward  {torch.cuda.memory_allocated() / 1024 /1024}") 
 					if(not self.train_continue):
