@@ -453,7 +453,10 @@ class ShardScheduler(torch.optim.Optimizer):
                 elif(comm.commType== "AR" and init==False):
                     for partiable_param in comm.params:
                         p = partiable_param.param
-                        grad = p.grad.data                       
+                        print("#####################")
+                        print(p.shape)
+                        grad = p.grad.data        
+
                         org_size = p._orig_size.numel()
                         self.bucket.push(grad=grad,
                                         param = p,
