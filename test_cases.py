@@ -887,10 +887,7 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 				param = param_wrap.param				
 				if(comm.commType == 'AG'):
 					if(locks[comm.commType][param].locked() == False):
-						locks[comm.commType][param].acquire()
-				if(comm.commType == 'AR'):
-					if(locks[comm.commType][param].locked() == False):
-						locks[comm.commType][param].acquire()						
+						locks[comm.commType][param].acquire()			
 
 	locks['FWTOBW'].acquire()
 
