@@ -874,6 +874,7 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 
 	scheduled_comms_init.extend(task_dict['INIT'])
 	scheduled_comms_init.extend(fw_ops)
+	
 	#scheduled_comms_init = scheduled_comms
 				
 	for key in comm_ratio['ag_fsdp']:

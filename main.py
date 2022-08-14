@@ -249,7 +249,7 @@ class Trainer:
 		adaptive_sdp = {}
 		adaptive_sdp['FSDP'] = fsdp_num
 		adaptive_sdp['DP'] = dp_num
-		adaptive_sdp['SDP'] = sdp_num
+		adaptive_sdp['SDP'] = sdp_num 
 
 		
 		with enable_wrap(**self.wrap_params):
@@ -381,7 +381,9 @@ class Trainer:
 
 					if self._locks['FWTOBW'].locked():   
 						self._release_lock(self._locks['FWTOBW'], self._conditions['FWTOBW'])
-
+					while not self.optimizer.scheduler_ready.locked():
+						time.sleep(0.01)
+						
 					print(f"after forward  {torch.cuda.memory_allocated() / 1024 /1024}") 
 					print(output.sum())
 					loss = self.criterion(output, target)
