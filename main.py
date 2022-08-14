@@ -245,7 +245,7 @@ class Trainer:
 
 		fsdp_num =  int(len_module * adaptive_shard_ratio['fsdp'])
 		sdp_num =  int(len_module * adaptive_shard_ratio['sdp'])
-		dp_num = int(len_module) -fsdp_nm - sdp_num
+		dp_num = int(len_module) -fsdp_num - sdp_num
 		adaptive_sdp = {}
 		adaptive_sdp['FSDP'] = fsdp_num
 		adaptive_sdp['DP'] = dp_num
