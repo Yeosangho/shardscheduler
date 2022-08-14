@@ -99,7 +99,7 @@ def module_check(module):
 
 
 class Trainer:
-	def __init__(self, world_size, rank,  count, sdp_num, fsdp_num,  health_check_scheduler_thread, health_check_main_proc):
+	def __init__(self, world_size, rank,  count, adaptive_shard_ratio,  health_check_scheduler_thread, health_check_main_proc):
 		self.health_check_scheduler_thread = health_check_scheduler_thread
 		self.health_check_main_proc = health_check_main_proc
 		self.train_continue = True 
@@ -243,8 +243,8 @@ class Trainer:
 			sdp_num = 2*len_module - count
 			fsdp_num = count - len_module
 
-		fsdp_num =  fsdp_num
-		sdp_num =  sdp_num
+		fsdp_num =  int(len_module * adaptive_shard_ratio['fsdp'])
+		sdp_num =  int(len_module * adaptive_shard_ratio['sdp'])
 		dp_num = int(len_module) -fsdp_nm - sdp_num
 		adaptive_sdp = {}
 		adaptive_sdp['FSDP'] = fsdp_num
@@ -456,16 +456,19 @@ if __name__ == '__main__':
 	parser = argparse.ArgumentParser()
 	parser.add_argument('--rank', dest='rank', default=0, type=int)
 	parser.add_argument('--target_memory', default=7.0, type=float)
-	parser.add_arugment('--sdp_num', default=20, type=int)
-	parser.add_arugment('--fsdp_num', default=20, type=int)
+	parser.add_argument('--sdp_ratio', default=0, type=float)
+	parser.add_argument('--fsdp_ratio', default=0, type=float)
+	parser.add_argument('--dp_ratio', default=0, type=float)
 
 
 	args = parser.parse_args()
 		#try :
 	world_size = 2
 	rank = args.rank
-	sdp_num = args.sdp_num
-	fsdp_num = args.fsdp_num
+	adaptive_shard_ratio = {}
+	adaptive_shard_ratio['dp'] = args.dp_ratio
+	adaptive_shard_ratio['sdp'] = args.sdp_ratio
+	adaptive_shard_ratio['fsdp'] = args.fsdp_ratio
 	#shard = args.shard
 	#mixed_precision = args.mixed_precision 	
 	#world_size = int(os.environ["WORLD_SIZE"])
@@ -495,7 +498,7 @@ if __name__ == '__main__':
 		#comm_stream = torch.cuda.Stream()
 
 		#group = dist.new_group(timeout=datetime.timedelta(seconds=5),)
-		trainer = Trainer(world_size, rank,count, sdp_num, fsdp_num, health_check_scheduler_thread, health_check_main_proc) 
+		trainer = Trainer(world_size, rank,count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc) 
 
 		def custom_hook(args):
 			# report the failure
