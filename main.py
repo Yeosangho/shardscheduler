@@ -307,6 +307,7 @@ class Trainer:
 			self._locks["AR"]		= self._ar_locks
 			self._locks["FWTOBW"]   = threading.Lock()
 			self._locks["BWTOFW"]   = threading.Lock()
+			self._locks["BWTOFW"].acquire()
 			#self._locks["AGFSDP"]   = self._ag_fsdp_locks
 			#self._locks["RS"]       = self._rs_locks
 
@@ -530,8 +531,8 @@ if __name__ == '__main__':
 		#thread = threading.Thread(target=run2, args=(comm_stream, group, world_size, rank))
 		#thread.start()					
 		print("2")
-		while not trainer.optimizer.scheduler_ready.locked():
-			time.sleep(1)
+		#while not trainer.optimizer.scheduler_ready.locked():
+		#	time.sleep(1)
 			
 		trainer.benchmark_step()	
 	except RuntimeError as error :
