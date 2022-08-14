@@ -64,11 +64,11 @@ class Bucket:
 
         elif(commType == 'AR'):
             param_num = end_idx - start_idx
-            print("###################################")
-            print(param_num)
-            print(grad.shape)
-            print(end_idx)
-            print(start_idx)
+            #print("###################################")
+            #print(param_num)
+            #print(grad.shape)
+            #print(end_idx)
+            #print(start_idx)
             self.ar_buffer[self.offset : self.offset + param_num].copy_(grad[start_idx : end_idx]) 
             self.offset += param_num
             self.params.add(param, start_idx, end_idx, org_size, shard_size, self.offset, grad=grad)
