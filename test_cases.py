@@ -648,6 +648,9 @@ def make_schedule_sdp(params_list, scheduled_comms_init , scheduled_comms, locks
 
 
 def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms, locks, adaptive_sdp_modules, json_path='schedule.json'):
+	fsdp_num = adaptive_sdp_modules['FSDP']
+	dp_num = adaptive_sdp_modules['DP']
+	sdp_num = adaptive_sdp_modules['SDP']	
 	import json
 	with open("schedule.json", "r") as schedule_json:
 		schedule_json = json.load(schedule_json)
@@ -875,10 +878,11 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 	scheduled_comms.extend(fw_ops)
 
 
-
-	scheduled_comms_init.extend(task_dict['INIT'])
-	scheduled_comms_init.extend(fw_ops)
-	#scheduled_comms_init = scheduled_comms
+	if(sdp_num + fsdp_num > 0):
+		scheduled_comms_init.extend(task_dict['INIT'])
+		scheduled_comms_init.extend(fw_ops)
+	else:
+		scheduled_comms_init = scheduled_comms
 				
 	for key in comm_ratio['ag_fsdp']:
 		if(comm_ratio['ag_fsdp'][key] != 1.0):
