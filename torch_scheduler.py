@@ -455,6 +455,8 @@ class ShardScheduler(torch.optim.Optimizer):
                         p = partiable_param.param
                         print("#####################")
                         print(p.shape)
+                        print(partiable_param.start_ratio)
+                        print(partiable_param.end_ratio)
                         grad = p.grad.data        
 
                         org_size = p._orig_size.numel()
