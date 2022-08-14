@@ -861,10 +861,12 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 	bw_ops = sorted(task_dict['BW'], key=lambda x: x.idx, reverse=True)
 
 	#scheduled_comms.append(task_fwtobw)
+	task = Task(None, 'FWTOBW', [], None)	
+	task_dict['FWTOBW'].append(task)
+
 	scheduled_comms.extend(task_dict['FWTOBW'])
 	scheduled_comms.extend(bw_ops)
-	task = Task(None, 'BWTOFW', [], None)	
-	task_dict['BWTOFW'].append(task)
+
 	scheduled_comms.extend(task_dict['BWTOFW'])
 	scheduled_comms.extend(fw_ops)
 
