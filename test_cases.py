@@ -878,12 +878,10 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 	scheduled_comms.extend(fw_ops)
 
 
-	if(sdp_num + fsdp_num > 0):
-		scheduled_comms_init.extend(task_dict['INIT'])
-		scheduled_comms_init.extend(fw_ops)
-	else:
-		scheduled_comms_init = scheduled_comms
-				
+	
+	scheduled_comms_init.extend(task_dict['INIT'])
+	scheduled_comms_init.extend(fw_ops)
+
 	for key in comm_ratio['ag_fsdp']:
 		if(comm_ratio['ag_fsdp'][key] != 1.0):
 			print(comm_ratio['ag_fsdp'][key])
