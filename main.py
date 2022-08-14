@@ -244,8 +244,8 @@ class Trainer:
 			fsdp_num = count - len_module
 
 		fsdp_num = 0
-		sdp_num = 0    
-		dp_num = int(len_module)
+		sdp_num = 40    
+		dp_num = int(len_module) - 40
 		adaptive_sdp = {}
 		adaptive_sdp['FSDP'] = fsdp_num
 		adaptive_sdp['DP'] = dp_num
@@ -383,7 +383,7 @@ class Trainer:
 						self._release_lock(self._locks['FWTOBW'], self._conditions['FWTOBW'])
 					while not self.optimizer.scheduler_ready.locked():
 						time.sleep(0.01)
-						
+
 					print(f"after forward  {torch.cuda.memory_allocated() / 1024 /1024}") 
 					print(output.sum())
 					loss = self.criterion(output, target)
