@@ -782,7 +782,7 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 				task = Task(comp_param, comp_type, comms, idx)	
 				task_dict[comp_type].append(task)
 
-	comm_ratio = {}
+
 	comm_ratio['ag_fsdp'] = {}
 	comm_param_num = {}
 	comm_param_num['ag_fsdp'] = {}
@@ -880,7 +880,6 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 	for key in comm_ratio['ag_fsdp']:
 		if(comm_ratio['ag_fsdp'][key] != 1.0):
 			print(comm_ratio['ag_fsdp'][key])
-
 	for key in comm_ratio['ag']:
 		if(comm_ratio['ag'][key] != 1.0):
 			print(comm_ratio['ag'][key])
@@ -891,6 +890,7 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 			print(comm_ratio['rs'][key])
 	import os
 	os._exit(0)
+
 
 
 	for comm in scheduled_comms:
