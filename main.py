@@ -378,9 +378,9 @@ class Trainer:
 					if self._locks['BWTOFW'].locked():   
 						self._release_lock(self._locks['BWTOFW'], self._conditions['BWTOFW'])				
 					output = self.sharded_module(data)
-					
-					while not self.optimizer.scheduler_ready.locked():
-						time.sleep(0.01)
+
+					#while not self.optimizer.scheduler_ready.locked():
+					#	time.sleep(0.01)
 					if self._locks['FWTOBW'].locked():   
 						self._release_lock(self._locks['FWTOBW'], self._conditions['FWTOBW'])
 
