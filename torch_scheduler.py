@@ -338,12 +338,17 @@ class ShardScheduler(torch.optim.Optimizer):
                                         end_idx=end_idx, 
                                         org_size=org_size, 
                                         shard_size=shard_size, 
-                                        commType='AG')   
+                                        commType='AG') 
+                            print("###############################")
+                            print(remains) 
+                            print(len(comm.params)) 
+                            print(idx)
+                            print("############################")
                             if(remains>0):
                                 stopped_idx = idx
                                 break
                         if(idx == len(comm.params) -1):
-                            comm_continue = True 
+                            comm_continue = False 
                     #print(f"ag p.shape {p.shape}" ) 
                     #print(f"end-start {end_idx-start_idx}")
                 
@@ -361,7 +366,7 @@ class ShardScheduler(torch.optim.Optimizer):
                             p_size = param._full_param_padded.size()
                             if(param_wrap.start_idx == 0):
                                 param._full_param_padded.storage().resize_(p_size.numel())                      
-                            #print(param._full_param_padded.shape)
+                            print(param._full_param_padded.shape)
                             listed_full_param = param._full_param_padded.view(2,param_wrap.shard_size)
                             #print(listed_full_param.shape)
                             #print(param_wrap.start_idx)
@@ -428,7 +433,7 @@ class ShardScheduler(torch.optim.Optimizer):
                                 break                                            
                             grad_chunks=None
                         if(idx == len(comm.params) -1):
-                            comm_continue = True                         
+                            comm_continue = False                         
                         #print(self.bucket.offset)
                         handle = dist._reduce_scatter_base(self.bucket.shard_buffer[:self.bucket.offset], self.bucket.org_buffer[:, :self.bucket.offset].contiguous(), async_op=True)  
                         while not handle.is_completed():
