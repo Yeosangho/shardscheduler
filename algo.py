@@ -136,8 +136,7 @@ def schedule_ops(target_comm, target_comp, comp_ops, alpha, beta):
 
 
     over_param_num = 0
-
-    residual_param_num = sum(target_comp.scheduled_comm[comm_type])% MAX_PARAM_NUM 
+    residual_param_num = sum(target_comp.scheduled_params[comm_type])% MAX_PARAM_NUM 
     if(residual_param_num > 0):
         time = time - alpha
 
