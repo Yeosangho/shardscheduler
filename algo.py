@@ -89,7 +89,7 @@ def get_layer_len(comp_ops):
             list_len += 1
     return list_len
 
-def find_latency_penalty(residual_param_num, overlappable_param_num, overlappable_time, alpha, beta, ar_factor):
+def find_latency_penalty(partition_num, residual_param_num, overlappable_param_num, overlappable_time, alpha, beta, ar_factor):
     if(residual_param_num == 0):
         latency_penalty = 1 
     else:
@@ -128,9 +128,9 @@ def schedule_ops(target_comm, target_comp, comp_ops, alpha, beta):
 
 
     #파라미터의 크기 및 텐서 퓨전 버퍼 크기를 반영하여 추가되는 Latency에 대한 패널티 부과 
-    partitoin_num = int(target_comm.overlappable_param_num / MAX_PARAM_NUM) + 1
+    partition_num = int(target_comm.overlappable_param_num / MAX_PARAM_NUM) + 1
 
-    time = partitoin_num * alpha + beta * target_comm.overlappable_param_num * 4 * ar_factor
+    time = partition_num * alpha + beta * target_comm.overlappable_param_num * 4 * ar_factor
     param_num = target_comm.overlappable_param_num
     unit = math.ceil(target_comm.orig_size * 0.0001)
 
@@ -144,7 +144,8 @@ def schedule_ops(target_comm, target_comp, comp_ops, alpha, beta):
     #time = time - alpha
     if(time > target_comp.overlappable_time ):
 
-        latency_penalty = find_latency_penalty(residual_param_num, 
+        latency_penalty = find_latency_penalty( partition_num,
+                                                residual_param_num, 
                                                 target_comm.overlappable_param_num, 
                                                 target_comp.overlappable_time,
                                                 alpha,
