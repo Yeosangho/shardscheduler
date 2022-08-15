@@ -335,13 +335,20 @@ class ShardScheduler(torch.optim.Optimizer):
                             #    print('before ag')
                             #    print(p.shape)
                             #    print(p.sum())
-
-                            remains = self.bucket.push(param=p,
-                                        start_idx=start_idx + (end_idx - start_idx) - remains,
-                                        end_idx=end_idx,
-                                        org_size=org_size, 
-                                        shard_size=shard_size, 
-                                        commType='AG') 
+                            if(remains == 0):
+                                remains = self.bucket.push(param=p,
+                                            start_idx=start_idx,
+                                            end_idx=end_idx,
+                                            org_size=org_size, 
+                                            shard_size=shard_size, 
+                                            commType='AG')                            
+                            else:
+                                remains = self.bucket.push(param=p,
+                                            start_idx=end_idx - remains,
+                                            end_idx=end_idx,
+                                            org_size=org_size, 
+                                            shard_size=shard_size, 
+                                            commType='AG') 
                             #print("###############################")
                             #print(remains) 
                             #print(len(comm.params)) 
@@ -433,15 +440,24 @@ class ShardScheduler(torch.optim.Optimizer):
                             #print(partiable_param.end_ratio)
                             #print(remains)
                             #print(shard_size)
-
-                            remains = self.bucket.push(params=grad_chunks,
-                                            grad=grad,
-                                            param = p,
-                                            start_idx=start_idx + (end_idx - start_idx) - remains,
-                                            end_idx=end_idx,
-                                            org_size=org_size, 
-                                            shard_size=shard_size, 
-                                            commType='RS')  
+                            if(remains == 0):
+                                remains = self.bucket.push(params=grad_chunks,
+                                                grad=grad,
+                                                param = p,
+                                                start_idx= start_idx,
+                                                end_idx=end_idx,
+                                                org_size=org_size, 
+                                                shard_size=shard_size, 
+                                                commType='RS')                                  
+                            else :
+                                remains = self.bucket.push(params=grad_chunks,
+                                                grad=grad,
+                                                param = p,
+                                                start_idx= end_idx - remains,
+                                                end_idx=end_idx,
+                                                org_size=org_size, 
+                                                shard_size=shard_size, 
+                                                commType='RS')  
                             #print("###############################")
                             #print(remains) 
                             #print(len(comm.params)) 
@@ -516,14 +532,22 @@ class ShardScheduler(torch.optim.Optimizer):
                             grad = p.grad.data        
 
                             org_size = p._orig_size.numel()
-                            remains = self.bucket.push(grad=grad,
-                                            param = p,
-                                            start_idx=start_idx + (end_idx - start_idx) - remains,
-                                            end_idx=end_idx,
-                                            org_size=org_size, 
-                                            shard_size=-1, 
-                                            commType='AR')  
-
+                            if(remains == 0):
+                                remains = self.bucket.push(grad=grad,
+                                                param = p,
+                                                start_idx=start_idx,
+                                                end_idx=end_idx,
+                                                org_size=org_size, 
+                                                shard_size=-1, 
+                                                commType='AR')  
+                            else:
+                                remains = self.bucket.push(grad=grad,
+                                                param = p,
+                                                start_idx=end_idx - remains,
+                                                end_idx=end_idx,
+                                                org_size=org_size, 
+                                                shard_size=-1, 
+                                                commType='AR')  
                             if(remains>0):
                                 stopped_idx = idx
                                 is_break = True
