@@ -317,7 +317,10 @@ class ShardScheduler(torch.optim.Optimizer):
                     stopped_idx = 0
                     comm_continue = True
                     while comm_continue : 
+                        is_break = False
+
                         for idx, partiable_param in enumerate(comm.params[stopped_idx:], start=stopped_idx): 
+                            
                             p = partiable_param.param
                             p_data = p.data.to(p._full_param_padded.device)
                             p_size = p._full_param_padded.size()
@@ -348,8 +351,9 @@ class ShardScheduler(torch.optim.Optimizer):
                             print("############################")
                             if(remains>0):
                                 stopped_idx = idx
+                                is_break = True
                                 break
-                        if(idx == len(comm.params) -1):
+                        if(idx == len(comm.params) -1 and not is_break):
                             comm_continue = False 
                     #print(f"ag p.shape {p.shape}" ) 
                     #print(f"end-start {end_idx-start_idx}")
@@ -400,6 +404,7 @@ class ShardScheduler(torch.optim.Optimizer):
                     stopped_idx = 0
                     comm_continue = True
                     while comm_continue : 
+                        is_break = False
                         for idx, partiable_param in enumerate(comm.params[stopped_idx:], start=stopped_idx): 
                             p = partiable_param.param
 
@@ -431,9 +436,10 @@ class ShardScheduler(torch.optim.Optimizer):
                                             commType='RS')  
                             if(remains>0):
                                 stopped_idx = idx
+                                is_break = True
                                 break                                            
                             grad_chunks=None
-                        if(idx == len(comm.params) -1):
+                        if(idx == len(comm.params) -1 and not is_break ):
                             comm_continue = False                         
                         #print(self.bucket.offset)
                         handle = dist._reduce_scatter_base(self.bucket.shard_buffer[:self.bucket.offset], self.bucket.org_buffer[:, :self.bucket.offset].contiguous(), async_op=True)  
