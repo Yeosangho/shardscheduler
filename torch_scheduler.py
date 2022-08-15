@@ -127,7 +127,7 @@ class ShardScheduler(torch.optim.Optimizer):
             self._priority_indexes[p] = priority
             priority += 1
 
-        self.bucket = Bucket(1000, 2)
+        self.bucket = Bucket(0.5, 2)
         self.profile_layer = profile_layer
         # Poll whether the tensor is ready for allreduce or whether the allreduce is finished.
         self.event_queue = queue.Queue()
