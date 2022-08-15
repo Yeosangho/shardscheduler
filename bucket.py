@@ -56,7 +56,7 @@ class Bucket:
                 remains= param_num - self.shard_buffer[self.offset : self.offset + param_num ].size()[0]
 
             self.shard_buffer[self.offset : self.offset + param_num ].copy_(param[start_idx : end_idx-remains ])
-            self.offset += param_num
+            self.offset += param_num - remains
             self.params.add(param, start_idx, end_idx-remains, org_size, shard_size, self.offset)
             return remains 
         elif(commType == 'RS'):
