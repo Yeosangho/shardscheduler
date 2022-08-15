@@ -454,7 +454,7 @@ class ShardScheduler(torch.optim.Optimizer):
                                 stopped_idx = idx
                                 is_break = True
                                 break                                            
-                            grad_chunks=None
+                            #grad_chunks=None
                         if(idx == len(comm.params) -1 and not is_break ):
                             comm_continue = False                         
                         #print(self.bucket.offset)
