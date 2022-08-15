@@ -317,7 +317,7 @@ class ShardScheduler(torch.optim.Optimizer):
                     stopped_idx = 0
                     comm_continue = True
                     while comm_continue : 
-                        for idx, partiable_param in enumerate(comm.params, start=stopped_idx): 
+                        for idx, partiable_param in enumerate(comm.params[stopped_idx:]): 
                             p = partiable_param.param
                             p_data = p.data.to(p._full_param_padded.device)
                             p_size = p._full_param_padded.size()
@@ -343,6 +343,8 @@ class ShardScheduler(torch.optim.Optimizer):
                             print(remains) 
                             print(len(comm.params)) 
                             print(idx)
+                            print(p.shape)
+                            print(stopped_idx)
                             print("############################")
                             if(remains>0):
                                 stopped_idx = idx
@@ -351,8 +353,7 @@ class ShardScheduler(torch.optim.Optimizer):
                             comm_continue = False 
                     #print(f"ag p.shape {p.shape}" ) 
                     #print(f"end-start {end_idx-start_idx}")
-                
-
+                        print("############################")
                         ##output_tensor_list = list(bucket.output.view(world_size, -1)[:self.bucket.offset].unbind(0))
                         handle = dist._all_gather_base(self.bucket.org_buffer[:self.bucket.offset*2], self.bucket.shard_buffer[:self.bucket.offset], async_op=True)
                         while not handle.is_completed() :
@@ -399,7 +400,7 @@ class ShardScheduler(torch.optim.Optimizer):
                     stopped_idx = 0
                     comm_continue = True
                     while comm_continue : 
-                        for idx, partiable_param in enumerate(comm.params, start=stopped_idx): 
+                        for idx, partiable_param in enumerate(comm.params[stopped_idx:]): 
                             p = partiable_param.param
 
                             grad = p.grad.data
