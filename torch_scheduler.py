@@ -371,7 +371,8 @@ class ShardScheduler(torch.optim.Optimizer):
                             p_size = param._full_param_padded.size()
                             if(param_wrap.start_idx == 0):
                                 param._full_param_padded.storage().resize_(p_size.numel())                      
-                            #print(param._full_param_padded.shape)
+                            print(param._full_param_padded.shape)
+                            print(param_wrap.shard_size)
                             listed_full_param = param._full_param_padded.view(2,param_wrap.shard_size)
                             #print(listed_full_param.shape)
                             #print(param_wrap.start_idx)
