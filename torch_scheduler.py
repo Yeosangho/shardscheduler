@@ -317,7 +317,7 @@ class ShardScheduler(torch.optim.Optimizer):
                     stopped_idx = 0
                     comm_continue = True
                     while comm_continue : 
-                        for idx, partiable_param in enumerate(comm.params[stopped_idx:]): 
+                        for idx, partiable_param in enumerate(comm.params[stopped_idx:], start=stopped_idx): 
                             p = partiable_param.param
                             p_data = p.data.to(p._full_param_padded.device)
                             p_size = p._full_param_padded.size()
@@ -400,7 +400,7 @@ class ShardScheduler(torch.optim.Optimizer):
                     stopped_idx = 0
                     comm_continue = True
                     while comm_continue : 
-                        for idx, partiable_param in enumerate(comm.params[stopped_idx:]): 
+                        for idx, partiable_param in enumerate(comm.params[stopped_idx:], start=stopped_idx): 
                             p = partiable_param.param
 
                             grad = p.grad.data
