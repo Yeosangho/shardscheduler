@@ -33,7 +33,7 @@ class Bucket:
     def __init__(self, size, world_size):
 
         self.world_size = world_size
-        self.parameter_num = size * 1024 * 1024 / 4
+        self.parameter_num = 10000
         self.shard_size = math.ceil(self.parameter_num / self.world_size )
 
         self.offset = 0
