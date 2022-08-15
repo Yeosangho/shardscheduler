@@ -477,6 +477,7 @@ class ShardScheduler(torch.optim.Optimizer):
                             pre_offset = offset
                             count += 1
                             if(param_wrap.end_idx == param_wrap.shard_size):
+                                param.grad.data =  torch.zeros_like( param.grad.data[:param_wrap.shard_size]).type(param.grad.dtype).to(param.device)  
                                 param.grad.data.copy_(param._full_param_padded.data)   
                                 #param.grad.data = param.grad.data 
                                 #if(param.data_ptr() == self.profile_layer[0].data_ptr()):
