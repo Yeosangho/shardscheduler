@@ -532,6 +532,10 @@ class ShardScheduler(torch.optim.Optimizer):
                             grad = p.grad.data        
 
                             org_size = p._orig_size.numel()
+                            start_idx = int(org_size * partiable_param.start_ratio)
+                            end_idx = int(org_size * partiable_param.end_ratio)                            
+    
+                            
                             if(remains == 0):
                                 remains = self.bucket.push(grad=grad,
                                                 param = p,
