@@ -52,7 +52,7 @@ class Bucket:
 
         if(commType == 'AG'):
             param_num = end_idx - start_idx 
-            if(self.shard_buffer[self.offset : self.offset + param_num ].size != param[start_idx : end_idx ].size())
+            if(self.shard_buffer[self.offset : self.offset + param_num ].size() != param[start_idx : end_idx ].size()):
                 return param_num - self.shard_buffer[self.offset : self.offset + param_num ].size()[0]
 
             self.shard_buffer[self.offset : self.offset + param_num ].copy_(param[start_idx : end_idx ])
@@ -61,7 +61,7 @@ class Bucket:
             return 0
         elif(commType == 'RS'):
             param_num = end_idx - start_idx
-            if(self.org_buffer[self.offset : self.offset + param_num ].size != param[start_idx : end_idx ].size())
+            if(self.org_buffer[self.offset : self.offset + param_num ].size() != param[start_idx : end_idx ].size()):
                 return param_num - self.org_buffer[self.offset : self.offset + param_num ].size()[0]            
 
             self.org_buffer = self.org_buffer.view(self.world_size, -1)
@@ -77,7 +77,7 @@ class Bucket:
             #print(grad.shape)
             #print(end_idx)
             #print(start_idx)
-            if(self.fusion_buffer[self.offset : self.offset + param_num ].size != param[start_idx : end_idx ].size())
+            if(self.fusion_buffer[self.offset : self.offset + param_num ].size() != param[start_idx : end_idx ].size()):
                 return param_num - self.fusion_buffer[self.offset : self.offset + param_num ].size()[0]            
 
             self.fusion_buffer[self.offset : self.offset + param_num].copy_(grad[start_idx : end_idx]) 
