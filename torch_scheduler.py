@@ -313,144 +313,161 @@ class ShardScheduler(torch.optim.Optimizer):
                 #    print(comm.params[42])
                 #print(comm.commType)
                 if(comm.commType == "AG"): #AG recover original parameter 
+                    remains = 0
+                    stopped_idx = 0
+                    comm_continue = True
+                    while comm_continue : 
+                        for idx, partiable_param in enumerate(comm.params, start=stopped_idx): 
+                            p = partiable_param.param
+                            p_data = p.data.to(p._full_param_padded.device)
+                            p_size = p._full_param_padded.size()
+                            p_data.new_zeros(p_size)
 
-                    for partiable_param in comm.params: 
-                        p = partiable_param.param
-                        p_data = p.data.to(p._full_param_padded.device)
-                        p_size = p._full_param_padded.size()
-                        p_data.new_zeros(p_size)
+                            org_size = p._orig_size
+                            shard_size = p_data.numel()
+                            start_idx = int(shard_size * partiable_param.start_ratio)
+                            end_idx = int(shard_size * partiable_param.end_ratio)    
 
-                        org_size = p._orig_size
-                        shard_size = p_data.numel()
-                        start_idx = int(shard_size * partiable_param.start_ratio)
-                        end_idx = int(shard_size * partiable_param.end_ratio)    
-                  
-                        #if(p.data_ptr() == self.profile_layer[0].data_ptr()):
-                        #    print('before ag')
-                        #    print(p.shape)
-                        #    print(p.sum())
+                            #if(p.data_ptr() == self.profile_layer[0].data_ptr()):
+                            #    print('before ag')
+                            #    print(p.shape)
+                            #    print(p.sum())
 
-                        self.bucket.push(param=p,
-                                        start_idx=start_idx, 
+                            remains = self.bucket.push(param=p,
+                                        start_idx=start_idx + remains, 
                                         end_idx=end_idx, 
                                         org_size=org_size, 
                                         shard_size=shard_size, 
                                         commType='AG')   
-                        #print(f"ag p.shape {p.shape}" ) 
-                        #print(f"end-start {end_idx-start_idx}")
-                    
+                            if(remains>0):
+                                stopped_idx = idx
+                                break
+                        if(idx == len(comm.params) -1):
+                            comm_continue = True 
+                    #print(f"ag p.shape {p.shape}" ) 
+                    #print(f"end-start {end_idx-start_idx}")
+                
 
-                    ##output_tensor_list = list(bucket.output.view(world_size, -1)[:self.bucket.offset].unbind(0))
-                    handle = dist._all_gather_base(self.bucket.org_buffer[:self.bucket.offset*2], self.bucket.shard_buffer[:self.bucket.offset], async_op=True)
-                    while not handle.is_completed() :
-                        time.sleep(0.001)
-                    output_tensor = self.bucket.org_buffer[:self.bucket.offset*2].view(2, -1)
-                    pre_offset = 0
-                    #!!!!!")
-                    for param_wrap, offset in zip(self.bucket.params.params, self.bucket.params.offsets):   
-                        #p._full_param_padded.storage().resize_(0)
-                        param = param_wrap.param
-                        p_size = param._full_param_padded.size()
-                        if(param_wrap.start_idx == 0):
-                            param._full_param_padded.storage().resize_(p_size.numel())                      
-                        #print(param._full_param_padded.shape)
-                        listed_full_param = param._full_param_padded.view(2,param_wrap.shard_size)
-                        #print(listed_full_param.shape)
-                        #print(param_wrap.start_idx)
-                        #print(param_wrap.end_idx)
-                        #print(pre_offset)
-                        #print(offset)                        
-                        listed_full_param[:,param_wrap.start_idx : param_wrap.end_idx].copy_(output_tensor[:,pre_offset : offset])
+                        ##output_tensor_list = list(bucket.output.view(world_size, -1)[:self.bucket.offset].unbind(0))
+                        handle = dist._all_gather_base(self.bucket.org_buffer[:self.bucket.offset*2], self.bucket.shard_buffer[:self.bucket.offset], async_op=True)
+                        while not handle.is_completed() :
+                            time.sleep(0.001)
+                        output_tensor = self.bucket.org_buffer[:self.bucket.offset*2].view(2, -1)
+                        pre_offset = 0
+                        #!!!!!")
+                        for param_wrap, offset in zip(self.bucket.params.params, self.bucket.params.offsets):   
+                            #p._full_param_padded.storage().resize_(0)
+                            param = param_wrap.param
+                            p_size = param._full_param_padded.size()
+                            if(param_wrap.start_idx == 0):
+                                param._full_param_padded.storage().resize_(p_size.numel())                      
+                            #print(param._full_param_padded.shape)
+                            listed_full_param = param._full_param_padded.view(2,param_wrap.shard_size)
+                            #print(listed_full_param.shape)
+                            #print(param_wrap.start_idx)
+                            #print(param_wrap.end_idx)
+                            #print(pre_offset)
+                            #print(offset)                        
+                            listed_full_param[:,param_wrap.start_idx : param_wrap.end_idx].copy_(output_tensor[:,pre_offset : offset])
 
-                        
-                        pre_offset = offset
-                        if(param_wrap.end_idx == param_wrap.shard_size):
-                        #    print("!!!!!!!!!!!!!!!!!!!!!!!!")
 
-                            #param.data =  param._full_param_padded
-                            param.data = listed_full_param.view(-1)
-                            param.data = param.data[: param_wrap.org_size.numel()].view(param_wrap.org_size)
-                            #if(param.data_ptr() == self.profile_layer[0].data_ptr()):
-                            #    print('after ag')
-                            #    print(param.shape)
-                            #    print(param.sum())
+                            pre_offset = offset
+                            if(param_wrap.end_idx == param_wrap.shard_size):
+                            #    print("!!!!!!!!!!!!!!!!!!!!!!!!")
 
-                            self._release_lock(self._locks['AG'][param], self._conditions['AG'][param])
- 
-                            #torch.cuda.synchronize()
-                    self.bucket.flush()
+                                #param.data =  param._full_param_padded
+                                param.data = listed_full_param.view(-1)
+                                param.data = param.data[: param_wrap.org_size.numel()].view(param_wrap.org_size)
+                                #if(param.data_ptr() == self.profile_layer[0].data_ptr()):
+                                #    print('after ag')
+                                #    print(param.shape)
+                                #    print(param.sum())
+
+                                self._release_lock(self._locks['AG'][param], self._conditions['AG'][param])
+
+                                #torch.cuda.synchronize()
+
+                        self.bucket.flush()
 
                 elif(comm.commType== "RS" and init == False): #after backward
-                    
-                    for partiable_param in comm.params:
-                        p = partiable_param.param
-                  
-                        grad = p.grad.data
-                        grad_chunks = chunk_and_pad(grad, 2)
-                        #p.grad.data = torch.zeros_like(grad_chunks[0]).type(p.grad.dtype).to(p.device)
+                    remains = 0
+                    stopped_idx = 0
+                    comm_continue = True
+                    while comm_continue : 
+                        for idx, partiable_param in enumerate(comm.params, start=stopped_idx): 
+                            p = partiable_param.param
 
-                        org_size = p._orig_size
-                        shard_size = grad_chunks[0].numel()
-                        start_idx = int(shard_size * partiable_param.start_ratio)
-                        end_idx = int(shard_size * partiable_param.end_ratio)
-                        #print("????")      
-                        #print(start_idx)
-                        #print(end_idx)                                               
-                        #input_flattened = torch.cat(grad_chunks)
-                        #if(p.data_ptr() == self.profile_layer[0].data_ptr()):
-                        #    print('before rs')
-                        #    
-                        #    print(p.grad.shape)
-                        #    print(p.grad.sum())
-                        #print(shard_size)
-                        self.bucket.push(params=grad_chunks,
-                                        grad=grad,
-                                        param = p,
-                                        start_idx=int(shard_size * partiable_param.start_ratio),
-                                        end_idx=int(shard_size * partiable_param.end_ratio),
-                                        org_size=org_size, 
-                                        shard_size=shard_size, 
-                                        commType='RS')  
-                        grad_chunks=None
-                    #print(self.bucket.offset)
-                    handle = dist._reduce_scatter_base(self.bucket.shard_buffer[:self.bucket.offset], self.bucket.org_buffer[:, :self.bucket.offset].contiguous(), async_op=True)  
-                    while not handle.is_completed():
-                        time.sleep(0.001)
-                    self.bucket.shard_buffer[:self.bucket.offset]= self.bucket.shard_buffer[:self.bucket.offset] / 2    
-                    #print(f"output p.grad[0] {p.grad.shape} {torch.sum(p.grad)}")
-                    pre_offset = 0
-                    count = 0
-                    for param_wrap, offset in zip(self.bucket.params.params, self.bucket.params.offsets):   
+                            grad = p.grad.data
+                            grad_chunks = chunk_and_pad(grad, 2)
+                            #p.grad.data = torch.zeros_like(grad_chunks[0]).type(p.grad.dtype).to(p.device)
 
-                        #p.grad = None  
-
-                        param = param_wrap.param  
-                        if(param_wrap.start_idx == 0):
-                            param.grad.data =  torch.zeros_like( param.grad.data[:param_wrap.shard_size]).type(param.grad.dtype).to(param.device)     
-                        param.grad.data[param_wrap.start_idx:param_wrap.end_idx].copy_(self.bucket.shard_buffer[pre_offset:offset])
-                        pre_offset = offset
-                        count += 1
-                        if(param_wrap.end_idx == param_wrap.shard_size):
-                               
-                            #param.grad.data = param.grad.data 
-                            #if(param.data_ptr() == self.profile_layer[0].data_ptr()):
-                            #    print('after rs')
-                            #    print(param.shape)
-                            #    print(param.grad.sum())
-                            
-                            #print(count)
-                            #print(param_wrap.shard_size)
-                            #print(param_wrap.org_size)   
-                            self._post_reduction_hook(param, param.grad.data)
-                            self._finalize_parameters(param)
-                            self._adam(param)
-                            self._zero_one_grad(param)
-                            #param.grad.data = None
-                            grad = None 
-                            #param.grad = None
-                            #param.sum()    
-
-                    self.bucket.flush()
+                            org_size = p._orig_size
+                            shard_size = grad_chunks[0].numel()
+                            start_idx = int(shard_size * partiable_param.start_ratio)
+                            end_idx = int(shard_size * partiable_param.end_ratio)
+                            #print("????")      
+                            #print(start_idx)
+                            #print(end_idx)                                               
+                            #input_flattened = torch.cat(grad_chunks)
+                            #if(p.data_ptr() == self.profile_layer[0].data_ptr()):
+                            #    print('before rs')
+                            #    
+                            #    print(p.grad.shape)
+                            #    print(p.grad.sum())
+                            #print(shard_size)
+                            remains = self.bucket.push(params=grad_chunks,
+                                            grad=grad,
+                                            param = p,
+                                            start_idx=int(shard_size * partiable_param.start_ratio)+remains,
+                                            end_idx=int(shard_size * partiable_param.end_ratio),
+                                            org_size=org_size, 
+                                            shard_size=shard_size, 
+                                            commType='RS')  
+                            if(remains>0):
+                                stopped_idx = idx
+                                break                                            
+                            grad_chunks=None
+                        if(idx == len(comm.params) -1):
+                            comm_continue = True                         
+                        #print(self.bucket.offset)
+                        handle = dist._reduce_scatter_base(self.bucket.shard_buffer[:self.bucket.offset], self.bucket.org_buffer[:, :self.bucket.offset].contiguous(), async_op=True)  
+                        while not handle.is_completed():
+                            time.sleep(0.001)
+                        self.bucket.shard_buffer[:self.bucket.offset]= self.bucket.shard_buffer[:self.bucket.offset] / 2    
+                        #print(f"output p.grad[0] {p.grad.shape} {torch.sum(p.grad)}")
+                        pre_offset = 0
+                        count = 0
+                        for param_wrap, offset in zip(self.bucket.params.params, self.bucket.params.offsets):   
+                        
+                            #p.grad = None  
+    
+                            param = param_wrap.param  
+                            if(param_wrap.start_idx == 0):
+                                param.grad.data =  torch.zeros_like( param.grad.data[:param_wrap.shard_size]).type(param.grad.dtype).to(param.device)     
+                            param.grad.data[param_wrap.start_idx:param_wrap.end_idx].copy_(self.bucket.shard_buffer[pre_offset:offset])
+                            pre_offset = offset
+                            count += 1
+                            if(param_wrap.end_idx == param_wrap.shard_size):
+                                   
+                                #param.grad.data = param.grad.data 
+                                #if(param.data_ptr() == self.profile_layer[0].data_ptr()):
+                                #    print('after rs')
+                                #    print(param.shape)
+                                #    print(param.grad.sum())
+                                
+                                #print(count)
+                                #print(param_wrap.shard_size)
+                                #print(param_wrap.org_size)   
+                                self._post_reduction_hook(param, param.grad.data)
+                                self._finalize_parameters(param)
+                                self._adam(param)
+                                self._zero_one_grad(param)
+                                #param.grad.data = None
+                                grad = None 
+                                #param.grad = None
+                                #param.sum()    
+    
+                        self.bucket.flush()
                 elif(comm.commType== "AR" and init==False):
                     for partiable_param in comm.params:
                         p = partiable_param.param

@@ -750,7 +750,10 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 	comm_ratio['ag'] = {}
 	comm_ratio['rs'] = {}
 	comm_ratio['ar'] = {}
-
+	comm_param_num = {}
+	comm_param_num['ag'] = {}
+	comm_param_num['rs'] = {}
+	comm_param_num['ar'] = {}
 	comm_ops = ['rs', 'ag', 'ar']
 	comp_types = ['BW','BWTOFW', 'FW',]
 	
@@ -759,17 +762,21 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 		for comp in comps_by_type[comp_type]:
 			comp_param = params_list[int(comp['idx'])] if 'idx' in comp else None 
 			comms = []
+			comm_param_num[comm_op][comp_param] = 0
 			for comm_op in comm_ops:
 				target_comm_params = []
 				for comm in comp['scheduled_comm'][comm_op]:
 					param = params_list[int(comm['idx'])]
-#
+#		
 					start_ratio = 0.0
 					end_ratio = 0.0
 					if(comm['org_size'] == comm['param']):
 						target_comm_params.append(PartiableParam(param, idx=int(comm['idx'])))
+						
 						start_ratio = 0.0
 						end_ratio = 1.0
+						comm_param_num[comm_op][comp_param] +=  comm['param']
+
 					else:
 						if(param in comm_ratio[comm_op]):
 							start_ratio = comm_ratio[comm_op][param]
@@ -782,6 +789,7 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 						if( start_ratio < end_ratio):
 							target_comm_params.append(PartiableParam(param, start_ratio, end_ratio, comm['idx']))
 							comm_ratio[comm_op][param] = end_ratio
+							comm_param_num[comm_op][comp_param] +=  comm['param']
 				if(len(target_comm_params) > 0):
 					comm_merge = Comm(comm_op.upper(), target_comm_params)
 					comms.append(comm_merge)
@@ -790,9 +798,7 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 				task = Task(comp_param, comp_type, comms, idx)	
 				task_dict[comp_type].append(task)
 
-	comm_ratio = {}
 	comm_ratio['ag_fsdp'] = {}
-	comm_param_num = {}
 	comm_param_num['ag_fsdp'] = {}
 	comm_ops = ['ag_fsdp']
 	comp_types = ['FW','FWTOBW', 'BW',]
@@ -814,7 +820,6 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 	#	else:
 	#		task = Task(param, 'BW', [comm], idx+1)	
 	#		task_dict['BW'].append(task)					
-
 
 	for comp_type in comp_types : 
 		for comp in comps_by_type[comp_type]:
