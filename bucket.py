@@ -70,7 +70,7 @@ class Bucket:
             self.org_buffer[:, self.offset : self.offset + param_num].copy_(stacked_input[:,start_idx : end_idx-remains])
             self.offset += param_num
             self.params.add(param, start_idx, end_idx-remains, org_size, shard_size, self.offset, grad=grad)
-            return 0
+            return remains
         elif(commType == 'AR'):
             param_num = end_idx - start_idx
             #print("###################################")
