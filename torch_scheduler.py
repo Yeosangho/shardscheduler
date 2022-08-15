@@ -426,6 +426,13 @@ class ShardScheduler(torch.optim.Optimizer):
                             #    print(p.grad.shape)
                             #    print(p.grad.sum())
                             #print(shard_size)
+                            print("##############before push")
+                            print(p.shape)
+                            print(partiable_param.start_ratio)
+                            print(partiable_param.end_ratio)
+                            print(remains)
+                            print(shard_size)
+
                             remains = self.bucket.push(params=grad_chunks,
                                             grad=grad,
                                             param = p,
@@ -434,6 +441,15 @@ class ShardScheduler(torch.optim.Optimizer):
                                             org_size=org_size, 
                                             shard_size=shard_size, 
                                             commType='RS')  
+                            print("###############################")
+                            print(remains) 
+                            print(len(comm.params)) 
+                            print(idx)
+                            print(p.shape)
+                            print(stopped_idx)
+                            print("############################")
+
+
                             if(remains>0):
                                 stopped_idx = idx
                                 is_break = True
@@ -446,7 +462,7 @@ class ShardScheduler(torch.optim.Optimizer):
                         while not handle.is_completed():
                             time.sleep(0.001)
                         self.bucket.shard_buffer[:self.bucket.offset]= self.bucket.shard_buffer[:self.bucket.offset] / 2    
-                        #print(f"output p.grad[0] {p.grad.shape} {torch.sum(p.grad)}")
+                        print(f"output p.grad[0] {p.grad.shape} {torch.sum(p.grad)}")
                         pre_offset = 0
                         count = 0
                         for param_wrap, offset in zip(self.bucket.params.params, self.bucket.params.offsets):   
@@ -455,12 +471,12 @@ class ShardScheduler(torch.optim.Optimizer):
     
                             param = param_wrap.param  
                             if(param_wrap.start_idx == 0):
-                                param.grad.data =  torch.zeros_like( param.grad.data[:param_wrap.shard_size]).type(param.grad.dtype).to(param.device)     
-                            param.grad.data[param_wrap.start_idx:param_wrap.end_idx].copy_(self.bucket.shard_buffer[pre_offset:offset])
+                                param._full_param_padded.data.storage().resize_( param.grad.data[:param_wrap.shard_size].size())
+                            param._full_param_padded.data[param_wrap.start_idx:param_wrap.end_idx].copy_(self.bucket.shard_buffer[pre_offset:offset])
                             pre_offset = offset
                             count += 1
                             if(param_wrap.end_idx == param_wrap.shard_size):
-                                   
+                                param.grad.data.copy_(param._full_param_padded.data)   
                                 #param.grad.data = param.grad.data 
                                 #if(param.data_ptr() == self.profile_layer[0].data_ptr()):
                                 #    print('after rs')

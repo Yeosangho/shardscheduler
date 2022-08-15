@@ -62,7 +62,8 @@ class Bucket:
         elif(commType == 'RS'):
             param_num = end_idx - start_idx
             
-       
+            print(end_idx)
+            print(start_idx)
 
             self.org_buffer = self.org_buffer.view(self.world_size, -1)
             stacked_input = torch.stack(params).view(self.world_size, -1)
