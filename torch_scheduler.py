@@ -338,7 +338,7 @@ class ShardScheduler(torch.optim.Optimizer):
 
                             remains = self.bucket.push(param=p,
                                         start_idx=start_idx + (end_idx - start_idx) - remains,
-                                        end_idx=end_idx
+                                        end_idx=end_idx,
                                         org_size=org_size, 
                                         shard_size=shard_size, 
                                         commType='AG') 
@@ -437,7 +437,7 @@ class ShardScheduler(torch.optim.Optimizer):
                                             grad=grad,
                                             param = p,
                                             start_idx=start_idx + (end_idx - start_idx) - remains,
-                                            end_idx=end_idx
+                                            end_idx=end_idx,
                                             org_size=org_size, 
                                             shard_size=shard_size, 
                                             commType='RS')  
@@ -518,7 +518,7 @@ class ShardScheduler(torch.optim.Optimizer):
                             remains = self.bucket.push(grad=grad,
                                             param = p,
                                             start_idx=start_idx + (end_idx - start_idx) - remains,
-                                            end_idx=end_idx
+                                            end_idx=end_idx,
                                             org_size=org_size, 
                                             shard_size=-1, 
                                             commType='AR')  
