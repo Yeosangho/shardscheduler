@@ -49,26 +49,27 @@ class Bucket:
         None
     
     def push(self, param=None, grad=None, params=None,  start_idx=None, end_idx=None, org_size=None, shard_size=None, commType=None):
-
+        remains = 0
         if(commType == 'AG'):
             param_num = end_idx - start_idx 
             if(self.shard_buffer[self.offset : self.offset + param_num ].size() != param[start_idx : end_idx ].size()):
-                return param_num - self.shard_buffer[self.offset : self.offset + param_num ].size()[0]
+                remains= param_num - self.shard_buffer[self.offset : self.offset + param_num ].size()[0]
 
             self.shard_buffer[self.offset : self.offset + param_num ].copy_(param[start_idx : end_idx ])
             self.offset += param_num
-            self.params.add(param, start_idx, end_idx, org_size, shard_size, self.offset)
-            return 0
+            self.params.add(param, start_idx, end_idx-remains, org_size, shard_size, self.offset)
+            return remains 
         elif(commType == 'RS'):
             param_num = end_idx - start_idx
+            
             if(self.org_buffer[self.offset : self.offset + param_num ].size() != param[start_idx : end_idx ].size()):
-                return param_num - self.org_buffer[self.offset : self.offset + param_num ].size()[0]            
+                remains = param_num - self.org_buffer[self.offset : self.offset + param_num ].size()[0]            
 
             self.org_buffer = self.org_buffer.view(self.world_size, -1)
             stacked_input = torch.stack(params).view(self.world_size, -1)
             self.org_buffer[:, self.offset : self.offset + param_num].copy_(stacked_input[:,start_idx : end_idx])
             self.offset += param_num
-            self.params.add(param, start_idx, end_idx, org_size, shard_size, self.offset, grad=grad)
+            self.params.add(param, start_idx, end_idx-remains, org_size, shard_size, self.offset, grad=grad)
             return 0
         elif(commType == 'AR'):
             param_num = end_idx - start_idx
@@ -78,12 +79,12 @@ class Bucket:
             #print(end_idx)
             #print(start_idx)
             if(self.fusion_buffer[self.offset : self.offset + param_num ].size() != param[start_idx : end_idx ].size()):
-                return param_num - self.fusion_buffer[self.offset : self.offset + param_num ].size()[0]            
+                remains = param_num - self.fusion_buffer[self.offset : self.offset + param_num ].size()[0]            
 
             self.fusion_buffer[self.offset : self.offset + param_num].copy_(grad[start_idx : end_idx]) 
             self.offset += param_num
-            self.params.add(param, start_idx, end_idx, org_size, shard_size, self.offset, grad=grad)
-            return 0
+            self.params.add(param, start_idx, end_idx-remains, org_size, shard_size, self.offset, grad=grad)
+            return remains
 
     def flush(self):
         self.offset = 0
