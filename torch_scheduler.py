@@ -500,47 +500,60 @@ class ShardScheduler(torch.optim.Optimizer):
     
                         self.bucket.flush()
                 elif(comm.commType== "AR" and init==False):
-                    for partiable_param in comm.params:
-                        p = partiable_param.param
-                        #print("#####################")
-                        #print(p.shape)
-                        #print(partiable_param.start_ratio)
-                        #print(partiable_param.end_ratio)
-                        grad = p.grad.data        
+                    remains = 0
+                    stopped_idx = 0
+                    comm_continue = True
+                    while comm_continue : 
+                        is_break = False
+                        for idx, partiable_param in enumerate(comm.params[stopped_idx:], start=stopped_idx): 
+                            p = partiable_param.param
+                            #print("#####################")
+                            #print(p.shape)
+                            #print(partiable_param.start_ratio)
+                            #print(partiable_param.end_ratio)
+                            grad = p.grad.data        
 
-                        org_size = p._orig_size.numel()
-                        self.bucket.push(grad=grad,
-                                        param = p,
-                                        start_idx=int(org_size * partiable_param.start_ratio),
-                                        end_idx=int(org_size * partiable_param.end_ratio),
-                                        org_size=org_size, 
-                                        shard_size=-1, 
-                                        commType='AR')  
+                            org_size = p._orig_size.numel()
+                            remains = self.bucket.push(grad=grad,
+                                            param = p,
+                                            start_idx=int(org_size * partiable_param.start_ratio)+remains,
+                                            end_idx=int(org_size * partiable_param.end_ratio),
+                                            org_size=org_size, 
+                                            shard_size=-1, 
+                                            commType='AR')  
 
-                    handle = dist.all_reduce(self.bucket.fusion_buffer[:self.bucket.offset], async_op=True)  
-                    while not handle.is_completed():
-                        time.sleep(0.001)     
-                    self.bucket.fusion_buffer[:self.bucket.offset]=  self.bucket.fusion_buffer[:self.bucket.offset] / 2
-                    pre_offset = 0
-                    for param_wrap, offset in zip(self.bucket.params.params, self.bucket.params.offsets):   
+                            if(remains>0):
+                                stopped_idx = idx
+                                is_break = True
+                                break                                            
+                            grad_chunks=None
+                        if(idx == len(comm.params) -1 and not is_break ):
+                            comm_continue = False  
 
-                        param = param_wrap.param  
+                        handle = dist.all_reduce(self.bucket.fusion_buffer[:self.bucket.offset], async_op=True)  
+                        while not handle.is_completed():
+                            time.sleep(0.001)     
+                        self.bucket.fusion_buffer[:self.bucket.offset]=  self.bucket.fusion_buffer[:self.bucket.offset] / 2
+                        pre_offset = 0
+                        for param_wrap, offset in zip(self.bucket.params.params, self.bucket.params.offsets):   
 
-                        param.grad.data[param_wrap.start_idx:param_wrap.end_idx].copy_(self.bucket.fusion_buffer[pre_offset:offset])
-                        pre_offset = offset
+                            param = param_wrap.param  
 
-                        if(param_wrap.end_idx == param_wrap.org_size):
-                            #if(param.data_ptr() == self.profile_layer[0].data_ptr()):
-                                    #print('after ar')
-                                    #print(param.shape)
-                                    #print(param.grad.sum())  
-                            self._adam(param)
-                            self._zero_one_grad(param)
-                            self._release_lock(self._locks['AR'][param], self._conditions['AR'][param])
-    
-                            grad = None
-                            #p.grad = None                          
-                    self.bucket.flush()
+                            param.grad.data[param_wrap.start_idx:param_wrap.end_idx].copy_(self.bucket.fusion_buffer[pre_offset:offset])
+                            pre_offset = offset
+
+                            if(param_wrap.end_idx == param_wrap.org_size):
+                                #if(param.data_ptr() == self.profile_layer[0].data_ptr()):
+                                        #print('after ar')
+                                        #print(param.shape)
+                                        #print(param.grad.sum())  
+                                self._adam(param)
+                                self._zero_one_grad(param)
+                                self._release_lock(self._locks['AR'][param], self._conditions['AR'][param])
+
+                                grad = None
+                                #p.grad = None                          
+                        self.bucket.flush()
 
             if(task.compType == 'FW' or task.compType == 'BW'):
                 #if(not self.health_check_lock.locked()):

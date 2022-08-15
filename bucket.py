@@ -80,10 +80,10 @@ class Bucket:
             #print(grad.shape)
             #print(end_idx)
             #print(start_idx)
-            if(self.fusion_buffer[self.offset : self.offset + param_num ].size() != param[start_idx : end_idx ].size()):
+            if(self.fusion_buffer[self.offset : self.offset + param_num ].size() != param[start_idx : end_idx ].size()[0]):
                 remains = param_num - self.fusion_buffer[self.offset : self.offset + param_num ].size()[0]            
 
-            self.fusion_buffer[self.offset : self.offset + param_num].copy_(grad[start_idx : end_idx]) 
+            self.fusion_buffer[self.offset : self.offset + param_num].copy_(grad[start_idx : end_idx-remains]) 
             self.offset += param_num
             self.params.add(param, start_idx, end_idx-remains, org_size, shard_size, self.offset, grad=grad)
             return remains
