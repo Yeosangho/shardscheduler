@@ -1,5 +1,6 @@
 import copy 
 import math
+MAX_PARAM_NUM = 0.5 * 1024 * 1024 / 4
 
 class Task:
 	def __init__(self,  comp,  compType, comms, idx=0):
