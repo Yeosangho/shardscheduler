@@ -1,3 +1,4 @@
+import math
 import torch
 
 
@@ -33,8 +34,7 @@ class Bucket:
 
         self.world_size = world_size
         self.parameter_num = size * 1024 * 1024 / 4
-        self.org_size = parameter_num 
-        self.shard_size = ceil(parameter_num / world_size )
+        self.shard_size = math.ceil(self.parameter_num / self.world_size )
 
         self.offset = 0
 
