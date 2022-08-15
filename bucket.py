@@ -69,10 +69,10 @@ class Bucket:
             stacked_input = torch.stack(params).view(self.world_size, -1)
             if(self.org_buffer[:, self.offset : self.offset + param_num ].size()[1] != stacked_input[:, start_idx : end_idx ].size()[1]):
                 remains = stacked_input[:, start_idx : end_idx ].size()[1] - self.org_buffer[:,self.offset : self.offset + param_num ].size()[1]  
-            print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
-            print(param_num)
-            print(self.org_buffer[:, self.offset : self.offset + param_num ].size()[1] )
-            print( stacked_input[:, start_idx : end_idx ].size()[1])                   
+            #print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+            #print(param_num)
+            #print(self.org_buffer[:, self.offset : self.offset + param_num ].size()[1] )
+            #print( stacked_input[:, start_idx : end_idx ].size()[1])                   
             self.org_buffer[:, self.offset : self.offset + param_num- remains].copy_(stacked_input[:,start_idx : end_idx-remains])
             self.offset += param_num - remains
             self.params.add(param, start_idx, end_idx-remains, org_size, shard_size, self.offset, grad=grad)
