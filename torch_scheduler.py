@@ -341,10 +341,10 @@ class ShardScheduler(torch.optim.Optimizer):
                     
 
                     ##output_tensor_list = list(bucket.output.view(world_size, -1)[:self.bucket.offset].unbind(0))
-                    handle = dist._all_gather_base(self.bucket.output[:self.bucket.offset*2], self.bucket.input[:self.bucket.offset], async_op=True)
+                    handle = dist._all_gather_base(self.bucket.org_buffer[:self.bucket.offset*2], self.bucket.shard_buffer[:self.bucket.offset], async_op=True)
                     while not handle.is_completed() :
                         time.sleep(0.001)
-                    output_tensor = self.bucket.output[:self.bucket.offset*2].view(2, -1)
+                    output_tensor = self.bucket.org_buffer[:self.bucket.offset*2].view(2, -1)
                     pre_offset = 0
                     #!!!!!")
                     for param_wrap, offset in zip(self.bucket.params.params, self.bucket.params.offsets):   
@@ -413,10 +413,10 @@ class ShardScheduler(torch.optim.Optimizer):
                                         commType='RS')  
                         grad_chunks=None
                     #print(self.bucket.offset)
-                    handle = dist._reduce_scatter_base(self.bucket.output[:self.bucket.offset], self.bucket.input[:, :self.bucket.offset].contiguous(), async_op=True)  
+                    handle = dist._reduce_scatter_base(self.bucket.shard_buffer[:self.bucket.offset], self.bucket.org_buffer[:, :self.bucket.offset].contiguous(), async_op=True)  
                     while not handle.is_completed():
                         time.sleep(0.001)
-                    self.bucket.output[:self.bucket.offset]= self.bucket.output[:self.bucket.offset] / 2    
+                    self.bucket.shard_buffer[:self.bucket.offset]= self.bucket.shard_buffer[:self.bucket.offset] / 2    
                     #print(f"output p.grad[0] {p.grad.shape} {torch.sum(p.grad)}")
                     pre_offset = 0
                     count = 0
@@ -427,7 +427,7 @@ class ShardScheduler(torch.optim.Optimizer):
                         param = param_wrap.param  
                         if(param_wrap.start_idx == 0):
                             param.grad.data =  torch.zeros_like( param.grad.data[:param_wrap.shard_size]).type(param.grad.dtype).to(param.device)     
-                        param.grad.data[param_wrap.start_idx:param_wrap.end_idx].copy_(self.bucket.output[pre_offset:offset])
+                        param.grad.data[param_wrap.start_idx:param_wrap.end_idx].copy_(self.bucket.shard_buffer[pre_offset:offset])
                         pre_offset = offset
                         count += 1
                         if(param_wrap.end_idx == param_wrap.shard_size):
@@ -469,16 +469,16 @@ class ShardScheduler(torch.optim.Optimizer):
                                         shard_size=-1, 
                                         commType='AR')  
 
-                    handle = dist.all_reduce(self.bucket.ar_buffer[:self.bucket.offset], async_op=True)  
+                    handle = dist.all_reduce(self.bucket.fusion_buffer[:self.bucket.offset], async_op=True)  
                     while not handle.is_completed():
                         time.sleep(0.001)     
-                    self.bucket.ar_buffer[:self.bucket.offset]=  self.bucket.ar_buffer[:self.bucket.offset] / 2
+                    self.bucket.fusion_buffer[:self.bucket.offset]=  self.bucket.fusion_buffer[:self.bucket.offset] / 2
                     pre_offset = 0
                     for param_wrap, offset in zip(self.bucket.params.params, self.bucket.params.offsets):   
 
                         param = param_wrap.param  
 
-                        param.grad.data[param_wrap.start_idx:param_wrap.end_idx].copy_(self.bucket.ar_buffer[pre_offset:offset])
+                        param.grad.data[param_wrap.start_idx:param_wrap.end_idx].copy_(self.bucket.fusion_buffer[pre_offset:offset])
                         pre_offset = offset
 
                         if(param_wrap.end_idx == param_wrap.org_size):

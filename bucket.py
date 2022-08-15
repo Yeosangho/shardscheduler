@@ -33,14 +33,17 @@ class Bucket:
 
         self.world_size = world_size
         self.parameter_num = size * 1024 * 1024 / 4
+        self.org_size = parameter_num 
+        self.shard_size = ceil(parameter_num / world_size )
+
         self.offset = 0
 
 
 
         self.params  = ParamList()
-        self.input = torch.zeros((int(self.parameter_num))).cuda()
-        self.output = torch.zeros((int(self.parameter_num))).cuda()
-        self.ar_buffer = torch.zeros((int(self.parameter_num))).cuda()
+        self.fusion_buffer = torch.zeros((int(self.shard_size * (world_size+1)))).cuda()
+        self.shard_buffer = self.fusion_buffer[:int(self.shard_size)]
+        self.org_buffer = self.fusion_buffer[int(self.shard_size):]
 
     def has_enough_space(self, data):
         None
@@ -50,15 +53,15 @@ class Bucket:
         if(commType == 'AG'):
             param_num = end_idx - start_idx 
 
-            self.input[self.offset : self.offset + param_num ].copy_(param[start_idx : end_idx ])
+            self.shard_buffer[self.offset : self.offset + param_num ].copy_(param[start_idx : end_idx ])
             self.offset += param_num
             self.params.add(param, start_idx, end_idx, org_size, shard_size, self.offset)
 
         elif(commType == 'RS'):
             param_num = end_idx - start_idx 
-            self.input = self.input.view(self.world_size, -1)
+            self.org_buffer = self.org_buffer.view(self.world_size, -1)
             stacked_input = torch.stack(params).view(self.world_size, -1)
-            self.input[:, self.offset : self.offset + param_num].copy_(stacked_input[:,start_idx : end_idx])
+            self.org_buffer[:, self.offset : self.offset + param_num].copy_(stacked_input[:,start_idx : end_idx])
             self.offset += param_num
             self.params.add(param, start_idx, end_idx, org_size, shard_size, self.offset, grad=grad)
 
@@ -69,13 +72,12 @@ class Bucket:
             #print(grad.shape)
             #print(end_idx)
             #print(start_idx)
-            self.ar_buffer[self.offset : self.offset + param_num].copy_(grad[start_idx : end_idx]) 
+            self.fusion_buffer[self.offset : self.offset + param_num].copy_(grad[start_idx : end_idx]) 
             self.offset += param_num
             self.params.add(param, start_idx, end_idx, org_size, shard_size, self.offset, grad=grad)
 
     def flush(self):
         self.offset = 0
         self.params.flush()
-        self.input = self.input.view(-1)
-        self.output = self.output.view(-1)
+        self.org_buffer = self.org_buffer.view(-1)
 
