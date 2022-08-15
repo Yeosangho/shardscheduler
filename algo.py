@@ -2,6 +2,9 @@ import csv
 import functools
 import os
 import math
+
+MAX_PARAM_NUM = 0.5 * 1024 * 1024 / 4
+
 backward_ts = 0
 comm_ts = 0
 
@@ -86,48 +89,76 @@ def get_layer_len(comp_ops):
             list_len += 1
     return list_len
 
-        
+def find_latency_penalty(overlappable_param_num, overlappable_time):
+    if(residual_param_num == 0):
+        latency_penalty = 1 
+    else:
+        latency_penalty = 0
+    overlappable_time -= alpha * latency_penalty + (MAX_PARAM_NUM - residual_param_num )* beta * 4 * ar_factor 
+    overlappable_param_num -= MAX_PARAM_NUM - residual_param_num
+
+    if(overlappable_time < 0 or overlappable_param_num < 0):
+        return latency_penalty
+    else:
+        latency_penalty += 1
+
+    for i in range(partition_num):
+        if(overlappable_param_num > MAX_PARAM_NUM):
+            param_num = MAX_PARAM_NUM
+        elif(overlappable_param_num > 0):
+            param_num = overlappable_param_num
+
+        overlappable_time -= alpha * latency_penalty + param_num * beta * 4 * ar_factor 
+        overlappable_param_num -= param_num
+
+        if(overlappable_time < 0 or overlappable_param_num < 0):
+
+            return latency_penalty
+        else:
+            latency_penalty += 1       
+
+
+
 def schedule_ops(target_comm, target_comp, comp_ops, alpha, beta):
     comm_type = target_comm.type 
     ar_factor = 1
     if(target_comm.type == 'ar'):
        ar_factor = 2
     
-    time = alpha + beta * target_comm.overlappable_param_num * 4 * ar_factor
+
+
+    #파라미터의 크기 및 텐서 퓨전 버퍼 크기를 반영하여 추가되는 Latency에 대한 패널티 부과 
+    partitoin_num = int(target_comm.overlappable_param_num / MAX_PARAM_NUM) + 1
+
+    time = partitoin_num * alpha + beta * target_comm.overlappable_param_num * 4 * ar_factor
     param_num = target_comm.overlappable_param_num
     unit = math.ceil(target_comm.orig_size * 0.0001)
+
+
     over_param_num = 0
-    if(len(target_comp.scheduled_comm[comm_type]) > 0):
+
+    residual_param_num = sum(target_comp.scheduled_comm[comm_type])% MAX_PARAM_NUM 
+    if(residual_param_num > 0):
         time = time - alpha
+
         #print("fusion")
     #time = time - alpha
     if(time > target_comp.overlappable_time ):
-        if(len(target_comp.scheduled_comm[comm_type]) == 0):
-            if(target_comp.overlappable_time > alpha):
-                overlapped_param_num = (target_comp.overlappable_time - alpha) / (beta*4 * ar_factor)
-                if(target_comm.overlappable_param_num - overlapped_param_num < unit):
-                    overlapped_param_num = target_comm.overlappable_param_num
-                target_comp.overlappable_time = 0 
-                comp_ops.remove(target_comp)
-                target_comp.scheduled_comm[comm_type].append(target_comm)
-                target_comp.scheduled_params[comm_type].append(overlapped_param_num)
-                target_comm.set_scheduled_comp(target_comp, overlapped_param_num, target_comp.overlappable_time)  
-            else:
-                #print("111")
-                target_comp.schedulable_comms.remove(target_comm)
-        else:
-            #print("111")
-            overlapped_param_num = (target_comp.overlappable_time ) / (beta*4 * ar_factor)
+
+        latency_penalty = find_latency_penalty(target_comm.overlappable_param_num, target_comp.overlappable_time)
+        if(target_comp.overlappable_time > latency_penalty * alpha):
+            overlapped_param_num = (target_comp.overlappable_time - latency_penalty*alpha) / (beta*4 * ar_factor)
             if(target_comm.overlappable_param_num - overlapped_param_num < unit):
                 overlapped_param_num = target_comm.overlappable_param_num
-            #if(param_num - over_param_num > 0):
             target_comp.overlappable_time = 0 
             comp_ops.remove(target_comp)
             target_comp.scheduled_comm[comm_type].append(target_comm)
             target_comp.scheduled_params[comm_type].append(overlapped_param_num)
-
             target_comm.set_scheduled_comp(target_comp, overlapped_param_num, target_comp.overlappable_time)  
-            #print(target_comm.overlappable_param_num)
+        else:
+            #print("111")
+            target_comp.schedulable_comms.remove(target_comm)
+
 
     elif(time <= target_comp.overlappable_time) :
         target_comp.scheduled_comm[comm_type].append(target_comm)
