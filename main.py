@@ -399,7 +399,7 @@ class Trainer:
 					if(not self.train_continue):
 						break
 					count += 1
-					if(count == 3):
+					if(count == 10):
 						break
 			#torch.cuda.synchronize()
 			print(time.time() -start)

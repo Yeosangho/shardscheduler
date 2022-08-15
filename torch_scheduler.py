@@ -342,13 +342,13 @@ class ShardScheduler(torch.optim.Optimizer):
                                         org_size=org_size, 
                                         shard_size=shard_size, 
                                         commType='AG') 
-                            print("###############################")
-                            print(remains) 
-                            print(len(comm.params)) 
-                            print(idx)
-                            print(p.shape)
-                            print(stopped_idx)
-                            print("############################")
+                            #print("###############################")
+                            #print(remains) 
+                            #print(len(comm.params)) 
+                            #print(idx)
+                            #print(p.shape)
+                            #print(stopped_idx)
+                            #print("############################")
                             if(remains>0):
                                 stopped_idx = idx
                                 is_break = True
@@ -357,7 +357,7 @@ class ShardScheduler(torch.optim.Optimizer):
                             comm_continue = False 
                     #print(f"ag p.shape {p.shape}" ) 
                     #print(f"end-start {end_idx-start_idx}")
-                        print("############################")
+                        #print("############################")
                         ##output_tensor_list = list(bucket.output.view(world_size, -1)[:self.bucket.offset].unbind(0))
                         handle = dist._all_gather_base(self.bucket.org_buffer[:self.bucket.offset*2], self.bucket.shard_buffer[:self.bucket.offset], async_op=True)
                         while not handle.is_completed() :
@@ -426,12 +426,12 @@ class ShardScheduler(torch.optim.Optimizer):
                             #    print(p.grad.shape)
                             #    print(p.grad.sum())
                             #print(shard_size)
-                            print("##############before push")
-                            print(p.shape)
-                            print(partiable_param.start_ratio)
-                            print(partiable_param.end_ratio)
-                            print(remains)
-                            print(shard_size)
+                            #print("##############before push")
+                            #print(p.shape)
+                            #print(partiable_param.start_ratio)
+                            #print(partiable_param.end_ratio)
+                            #print(remains)
+                            #print(shard_size)
 
                             remains = self.bucket.push(params=grad_chunks,
                                             grad=grad,
@@ -441,13 +441,13 @@ class ShardScheduler(torch.optim.Optimizer):
                                             org_size=org_size, 
                                             shard_size=shard_size, 
                                             commType='RS')  
-                            print("###############################")
-                            print(remains) 
-                            print(len(comm.params)) 
-                            print(idx)
-                            print(p.shape)
-                            print(stopped_idx)
-                            print("############################")
+                            #print("###############################")
+                            #print(remains) 
+                            #print(len(comm.params)) 
+                            #print(idx)
+                            #print(p.shape)
+                            #print(stopped_idx)
+                            #print("############################")
 
 
                             if(remains>0):
@@ -483,7 +483,8 @@ class ShardScheduler(torch.optim.Optimizer):
                                 #if(param.data_ptr() == self.profile_layer[0].data_ptr()):
                                 #    print('after rs')
                                 #    print(param.shape)
-                                #    print(param.grad.sum())
+                                print("###################")
+                                print(param.grad.sum())
                                 
                                 #print(count)
                                 #print(param_wrap.shard_size)
