@@ -127,7 +127,7 @@ class ShardScheduler(torch.optim.Optimizer):
             self._priority_indexes[p] = priority
             priority += 1
 
-        self.bucket = Bucket(0.5, 2)
+        self.bucket = Bucket(1000, 2)
         self.profile_layer = profile_layer
         # Poll whether the tensor is ready for allreduce or whether the allreduce is finished.
         self.event_queue = queue.Queue()
@@ -297,7 +297,7 @@ class ShardScheduler(torch.optim.Optimizer):
 
     def run_schedule(self, schedule, init=False):
         for task in schedule:   
-            print(f"before {task.compType}")
+            #print(f"before {task.compType}")
      
             if(self._stop_event.is_set()):
                 break           
@@ -305,7 +305,7 @@ class ShardScheduler(torch.optim.Optimizer):
                 self._wait_unlock(self._locks[task.compType][task.comp], self._conditions[task.compType][task.comp])  
             else:
                 self._wait_unlock(self._locks[task.compType], self._conditions[task.compType])  
-            print(f"after {task.compType}")
+            #print(f"after {task.compType}")
 
             for comm in task.comms : 
                 #print(f"{comm} {len(comm.params)} ")
@@ -371,7 +371,7 @@ class ShardScheduler(torch.optim.Optimizer):
                             p_size = param._full_param_padded.size()
                             if(param_wrap.start_idx == 0):
                                 param._full_param_padded.storage().resize_(p_size.numel())                      
-                            print(param._full_param_padded.shape)
+                            #print(param._full_param_padded.shape)
                             listed_full_param = param._full_param_padded.view(2,param_wrap.shard_size)
                             #print(listed_full_param.shape)
                             #print(param_wrap.start_idx)
@@ -421,10 +421,10 @@ class ShardScheduler(torch.optim.Optimizer):
                             #print(end_idx)                                               
                             #input_flattened = torch.cat(grad_chunks)
                             #if(p.data_ptr() == self.profile_layer[0].data_ptr()):
-                            #    print('before rs')
-                            #    
-                            #    print(p.grad.shape)
-                            #    print(p.grad.sum())
+                            #print('before rs')
+                            
+                            #print(p.grad.shape)
+                            #print(p.grad.sum())
                             #print(shard_size)
                             #print("##############before push")
                             #print(p.shape)
@@ -478,14 +478,14 @@ class ShardScheduler(torch.optim.Optimizer):
                             if(param_wrap.end_idx == param_wrap.shard_size):
                                 param.grad.data =  torch.zeros_like( param.grad.data[:param_wrap.shard_size]).type(param.grad.dtype).to(param.device)  
                                 param.grad.data.copy_(param._full_param_padded.data[:param_wrap.shard_size])   
-                                print(f"output p.grad[0] {param.grad.shape} {torch.sum(param.grad)}")
+                                #print(f"output p.grad[0] {param.grad.shape} {torch.sum(param.grad)}")
 
                                 #param.grad.data = param.grad.data 
                                 #if(param.data_ptr() == self.profile_layer[0].data_ptr()):
-                                #    print('after rs')
-                                #    print(param.shape)
-                                print("###################")
-                                print(param.grad.sum())
+                                #print('after rs')
+                                #print(param.shape)
+                                #print("###################")
+                                #print(param.grad.sum())
                                 
                                 #print(count)
                                 #print(param_wrap.shard_size)
