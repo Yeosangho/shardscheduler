@@ -89,7 +89,7 @@ def get_layer_len(comp_ops):
             list_len += 1
     return list_len
 
-def find_latency_penalty(residual_param_num, overlappable_param_num, overlappable_time):
+def find_latency_penalty(residual_param_num, overlappable_param_num, overlappable_time, alpha, beta, ar_factor):
     if(residual_param_num == 0):
         latency_penalty = 1 
     else:
@@ -144,7 +144,13 @@ def schedule_ops(target_comm, target_comp, comp_ops, alpha, beta):
     #time = time - alpha
     if(time > target_comp.overlappable_time ):
 
-        latency_penalty = find_latency_penalty(residual_param_num, target_comm.overlappable_param_num, target_comp.overlappable_time)
+        latency_penalty = find_latency_penalty(residual_param_num, 
+                                                target_comm.overlappable_param_num, 
+                                                target_comp.overlappable_time,
+                                                alpha,
+                                                beta,
+                                                ar_factor
+                                                )
         if(target_comp.overlappable_time > latency_penalty * alpha):
             overlapped_param_num = (target_comp.overlappable_time - latency_penalty*alpha) / (beta*4 * ar_factor)
             if(target_comm.overlappable_param_num - overlapped_param_num < unit):
