@@ -203,7 +203,6 @@ class Trainer:
 		print("222")
 
 		self.wrap_params = dict( mixed_precision=False, flatten_parameters=True, 
-								done_counts=self._done_counts, partition_counts=self._partition_counts, 
 
 								locks=self._locks,
 								health_check_main_proc=self.health_check_main_proc, 
@@ -212,11 +211,7 @@ class Trainer:
 
 								profile_layer = self.profile_target_layer,
 
-								init_schedule=self._schedule_comm_init, 
-
-								schedule=self._scheduled_comms,
-
-								memory_record=self.profiled_memory_utilization, comm_stream=self.comm_stream,
+								memory_record=self.profiled_memory_utilization,
 								
 								model_parameter_names=self.model_parameter_names
 								)

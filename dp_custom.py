@@ -256,7 +256,6 @@ class DataParallel_Custom(nn.Module):
         force_input_to_fp32: bool = False,
         verbose: bool = False,
         cpu_offload: bool = False,
-        done_counts=None, partition_counts=None, 
 
         locks=None, 
         health_check_main_proc=None,
@@ -264,11 +263,7 @@ class DataParallel_Custom(nn.Module):
 
         profile_layer=None,
 
-        init_schedule=None,
-
-        schedule=None,
-
-        memory_record=None, comm_stream=None,
+        memory_record=None,
 
         model_parameter_names=None
     ):
@@ -294,9 +289,7 @@ class DataParallel_Custom(nn.Module):
         self.numel_padded_per_param: List[int] = []
         self.has_full_params = False
         # skip validation if the process group was created above
-        
-        self.done_counts = done_counts
-        self.partition_counts = partition_counts
+
        
         self._locks = locks
 
@@ -304,7 +297,6 @@ class DataParallel_Custom(nn.Module):
         self.profile_layer = profile_layer
 
         self._memory_record = memory_record 
-        self.comm_stream = comm_stream
         if process_group:
             validate_process_group(self.compute_device, self.process_group)
 
