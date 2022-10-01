@@ -1,5 +1,7 @@
 
 import os, threading
+import argparse
+
 import torch.distributed as dist
 
 import transformers
@@ -8,7 +10,12 @@ from auto_wrap_custom import enable_wrap, auto_wrap, wrap
 os.environ['MASTER_ADDR'] = '210.107.197.219'
 os.environ['MASTER_PORT'] = '30005'
 os.environ["NCCL_SOCKET_IFNAME"]="eno1,eth0"
-dist.init_process_group(backend='nccl', world_size=2, rank=0)
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--rank', dest='rank', default=0, type=int)
+args = parser.parse_args()
+rank = args.rank
+dist.init_process_group(backend='nccl', world_size=2, rank=rank)
 
 gpt2_configuration = transformers.GPT2Config()
 
