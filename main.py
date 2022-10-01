@@ -453,6 +453,7 @@ class Trainer:
 if __name__ == '__main__':
 	os.environ['MASTER_ADDR'] = '210.107.197.219'
 	os.environ['MASTER_PORT'] = '30005'
+	os.environ["NCCL_SOCKET_IFNAME"]="eno1,eth0"
 	parser = argparse.ArgumentParser()
 	parser.add_argument('--rank', dest='rank', default=0, type=int)
 	parser.add_argument('--target_memory', default=7.0, type=float)
