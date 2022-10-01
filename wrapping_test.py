@@ -20,7 +20,7 @@ dist.init_process_group(backend='nccl', world_size=2, rank=rank)
 gpt2_configuration = transformers.GPT2Config()
 
 #gpt2_model = transformers.GPT2Model(gpt2_configuration)
-gpt2_model = transformers.GPT2Model.from_pretrained('gpt2-xl')
+gpt2_model = transformers.GPT2Model.from_pretrained('gpt2-large')
 _locks = {}
 _conditions = {} 
 profiled_memory_utilization = []
