@@ -8,7 +8,6 @@ try:
 except ImportError:
     import Queue as queue
 import torch
-from bytecore_custom import core
 from torch.nn.parameter import Parameter
 
 import time
