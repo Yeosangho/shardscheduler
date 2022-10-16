@@ -190,6 +190,8 @@ _scheduled_comms = []
 _schedule_comm_init = []
 _done_counts = {}
 model_parameter_names = {}
+profiled_memory_utilization = []
+
 ######
 
 		
