@@ -8,6 +8,7 @@ import numpy as np
 import torch.nn as nn
 from torch.autograd import Variable
 
+from transformers import AdamW, get_linear_schedule_with_warmup
 
 
 
@@ -196,6 +197,7 @@ def benchmark(model, criterion, input_shape, input_dtype, label_shape, label_dty
     iteration = 50
 
     for i in range(iteration+warmup):
+
         inputs = torch.rand(input_shape, dtype=input_dtype).cuda()
         labels = torch.randint(0, 1, label_shape, dtype=label_dtype).cuda()
 
@@ -214,6 +216,37 @@ def benchmark(model, criterion, input_shape, input_dtype, label_shape, label_dty
     p.stop()
     return seq_keys[::-1], layerwise_times[::-1], forward_times[::-1],  p.get_backward_key_sizes()[::-1]
 
+def benchmark_gpt2(model, input_shape, input_dtype, label_shape, label_dtype):
+    # Benchmark to achieve the backward time per layer
+    p = Profiling(model)
+    # Warmup
+    warmup = 5 # warmup should be 0 on some GPUs (e.g., P102-100)
+    iteration = 50
+
+    for i in range(iteration+warmup):
+        inputs = torch.randint(0, 50000, input_shape, dtype=input_dtype).cuda()
+        labels = torch.randint(0, 50000, label_shape, dtype=label_dtype).cuda()
+        masks = torch.randint(0, 1, label_shape, dtype=label_dtype).cuda()
+
+        # forward + backward + optimize
+        outputs = model(  inputs,
+                          labels=labels, 
+                          attention_mask = masks,
+                          token_type_ids=None
+                        )
+
+        loss = outputs[0]          
+        torch.cuda.synchronize()
+
+        if i >= warmup:
+            p.start()
+        loss.backward()
+        torch.cuda.synchronize()
+    layerwise_times, sum_total = p.get_layerwise_times()
+    forward_times, _ = p.get_forward_layerwise_times()
+    seq_keys = p.get_backward_seq_keys()
+    p.stop()
+    return seq_keys[::-1], layerwise_times[::-1], forward_times[::-1],  p.get_backward_key_sizes()[::-1]
 
 class CommunicationProfiler(object):
     def __init__(self, comm_op, sizes=None):

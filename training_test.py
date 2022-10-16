@@ -307,11 +307,14 @@ for epoch_i in range(0, epochs):
 
         b_input_ids = batch[0].to(device)
         b_labels = batch[0].to(device)
-        print(b_input_ids)
-        print(b_labels)
-
+        print(b_input_ids.shape)
+        print(b_input_ids.type())
+        print(b_labels.shape)
+        print(b_labels.type())
         b_masks = batch[1].to(device)
-
+        print(b_masks.shape)
+        print(b_masks.type())
+        print(b_masks)
         model.zero_grad()        
 
         outputs = model(  b_input_ids,
