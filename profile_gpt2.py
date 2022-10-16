@@ -1,7 +1,7 @@
 import torchvision.models as models
 import torch.nn as nn
 
-from transformers import GPT2LMHeadModel, GPT2Tokenizer GPT2Config
+from transformers import GPT2LMHeadModel, GPT2Tokenizer, GPT2Config
 
 import torch.distributed as dist
 from torchvision.models.resnet import BasicBlock, Bottleneck, ResNet
