@@ -363,7 +363,7 @@ for epoch_i in range(0, epochs):
         b_labels = batch[0].to(device)
 
         b_masks = batch[1].to(device)
-
+        torch.cuda.empty_cache()
         model.zero_grad()        
         if _locks['BWTOFW'].locked():   
             _release_lock(_locks['BWTOFW'], _conditions['BWTOFW'])	
