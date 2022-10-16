@@ -239,7 +239,8 @@ def benchmark_gpt2(model, input_shape, input_dtype, label_shape, label_dtype):
                           token_type_ids=None
                         )
 
-        loss = outputs[0]          torch.cuda.synchronize()
+        loss = outputs[0]          
+        torch.cuda.synchronize()
 
         if i >= warmup:
             p.start()
