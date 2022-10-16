@@ -5,7 +5,7 @@ from transformers import GPT2LMHeadModel, GPT2Tokenizer, GPT2Config
 
 import torch.distributed as dist
 from torchvision.models.resnet import BasicBlock, Bottleneck, ResNet
-from profiling import benchmark, CommunicationProfiler
+from profiling import benchmark, benchmark_gpt2, CommunicationProfiler
 from sklearn.linear_model import LinearRegression
 import numpy as np
 import csv
