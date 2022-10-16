@@ -136,7 +136,7 @@ epsilon = 1e-8
 sample_every = 100
 partition_threshold = 20000
 # Note: AdamW is a class from the huggingface library (as opposed to pytorch) 
-#optimizer = AdamW(model.parameters(),
+#optimizer = Adam(model.parameters(),
 #                  lr = learning_rate,
 #                  eps = epsilon
 #                )
@@ -307,9 +307,9 @@ for epoch_i in range(0, epochs):
 
         b_input_ids = batch[0].to(device)
         b_labels = batch[0].to(device)
-        print(b_input_ids.shape)
-        print(b_labels.shape)
-        
+        print(b_input_ids)
+        print(b_labels)
+
         b_masks = batch[1].to(device)
 
         model.zero_grad()        
