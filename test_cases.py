@@ -779,6 +779,9 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 						if(abs(end_ratio - 1) <= 0.0001 and abs(end_ratio -1) > 0.0):
 							end_ratio = 1.0 
 						if( start_ratio < end_ratio):
+							if(abs(end_ratio -1) > 0.0):
+								print(end_ratio)
+								os._exit()
 							target_comm_params.append(PartiableParam(param, start_ratio, end_ratio, comm['idx']))
 							comm_ratio[comm_op][param] = end_ratio
 				if(len(target_comm_params) > 0):
