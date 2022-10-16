@@ -161,10 +161,38 @@ training_stats = []
 
 model = model.to(device)
 
+######
 _locks = {}
 _conditions = {} 
-profiled_memory_utilization = []
+
+_rs_locks = {}
+_ag_locks = {}
+_ar_locks = {}
+_ag_fsdp_locks = {}
+
+_rs_conditions = {}
+_ag_conditions = {}
+_ar_conditions = {}
+_ag_fsdp_conditions = {} 
+
+
+_forward_locks = {}
+_backward_locks = {}
+
+_forward_conditions = {}
+_backward_conditions = {}
+
+_lazy_init_locks = {}
+_lazy_init_conditions = {}
+
+_partition_counts = {}
+_scheduled_comms = []
+_schedule_comm_init = []
+_done_counts = {}
 model_parameter_names = {}
+######
+
+		
 health_check_main_proc = threading.Lock()
 profile_target_layer = []
 wrap_params = dict( mixed_precision=False, flatten_parameters=True, 
@@ -189,7 +217,72 @@ adaptive_sdp['SDP'] = 0
 
 with enable_wrap(**wrap_params):
 	sharded_module = auto_wrap(adaptive_sdp, model)
+	print(len(list(sharded_module.named_parameters())))
+	adaptive_sdp_modules = {}
+	adaptive_sdp_modules['FSDP'] = 0 
+	adaptive_sdp_modules['SDP'] = 0
+	adaptive_sdp_modules['DP'] = 0
 
+	for n, p in sharded_module.named_parameters():
+		print(n)
+		if('_fsdp_wrapped_module' in n):
+			adaptive_sdp_modules['FSDP'] += 1
+		elif('_sdp_wrapped_module' in n):
+			adaptive_sdp_modules['SDP'] += 1
+		elif('_dp_wrapped_module' in n):
+			adaptive_sdp_modules['DP'] += 1
+	print(adaptive_sdp_modules)
+
+	for n, p in sharded_module.named_parameters():
+		#print(n)
+		_partition_counts[p] = (p.numel() // partition_threshold) + 1
+		_done_counts[p] = 0
+
+		_rs_locks[p] = threading.Lock()
+		_ag_locks[p] = threading.Lock()
+		_ar_locks[p] = threading.Lock()
+		_ag_fsdp_locks[p] = threading.Lock()
+
+		_forward_locks[p] = threading.Lock()
+		_backward_locks[p] = threading.Lock()
+
+		_forward_locks[p].acquire()
+		#self._rs_locks[p].acquire()
+		#self._ag_fsdp_locks[p].acquire()
+		_backward_locks[p].acquire()
+
+		_rs_conditions[p] = threading.Condition(threading.Lock())
+		_ag_conditions[p] = threading.Condition(threading.Lock())
+		_ar_conditions[p] = threading.Condition(threading.Lock())
+		_ag_fsdp_conditions[p] = threading.Condition(threading.Lock())
+
+		_forward_conditions[p] = threading.Condition(threading.Lock())
+		_backward_conditions[p] = threading.Condition(threading.Lock())
+
+		_lazy_init_locks[p] = threading.Lock()
+		_lazy_init_conditions[p] = threading.Condition(threading.Lock())
+
+		model_parameter_names[p] = n
+
+	_locks["FW"] 	    = _forward_locks
+	_locks["BW"]	    = _backward_locks 
+	_locks["AG"] 		= _ag_locks
+	_locks["AR"]		= _ar_locks
+	_locks["FWTOBW"]   = threading.Lock()
+	_locks["BWTOFW"]   = threading.Lock()
+	_locks["BWTOFW"].acquire()
+	#self._locks["AGFSDP"]   = self._ag_fsdp_locks
+	#self._locks["RS"]       = self._rs_locks
+
+	_conditions["FW"]        = _forward_conditions    
+	_conditions["BW"]        = _backward_conditions    
+	_conditions["AG"]        = _ag_conditions  
+	_conditions["AR"]		  = _ar_conditions
+	_conditions["FWTOBW"]   = threading.Condition(threading.Lock())
+	_conditions["BWTOFW"]   = threading.Condition(threading.Lock())
+
+	#self._conditions["AGFSDP"]    = self._ag_fsdp_conditions       
+	#self._conditions["RS"]        = self._rs_conditions    
 '''
 for epoch_i in range(0, epochs):
 
