@@ -161,6 +161,7 @@ training_stats = []
 
 model = model.to(device)
 
+'''
 ######
 _locks = {}
 _conditions = {} 
@@ -193,7 +194,6 @@ model_parameter_names = {}
 profiled_memory_utilization = []
 
 ######
-
 		
 health_check_main_proc = threading.Lock()
 profile_target_layer = []
@@ -286,6 +286,7 @@ with enable_wrap(**wrap_params):
 	#self._conditions["AGFSDP"]    = self._ag_fsdp_conditions       
 	#self._conditions["RS"]        = self._rs_conditions    
 '''
+
 for epoch_i in range(0, epochs):
 
     # ========================================
@@ -306,6 +307,9 @@ for epoch_i in range(0, epochs):
 
         b_input_ids = batch[0].to(device)
         b_labels = batch[0].to(device)
+        print(b_input_ids.shape)
+        print(b_labels.shape)
+        
         b_masks = batch[1].to(device)
 
         model.zero_grad()        
@@ -412,4 +416,3 @@ for epoch_i in range(0, epochs):
 print("")
 print("Training complete!")
 print("Total training took {:} (h:mm:ss)".format(format_time(time.time()-total_t0)))
-'''

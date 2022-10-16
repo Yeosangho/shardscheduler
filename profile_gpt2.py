@@ -49,23 +49,3 @@ with open("layer_bench.csv", "w") as f:
 proc_exec = True
 target_mem = 7.3
 
-
-comm_profiler = CommunicationProfiler(dist.all_gather)
-sizes, times  = comm_profiler.benchmark()
-print(sizes)
-print(times)
-def _fit_linear_function(x, y):
-    X = np.array(x).reshape((-1, 1)) * 4
-    Y = np.array(y)
-    model = LinearRegression()
-    model.fit(X, Y)
-    alpha = model.intercept_
-    beta = model.coef_[0]
-    return alpha, beta
-alpha, beta = _fit_linear_function(sizes, times)
-
-print(alpha, beta)
-net_info = torch.Tensor([alpha, beta])
-dist.broadcast(net_info, src=0, group=group)
-with open("net_bench.csv", "w") as f:
-    f.write(f"{net_info[0]}, {net_info[1]}")
