@@ -396,8 +396,6 @@ class ShardScheduler(torch.optim.Optimizer):
                                 #param.data =  param._full_param_padded
                                 param.data = listed_full_param.view(-1)
                                 param.data = param.data[: param_wrap.org_size.numel()].view(param_wrap.org_size)
-                                if(param_wrap.start_idx == 0):
-                                    param._full_param_padded.storage().resize_(0)    
                                 #if(param.data_ptr() == self.profile_layer[0].data_ptr()):
                                 #    print('after ag')
                                 #    print(param.shape)
