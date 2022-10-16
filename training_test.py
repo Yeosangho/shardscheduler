@@ -332,16 +332,16 @@ for epoch_i in range(0, epochs):
         b_masks = batch[1].to(device)
 
         model.zero_grad()        
-		if _locks['BWTOFW'].locked():   
-			_release_lock(_locks['BWTOFW'], _conditions['BWTOFW'])	
+        if _locks['BWTOFW'].locked():   
+            _release_lock(_locks['BWTOFW'], _conditions['BWTOFW'])	
         outputs = model(  b_input_ids,
                           labels=b_labels, 
                           attention_mask = b_masks,
                           token_type_ids=None
                         )
 
-		if _locks['FWTOBW'].locked():   
-			_release_lock(_locks['FWTOBW'], _conditions['FWTOBW'])	
+        if _locks['FWTOBW'].locked():   
+            _release_lock(_locks['FWTOBW'], _conditions['FWTOBW'])	
 
         loss = outputs[0]  
 
@@ -351,8 +351,8 @@ for epoch_i in range(0, epochs):
 
         loss.backward()
 
-		if _locks['BWTOFW'].locked():   
-			_release_lock(_locks['BWTOFW'], _conditions['BWTOFW'])	
+        if _locks['BWTOFW'].locked():   
+            _release_lock(_locks['BWTOFW'], _conditions['BWTOFW'])	
 
 
     # Calculate the average loss over all of the batches.
