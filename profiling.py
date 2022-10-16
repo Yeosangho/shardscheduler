@@ -61,7 +61,7 @@ class Profiling(object):
 
         if (len(list(module.children())) == 0 and 
             'act' not in name and
-            'dropout' not in name and
+            'drop' not in name and
             'relu' not in name and 
             'pool' not in name ):
             module.register_backward_hook(self._make_hook(name, module))
