@@ -48,7 +48,7 @@ def _release_lock(lock, condition):
 os.environ['MASTER_ADDR'] = '210.107.197.219'
 os.environ['MASTER_PORT'] = '30005'
 os.environ["NCCL_SOCKET_IFNAME"]="eno1,eth0"
-
+os.environ["PYTORCH_NO_CUDA_MEMORY_CACHING"]=1
 parser = argparse.ArgumentParser()
 parser.add_argument('--rank', dest='rank', default=0, type=int)
 parser.add_argument('--sdp_ratio', default=0, type=float)
@@ -363,7 +363,6 @@ for epoch_i in range(0, epochs):
         b_labels = batch[0].to(device)
 
         b_masks = batch[1].to(device)
-        torch.cuda.empty_cache()
         model.zero_grad()        
         if _locks['BWTOFW'].locked():   
             _release_lock(_locks['BWTOFW'], _conditions['BWTOFW'])	
