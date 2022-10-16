@@ -1,7 +1,7 @@
 import torchvision.models as models
 import torch.nn as nn
 
-from transformers import GPT2LMHeadModel,  GPT2Config
+from transformers import GPT2LMHeadModel, GPT2Tokenizer GPT2Config
 
 import torch.distributed as dist
 from torchvision.models.resnet import BasicBlock, Bottleneck, ResNet
@@ -37,6 +37,8 @@ model = GPT2LMHeadModel.from_pretrained("gpt2", config=configuration)
 
 # this step is necessary because I've added some tokens (bos_token, etc) to the embeddings
 # otherwise the tokenizer and model tensors won't match up
+tokenizer = GPT2Tokenizer.from_pretrained('gpt2', bos_token='<|startoftext|>', eos_token='<|endoftext|>', pad_token='<|pad|>')
+
 model.resize_token_embeddings(len(tokenizer))
 
 # Tell pytorch to run this model on the GPU.
