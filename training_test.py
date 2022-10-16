@@ -286,7 +286,7 @@ with enable_wrap(**wrap_params):
 	#self._conditions["AGFSDP"]    = self._ag_fsdp_conditions       
 	#self._conditions["RS"]        = self._rs_conditions    
 	schedule(adaptive_sdp_modules, "layer_bench_gpt2.csv")
-
+	params_list = list(sharded_module.parameters())
 	make_schedule_from_json(params_list, _schedule_comm_init, _scheduled_comms, _locks, adaptive_sdp_modules)
 	#make_schedule_wfbp_sdp(params_list, self._schedule_comm_init, self._scheduled_comms, self._locks)
 	#os._exit(1)
