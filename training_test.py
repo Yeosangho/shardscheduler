@@ -385,7 +385,7 @@ for epoch_i in range(0, epochs):
 
         if _locks['BWTOFW'].locked():   
             _release_lock(_locks['BWTOFW'], _conditions['BWTOFW'])	
-        if(step == 10):
+        if(step == 3):
             break
 
     # Calculate the average loss over all of the batches.
@@ -398,56 +398,6 @@ for epoch_i in range(0, epochs):
     print("  Average training loss: {0:.2f}".format(avg_train_loss))
     print("  Training epoch took: {:}".format(training_time))
         
-    # ========================================
-    #               Validation
-    # ========================================
-
-    print("")
-    print("Running Validation...")
-
-    t0 = time.time()
-
-    model.eval()
-
-    total_eval_loss = 0
-    nb_eval_steps = 0
-
-    # Evaluate data for one epoch
-    for batch in validation_dataloader:
-        
-        b_input_ids = batch[0].to(device)
-        b_labels = batch[0].to(device)
-        b_masks = batch[1].to(device)
-        
-        with torch.no_grad():        
-
-            outputs  = model(b_input_ids, 
-#                            token_type_ids=None, 
-                             attention_mask = b_masks,
-                            labels=b_labels)
-          
-            loss = outputs[0]  
-            
-        batch_loss = loss.item()
-        total_eval_loss += batch_loss        
-
-    avg_val_loss = total_eval_loss / len(validation_dataloader)
-    
-    validation_time = format_time(time.time() - t0)    
-
-    print("  Validation Loss: {0:.2f}".format(avg_val_loss))
-    print("  Validation took: {:}".format(validation_time))
-
-    # Record all statistics from this epoch.
-    training_stats.append(
-        {
-            'epoch': epoch_i + 1,
-            'Training Loss': avg_train_loss,
-            'Valid. Loss': avg_val_loss,
-            'Training Time': training_time,
-            'Validation Time': validation_time
-        }
-    )
 
 print("")
 print("Training complete!")
