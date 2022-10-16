@@ -161,7 +161,7 @@ training_stats = []
 
 model = model.to(device)
 
-'''
+
 ######
 _locks = {}
 _conditions = {} 
@@ -285,8 +285,26 @@ with enable_wrap(**wrap_params):
 
 	#self._conditions["AGFSDP"]    = self._ag_fsdp_conditions       
 	#self._conditions["RS"]        = self._rs_conditions    
-'''
+	schedule(adaptive_sdp_modules, "layer_bench_gpt2.csv")
 
+	make_schedule_from_json(params_list, _schedule_comm_init, _scheduled_comms, _locks, adaptive_sdp_modules)
+	#make_schedule_wfbp_sdp(params_list, self._schedule_comm_init, self._scheduled_comms, self._locks)
+	#os._exit(1)
+	dist.barrier()
+	print(f"before init optimizer  {torch.cuda.memory_allocated() / 1024 /1024}") 
+	#self.optimizer = torch.optim.SGD(self.sharded_module.parameters() , lr=0.001, momentum=0.9, nesterov=True)
+	optimizer = torch.optim.Adam(sharded_module.parameters(), lr=0.001, betas=(0.9, 0.999), eps=1e-08, weight_decay=0, amsgrad=False)
+	optimizer = ShardScheduler(sharded_module, sharded_module.named_parameters(), 2, rank, optimizer,
+	                                partition_threshold, _done_counts, _partition_counts,
+									health_check_scheduler_thread,
+									_locks,
+
+									_conditions,
+
+									profile_target_layer, 
+
+									10**6, comm_stream, _schedule_comm_init, _scheduled_comms)
+'''
 for epoch_i in range(0, epochs):
 
     # ========================================
@@ -419,3 +437,4 @@ for epoch_i in range(0, epochs):
 print("")
 print("Training complete!")
 print("Total training took {:} (h:mm:ss)".format(format_time(time.time()-total_t0)))
+'''

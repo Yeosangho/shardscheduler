@@ -172,7 +172,7 @@ def schedule_ops(target_comm, target_comp, comp_ops, alpha, beta):
 
         target_comm.set_scheduled_comp(target_comp, param_num, time)
         target_comp.overlappable_time -= time     
-def schedule(adaptive_sdp):
+def schedule(adaptive_sdp, layer_bench_file_name='layer_bench.csv'):
     #schedule
 
 
@@ -187,7 +187,7 @@ def schedule(adaptive_sdp):
     forward_ops = [] 
     backward_ops = [] 
     comp_ops = []
-    f = open('layer_bench.csv','r')
+    f = open(layer_bench_file_name,'r')
     rdr = csv.reader(f)
     idx = 0
     for line in rdr:
