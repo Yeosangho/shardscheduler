@@ -20,6 +20,8 @@ from transformers import AdamW, get_linear_schedule_with_warmup
 from test_cases import make_schedule_from_json
 from auto_wrap_custom import enable_wrap, auto_wrap, wrap
 from algo import schedule
+from torch_scheduler import ShardScheduler
+
 import nltk
 
 os.environ['MASTER_ADDR'] = '210.107.197.219'
@@ -304,7 +306,8 @@ with enable_wrap(**wrap_params):
 									profile_target_layer, 
 
 									10**6, comm_stream, _schedule_comm_init, _scheduled_comms)
-'''
+
+model = sharded_module
 for epoch_i in range(0, epochs):
 
     # ========================================
@@ -325,53 +328,32 @@ for epoch_i in range(0, epochs):
 
         b_input_ids = batch[0].to(device)
         b_labels = batch[0].to(device)
-        print(b_input_ids.shape)
-        print(b_input_ids.type())
-        print(b_labels.shape)
-        print(b_labels.type())
-        b_masks = batch[1].to(device)
-        print(b_masks.shape)
-        print(b_masks.type())
-        print(b_masks)
-        model.zero_grad()        
 
+        b_masks = batch[1].to(device)
+
+        model.zero_grad()        
+		if _locks['BWTOFW'].locked():   
+			_release_lock(_locks['BWTOFW'], _conditions['BWTOFW'])	
         outputs = model(  b_input_ids,
                           labels=b_labels, 
                           attention_mask = b_masks,
                           token_type_ids=None
                         )
 
+		if _locks['FWTOBW'].locked():   
+			_release_lock(_locks['FWTOBW'], _conditions['FWTOBW'])	
+
         loss = outputs[0]  
 
         batch_loss = loss.item()
         total_train_loss += batch_loss
 
-        # Get sample every x batches.
-        if step % sample_every == 0 and not step == 0:
-
-            elapsed = format_time(time.time() - t0)
-            print('  Batch {:>5,}  of  {:>5,}. Loss: {:>5,}.   Elapsed: {:}.'.format(step, len(train_dataloader), batch_loss, elapsed))
-
-            model.eval()
-
-            sample_outputs = model.generate(
-                                    bos_token_id=random.randint(1,30000),
-                                    do_sample=True,   
-                                    top_k=50, 
-                                    max_length = 200,
-                                    top_p=0.95, 
-                                    num_return_sequences=1
-                                )
-            for i, sample_output in enumerate(sample_outputs):
-                  print("{}: {}".format(i, tokenizer.decode(sample_output, skip_special_tokens=True)))
-            
-            model.train()
 
         loss.backward()
 
-        optimizer.step()
+		if _locks['BWTOFW'].locked():   
+			_release_lock(_locks['BWTOFW'], _conditions['BWTOFW'])	
 
-        scheduler.step()
 
     # Calculate the average loss over all of the batches.
     avg_train_loss = total_train_loss / len(train_dataloader)       
@@ -437,4 +419,3 @@ for epoch_i in range(0, epochs):
 print("")
 print("Training complete!")
 print("Total training took {:} (h:mm:ss)".format(format_time(time.time()-total_t0)))
-'''
