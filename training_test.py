@@ -196,7 +196,7 @@ model_parameter_names = {}
 profiled_memory_utilization = []
 
 ######
-		
+health_check_scheduler_thread = threading.Lock()		
 health_check_main_proc = threading.Lock()
 profile_target_layer = []
 wrap_params = dict( mixed_precision=False, flatten_parameters=True, 
