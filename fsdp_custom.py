@@ -1931,7 +1931,7 @@ def free_storage_(data: torch.Tensor) -> None:
         # is the sole occupant of the Storage.
         assert data.storage_offset() == 0
         data.storage().resize_(0)
-        torch.cuda.empty_cache() 
+        #torch.cuda.empty_cache() 
 
 @torch.no_grad()
 def alloc_storage_(data: torch.Tensor, size: torch.Size) -> None:
