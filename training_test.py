@@ -198,6 +198,7 @@ profiled_memory_utilization = []
 ######
 health_check_scheduler_thread = threading.Lock()		
 health_check_main_proc = threading.Lock()
+comm_stream = torch.cuda.Stream()
 profile_target_layer = []
 wrap_params = dict( mixed_precision=False, flatten_parameters=True, 
 
