@@ -17,7 +17,7 @@ torch.manual_seed(42)
 from transformers import GPT2LMHeadModel,  GPT2Tokenizer, GPT2Config, GPT2LMHeadModel
 from transformers import AdamW, get_linear_schedule_with_warmup
 
-
+from test_cases import make_schedule_from_json
 from auto_wrap_custom import enable_wrap, auto_wrap, wrap
 from algo import schedule
 import nltk
