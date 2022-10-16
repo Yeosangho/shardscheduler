@@ -400,7 +400,7 @@ class ShardScheduler(torch.optim.Optimizer):
                                 #    print('after ag')
                                 #    print(param.shape)
                                 #    print(param.sum())
-
+                                torch.cuda.empty_cache() 
                                 self._release_lock(self._locks['AG'][param], self._conditions['AG'][param])
 
                                 #torch.cuda.synchronize()
@@ -513,7 +513,9 @@ class ShardScheduler(torch.optim.Optimizer):
                                 self._adam(param)
                                 self._zero_one_grad(param)
                                 #param.grad.data = None
-                                grad = None 
+                                grad = None
+                                param.grad = None
+                                torch.cuda.empty_cache() 
                                 #param.grad = None
                                 #param.sum()    
     
@@ -580,6 +582,7 @@ class ShardScheduler(torch.optim.Optimizer):
                                         #print(param.grad.sum())  
                                 self._adam(param)
                                 self._zero_one_grad(param)
+                                torch.cuda.empty_cache() 
                                 self._release_lock(self._locks['AR'][param], self._conditions['AR'][param])
 
                                 grad = None
