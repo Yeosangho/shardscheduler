@@ -243,7 +243,7 @@ wrap_params = dict( mixed_precision=False, flatten_parameters=True,
 						model_parameter_names=model_parameter_names
 						)
 
-len_moduel = module_check(model)
+len_module = module_check(model)
 fsdp_num =  int(len_module * adaptive_shard_ratio['fsdp'])
 sdp_num =  int(len_module * adaptive_shard_ratio['sdp'])
 dp_num = int(len_module) -fsdp_num - sdp_num
