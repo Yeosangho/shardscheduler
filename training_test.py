@@ -23,6 +23,22 @@ from algo import schedule
 from torch_scheduler import ShardScheduler
 
 import nltk
+
+
+def module_check(module):
+	#if (len(list(module.children())) == 0 ):
+		#print(module)
+		#print(module.data.size())
+	total_wrapped_layers = 0
+	for name, child in module.named_children():
+		count = module_check(child)
+		total_wrapped_layers += count
+	if (len(list(module.children())) == 0 ):
+		return 1
+	else :
+		return total_wrapped_layers
+	return total_wrapped_layers
+
 def _release_lock(lock, condition):
     if lock.locked():
         lock.release()
@@ -35,9 +51,17 @@ os.environ["NCCL_SOCKET_IFNAME"]="eno1,eth0"
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--rank', dest='rank', default=0, type=int)
+parser.add_argument('--sdp_ratio', default=0, type=float)
+parser.add_argument('--fsdp_ratio', default=0, type=float)
+parser.add_argument('--dp_ratio', default=0, type=float)
 args = parser.parse_args()
+world_size = 2
 rank = args.rank
-dist.init_process_group(backend='nccl', world_size=2, rank=rank)
+adaptive_shard_ratio = {}
+adaptive_shard_ratio['dp'] = args.dp_ratio
+adaptive_shard_ratio['sdp'] = args.sdp_ratio
+adaptive_shard_ratio['fsdp'] = args.fsdp_ratio
+dist.init_process_group(backend='nccl', world_size=world_size, rank=rank)
 
 nltk.download('punkt')
 
@@ -219,11 +243,14 @@ wrap_params = dict( mixed_precision=False, flatten_parameters=True,
 						model_parameter_names=model_parameter_names
 						)
 
+len_moduel = module_check(model)
+fsdp_num =  int(len_module * adaptive_shard_ratio['fsdp'])
+sdp_num =  int(len_module * adaptive_shard_ratio['sdp'])
+dp_num = int(len_module) -fsdp_num - sdp_num
 adaptive_sdp = {}
-adaptive_sdp['FSDP'] = 10000000000
-adaptive_sdp['DP'] = 0
-adaptive_sdp['SDP'] = 0 
-
+adaptive_sdp['FSDP'] = fsdp_num
+adaptive_sdp['DP'] = dp_num
+adaptive_sdp['SDP'] = sdp_num 
 
 with enable_wrap(**wrap_params):
 	sharded_module = auto_wrap(adaptive_sdp, model)
