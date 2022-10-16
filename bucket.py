@@ -53,14 +53,18 @@ class Bucket:
         if(commType == 'AG'):
             param_num = end_idx - start_idx 
             if(self.shard_buffer[self.offset : self.offset + param_num ].size() != param[start_idx : end_idx ].size()):                
-                remains=  abs(param[start_idx : end_idx ].size()[0] - self.shard_buffer[self.offset : self.offset + param_num ].size()[0])
+                remains=  param[start_idx : end_idx ].size()[0] - self.shard_buffer[self.offset : self.offset + param_num ].size()[0]
+
 
             print(f"buffer offset {self.offset} param_num {param_num}, remains {remains}")
             print(f"param start_idx start_idx {start_idx} end_idx {end_idx} remains {remains}")
-            self.shard_buffer[self.offset : self.offset + param_num- remains ].copy_(param[start_idx : end_idx-remains ])
+            self.shard_buffer[self.offset : self.offset + param_num- abs(remains) ].copy_(param[start_idx : end_idx-abs(remains) ])
             self.offset += param_num - remains
             self.params.add(param, start_idx, end_idx-remains, org_size, shard_size, self.offset)
-            return remains 
+            if(remains < 0):
+                return 0
+            else:
+                return remains 
         elif(commType == 'RS'):
             param_num = end_idx - start_idx
             
