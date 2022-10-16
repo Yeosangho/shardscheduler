@@ -23,7 +23,7 @@ from algo import schedule
 from torch_scheduler import ShardScheduler
 
 import nltk
-def _release_lock(self, lock, condition):
+def _release_lock(lock, condition):
     if lock.locked():
         lock.release()
     with condition :
