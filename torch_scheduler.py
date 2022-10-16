@@ -328,7 +328,7 @@ class ShardScheduler(torch.optim.Optimizer):
                             org_size = p._orig_size
                             shard_size = p_data.numel()
                             start_idx = int(shard_size * partiable_param.start_ratio)
-                            print(partiable_param.end_ratio)
+                            #print(partiable_param.end_ratio)
                             end_idx = int(shard_size * partiable_param.end_ratio)    
 
                             #if(p.data_ptr() == self.profile_layer[0].data_ptr()):

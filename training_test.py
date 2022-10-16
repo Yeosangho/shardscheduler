@@ -385,7 +385,8 @@ for epoch_i in range(0, epochs):
 
         if _locks['BWTOFW'].locked():   
             _release_lock(_locks['BWTOFW'], _conditions['BWTOFW'])	
-
+        if(step == 10):
+            break
 
     # Calculate the average loss over all of the batches.
     avg_train_loss = total_train_loss / len(train_dataloader)       
