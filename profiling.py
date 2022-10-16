@@ -59,7 +59,11 @@ class Profiling(object):
             print(len(list(module.children())))
             self._register_hooks(child, f"{name}.{child_name}")
 
-        if (len(list(module.children())) == 0 and 'relu' not in name and 'pool' not in name ):
+        if (len(list(module.children())) == 0 and 
+            'act' not in name and
+            'dropout' not in name and
+            'relu' not in name and 
+            'pool' not in name ):
             module.register_backward_hook(self._make_hook(name, module))
             #module.register_backward_hook(self._print_hook())
 
@@ -235,8 +239,7 @@ def benchmark_gpt2(model, input_shape, input_dtype, label_shape, label_dtype):
                           token_type_ids=None
                         )
 
-        loss = outputs[0]          
-        torch.cuda.synchronize()
+        loss = outputs[0]          torch.cuda.synchronize()
 
         if i >= warmup:
             p.start()
