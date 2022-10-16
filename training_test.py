@@ -23,6 +23,11 @@ from algo import schedule
 from torch_scheduler import ShardScheduler
 
 import nltk
+def _release_lock(self, lock, condition):
+    if lock.locked():
+        lock.release()
+    with condition :
+        condition.notify_all()	
 
 os.environ['MASTER_ADDR'] = '210.107.197.219'
 os.environ['MASTER_PORT'] = '30005'
