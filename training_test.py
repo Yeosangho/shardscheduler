@@ -134,7 +134,7 @@ epsilon = 1e-8
 
 # this produces sample output every 100 steps
 sample_every = 100
-
+partition_threshold = 20000
 # Note: AdamW is a class from the huggingface library (as opposed to pytorch) 
 #optimizer = AdamW(model.parameters(),
 #                  lr = learning_rate,
