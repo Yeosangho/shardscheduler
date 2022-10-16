@@ -495,7 +495,7 @@ class ShardScheduler(torch.optim.Optimizer):
                             if(param_wrap.end_idx == param_wrap.shard_size):
                                 param.grad.data =  torch.zeros_like( param.grad.data[:param_wrap.shard_size]).type(param.grad.dtype).to(param.device)  
                                 param.grad.data.copy_(param._full_param_padded.data[:param_wrap.shard_size])
-                                #param._full_param_padded.data.storage().resize_( 0)   
+                                param._full_param_padded.data.storage().resize_( 0)   
                                 #print(f"output p.grad[0] {param.grad.shape} {torch.sum(param.grad)}")
 
                                 #param.grad.data = param.grad.data 
