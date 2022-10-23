@@ -581,8 +581,8 @@ class ShardScheduler(torch.optim.Optimizer):
                                         #print('after ar')
                                         #print(param.shape)
                                         #print(param.grad.sum())  
-                                #self._adam(param)
-                                #self._zero_one_grad(param)
+                                self._adam(param)
+                                self._zero_one_grad(param)
                                 #torch.cuda.empty_cache() 
                                 self._release_lock(self._locks['AR'][param], self._conditions['AR'][param])
 

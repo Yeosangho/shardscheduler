@@ -382,7 +382,7 @@ class Trainer:
 
 					print(f"after forward  {torch.cuda.memory_allocated() / 1024 /1024}") 
 					print(output.sum())
-					loss = self.criterion(output, target)
+					#loss = self.criterion(output, target)
 					print(loss)
 					print(f"before backward  {torch.cuda.memory_allocated() / 1024 /1024}") 
 	#		
