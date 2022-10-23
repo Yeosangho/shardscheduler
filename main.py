@@ -523,11 +523,9 @@ if __name__ == '__main__':
 					group = dist.new_group([i,j], backend='gloo')
 					groups[f'{i}:{j}'] = group
 		#run(comm_stream, group, world_size, rank)
-		thread = threading.Thread(target=run, args=(health_check_main_proc, health_check_scheduler_thread, groups, world_size, rank, trainer))
-		#thread.excepthook = custom_hook
-
-		thread.daemon = True
-		thread.start()	
+		#thread = threading.Thread(target=run, args=(health_check_main_proc, health_check_scheduler_thread, groups, world_size, rank, trainer))
+		#thread.daemon = True
+		#thread.start()	
 		print("1")	
 		#if(rank == 0):
 		#	tensor_one = torch.ones(1)
