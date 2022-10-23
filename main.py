@@ -180,7 +180,7 @@ class Trainer:
 		#    self.target = torch.LongTensor(self.batch_size).random_() % 1000
 		#    data, self.target = data.cuda(), self.target.cuda()
 		#    self.datasets.append(data)
-
+		'''
 		#self.train_dataset = datasets.MNIST(root='data', 
 		#                               train=True, 
 		#                               transform=transforms.ToTensor(),
@@ -194,7 +194,7 @@ class Trainer:
 		self.train_loader = torch.utils.data.DataLoader(
 		    self.train_dataset , batch_size=32, shuffle=True, num_workers=2)
 		print(f"after init dataset  {torch.cuda.memory_allocated() / 1024 /1024}") 
-
+		'''
 		#summary(self.model, ( 3, 32, 32))
 		self.profiled_memory_utilization = []
 
