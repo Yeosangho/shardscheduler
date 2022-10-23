@@ -548,7 +548,8 @@ if __name__ == '__main__':
 		#with open('test.txt', encoding="utf-8") as f:
 		#	f.write(error)
 		#tensor_one = torch.ones(1)
-		health_check_main_proc.acquire()
+		dist.destroy_process_group()
+		#health_check_main_proc.acquire()
 		#RuntimeError("An error")
 		#raise RuntimeError("Source of RUntime Error")
 		#handle = dist.broadcast(tensor_one, group=group, src=rank, async_op=True)
