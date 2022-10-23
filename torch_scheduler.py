@@ -281,18 +281,19 @@ class ShardScheduler(torch.optim.Optimizer):
         print(self.comm_stream)
         time.sleep(3)
 
-        #try :
-        with torch.cuda.stream(self.comm_stream):
-            #self.scheduler_ready.acquire()
-            self.run_schedule(self.init_schedules , init=True)
-            #self.scheduler_ready.acquire()
-            #exit()
-            print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-            while not self._stop_event.is_set():
-                self.run_schedule(self.schedules, init=False)
-        #except RuntimeError as error :
-        #    print(error)
-        #    self.health_check_lock.acquire()
+        try :
+            with torch.cuda.stream(self.comm_stream):
+                #self.scheduler_ready.acquire()
+                self.run_schedule(self.init_schedules , init=True)
+                #self.scheduler_ready.acquire()
+                #exit()
+                print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+                while not self._stop_event.is_set():
+                    self.run_schedule(self.schedules, init=False)
+        except RuntimeError as error :
+            print(error)
+            dist.destroy_process_group()
+            #self.health_check_lock.acquire()
 
     def run_schedule(self, schedule, init=False):
         for task in schedule:   
@@ -515,7 +516,7 @@ class ShardScheduler(torch.optim.Optimizer):
                                 #param.grad.data = None
                                 grad = None
                                 param.grad = None
-                                torch.cuda.empty_cache() 
+                                #torch.cuda.empty_cache() 
                                 #param.grad = None
                                 #param.sum()    
     
@@ -582,7 +583,7 @@ class ShardScheduler(torch.optim.Optimizer):
                                         #print(param.grad.sum())  
                                 self._adam(param)
                                 self._zero_one_grad(param)
-                                torch.cuda.empty_cache() 
+                                #torch.cuda.empty_cache() 
                                 self._release_lock(self._locks['AR'][param], self._conditions['AR'][param])
 
                                 grad = None

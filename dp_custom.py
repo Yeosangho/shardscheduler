@@ -679,7 +679,7 @@ class DataParallel_Custom(nn.Module):
         #print(f"after backward {torch.cuda.memory_allocated() / 1024 /1024}") 
         self._memory_record.append(memory_allocated)            
         self._use_fp32_param_shard()
-        torch.cuda.empty_cache()
+        #torch.cuda.empty_cache()
 
         outputs = self._register_pre_backward_hooks(outputs)
         # Done with a forward pass.
@@ -1297,7 +1297,7 @@ def free_storage_(data: torch.Tensor) -> None:
         # is the sole occupant of the Storage.
         assert data.storage_offset() == 0
         data.storage().resize_(0)
-        torch.cuda.empty_cache()
+        #torch.cuda.empty_cache()
 
 @torch.no_grad()
 def alloc_storage_(data: torch.Tensor, size: torch.Size) -> None:
