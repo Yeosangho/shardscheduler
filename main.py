@@ -370,6 +370,7 @@ class Trainer:
 			target = target.cuda()
 
 			print(f"before forward  {torch.cuda.memory_allocated() / 1024 /1024}") 
+			print(torch.cuda.memory_stats())	
 			if self._locks['BWTOFW'].locked():   
 				self._release_lock(self._locks['BWTOFW'], self._conditions['BWTOFW'])				
 			output = self.sharded_module(data)
@@ -404,7 +405,7 @@ class Trainer:
 		#self.release_all_lock()
 		#self.optimizer.train_continue = False
 		#self.optimizer.stop()
-		prof.export_chrome_trace("trace_algo.json")
+		#prof.export_chrome_trace("trace_algo.json")
 
 
 	def release_all_lock(self):
