@@ -478,7 +478,6 @@ if __name__ == '__main__':
 	print(fraction)
 	torch.cuda.set_per_process_memory_fraction(fraction, 0)    	
 	parameter_num = int(2.0 * 1024 * 1024 * 1024 / 4)
-	mem_tensor = torch.zeros(parameter_num).cuda()
 	count = 0
 	dist.init_process_group(backend='nccl', world_size=world_size, rank=rank)
 
@@ -540,7 +539,7 @@ if __name__ == '__main__':
 		#	time.sleep(1)
 			
 		trainer.benchmark_step()
-			
+
 	except RuntimeError as error :
 		print(f"RuntimeError {error}")
 		#print(error)
