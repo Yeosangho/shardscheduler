@@ -679,6 +679,8 @@ class DataParallel_Custom(nn.Module):
         #print(f"after backward {torch.cuda.memory_allocated() / 1024 /1024}") 
         self._memory_record.append(memory_allocated)            
         self._use_fp32_param_shard()
+        torch.cuda.empty_cache()
+
         outputs = self._register_pre_backward_hooks(outputs)
         # Done with a forward pass.
         #print("11111")
