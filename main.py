@@ -372,7 +372,7 @@ class Trainer:
 					print(f"before forward  {torch.cuda.memory_allocated() / 1024 /1024}") 
 					if self._locks['BWTOFW'].locked():   
 						self._release_lock(self._locks['BWTOFW'], self._conditions['BWTOFW'])				
-					output = self.sharded_module(data)
+					#output = self.sharded_module(data)
 
 					#while not self.optimizer.scheduler_ready.locked():
 					#	time.sleep(0.01)
@@ -382,7 +382,7 @@ class Trainer:
 
 					print(f"after forward  {torch.cuda.memory_allocated() / 1024 /1024}") 
 					print(output.sum())
-					loss = self.criterion(output, target)
+					#loss = self.criterion(output, target)
 					print(loss)
 					print(f"before backward  {torch.cuda.memory_allocated() / 1024 /1024}") 
 	#		
