@@ -103,7 +103,7 @@ class Trainer:
 		self.health_check_scheduler_thread = health_check_scheduler_thread
 		self.health_check_main_proc = health_check_main_proc
 		self.train_continue = True 
-		torch.backends.cudnn.benchmark = True
+		#torch.backends.cudnn.benchmark = True
 		#world_size = int(os.environ["WORLD_SIZE"])
 		self.world_size = world_size
 		print(f'world_size : {world_size}')
@@ -350,57 +350,57 @@ class Trainer:
 
 	def benchmark_step(self):
 		print("bench 1")
-		with profile(activities=[ProfilerActivity.CUDA], record_shapes=True) as prof:
-			print("bench 2")
+		#with profile(activities=[ProfilerActivity.CUDA], record_shapes=True) as prof:
+			#print("bench 2")
 
-			with record_function("model_training"):
-				#data = self.datasets[self.data_index%len(self.datasets)]
-				count = 0
-				print("bench 3")
-				start = 0
-				for batch_idx, (data, target) in enumerate(self.train_loader):
-					if(count == 5):
-						start = time.time()
-					self.data_index += 1
-					data = data.cuda()
-					print("bench 4")
-					print(f"target : {target.shape} {target.type()}")
-					print(f"data : {data.shape}")
+			#with record_function("model_training"):
+		#data = self.datasets[self.data_index%len(self.datasets)]
+		count = 0
+		print("bench 3")
+		start = 0
+		for batch_idx, (data, target) in enumerate(self.train_loader):
+			if(count == 5):
+				start = time.time()
+			self.data_index += 1
+			data = data.cuda()
+			print("bench 4")
+			print(f"target : {target.shape} {target.type()}")
+			print(f"data : {data.shape}")
 
-					target = target.cuda()
+			target = target.cuda()
 
-					print(f"before forward  {torch.cuda.memory_allocated() / 1024 /1024}") 
-					if self._locks['BWTOFW'].locked():   
-						self._release_lock(self._locks['BWTOFW'], self._conditions['BWTOFW'])				
-					output = self.sharded_module(data)
+			print(f"before forward  {torch.cuda.memory_allocated() / 1024 /1024}") 
+			if self._locks['BWTOFW'].locked():   
+				self._release_lock(self._locks['BWTOFW'], self._conditions['BWTOFW'])				
+			output = self.sharded_module(data)
 
-					#while not self.optimizer.scheduler_ready.locked():
-					#	time.sleep(0.01)
-					if self._locks['FWTOBW'].locked():   
-						self._release_lock(self._locks['FWTOBW'], self._conditions['FWTOBW'])
+			#while not self.optimizer.scheduler_ready.locked():
+			#	time.sleep(0.01)
+			if self._locks['FWTOBW'].locked():   
+				self._release_lock(self._locks['FWTOBW'], self._conditions['FWTOBW'])
 
 
-					print(f"after forward  {torch.cuda.memory_allocated() / 1024 /1024}") 
-					print(output.sum())
-					loss = self.criterion(output, target)
-					print(loss)
-					print(f"before backward  {torch.cuda.memory_allocated() / 1024 /1024}") 
-	#		
-					loss.backward()
-					if self._locks['BWTOFW'].locked():   
-						self._release_lock(self._locks['BWTOFW'], self._conditions['BWTOFW'])
+			print(f"after forward  {torch.cuda.memory_allocated() / 1024 /1024}") 
+			print(output.sum())
+			loss = self.criterion(output, target)
+			print(loss)
+			print(f"before backward  {torch.cuda.memory_allocated() / 1024 /1024}") 
+	#	
+			loss.backward()
+			if self._locks['BWTOFW'].locked():   
+				self._release_lock(self._locks['BWTOFW'], self._conditions['BWTOFW'])
 
-					print(f"after backward  {torch.cuda.memory_allocated() / 1024 /1024}") 
-					if(not self.train_continue):
-						break
-					count += 1
-					if(count == 10):
-						break
-			#torch.cuda.synchronize()
-			print(time.time() -start)
-			print("1111")
-			if(self.health_check_scheduler_thread.locked()):
-				raise RuntimeError("Thread Runtime Error!")
+			print(f"after backward  {torch.cuda.memory_allocated() / 1024 /1024}") 
+			if(not self.train_continue):
+				break
+			count += 1
+			if(count == 10):
+				break
+		#torch.cuda.synchronize()
+		print(time.time() -start)
+		print("1111")
+		if(self.health_check_scheduler_thread.locked()):
+			raise RuntimeError("Thread Runtime Error!")
 		#self.release_all_lock()
 		#self.optimizer.train_continue = False
 		#self.optimizer.stop()
