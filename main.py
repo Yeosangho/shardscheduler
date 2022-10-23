@@ -369,7 +369,7 @@ class Trainer:
 
 			target = target.cuda()
 
-			print(f"before forward  {(torch.cuda.memory_allocated() + troch.cuda.memory_reserved()) / 1024 /1024}") 
+			print(f"before forward  {(torch.cuda.memory_allocated() + torch.cuda.memory_reserved()) / 1024 /1024}") 
 			#print(f"!!!!!!!!!!!!!!!! {torch.cuda.memory_reserved()}")
 			#print(torch.cuda.memory_stats())	
 			if self._locks['BWTOFW'].locked():   
@@ -382,17 +382,17 @@ class Trainer:
 				self._release_lock(self._locks['FWTOBW'], self._conditions['FWTOBW'])
 
 
-			print(f"after forward  {(torch.cuda.memory_allocated() + troch.cuda.memory_reserved()) / 1024 /1024}") 
+			print(f"after forward  {(torch.cuda.memory_allocated() + torch.cuda.memory_reserved()) / 1024 /1024}") 
 			print(output.sum())
 			loss = self.criterion(output, target)
 			print(loss)
-			print(f"before backward  {(torch.cuda.memory_allocated() + troch.cuda.memory_reserved()) / 1024 /1024}") 
+			print(f"before backward  {(torch.cuda.memory_allocated() + torch.cuda.memory_reserved()) / 1024 /1024}") 
 	#	
 			loss.backward()
 			if self._locks['BWTOFW'].locked():   
 				self._release_lock(self._locks['BWTOFW'], self._conditions['BWTOFW'])
 
-			print(f"after backward  {(torch.cuda.memory_allocated() + troch.cuda.memory_reserved()) / 1024 /1024}") 
+			print(f"after backward  {(torch.cuda.memory_allocated() + torch.cuda.memory_reserved()) / 1024 /1024}") 
 			if(not self.train_continue):
 				break
 			count += 1
