@@ -134,7 +134,7 @@ class Trainer:
 		print(f"before init model  {torch.cuda.memory_allocated() / 1024 /1024}") 
 		self.model = ResNet(Bottleneck, [3, 4, 6, 3]) #it means "resnet18 model"
 		self.model.cuda()
-
+		'''
 		print(f"after init model  {torch.cuda.memory_allocated() / 1024 /1024}") 
 
 		self._locks = {}
@@ -347,22 +347,26 @@ class Trainer:
 		#	self._register_hooks()
 		self.scaler = GradScaler()
 		print("end inittialization trainer")
-
+		'''
 	def benchmark_step(self):
 		print("bench 1")
-		with profile(activities=[ProfilerActivity.CUDA], record_shapes=True) as prof:
-			print("bench 2")
+		#with profile(activities=[ProfilerActivity.CUDA], record_shapes=True) as prof:
+		print("bench 2")
 
-			with record_function("model_training"):
+			
+			#with record_function("model_training"):
 				#data = self.datasets[self.data_index%len(self.datasets)]
-				count = 0
-				print("bench 3")
-				start = 0
-				for batch_idx, (data, target) in enumerate(self.train_loader):
-					if(count == 5):
-						start = time.time()
-					self.data_index += 1
-					data = data.cuda()
+		count = 0
+		print("bench 3")
+		start = 0
+		for batch_idx, (data, target) in enumerate(self.train_loader):
+
+			if(count == 5):
+				start = time.time()
+			self.data_index += 1
+			data = data.cuda()
+			output = self.model(data)
+			'''		
 					print("bench 4")
 					print(f"target : {target.shape} {target.type()}")
 					print(f"data : {data.shape}")
@@ -396,17 +400,10 @@ class Trainer:
 					count += 1
 					if(count == 10):
 						break
-			#torch.cuda.synchronize()
-			print(time.time() -start)
-			print("1111")
-			if(self.health_check_scheduler_thread.locked()):
-				raise RuntimeError("Thread Runtime Error!")
-		#self.release_all_lock()
-		#self.optimizer.train_continue = False
-		#self.optimizer.stop()
-		prof.export_chrome_trace("trace_algo.json")
+			
 
 
+		'''
 	def release_all_lock(self):
 		for n, p in self.sharded_module.named_parameters():
 			self._release_lock(self._locks['AG'][p], self._conditions['AG'][p])      
