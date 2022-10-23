@@ -103,7 +103,7 @@ class Trainer:
 		self.health_check_scheduler_thread = health_check_scheduler_thread
 		self.health_check_main_proc = health_check_main_proc
 		self.train_continue = True 
-		torch.backends.cudnn.benchmark = True
+		#torch.backends.cudnn.benchmark = True
 		#world_size = int(os.environ["WORLD_SIZE"])
 		self.world_size = world_size
 		print(f'world_size : {world_size}')
@@ -130,11 +130,11 @@ class Trainer:
 		self.batch_size = 16
 		self.image_size = 42
 		self.classification_num = 1000
-		self.model = models.resnet101()
+		#self.model = models.resnet101()
 		print(f"before init model  {torch.cuda.memory_allocated() / 1024 /1024}") 
-		#self.model = ResNet(Bottleneck, [3, 4, 6, 3]) #it means "resnet18 model"
+		self.model = ResNet(Bottleneck, [3, 4, 6, 3]) #it means "resnet18 model"
 		self.model.cuda()
-		'''
+
 		print(f"after init model  {torch.cuda.memory_allocated() / 1024 /1024}") 
 
 		self._locks = {}
@@ -180,7 +180,7 @@ class Trainer:
 		#    self.target = torch.LongTensor(self.batch_size).random_() % 1000
 		#    data, self.target = data.cuda(), self.target.cuda()
 		#    self.datasets.append(data)
-		'''
+
 		#self.train_dataset = datasets.MNIST(root='data', 
 		#                               train=True, 
 		#                               transform=transforms.ToTensor(),
@@ -192,9 +192,9 @@ class Trainer:
 		self.train_dataset = datasets.CIFAR10(
 		    root='cifar10-data', train=True, download=True, transform=transforms.ToTensor())
 		self.train_loader = torch.utils.data.DataLoader(
-		    self.train_dataset , batch_size=2, shuffle=True, num_workers=0)
+		    self.train_dataset , batch_size=32, shuffle=True, num_workers=2)
 		print(f"after init dataset  {torch.cuda.memory_allocated() / 1024 /1024}") 
-		'''
+
 		#summary(self.model, ( 3, 32, 32))
 		self.profiled_memory_utilization = []
 
@@ -327,18 +327,18 @@ class Trainer:
 		#os._exit(1)
 		dist.barrier()
 		print(f"before init optimizer  {torch.cuda.memory_allocated() / 1024 /1024}") 
-		self.optimizer = torch.optim.SGD(self.sharded_module.parameters() , lr=0.001, momentum=0.9, nesterov=True)
-		#self.optimizer = torch.optim.Adam(self.sharded_module.parameters(), lr=0.001, betas=(0.9, 0.999), eps=1e-08, weight_decay=0, amsgrad=False)
-		#self.optimizer = ShardScheduler(self.sharded_module, self.sharded_module.named_parameters(), self.world_size, self.rank, self.optimizer,
-		#                                self.partition_threshold, self._done_counts, self._partition_counts,
-		#								self.health_check_scheduler_thread,
-		#								self._locks,
-#
-		#								self._conditions,
-#
-		#								self.profile_target_layer, 
-#
-		#								10**6, self.comm_stream, self._schedule_comm_init, self._scheduled_comms)
+		#self.optimizer = torch.optim.SGD(self.sharded_module.parameters() , lr=0.001, momentum=0.9, nesterov=True)
+		self.optimizer = torch.optim.Adam(self.sharded_module.parameters(), lr=0.001, betas=(0.9, 0.999), eps=1e-08, weight_decay=0, amsgrad=False)
+		self.optimizer = ShardScheduler(self.sharded_module, self.sharded_module.named_parameters(), self.world_size, self.rank, self.optimizer,
+		                                self.partition_threshold, self._done_counts, self._partition_counts,
+										self.health_check_scheduler_thread,
+										self._locks,
+
+										self._conditions,
+
+										self.profile_target_layer, 
+
+										10**6, self.comm_stream, self._schedule_comm_init, self._scheduled_comms)
 		print(f"after init optimizer  {torch.cuda.memory_allocated() / 1024 /1024}") 
 		
 		self.criterion = nn.CrossEntropyLoss()
@@ -347,25 +347,22 @@ class Trainer:
 		#	self._register_hooks()
 		self.scaler = GradScaler()
 		print("end inittialization trainer")
-		'''
+
 	def benchmark_step(self):
 		print("bench 1")
-		#with profile(activities=[ProfilerActivity.CUDA], record_shapes=True) as prof:
-		print("bench 2")
+		with profile(activities=[ProfilerActivity.CUDA], record_shapes=True) as prof:
+			print("bench 2")
 
-			
-			#with record_function("model_training"):
+			with record_function("model_training"):
 				#data = self.datasets[self.data_index%len(self.datasets)]
-		count = 0
-		print("bench 3")
-		start = 0
-		for batch_idx, (data, target) in enumerate(self.train_loader):
-
-			if(count == 5):
-				start = time.time()
-			data = data.cuda()
-			output = self.model(data)
-			'''		
+				count = 0
+				print("bench 3")
+				start = 0
+				for batch_idx, (data, target) in enumerate(self.train_loader):
+					if(count == 5):
+						start = time.time()
+					self.data_index += 1
+					data = data.cuda()
 					print("bench 4")
 					print(f"target : {target.shape} {target.type()}")
 					print(f"data : {data.shape}")
@@ -375,8 +372,8 @@ class Trainer:
 					print(f"before forward  {torch.cuda.memory_allocated() / 1024 /1024}") 
 					if self._locks['BWTOFW'].locked():   
 						self._release_lock(self._locks['BWTOFW'], self._conditions['BWTOFW'])				
-					output = self.model(data)
-					print(f"!!!!!!!!!!!!!!!!!!!! {output}")
+					output = self.sharded_module(data)
+
 					#while not self.optimizer.scheduler_ready.locked():
 					#	time.sleep(0.01)
 					if self._locks['FWTOBW'].locked():   
@@ -384,12 +381,12 @@ class Trainer:
 
 
 					print(f"after forward  {torch.cuda.memory_allocated() / 1024 /1024}") 
-					#print(output.sum())
-					#loss = self.criterion(output, target)
-					#print(loss)
+					print(output.sum())
+					loss = self.criterion(output, target)
+					print(loss)
 					print(f"before backward  {torch.cuda.memory_allocated() / 1024 /1024}") 
 	#		
-					#loss.backward()
+					loss.backward()
 					if self._locks['BWTOFW'].locked():   
 						self._release_lock(self._locks['BWTOFW'], self._conditions['BWTOFW'])
 
@@ -399,10 +396,17 @@ class Trainer:
 					count += 1
 					if(count == 10):
 						break
-			
+			#torch.cuda.synchronize()
+			print(time.time() -start)
+			print("1111")
+			if(self.health_check_scheduler_thread.locked()):
+				raise RuntimeError("Thread Runtime Error!")
+		#self.release_all_lock()
+		#self.optimizer.train_continue = False
+		#self.optimizer.stop()
+		prof.export_chrome_trace("trace_algo.json")
 
 
-		'''
 	def release_all_lock(self):
 		for n, p in self.sharded_module.named_parameters():
 			self._release_lock(self._locks['AG'][p], self._conditions['AG'][p])      
@@ -478,7 +482,7 @@ if __name__ == '__main__':
 	dist.init_process_group(backend='nccl', world_size=world_size, rank=rank)
 
 	#dist.barrier()
-	#torch.cuda.max_split_size_mb  = 512
+	torch.cuda.max_split_size_mb  = 512
 	a = torch.cuda.memory_allocated(0)
 	print(f"!!!!!!!!!!!!!!!! {torch.cuda.memory_reserved()}")
 	#print(torch.cuda.memory_stats())	
