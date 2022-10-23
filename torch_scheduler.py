@@ -401,7 +401,7 @@ class ShardScheduler(torch.optim.Optimizer):
                                 #    print('after ag')
                                 #    print(param.shape)
                                 #    print(param.sum())
-                                #torch.cuda.empty_cache() 
+                                torch.cuda.empty_cache() 
                                 self._release_lock(self._locks['AG'][param], self._conditions['AG'][param])
 
                                 #torch.cuda.synchronize()
