@@ -1155,6 +1155,7 @@ class ShardedDataParallel(nn.Module):
         #    for p in self.params : 
         #        self._wait_unlock(self._ag_locks[p], self._forward_conditions[p])
         #if(self.is_first_itr == False):
+        print("!!")
         for p in self.params : 
             #print(f"before rebuild full params {p._full_param_padded.shape}")
             #if(p.data_ptr() == self.profile_layer[0].data_ptr()):

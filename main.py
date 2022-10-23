@@ -539,7 +539,8 @@ if __name__ == '__main__':
 		#while not trainer.optimizer.scheduler_ready.locked():
 		#	time.sleep(1)
 			
-		trainer.benchmark_step()	
+		trainer.benchmark_step()
+			
 	except RuntimeError as error :
 		print(f"RuntimeError {error}")
 		#print(error)
