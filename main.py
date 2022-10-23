@@ -482,7 +482,7 @@ if __name__ == '__main__':
 	dist.init_process_group(backend='nccl', world_size=world_size, rank=rank)
 
 	#dist.barrier()
-	torch.cuda.max_split_size_mb  = 512
+	#torch.cuda.max_split_size_mb  = 512
 	a = torch.cuda.memory_allocated(0)
 	print(f"!!!!!!!!!!!!!!!! {torch.cuda.memory_reserved()}")
 	#print(torch.cuda.memory_stats())	
