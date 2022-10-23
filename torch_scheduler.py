@@ -298,7 +298,7 @@ class ShardScheduler(torch.optim.Optimizer):
     def run_schedule(self, schedule, init=False):
         for task in schedule:   
             #print(f"before {task.compType}")
-            torch.cuda.empty_cache() 
+            #torch.cuda.empty_cache() 
             if(self._stop_event.is_set()):
                 break           
             if(task.compType == 'FW' or task.compType == 'BW'):
@@ -581,7 +581,7 @@ class ShardScheduler(torch.optim.Optimizer):
                                         #print('after ar')
                                         #print(param.shape)
                                         #print(param.grad.sum())  
-                                self._sgd(param)
+                                self._adam(param)
                                 self._zero_one_grad(param)
                                 #torch.cuda.empty_cache() 
                                 self._release_lock(self._locks['AR'][param], self._conditions['AR'][param])
