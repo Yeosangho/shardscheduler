@@ -1155,7 +1155,6 @@ class ShardedDataParallel(nn.Module):
         #    for p in self.params : 
         #        self._wait_unlock(self._ag_locks[p], self._forward_conditions[p])
         #if(self.is_first_itr == False):
-        print("!!")
         for p in self.params : 
             #print(f"before rebuild full params {p._full_param_padded.shape}")
             #if(p.data_ptr() == self.profile_layer[0].data_ptr()):
@@ -1203,7 +1202,7 @@ class ShardedDataParallel(nn.Module):
         # initialized with the correct dtype and (sharded) size, since optimizer
         # state is typically initialized lazily in ``optim.step()``.
         self._use_fp32_param_shard()
-        #torch.cuda.empty_cache()
+
         # Register pre-backward hooks to all-gather the params for the backward
         # pass (if output's grad was needed). This won't register anything if
         # we are in eval mode.
