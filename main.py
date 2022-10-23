@@ -363,7 +363,6 @@ class Trainer:
 
 			if(count == 5):
 				start = time.time()
-			self.data_index += 1
 			data = data.cuda()
 			output = self.model(data)
 			'''		
