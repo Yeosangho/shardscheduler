@@ -1203,7 +1203,7 @@ class ShardedDataParallel(nn.Module):
         # initialized with the correct dtype and (sharded) size, since optimizer
         # state is typically initialized lazily in ``optim.step()``.
         self._use_fp32_param_shard()
-        #torch.cuda.empty_cache()
+        torch.cuda.empty_cache()
         # Register pre-backward hooks to all-gather the params for the backward
         # pass (if output's grad was needed). This won't register anything if
         # we are in eval mode.
