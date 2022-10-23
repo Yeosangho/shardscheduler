@@ -332,10 +332,10 @@ class ShardScheduler(torch.optim.Optimizer):
                             #print(partiable_param.end_ratio)
                             end_idx = int(shard_size * partiable_param.end_ratio)    
 
-                            #if(p.data_ptr() == self.profile_layer[0].data_ptr()):
-                            #    print('before ag')
-                            #    print(p.shape)
-                            #    print(p.sum())
+                            if(p.data_ptr() == self.profile_layer[0].data_ptr()):
+                                print('before ag')
+                                print(p.shape)
+                                print(p.sum())
                             if(remains == 0):
                                 remains = self.bucket.push(param=p,
                                             start_idx=start_idx,
@@ -397,10 +397,10 @@ class ShardScheduler(torch.optim.Optimizer):
                                 #param.data =  param._full_param_padded
                                 param.data = listed_full_param.view(-1)
                                 param.data = param.data[: param_wrap.org_size.numel()].view(param_wrap.org_size)
-                                #if(param.data_ptr() == self.profile_layer[0].data_ptr()):
-                                #    print('after ag')
-                                #    print(param.shape)
-                                #    print(param.sum())
+                                if(param.data_ptr() == self.profile_layer[0].data_ptr()):
+                                    print('after ag')
+                                    print(param.shape)
+                                    print(param.sum())
                                 #torch.cuda.empty_cache() 
                                 self._release_lock(self._locks['AG'][param], self._conditions['AG'][param])
 
@@ -429,11 +429,11 @@ class ShardScheduler(torch.optim.Optimizer):
                             #print(start_idx)
                             #print(end_idx)                                               
                             #input_flattened = torch.cat(grad_chunks)
-                            #if(p.data_ptr() == self.profile_layer[0].data_ptr()):
-                            #print('before rs')
+                            if(p.data_ptr() == self.profile_layer[0].data_ptr()):
+                                print('before rs')
                             
-                            #print(p.grad.shape)
-                            #print(p.grad.sum())
+                                print(p.grad.shape)
+                                print(p.grad.sum())
                             #print(shard_size)
                             #print("##############before push")
                             #print(p.shape)
@@ -500,11 +500,11 @@ class ShardScheduler(torch.optim.Optimizer):
                                 #print(f"output p.grad[0] {param.grad.shape} {torch.sum(param.grad)}")
 
                                 #param.grad.data = param.grad.data 
-                                #if(param.data_ptr() == self.profile_layer[0].data_ptr()):
-                                #print('after rs')
-                                #print(param.shape)
-                                #print("###################")
-                                #print(param.grad.sum())
+                                if(param.data_ptr() == self.profile_layer[0].data_ptr()):
+                                    print('after rs')
+                                    print(param.shape)
+                                    print("###################")
+                                    print(param.grad.sum())
                                 
                                 #print(count)
                                 #print(param_wrap.shard_size)
