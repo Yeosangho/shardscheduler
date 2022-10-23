@@ -103,7 +103,7 @@ class Trainer:
 		self.health_check_scheduler_thread = health_check_scheduler_thread
 		self.health_check_main_proc = health_check_main_proc
 		self.train_continue = True 
-		#torch.backends.cudnn.benchmark = True
+		torch.backends.cudnn.benchmark = True
 		#world_size = int(os.environ["WORLD_SIZE"])
 		self.world_size = world_size
 		print(f'world_size : {world_size}')
