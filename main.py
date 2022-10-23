@@ -192,7 +192,7 @@ class Trainer:
 		self.train_dataset = datasets.CIFAR10(
 		    root='cifar10-data', train=True, download=True, transform=transforms.ToTensor())
 		self.train_loader = torch.utils.data.DataLoader(
-		    self.train_dataset , batch_size=16, shuffle=True, num_workers=2)
+		    self.train_dataset , batch_size=1, shuffle=True, num_workers=2)
 		print(f"after init dataset  {torch.cuda.memory_allocated() / 1024 /1024}") 
 		'''
 		#summary(self.model, ( 3, 32, 32))
