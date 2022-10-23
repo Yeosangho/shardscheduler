@@ -328,7 +328,7 @@ class Trainer:
 		dist.barrier()
 		print(f"before init optimizer  {torch.cuda.memory_allocated() / 1024 /1024}") 
 		#self.optimizer = torch.optim.SGD(self.sharded_module.parameters() , lr=0.001, momentum=0.9, nesterov=True)
-		self.optimizer = torch.optim.Adam(self.sharded_module.parameters(), lr=0.001, betas=(0.9, 0.999), eps=1e-08, weight_decay=0, amsgrad=False)
+		self.optimizer = torch.optim.SGD(self.sharded_module.parameters(), lr=0.001, betas=(0.9, 0.999), eps=1e-08, weight_decay=0, amsgrad=False)
 		self.optimizer = ShardScheduler(self.sharded_module, self.sharded_module.named_parameters(), self.world_size, self.rank, self.optimizer,
 		                                self.partition_threshold, self._done_counts, self._partition_counts,
 										self.health_check_scheduler_thread,
@@ -382,7 +382,7 @@ class Trainer:
 
 					print(f"after forward  {torch.cuda.memory_allocated() / 1024 /1024}") 
 					print(output.sum())
-					#loss = self.criterion(output, target)
+					loss = self.criterion(output, target)
 					print(loss)
 					print(f"before backward  {torch.cuda.memory_allocated() / 1024 /1024}") 
 	#		
