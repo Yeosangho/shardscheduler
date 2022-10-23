@@ -672,26 +672,24 @@ class DataParallel_Custom(nn.Module):
         # These need to be re-registered every forward pass.
         #self._rebuild_full_params()
 
-        #self._register_post_backward_hooks()
+        self._register_post_backward_hooks()
         outputs = self.module(*args, **kwargs)
         #print(torch.cuda.memory_allocated() / 1024 /1024) 
-        #memory_allocated = torch.cuda.memory_allocated() / 1024 /1024
-        ##print(f"after backward {torch.cuda.memory_allocated() / 1024 /1024}") 
-        #self._memory_record.append(memory_allocated)            
-        #self._use_fp32_param_shard()
-        ##torch.cuda.empty_cache()
-#
-        #outputs = self._register_pre_backward_hooks(outputs)
-        ## Done with a forward pass.
-        ##print("11111")
-        #self.training_state = TrainingState.IDLE
-        ##if self.clear_autocast_cache:
-        #for p in self.params : 
-        #    self._acquire_lock(self._locks['AR'][p])    
-#
-#
-        ##torch.clear_autocast_cache()
-        ##torch.cuda.empty_cache()
+        memory_allocated = torch.cuda.memory_allocated() / 1024 /1024
+        #print(f"after backward {torch.cuda.memory_allocated() / 1024 /1024}") 
+        self._memory_record.append(memory_allocated)            
+        self._use_fp32_param_shard()
+        outputs = self._register_pre_backward_hooks(outputs)
+        # Done with a forward pass.
+        #print("11111")
+        self.training_state = TrainingState.IDLE
+        #if self.clear_autocast_cache:
+        for p in self.params : 
+            self._acquire_lock(self._locks['AR'][p])    
+
+
+        #torch.clear_autocast_cache()
+        #torch.cuda.empty_cache()
         return outputs
         
     def _register_pre_backward_hooks(self, outputs: Any) -> Any:
