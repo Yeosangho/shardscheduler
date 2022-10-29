@@ -3,6 +3,7 @@ import os
 import threading
 import logging
 import time
+import traceback
 try:
     import queue
 except ImportError:
@@ -32,6 +33,7 @@ class ShardScheduler(torch.optim.Optimizer):
                  locks,
                  conditions, 
                  profile_layer,
+                 bucket_size=1,
                  num_steps=10**6, comm_stream=None, init_schedules=None, schedules=None):
         """Construct a new ScheduledOptimizer, which uses horovod optimizer under the hood for averaging gradients
          across all the Horovod ranks.
@@ -125,8 +127,10 @@ class ShardScheduler(torch.optim.Optimizer):
         for p in model.parameters():
             self._priority_indexes[p] = priority
             priority += 1
-
-        self.bucket = Bucket(0.5, 2)
+        #bucket size to parameter_num
+        param_num = (size/(size+1)) * self.bucket_size * 1024 * 1024 / 4 
+        
+        self.bucket = Bucket(param_num, size) #parameter_num
         self.profile_layer = profile_layer
         # Poll whether the tensor is ready for allreduce or whether the allreduce is finished.
         self.event_queue = queue.Queue()
@@ -291,8 +295,8 @@ class ShardScheduler(torch.optim.Optimizer):
                 while not self._stop_event.is_set():
                     self.run_schedule(self.schedules, init=False)
         except RuntimeError as error :
-            print(error)
-            dist.destroy_process_group()
+            print(traceback.format_exc())
+            #dist.destroy_process_group()
             #self.health_check_lock.acquire()
 
     def run_schedule(self, schedule, init=False):

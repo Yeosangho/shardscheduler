@@ -30,10 +30,10 @@ class ParamList:
         self.offsets = [] 
 
 class Bucket:
-    def __init__(self, size, world_size):
+    def __init__(self, parameter_num, world_size):
 
         self.world_size = world_size
-        self.parameter_num = 10000
+        self.parameter_num = parameter_num
         self.shard_size = math.ceil(self.parameter_num / self.world_size )
 
         self.offset = 0

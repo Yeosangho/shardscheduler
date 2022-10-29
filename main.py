@@ -26,6 +26,7 @@ from dp_custom import DataParallel_Custom as DP
 from auto_wrap_custom import enable_wrap, auto_wrap, wrap
 from torchvision.models.resnet import BasicBlock, Bottleneck, ResNet
 from torch_scheduler import ShardScheduler
+import traceback
 import threading
 import argparse
 from queue import Queue
@@ -99,13 +100,14 @@ def module_check(module):
 
 
 class Trainer:
-	def __init__(self, world_size, rank,  count, adaptive_shard_ratio,  health_check_scheduler_thread, health_check_main_proc):
+	def __init__(self, world_size, rank,  bucket_size count, adaptive_shard_ratio,  health_check_scheduler_thread, health_check_main_proc):
 		self.health_check_scheduler_thread = health_check_scheduler_thread
 		self.health_check_main_proc = health_check_main_proc
 		self.train_continue = True 
 		#torch.backends.cudnn.benchmark = True
 		#world_size = int(os.environ["WORLD_SIZE"])
 		self.world_size = world_size
+		self.bucket_size = bucket_size
 		print(f'world_size : {world_size}')
 		ngpus_per_node = torch.cuda.device_count()
 		#self.shard = shard
@@ -337,7 +339,7 @@ class Trainer:
 										self._conditions,
 
 										self.profile_target_layer, 
-
+										self.bucket_size
 										10**6, self.comm_stream, self._schedule_comm_init, self._scheduled_comms)
 		print(f"after init optimizer  {torch.cuda.memory_allocated() / 1024 /1024}") 
 		
@@ -401,8 +403,9 @@ class Trainer:
 		#torch.cuda.synchronize()
 		print(time.time() -start)
 		print("1111")
-		if(self.health_check_scheduler_thread.locked()):
-			raise RuntimeError("Thread Runtime Error!")
+		os._exit(0)
+		#if(self.health_check_scheduler_thread.locked()):
+		#	raise RuntimeError("Thread Runtime Error!")
 		#self.release_all_lock()
 		#self.optimizer.train_continue = False
 		#self.optimizer.stop()
@@ -457,11 +460,12 @@ if __name__ == '__main__':
 	parser.add_argument('--sdp_ratio', default=0, type=float)
 	parser.add_argument('--fsdp_ratio', default=0, type=float)
 	parser.add_argument('--dp_ratio', default=0, type=float)
-
+	parser.add_argument('--bucket_size', default=20, type=float)
 
 	args = parser.parse_args()
 		#try :
 	world_size = 2
+	bucket_size = args.bucket_size
 	rank = args.rank
 	adaptive_shard_ratio = {}
 	adaptive_shard_ratio['dp'] = args.dp_ratio
@@ -495,7 +499,7 @@ if __name__ == '__main__':
 		#comm_stream = torch.cuda.Stream()
 
 		#group = dist.new_group(timeout=datetime.timedelta(seconds=5),)
-		trainer = Trainer(world_size, rank,count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc) 
+		trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc) 
 
 		def custom_hook(args):
 			# report the failure
@@ -543,12 +547,13 @@ if __name__ == '__main__':
 		trainer.benchmark_step()
 
 	except RuntimeError as error :
-		print(f"RuntimeError {error}")
+		print(traceback.format_exc())
+		health_check_main_proc.acquire()
 		#print(error)
 		#with open('test.txt', encoding="utf-8") as f:
 		#	f.write(error)
 		#tensor_one = torch.ones(1)
-		dist.destroy_process_group()
+		#dist.destroy_process_group()
 		#health_check_main_proc.acquire()
 		#RuntimeError("An error")
 		#raise RuntimeError("Source of RUntime Error")
@@ -557,7 +562,7 @@ if __name__ == '__main__':
 		#while not handle.is_completed() :
 		#	print(f"broadcast src from {rank}")
 
-		sys.exit(1)
+		#sys.exit(1)
 
 
 			
