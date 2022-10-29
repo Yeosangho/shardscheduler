@@ -10,21 +10,43 @@ import torch.distributed as dist
 
 from algo import read_profile_info
 
-def make_bucket_list(alpha, beta, comp_ops):
-	bucket_size_list = []
-	min_bucket_size = 50000
-	for comp in comp_ops : 
-		if(comp.overlappable_time - alpha > 0):
-			bucket_size = (comp.overlappable_time - alpha)/beta
-			if(min_bucket_size < bucket_size ):
-				bucket_size_list.append(math.ceil(bucket_size))
+def make_bucket_list(alpha, beta, comp_ops, total_param_num):
+    bucket_size_list = []
+    min_bucket_size = 50000
+    possible_overlappable_parameter_num = 0
+    #case 1 : consider RS/AG cases
+    for comp in comp_ops : 
+        if(comp.overlappable_time - alpha > 0):
 
-	return sorted(bucket_size_list)
+            bucket_size = (comp.overlappable_time - alpha)/beta
+            if(min_bucket_size < bucket_size ):
+                bucket_size_list.append(math.ceil(bucket_size))
+    #case 2 : consider all reduce cases 
+    for comp in comp_ops : 
+        if(comp.overlappable_time - alpha > 0):
+            bucket_size = (comp.overlappable_time - alpha)/(beta*2)
+            possible_overlappable_parameter_num += math.ceil(bucket_size /4)
+            if(min_bucket_size < bucket_size ):
+                bucket_size_list.append(math.ceil(bucket_size))                
+
+    bucket_size_list = sorted(bucket_size_list)
+    max_overlappable_param_num = math.ceil(bucket_size_list[-1] / 4)
+
+    #case 3 : consider residual parameters which can not overlapped with computation
+    residual_param_num = total_param_num - possible_overlappable_parameter_num
+    idx = 1
+    while True :
+        buffer_for_residual = math.ceil(residual_param_num / idx)
+        if(buffer_for_residual > max_overlappable_param_num):
+            bucket_size_list.append(buffer_for_residual)
+        idx += 1
+
+    return sorted(bucket_size_list)
 	
 
-def make_static_bucket_list(step=100000):
+def make_static_bucket_list(step=1000000):
     bucket_size_list = []
-    for i in range(1, 101):
+    for i in range(1, 51):
         bucket_size_list.append(i*step)
     return bucket_size_list
 
@@ -55,11 +77,12 @@ param_nums = {}
 forward_ops = []
 backward_ops = []
 layer_bench_file_name = 'layer_bench.csv'
-alpha, beta, total_comp_times, total_backward_times, total_forward_times = read_profile_info(comp_ops, forward_ops, backward_ops, param_nums, layer_bench_file_name)
+alpha, beta, total_comp_times, total_backward_times, total_forward_times, total_param_num, total_layer_num = read_profile_info(comp_ops, forward_ops, backward_ops, param_nums, layer_bench_file_name)
 
-#bucket_list = make_bucket_list(alpha, beta, comp_ops)
+bucket_list = make_bucket_list(alpha, beta, comp_ops)
+print(bucket_list)
 bucket_list = make_static_bucket_list()
-#print(bucket_list)
+
 
 #training
 dist.init_process_group(backend='gloo', world_size=2, rank=args.rank)
@@ -106,7 +129,7 @@ while True :
         dist.all_reduce(flag_tensor)
         print(f"process result {flag_tensor}")      
         #mem error occured !!! -> more sharding!!!
-        sdp_ratio += 0.01
-        dp_ratio -= 0.01
+        sdp_ratio += 0.05
+        dp_ratio -= 0.05
         if(sdp_ratio > 1.0):
         	os._exit(0)

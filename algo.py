@@ -179,6 +179,7 @@ def read_profile_info(comp_ops, forward_ops, backward_ops, param_nums, layer_ben
     total_comp_times = 0
     total_backward_times = 0
     total_forward_times = 0
+    total_param_num = 0
 
     f = open(layer_bench_file_name,'r')
     rdr = csv.reader(f)
@@ -196,6 +197,7 @@ def read_profile_info(comp_ops, forward_ops, backward_ops, param_nums, layer_ben
 
 
         param_nums[layer_name] = int(line[3])
+        total_param_num += int(line[3])
         forward_op = CompOp(layer_name, idx, ftime, 'forward')
         forward_ops.append(forward_op)
         backward_op = CompOp(layer_name, idx, btime, 'backward')
@@ -205,6 +207,7 @@ def read_profile_info(comp_ops, forward_ops, backward_ops, param_nums, layer_ben
         comp_ops.append(backward_op)
 
         idx += 1
+    total_layer_num = idx
 
     #layer_len = get_layer_len(comp_ops)
     #for comp_op in comp_ops:
@@ -219,7 +222,7 @@ def read_profile_info(comp_ops, forward_ops, backward_ops, param_nums, layer_ben
     for line in rdr:
         alpha = float(line[0])
         beta = float(line[1])
-    return alpha, beta, total_comp_times, total_backward_times, total_forward_times
+    return alpha, beta, total_comp_times, total_backward_times, total_forward_times, total_param_num, total_layer_num
 
 def schedule(adaptive_sdp, max_buffered_param_num, layer_bench_file_name='layer_bench.csv'):
     #schedule
@@ -236,7 +239,7 @@ def schedule(adaptive_sdp, max_buffered_param_num, layer_bench_file_name='layer_
     forward_ops = [] 
     backward_ops = [] 
     comp_ops = []
-    alpha, beta, total_comp_times, total_backward_times, total_forward_times = read_profile_info(comp_ops, forward_ops, backward_ops, param_nums, layer_bench_file_name)
+    alpha, beta, total_comp_times, total_backward_times, total_forward_times, _, _ = read_profile_info(comp_ops, forward_ops, backward_ops, param_nums, layer_bench_file_name)
 
 
     #print(comp_times)
