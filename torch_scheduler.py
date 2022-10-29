@@ -30,6 +30,7 @@ class ShardScheduler(torch.optim.Optimizer):
     def __init__(self, model, named_parameters, size, rank, opt, 
                  partition_threshold, done_counts, partition_counts, 
                  health_check_lock,
+                 health_check_thread_ready,
                  locks,
                  conditions, 
                  profile_layer,
@@ -56,6 +57,7 @@ class ShardScheduler(torch.optim.Optimizer):
         #handle = BYTESCHEDULER_LIB.bytescheduler_create_event(0)
         #super(self.__class__, self).__init__(model.parameters())
         self.health_check_lock = health_check_lock
+        self.health_check_thread_ready = health_check_thread_ready
         self._model = model
         self._size= size
         self._rank = rank
@@ -286,8 +288,12 @@ class ShardScheduler(torch.optim.Optimizer):
 
 
         try :
+            #waiting until health check thread is ready
+            while is not self.health_check_thread_ready.locked():
+                time.sleep(0.5)
+                
             #bucket size to parameter_num
-            time.sleep(10) 
+            
             param_num = (self._size/(self._size+1)) * self.bucket_size * 1024 * 1024 / 4             
             self.bucket = Bucket(param_num, self._size) #parameter_num          
             with torch.cuda.stream(self.comm_stream):

@@ -39,7 +39,7 @@ from test_cases import *
 from algo import schedule
 
 
-def run(health_check_main_proc, health_check_scheduler_thread, group, world_size, rank, trainer):
+def run(health_check_main_proc, health_check_scheduler_thread, health_check_thread_ready, group, world_size, rank, trainer):
 	thread_name = threading.current_thread().name
 
 	#for i in range(world_size):
@@ -55,6 +55,7 @@ def run(health_check_main_proc, health_check_scheduler_thread, group, world_size
 	handle = dist.broadcast(tensor_one, group=groups[f"{rank}:{(rank-1)%world_size}"], src=(rank-1)%world_size, async_op=True)
 	#handle.wait()
 	while not handle.is_completed() :
+		health_check_thread_ready.acquire()
 		print(f"wait src from {(rank-1)%world_size}")
 		if health_check_main_proc.locked() or health_check_scheduler_thread.locked():
 			handle_me = dist.broadcast(tensor_one, group=groups[f"{(rank-1)%world_size}:{rank}"], src=rank, async_op=True)
@@ -67,8 +68,8 @@ def run(health_check_main_proc, health_check_scheduler_thread, group, world_size
 	#health_check_main_proc.acquire()
 	#print("lock")
 	#health_check_scheduler_thread.acquire()
-	trainer.train_continue = False
-	trainer.optimizer.train_continue = False
+	#trainer.train_continue = False
+	#trainer.optimizer.train_continue = False
 	#trainer.release_all_lock()
 	print("before exit")
 	os._exit(1)
@@ -102,7 +103,7 @@ def module_check(module):
 
 
 class Trainer:
-	def __init__(self, world_size, rank,  bucket_size, count, adaptive_shard_ratio,  health_check_scheduler_thread, health_check_main_proc):
+	def __init__(self, world_size, rank,  bucket_size, count, adaptive_shard_ratio,  health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready):
 		self.health_check_scheduler_thread = health_check_scheduler_thread
 		self.health_check_main_proc = health_check_main_proc
 		self.train_continue = True 
@@ -131,10 +132,15 @@ class Trainer:
 		#    ng = dist.new_group(world_list, backend='gloo')
 		#    self.process_groups.append(ng) 
 
+		#before loading model, waiting for health check thread is ready.
+		while is not health_check_thread_ready.locked() :
+			time.sleep(0.5)
+
 		self.batch_size = 16
 		self.image_size = 42
 		self.classification_num = 1000
 		#self.model = models.resnet101()
+
 		print(f"before init model  {torch.cuda.memory_allocated() / 1024 /1024}") 
 		self.model = ResNet(Bottleneck, [3, 4, 6, 3]) #it means "resnet18 model"
 		self.model.cuda()
@@ -210,6 +216,7 @@ class Trainer:
 
 								locks=self._locks,
 								health_check_main_proc=self.health_check_main_proc, 
+								health_check_thread_ready=health_check_thread_ready,
 
 								conditions=self._conditions, 
 
@@ -400,11 +407,11 @@ class Trainer:
 			if(not self.train_continue):
 				break
 			count += 1
-			if(count == 10):
+			if(count == 5):
 				break
 		#torch.cuda.synchronize()
 		print(time.time() -start)
-		print("1111")
+		#print("1111")
 		os._exit(0)
 		#if(self.health_check_scheduler_thread.locked()):
 		#	raise RuntimeError("Thread Runtime Error!")
@@ -496,12 +503,13 @@ if __name__ == '__main__':
 	#print(torch.cuda.memory_stats())	
 	health_check_main_proc = threading.Lock()
 	health_check_scheduler_thread = threading.Lock()
+	health_check_thread_ready = threading.Lock()
 	try :
 		#run(world_size, rank)
 		#comm_stream = torch.cuda.Stream()
 
 		#group = dist.new_group(timeout=datetime.timedelta(seconds=5),)
-		trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc) 
+		trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready) 
 
 		def custom_hook(args):
 			# report the failure
@@ -530,7 +538,7 @@ if __name__ == '__main__':
 					group = dist.new_group([i,j], backend='gloo')
 					groups[f'{i}:{j}'] = group
 		#run(comm_stream, group, world_size, rank)
-		thread = threading.Thread(target=run, args=(health_check_main_proc, health_check_scheduler_thread, groups, world_size, rank, trainer))
+		thread = threading.Thread(target=run, args=(health_check_main_proc, health_check_scheduler_thread, health_check_thread_ready, groups, world_size, rank, trainer))
 		thread.daemon = True
 		thread.start()	
 		print("1")	
