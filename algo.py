@@ -3,7 +3,6 @@ import functools
 import os
 import math
 
-MAX_PARAM_NUM = 0.5 * 1024 * 1024 / 4
 
 backward_ts = 0
 comm_ts = 0
@@ -132,7 +131,7 @@ def schedule_ops(target_comm, target_comp, comp_ops, alpha, beta, max_buffered_p
 
     time = partition_num * alpha + beta * target_comm.overlappable_param_num * 4 * ar_factor
     param_num = target_comm.overlappable_param_num
-    unit = math.ceil(target_comm.orig_size * 0.0001)
+    unit = math.ceil(target_comm.orig_size * 0.001)
 
 
     over_param_num = 0
