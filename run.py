@@ -52,8 +52,8 @@ layer_bench_file_name = 'layer_bench.csv'
 alpha, beta, total_comp_times, total_backward_times, total_forward_times = read_profile_info(comp_ops, forward_ops, backward_ops, param_nums, layer_bench_file_name)
 
 bucket_list = make_bucket_list(alpha, beta, comp_ops)
-
-
+print(bucket_list)
+'''
 #training
 dist.init_process_group(backend='gloo', world_size=2, rank=args.rank)
 proc_exec = True
@@ -94,3 +94,4 @@ while proc_exec :
         #mem error occured !!! -> more sharding!!!
         sdp_ratio += 0.1
         dp_ratio -= 0.1
+'''

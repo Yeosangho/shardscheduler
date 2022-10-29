@@ -23,7 +23,8 @@ from fairscale.utils.parallel import (
     validate_process_group,
 )
 
-
+def get_param_num_by_buffer_size(world_size, buffer_size):
+    return (world_size/(world_size+1)) * buffer_size * 1024 * 1024 / 4         
 #logging.basicConfig(level=logging.DEBUG)
 class ShardScheduler(torch.optim.Optimizer):
     """An optimizer that wraps a hvd._DistributedOptimizer, intercepting allreduce operations and wrap as tasks."""
@@ -294,7 +295,7 @@ class ShardScheduler(torch.optim.Optimizer):
 
             #bucket size to parameter_num
             
-            param_num = (self._size/(self._size+1)) * self.bucket_size * 1024 * 1024 / 4             
+            param_num =  get_param_num_by_buffer_size(self._size, self.bucket_size)  
             self.bucket = Bucket(param_num, self._size) #parameter_num          
             with torch.cuda.stream(self.comm_stream):
                 #self.scheduler_ready.acquire()

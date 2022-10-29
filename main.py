@@ -25,7 +25,7 @@ from dp_custom import DataParallel_Custom as DP
 
 from auto_wrap_custom import enable_wrap, auto_wrap, wrap
 from torchvision.models.resnet import BasicBlock, Bottleneck, ResNet
-from torch_scheduler import ShardScheduler
+from torch_scheduler import ShardScheduler, get_param_num_by_buffer_size
 import traceback
 import threading
 import argparse
@@ -333,7 +333,8 @@ class Trainer:
 
 		self.profile_target_layer.append(params_list[20])
 		#make_schedules_adaptive_sdp_auto(params_list, self._schedule_comm_init, self._scheduled_comms, self._locks, adaptive_sdp_modules)
-		schedule(adaptive_sdp_modules)
+		max_param_num = get_param_num_by_buffer_size(self.world_size, self.bucket_size)
+		schedule(adaptive_sdp_modules, max_param_num)
 
 		make_schedule_from_json(params_list, self._schedule_comm_init, self._scheduled_comms, self._locks, adaptive_sdp_modules)
 		#make_schedule_wfbp_sdp(params_list, self._schedule_comm_init, self._scheduled_comms, self._locks)

@@ -89,13 +89,13 @@ def get_layer_len(comp_ops):
             list_len += 1
     return list_len
 
-def find_latency_penalty(partition_num, residual_param_num, overlappable_param_num, overlappable_time, alpha, beta, ar_factor):
+def find_latency_penalty(partition_num, residual_param_num, overlappable_param_num, overlappable_time, alpha, beta, ar_factor, max_buffered_param_num):
     if(residual_param_num == 0):
         latency_penalty = 1 
     else:
         latency_penalty = 0
-    overlappable_time -= alpha * latency_penalty + (MAX_PARAM_NUM - residual_param_num )* beta * 4 * ar_factor 
-    overlappable_param_num -= MAX_PARAM_NUM - residual_param_num
+    overlappable_time -= alpha * latency_penalty + (max_buffered_param_num - residual_param_num )* beta * 4 * ar_factor 
+    overlappable_param_num -= max_buffered_param_num - residual_param_num
 
     if(overlappable_time < 0 or overlappable_param_num < 0):
         return latency_penalty
@@ -103,8 +103,8 @@ def find_latency_penalty(partition_num, residual_param_num, overlappable_param_n
         latency_penalty += 1
 
     for i in range(partition_num):
-        if(overlappable_param_num > MAX_PARAM_NUM):
-            param_num = MAX_PARAM_NUM
+        if(overlappable_param_num > max_buffered_param_num):
+            param_num = max_buffered_param_num
         elif(overlappable_param_num > 0):
             param_num = overlappable_param_num
 
@@ -119,7 +119,7 @@ def find_latency_penalty(partition_num, residual_param_num, overlappable_param_n
 
 
 
-def schedule_ops(target_comm, target_comp, comp_ops, alpha, beta):
+def schedule_ops(target_comm, target_comp, comp_ops, alpha, beta, max_buffered_param_num):
     comm_type = target_comm.type 
     ar_factor = 1
     if(target_comm.type == 'ar'):
@@ -150,7 +150,8 @@ def schedule_ops(target_comm, target_comp, comp_ops, alpha, beta):
                                                 target_comp.overlappable_time,
                                                 alpha,
                                                 beta,
-                                                ar_factor
+                                                ar_factor,
+                                                max_buffered_param_num,
                                                 )
         if(target_comp.overlappable_time > latency_penalty * alpha):
             overlapped_param_num = (target_comp.overlappable_time - latency_penalty*alpha) / (beta*4 * ar_factor)
@@ -220,7 +221,7 @@ def read_profile_info(comp_ops, forward_ops, backward_ops, param_nums, layer_ben
         beta = float(line[1])
     return alpha, beta, total_comp_times, total_backward_times, total_forward_times
 
-def schedule(adaptive_sdp, layer_bench_file_name='layer_bench.csv'):
+def schedule(adaptive_sdp, max_buffered_param_num, layer_bench_file_name='layer_bench.csv'):
     #schedule
 
 
@@ -411,7 +412,7 @@ def schedule(adaptive_sdp, layer_bench_file_name='layer_bench.csv'):
             #print(f"target_comm {target_comm}")
             #print(f"target_comp {target_comp}")
             #print(comm.type)
-            schedule_ops(target_comm, target_comp, comp_ops, alpha, beta)
+            schedule_ops(target_comm, target_comp, comp_ops, alpha, beta, max_buffered_param_num)
 
             if(target_comm.overlappable_param_num == 0):
                 for comp in comp_ops:
