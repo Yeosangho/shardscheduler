@@ -494,7 +494,7 @@ if __name__ == '__main__':
 
 	exp_tag = ''
 	if(args.exp_tag is None):
-		now = datetime.now()
+		now = datetime.datetime.now()
 		dt_string = now.strftime("%d-%m-%Y_%H:%M:%S")
 		exp_tag = dt_string
 	else:

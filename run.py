@@ -64,7 +64,7 @@ fsdp_ratio = 1.0
 dp_ratio = 0.0
 bucket_size = bucket_list[0]
 bucket_idx = 0 
-now = datetime.now()
+now = datetime.datetime.now()
 dt_string = now.strftime("%d-%m-%Y_%H:%M:%S")
 while True :
     try:
