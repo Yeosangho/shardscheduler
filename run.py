@@ -101,6 +101,7 @@ bucket_idx = 0
 now = datetime.datetime.now()
 dt_string = now.strftime("%d-%m-%Y_%H:%M:%S")
 proc = None
+out = None
 while True :
     try:
         print(f"start proc {target_mem}")
@@ -115,6 +116,7 @@ while True :
         	'--exp_tag', dt_string
         	], stdout=subprocess.PIPE)   
         print(f'end proc')
+        out = proc.communicate()
         flag_tensor = torch.ones((1))
 
         dist.all_reduce(flag_tensor)
@@ -123,7 +125,7 @@ while True :
 
          
     except subprocess.CalledProcessError as e:
-        out = proc.communicate()
+        
         flag_tensor = torch.zeros((1))
 
         dist.all_reduce(flag_tensor)
