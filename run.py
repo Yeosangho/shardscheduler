@@ -49,7 +49,7 @@ def make_bucket_list(alpha, beta, comp_ops, total_param_num):
 
 def make_static_bucket_list(step=1000000):
     bucket_size_list = []
-    for i in range(1, 51):
+    for i in range(36, 51):
         bucket_size_list.append(i*step)
     return bucket_size_list
 
@@ -93,8 +93,8 @@ dist.init_process_group(backend='gloo', world_size=world_size, rank=args.rank)
 proc_exec = True
 target_mem = 0.4
 flag_tensor = torch.ones((1))
-sdp_ratio = 1.0
-fsdp_ratio = 0.0
+sdp_ratio = 0.45
+fsdp_ratio = 0.55
 dp_ratio = 0.0
 bucket_size = bucket_list[0] / (1024*1024)
 bucket_idx = 0 
