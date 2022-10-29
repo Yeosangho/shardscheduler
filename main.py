@@ -594,9 +594,9 @@ if __name__ == '__main__':
 	except RuntimeError as error :
 		print("line 550 in main.py")
 		print(traceback.format_exc())
-    	with open(f'log_{exp_tag}.txt', 'a') as f:
-        	f.write(str(e))
-        	f.write(traceback.format_exc())
+		with open(f'log_{exp_tag}.txt', 'a') as f:
+			f.write(str(e))
+			f.write(traceback.format_exc())
 		health_check_main_proc.acquire()
 		trial_info["time"] = -1
 		write_trial(trial_info)
