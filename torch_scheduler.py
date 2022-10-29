@@ -353,6 +353,7 @@ class ShardScheduler(torch.optim.Optimizer):
                             org_size = p._orig_size
                             shard_size = p_data.numel()
                             start_idx = int(shard_size * partiable_param.start_ratio)
+                            print(p._orig_size)
                             print(partiable_param.end_ratio)
                             end_idx = int(shard_size * partiable_param.end_ratio)    
 
