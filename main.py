@@ -64,8 +64,9 @@ def run(health_check_main_proc, health_check_scheduler_thread, group, world_size
 			break
 		time.sleep(0.5)	
 	print("!!!!!!!!!!! run with exception")
-	health_check_main_proc.acquire()
-	health_check_scheduler_thread.acquire()
+	#health_check_main_proc.acquire()
+	#print("lock")
+	#health_check_scheduler_thread.acquire()
 	trainer.train_continue = False
 	trainer.optimizer.train_continue = False
 	#trainer.release_all_lock()
