@@ -569,6 +569,7 @@ if __name__ == '__main__':
 		print("line 550 in main.py")
 		print(traceback.format_exc())
 		health_check_main_proc.acquire()
+		os._exit(1)
 		#print(error)
 		#with open('test.txt', encoding="utf-8") as f:
 		#	f.write(error)
