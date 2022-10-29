@@ -1,0 +1,8 @@
+CUDA out of memory. Tried to allocate 20.00 MiB (GPU 0; 7.93 GiB total capacity; 315.49 MiB already allocated; 6.84 GiB free; 409.60 MiB allowed; 390.00 MiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONFTraceback (most recent call last):
+  File "/home/soboru963/shardscheduler/torch_scheduler.py", line 312, in _poll_FSDP
+    self.run_schedule(self.schedules, init=False)
+  File "/home/soboru963/shardscheduler/torch_scheduler.py", line 517, in run_schedule
+    param._full_param_padded.data.storage().resize_( param.grad.data[:param_wrap.shard_size].size()[0])
+  File "/home/soboru963/anaconda3/envs/pytorch19/lib/python3.8/site-packages/torch/storage.py", line 516, in resize_
+    self._storage.resize_(size * self.element_size())
+RuntimeError: CUDA out of memory. Tried to allocate 20.00 MiB (GPU 0; 7.93 GiB total capacity; 315.49 MiB already allocated; 6.84 GiB free; 409.60 MiB allowed; 390.00 MiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF

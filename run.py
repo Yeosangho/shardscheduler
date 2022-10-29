@@ -123,16 +123,20 @@ while True :
 
          
     except subprocess.CalledProcessError as e:
-        print(traceback.format_exc())
         flag_tensor = torch.zeros((1))
 
         dist.all_reduce(flag_tensor)
         print(f"process result {flag_tensor}")      
-        if(flag_tesnor.item() != 0):
-            with open(f'log_{exp_tag}.txt', 'a') as f:
+        if(flag_tensor.item() != 0):
+            with open(f'log_handler_{exp_tag}.txt', 'a') as f:
                 f.write(str(error))
                 f.write(str(e.output))
                 f.write(traceback.format_exc())
+        else:
+            with open(f'log_handler2_{exp_tag}.txt', 'a') as f:
+                f.write(str(error))
+                f.write(str(e.output))
+                f.write(traceback.format_exc())            
     finally:
         if(flag_tensor.item() == 0):
             fsdp_ratio += 0.05
