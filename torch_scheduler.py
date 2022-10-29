@@ -59,6 +59,7 @@ class ShardScheduler(torch.optim.Optimizer):
         self._model = model
         self._size= size
         self._rank = rank
+        self.bucket_size = bucket_size
         self._opt = opt
         self._logger = logging.getLogger("ByteScheduler")
         self._logger.debug("hvd size {}, rank {}".format(size, rank))
@@ -129,7 +130,7 @@ class ShardScheduler(torch.optim.Optimizer):
             priority += 1
         #bucket size to parameter_num
         param_num = (size/(size+1)) * self.bucket_size * 1024 * 1024 / 4 
-        
+
         self.bucket = Bucket(param_num, size) #parameter_num
         self.profile_layer = profile_layer
         # Poll whether the tensor is ready for allreduce or whether the allreduce is finished.
