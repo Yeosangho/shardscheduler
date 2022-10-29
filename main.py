@@ -108,7 +108,7 @@ def module_check(module):
 
 
 class Trainer:
-	def __init__(self, world_size, rank,  bucket_size, count, adaptive_shard_ratio,  health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info):
+	def __init__(self, world_size, rank,  bucket_size, count, adaptive_shard_ratio,  health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread):
 		self.health_check_scheduler_thread = health_check_scheduler_thread
 		self.health_check_main_proc = health_check_main_proc
 		self.health_check_thread_ready = health_check_thread_ready
@@ -353,6 +353,7 @@ class Trainer:
 										self.health_check_scheduler_thread,
 										self.health_check_thread_ready,
 										self.trial_info,
+										thread,
 										self._locks,
 
 										self._conditions,
@@ -551,7 +552,7 @@ if __name__ == '__main__':
 		thread.daemon = True
 		thread.start()	
 
-		trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info) 
+		trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread) 
 
 		def custom_hook(args):
 			# report the failure

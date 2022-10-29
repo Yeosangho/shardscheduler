@@ -33,6 +33,7 @@ class ShardScheduler(torch.optim.Optimizer):
                  health_check_lock,
                  health_check_thread_ready,
                  trial_info,
+                 health_check_thread,
                  locks,
                  conditions, 
                  profile_layer,
@@ -59,6 +60,7 @@ class ShardScheduler(torch.optim.Optimizer):
         #handle = BYTESCHEDULER_LIB.bytescheduler_create_event(0)
         #super(self.__class__, self).__init__(model.parameters())
         self.health_check_lock = health_check_lock
+        self.health_check_thread = health_check_thread
         self.health_check_thread_ready = health_check_thread_ready
         self.exp_tag = trial_info["exp_tag"]
         self._model = model
@@ -318,6 +320,7 @@ class ShardScheduler(torch.optim.Optimizer):
                 f.write(traceback.format_exc())            
             #dist.destroy_process_group()
             self.health_check_lock.acquire()
+            self.health_check_thread.join()
 
     def run_schedule(self, schedule, init=False):
         for task in schedule:   
@@ -434,7 +437,7 @@ class ShardScheduler(torch.optim.Optimizer):
                         self.bucket.flush()
 
                 elif(comm.commType== "RS" and init == False): #after backward
-                    
+                    self.fusion_buffer = torch.zeros(500*1024*1024).cuda()
                     remains = 0
                     stopped_idx = 0
                     comm_continue = True
