@@ -339,7 +339,7 @@ class Trainer:
 										self._conditions,
 
 										self.profile_target_layer, 
-										self.bucket_size
+										self.bucket_size,
 										10**6, self.comm_stream, self._schedule_comm_init, self._scheduled_comms)
 		print(f"after init optimizer  {torch.cuda.memory_allocated() / 1024 /1024}") 
 		
