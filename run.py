@@ -117,7 +117,8 @@ while True :
         	], stdout=subprocess.PIPE)   
         print(f'waiting proc')
         out = proc.communicate()
-        print(f"returncode {proc.returncode}")
+        if(int(proc.returncode) == 1 ):
+            raise Exception()
         flag_tensor = torch.ones((1))
 
         dist.all_reduce(flag_tensor)
@@ -125,7 +126,7 @@ while True :
         print(f"process result {flag_tensor}")
 
          
-    except subprocess.CalledProcessError as e:
+    except:
         
         flag_tensor = torch.zeros((1))
 
