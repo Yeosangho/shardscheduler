@@ -730,7 +730,7 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 						else:
 							start_ratio = 0.0
 						current_ratio = comm['param'] / comm['org_size']
-						end_ratio = round(start_ratio + current_ratio, 4)
+						end_ratio = round(start_ratio + current_ratio, 3)
 						if(abs(end_ratio - 1) <= 0.001 and abs(end_ratio -1) > 0.0):
 							end_ratio = 1.0 
 						if( start_ratio < end_ratio):
@@ -775,7 +775,7 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 						else:
 							start_ratio = 0.0
 						current_ratio = comm['param'] / comm['org_size']
-						end_ratio = round(start_ratio + current_ratio, 4)
+						end_ratio = round(start_ratio + current_ratio, 3)
 						if((abs(end_ratio - 1) <= 0.001 or end_ratio > 1.0) and abs(end_ratio -1) > 0.0):
 							end_ratio = 1.0 
 						if( start_ratio < end_ratio):
@@ -838,7 +838,7 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 						else:
 							start_ratio = 0.0
 						current_ratio = comm['param'] / comm['org_size']
-						end_ratio = round(start_ratio + current_ratio, 4)
+						end_ratio = round(start_ratio + current_ratio, 3)
 						if((abs(end_ratio - 1) <= 0.001 or end_ratio > 1.0) and abs(end_ratio -1) > 0.0):
 							end_ratio = 1.0 
 						if( start_ratio < end_ratio):
