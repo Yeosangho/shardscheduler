@@ -100,7 +100,7 @@ def module_check(module):
 
 
 class Trainer:
-	def __init__(self, world_size, rank,  bucket_size count, adaptive_shard_ratio,  health_check_scheduler_thread, health_check_main_proc):
+	def __init__(self, world_size, rank,  bucket_size, count, adaptive_shard_ratio,  health_check_scheduler_thread, health_check_main_proc):
 		self.health_check_scheduler_thread = health_check_scheduler_thread
 		self.health_check_main_proc = health_check_main_proc
 		self.train_continue = True 
