@@ -37,9 +37,10 @@ import gc
 import csv
 from test_cases import *
 from algo import schedule
+from logger import write_trial
 
 
-def run(health_check_main_proc, health_check_scheduler_thread, health_check_thread_ready, group, world_size, rank):
+def run(health_check_main_proc, health_check_scheduler_thread, health_check_thread_ready, group, world_size, rank, trial_info):
 	thread_name = threading.current_thread().name
 
 	#for i in range(world_size):
@@ -74,6 +75,8 @@ def run(health_check_main_proc, health_check_scheduler_thread, health_check_thre
 	#trainer.optimizer.train_continue = False
 	#trainer.release_all_lock()
 	print("before exit")
+	trial_info["time"] = -1
+	write_trial(trial_info)	
 	os._exit(1)
 
 	print("1")
@@ -105,11 +108,12 @@ def module_check(module):
 
 
 class Trainer:
-	def __init__(self, world_size, rank,  bucket_size, count, adaptive_shard_ratio,  health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready):
+	def __init__(self, world_size, rank,  bucket_size, count, adaptive_shard_ratio,  health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info):
 		self.health_check_scheduler_thread = health_check_scheduler_thread
 		self.health_check_main_proc = health_check_main_proc
 		self.health_check_thread_ready = health_check_thread_ready
 		self.train_continue = True 
+		self.trial_info = trial_info
 		#torch.backends.cudnn.benchmark = True
 		#world_size = int(os.environ["WORLD_SIZE"])
 		self.world_size = world_size
@@ -414,7 +418,9 @@ class Trainer:
 			if(count == 5):
 				break
 		#torch.cuda.synchronize()
-		print(time.time() -start)
+		execution_time = time.time() -start
+		trial_info["time"] = time.time() - start
+		write_trial(trial_info)			
 		#print("1111")
 		os._exit(0)
 		#if(self.health_check_scheduler_thread.locked()):
@@ -474,6 +480,7 @@ if __name__ == '__main__':
 	parser.add_argument('--fsdp_ratio', default=0, type=float)
 	parser.add_argument('--dp_ratio', default=0, type=float)
 	parser.add_argument('--bucket_size', default=20, type=float)
+	parser.add_argument('--exp_tag', type=str)
 
 	args = parser.parse_args()
 		#try :
@@ -484,6 +491,14 @@ if __name__ == '__main__':
 	adaptive_shard_ratio['dp'] = args.dp_ratio
 	adaptive_shard_ratio['sdp'] = args.sdp_ratio
 	adaptive_shard_ratio['fsdp'] = args.fsdp_ratio
+
+	exp_tag = ''
+	if(args.exp_tag is None):
+		now = datetime.now()
+		dt_string = now.strftime("%d-%m-%Y_%H:%M:%S")
+		exp_tag = dt_string
+	else:
+		exp_tag = args.exp_tag
 	#shard = args.shard
 	#mixed_precision = args.mixed_precision 	
 	#world_size = int(os.environ["WORLD_SIZE"])
@@ -509,6 +524,14 @@ if __name__ == '__main__':
 	health_check_scheduler_thread = threading.Lock()
 	health_check_thread_ready = threading.Lock()
 	health_check_thread_ready.acquire()
+
+	trial_info = {}
+	trial_info["exp_tag"] = exp_tag
+	trial_info["bucket_size"] = bucket_size
+	trial_info['sdp'] = adaptive_shard_ratio['sdp']
+	trial_info['dp'] = adaptive_shard_ratio['dp']
+	trial_info["fsdp"] = adaptive_shard_ratio['fsdp']
+
 	try :
 		#run(world_size, rank)
 		#comm_stream = torch.cuda.Stream()
@@ -522,11 +545,11 @@ if __name__ == '__main__':
 					group = dist.new_group([i,j], backend='gloo')
 					groups[f'{i}:{j}'] = group
 
-		thread = threading.Thread(target=run, args=(health_check_main_proc, health_check_scheduler_thread, health_check_thread_ready, groups, world_size, rank))
+		thread = threading.Thread(target=run, args=(health_check_main_proc, health_check_scheduler_thread, health_check_thread_ready, groups, world_size, rank, trial_info))
 		thread.daemon = True
 		thread.start()	
 
-		trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready) 
+		trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info) 
 
 		def custom_hook(args):
 			# report the failure
@@ -570,6 +593,8 @@ if __name__ == '__main__':
 		print("line 550 in main.py")
 		print(traceback.format_exc())
 		health_check_main_proc.acquire()
+		trial_info["time"] = -1
+		write_trial(trial_info)
 		os._exit(1)
 		#print(error)
 		#with open('test.txt', encoding="utf-8") as f:

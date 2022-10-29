@@ -11,7 +11,7 @@ from algo import read_profile_info
 
 def make_bucket_list(alpha, beta, comp_ops):
 	bucket_size_list = []
-	min_bucket_size = 10000
+	min_bucket_size = 50000
 	for comp in comp_ops : 
 		if(comp.overlappable_time - alpha > 0):
 			bucket_size = (comp.overlappable_time - alpha)/beta
@@ -52,7 +52,7 @@ layer_bench_file_name = 'layer_bench.csv'
 alpha, beta, total_comp_times, total_backward_times, total_forward_times = read_profile_info(comp_ops, forward_ops, backward_ops, param_nums, layer_bench_file_name)
 
 bucket_list = make_bucket_list(alpha, beta, comp_ops)
-print(bucket_list)
+#print(bucket_list)
 '''
 #training
 dist.init_process_group(backend='gloo', world_size=2, rank=args.rank)
@@ -64,7 +64,9 @@ fsdp_ratio = 1.0
 dp_ratio = 0.0
 bucket_size = bucket_list[0]
 bucket_idx = 0 
-while proc_exec :
+now = datetime.now()
+dt_string = now.strftime("%d-%m-%Y_%H:%M:%S")
+while True :
     try:
         print(f"start proc {target_mem}")
         print(flag_tensor)
@@ -74,7 +76,9 @@ while proc_exec :
         	'--fsdp_ratio', str(fsdp_ratio),
         	'--dp_ratio', str(dp_ratio),
         	'--bucket_size', str(bucket_size),
-        	'--target_memory', str(target_mem)])      
+        	'--target_memory', str(target_mem),
+        	'--exp_tag', dt_string
+        	])      
         print(f'end proc')
         flag_tensor = torch.ones((1))
 
@@ -83,8 +87,10 @@ while proc_exec :
         print(f"process result {flag_tensor}")
         #mem error is not occured !! -> no more sharding!! + it can increase bucket size more!!
         bucket_idx += 1
-        bucket_size = bucket_list[bucket_idx]
-
+        if(bucket_idx > len(bucket_list)):
+        	os._exit(0)
+        bucket_size = bucket_list[bucket_idx] / (1024 * 1024)
+		
     except subprocess.CalledProcessError as e:
         #print(e.output)
         flag_tensor = torch.zeros((1))
@@ -94,4 +100,6 @@ while proc_exec :
         #mem error occured !!! -> more sharding!!!
         sdp_ratio += 0.1
         dp_ratio -= 0.1
+        if(sdp_ratio > 1.0):
+        	os._exit(0)
 '''
