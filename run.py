@@ -106,7 +106,7 @@ while True :
         dist.all_reduce(flag_tensor)
         print(f"process result {flag_tensor}")      
         #mem error occured !!! -> more sharding!!!
-        sdp_ratio += 0.1
-        dp_ratio -= 0.1
+        sdp_ratio += 0.01
+        dp_ratio -= 0.01
         if(sdp_ratio > 1.0):
         	os._exit(0)

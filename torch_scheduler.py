@@ -290,8 +290,11 @@ class ShardScheduler(torch.optim.Optimizer):
 
         try :
             #waiting until health check thread is ready
+
             while self.health_check_thread_ready.locked():
+                print("!!!!schedule!!!")
                 time.sleep(0.5)
+            #os._exit(0)
 
             #bucket size to parameter_num
             

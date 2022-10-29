@@ -141,6 +141,7 @@ class Trainer:
 
 		#before loading model, waiting for health check thread is ready.
 		while health_check_thread_ready.locked() :
+			print("main")
 			time.sleep(0.5)
 
 		self.batch_size = 16
