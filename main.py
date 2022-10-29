@@ -69,6 +69,7 @@ def run(health_check_main_proc, health_check_scheduler_thread, group, world_size
 	trainer.train_continue = False
 	trainer.optimizer.train_continue = False
 	#trainer.release_all_lock()
+	print("before exit")
 	os._exit(1)
 
 	print("1")
