@@ -22,6 +22,11 @@ def make_bucket_list(alpha, beta, comp_ops):
 	return sorted(bucket_size_list)
 	
 
+def make_static_bucket_list(step=100000):
+    bucket_size_list = []
+    for i in range(1, 51):
+        bucket_size_list.append(i*step)
+    return bucket_size_list
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--rank', dest='rank', default=0, type=int)
@@ -52,7 +57,8 @@ backward_ops = []
 layer_bench_file_name = 'layer_bench.csv'
 alpha, beta, total_comp_times, total_backward_times, total_forward_times = read_profile_info(comp_ops, forward_ops, backward_ops, param_nums, layer_bench_file_name)
 
-bucket_list = make_bucket_list(alpha, beta, comp_ops)
+#bucket_list = make_bucket_list(alpha, beta, comp_ops)
+bucket_list = make_static_bucket_list()
 #print(bucket_list)
 
 #training
@@ -67,6 +73,7 @@ bucket_size = bucket_list[0] / (1024*1024)
 bucket_idx = 0 
 now = datetime.datetime.now()
 dt_string = now.strftime("%d-%m-%Y_%H:%M:%S")
+
 while True :
     try:
         print(f"start proc {target_mem}")
@@ -88,7 +95,7 @@ while True :
         print(f"process result {flag_tensor}")
         #mem error is not occured !! -> no more sharding!! + it can increase bucket size more!!
         bucket_idx += 1
-        if(bucket_idx > len(bucket_list)):
+        if(bucket_idx >= len(bucket_list)):
         	os._exit(0)
         bucket_size = bucket_list[bucket_idx] / (1024 * 1024)
 		
