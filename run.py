@@ -91,11 +91,11 @@ bucket_list = make_static_bucket_list()
 world_size = 2
 dist.init_process_group(backend='gloo', world_size=world_size, rank=args.rank)
 proc_exec = True
-target_mem = 0.4
+target_mem = 0.485
 flag_tensor = torch.ones((1))
-sdp_ratio = 1.0
+sdp_ratio = 0.0
 fsdp_ratio = 0.0
-dp_ratio = 0.0
+dp_ratio = 1.0
 bucket_size = bucket_list[0] / (1024*1024)
 bucket_idx = 0 
 now = datetime.datetime.now()
@@ -141,12 +141,12 @@ while True :
        
     finally:
         if(flag_tensor.item() == 0):
-            fsdp_ratio += 0.05
-            sdp_ratio -= 0.05
+            sdp_ratio += 0.05
+            dp_ratio -= 0.05
 
-            fsdp_ratio = round(fsdp_ratio, 2)
             sdp_ratio = round(sdp_ratio, 2)
-            if(fsdp_ratio > 1.0):
+            dp_ratio = round(dp_ratio, 2)
+            if(sdp_ratio > 1.0):
                 os._exit(0)
         elif(flag_tensor.item() == world_size):
             bucket_idx += 1
