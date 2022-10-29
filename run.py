@@ -128,11 +128,15 @@ while True :
 
         dist.all_reduce(flag_tensor)
         print(f"process result {flag_tensor}")      
-
+        if(flag_tesnor.item() != 0):
+            print(e.output)
     finally:
         if(flag_tensor.item() == 0):
             fsdp_ratio += 0.05
             sdp_ratio -= 0.05
+
+            fsdp_ratio = round(fsdp_ratio, 2)
+            sdp_ratio = round(sdp_ratio, 2)
             if(fsdp_ratio > 1.0):
                 os._exit(0)
         elif(flag_tensor.item() == world_size):
