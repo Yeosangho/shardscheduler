@@ -64,7 +64,8 @@ def run(health_check_main_proc, health_check_scheduler_thread, health_check_thre
 				time.sleep(0.5)
 			break
 		time.sleep(0.5)
-		#health_check_thread_ready.release()	
+		if health_check_thread_ready.locked():
+			health_check_thread_ready.release()	
 	print("!!!!!!!!!!! run with exception")
 	#health_check_main_proc.acquire()
 	#print("lock")
