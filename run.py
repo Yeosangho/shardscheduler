@@ -129,12 +129,12 @@ while True :
         print(f"process result {flag_tensor}")      
         if(flag_tensor.item() != 0):
             with open(f'log_handler_{dt_string}.txt', 'a') as f:
-                f.write(str(error))
+                f.write(str(e))
                 f.write(str(e.output))
                 f.write(traceback.format_exc())
         else:
             with open(f'log_handler2_{dt_string}.txt', 'a') as f:
-                f.write(str(error))
+                f.write(str(e))
                 f.write(str(e.output))
                 f.write(traceback.format_exc())            
     finally:
