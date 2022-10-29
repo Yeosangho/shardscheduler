@@ -39,7 +39,7 @@ from test_cases import *
 from algo import schedule
 
 
-def run(health_check_main_proc, health_check_scheduler_thread, health_check_thread_ready, group, world_size, rank, trainer):
+def run(health_check_main_proc, health_check_scheduler_thread, health_check_thread_ready, group, world_size, rank):
 	thread_name = threading.current_thread().name
 
 	#for i in range(world_size):
@@ -516,7 +516,7 @@ if __name__ == '__main__':
 				if(i != j):
 					group = dist.new_group([i,j], backend='gloo')
 					groups[f'{i}:{j}'] = group
-							
+
 		thread = threading.Thread(target=run, args=(health_check_main_proc, health_check_scheduler_thread, health_check_thread_ready, groups, world_size, rank, trainer))
 		thread.daemon = True
 		thread.start()	
