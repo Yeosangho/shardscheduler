@@ -3,6 +3,7 @@ import os, csv
 import math
 import argparse
 import datetime
+import traceback 
 
 import torch 
 import torch.nn as nn
@@ -119,26 +120,25 @@ while True :
         dist.all_reduce(flag_tensor)
         #process result
         print(f"process result {flag_tensor}")
-        #mem error is not occured !! -> no more sharding!! + it can increase bucket size more!!
-        bucket_idx += 1
-        if(bucket_idx >= len(bucket_list)):
-        	os._exit(0)
-        bucket_size = bucket_list[bucket_idx] / (1024 * 1024)
+
          
     except subprocess.CalledProcessError as e:
-        #print(e.output)
+        print(traceback.format_exc())
         flag_tensor = torch.zeros((1))
 
         dist.all_reduce(flag_tensor)
         print(f"process result {flag_tensor}")      
-        #mem error occured !!! -> more sharding!!!
+
+    finally:
         if(flag_tensor.item() == 0):
             fsdp_ratio += 0.05
             sdp_ratio -= 0.05
             if(fsdp_ratio > 1.0):
-            	os._exit(0)
-        else:
+                os._exit(0)
+        elif(flag_tensor.item() == world_size):
             bucket_idx += 1
             if(bucket_idx >= len(bucket_list)):
                 os._exit(0)
             bucket_size = bucket_list[bucket_idx] / (1024 * 1024)
+        else:
+            print("retry same case!")
