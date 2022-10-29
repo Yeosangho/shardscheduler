@@ -32,6 +32,7 @@ class ShardScheduler(torch.optim.Optimizer):
                  partition_threshold, done_counts, partition_counts, 
                  health_check_lock,
                  health_check_thread_ready,
+                 exp_tag,
                  locks,
                  conditions, 
                  profile_layer,
@@ -59,6 +60,7 @@ class ShardScheduler(torch.optim.Optimizer):
         #super(self.__class__, self).__init__(model.parameters())
         self.health_check_lock = health_check_lock
         self.health_check_thread_ready = health_check_thread_ready
+        self.exp_tag = trial_info["exp_tag"]
         self._model = model
         self._size= size
         self._rank = rank
@@ -311,6 +313,9 @@ class ShardScheduler(torch.optim.Optimizer):
         except RuntimeError as error :
             print("Runtime error in scheduler")
             print(traceback.format_exc())
+            with open(f'log_scheduler_{self.exp_tag}.txt', 'a') as f:
+                f.write(str(e))
+                f.write(traceback.format_exc())            
             #dist.destroy_process_group()
             self.health_check_lock.acquire()
 

@@ -352,6 +352,7 @@ class Trainer:
 		                                self.partition_threshold, self._done_counts, self._partition_counts,
 										self.health_check_scheduler_thread,
 										self.health_check_thread_ready,
+										self.trial_info
 										self._locks,
 
 										self._conditions,
@@ -593,6 +594,9 @@ if __name__ == '__main__':
 	except RuntimeError as error :
 		print("line 550 in main.py")
 		print(traceback.format_exc())
+    	with open(f'log_{exp_tag}.txt', 'a') as f:
+        	f.write(str(e))
+        	f.write(traceback.format_exc())
 		health_check_main_proc.acquire()
 		trial_info["time"] = -1
 		write_trial(trial_info)
