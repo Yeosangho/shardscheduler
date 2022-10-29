@@ -100,7 +100,7 @@ bucket_size = bucket_list[0] / (1024*1024)
 bucket_idx = 0 
 now = datetime.datetime.now()
 dt_string = now.strftime("%d-%m-%Y_%H:%M:%S")
-
+a = None
 while True :
     try:
         print(f"start proc {target_mem}")
@@ -153,3 +153,4 @@ while True :
             bucket_size = bucket_list[bucket_idx] / (1024 * 1024)
         else:
             print("retry same case!")
+        os.kill(a.pid)
