@@ -55,7 +55,7 @@ while proc_exec :
         	'--rank', str(args.rank), 
         	'--sdp_ratio',  str(sdp_ratio),
         	'--fsdp_ratio', str(fsdp_ratio),
-        	'--dp_ratio', str(adp_ratio),
+        	'--dp_ratio', str(dp_ratio),
         	'--bucket_size', str(bucket_size),
         	'--target_memory', str(target_mem)])      
         print(f'end proc')
