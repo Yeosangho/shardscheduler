@@ -38,27 +38,40 @@ os.environ['MASTER_PORT'] = '30001'
 
 
 #training
-#dist.init_process_group(backend='gloo', world_size=2, rank=args.rank)
-#proc_exec = True
-#target_mem = 7.5
-#flag_tensor = torch.ones((1))
-#
-#while proc_exec :
-#    try:
-#        print(f"start proc {target_mem}")
-#        print(flag_tensor)
-#        a = subprocess.check_output([args.python_path, 'main.py', '--rank', str(args.rank), '--target_memory', str(target_mem)])      
-#        print(f'end proc')
-#        flag_tensor = torch.ones((1))
-#
-#        dist.all_reduce(flag_tensor)
-#        #exit()
-#    except subprocess.CalledProcessError as e:
-#        #print(e.output)
-#        flag_tensor = torch.zeros((1))
-#
-#        dist.all_reduce(flag_tensor)        
-#        target_mem += 0.1
-#        for line in e.output.splitlines():
-#            print(line)
-#        proc_exec = True
+dist.init_process_group(backend='gloo', world_size=2, rank=args.rank)
+proc_exec = True
+target_mem = 0.6
+flag_tensor = torch.ones((1))
+sdp_ratio = 1.0
+fsdp_ratio = 0.0
+dp_ratio = 0.0
+bucket_size = 10
+
+while proc_exec :
+    try:
+        print(f"start proc {target_mem}")
+        print(flag_tensor)
+        a = subprocess.check_output([args.python_path, 'main.py', 
+        	'--rank', str(args.rank), 
+        	'--sdp_ratio',  str(sdp_ratio),
+        	'--fsdp_ratio', str(fsdp_ratio),
+        	'--dp_ratio', str(adp_ratio),
+        	'--bucket_size', str(bucket_size),
+        	'--target_memory', str(target_mem)])      
+        print(f'end proc')
+        flag_tensor = torch.ones((1))
+
+        dist.all_reduce(flag_tensor)
+        #process result
+        print(f"process result {flag_tensor}")
+        #exit()
+    except subprocess.CalledProcessError as e:
+        #print(e.output)
+        flag_tensor = torch.zeros((1))
+
+        dist.all_reduce(flag_tensor)
+        print(f"process result {flag_tensor}")      
+        #target_mem += 0.1
+        #for line in e.output.splitlines():
+        #    print(line)
+        proc_exec = True
