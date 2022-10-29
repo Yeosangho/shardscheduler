@@ -104,8 +104,6 @@ proc = None
 out = None
 while True :
     try:
-        print(f"start proc {target_mem}")
-        print(flag_tensor)
         proc = subprocess.Popen([args.python_path, 'main.py', 
         	'--rank', str(args.rank), 
         	'--sdp_ratio',  str(sdp_ratio),

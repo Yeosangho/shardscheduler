@@ -600,7 +600,7 @@ if __name__ == '__main__':
 		health_check_main_proc.acquire()
 		trial_info["time"] = -1
 		write_trial(trial_info)
-		os._exit(1)
+		#os._exit(1)
 		#print(error)
 		#with open('test.txt', encoding="utf-8") as f:
 		#	f.write(error)
