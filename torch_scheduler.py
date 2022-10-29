@@ -32,7 +32,7 @@ class ShardScheduler(torch.optim.Optimizer):
                  partition_threshold, done_counts, partition_counts, 
                  health_check_lock,
                  health_check_thread_ready,
-                 exp_tag,
+                 trial_info,
                  locks,
                  conditions, 
                  profile_layer,
