@@ -77,7 +77,7 @@ def run(health_check_main_proc, health_check_scheduler_thread, health_check_thre
 	print("before exit")
 	trial_info["time"] = -1
 	write_trial(trial_info)	
-	#os._exit(1)
+	os._exit(1)
 
 	print("1")
 	#trainer.optimizer.stop()	
