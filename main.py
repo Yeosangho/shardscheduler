@@ -216,7 +216,6 @@ class Trainer:
 
 								locks=self._locks,
 								health_check_main_proc=self.health_check_main_proc, 
-								health_check_thread_ready=health_check_thread_ready,
 
 								conditions=self._conditions, 
 
