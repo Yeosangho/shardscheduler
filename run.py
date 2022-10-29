@@ -117,6 +117,7 @@ while True :
         	], stdout=subprocess.PIPE)   
         print(f'waiting proc')
         out = proc.communicate()
+        print(f"returncode {out.returncode}")
         flag_tensor = torch.ones((1))
 
         dist.all_reduce(flag_tensor)
@@ -156,4 +157,8 @@ while True :
         else:
             print("retry same case!")
         print(proc.pid)
-        #os.kill(proc.pid, 9)
+        try:
+            os.kill(proc.pid, 9)
+            print("remain trial is removing!")
+        except:
+            print("trial already removed!")
