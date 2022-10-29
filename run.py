@@ -126,7 +126,7 @@ while True :
         print(f"process result {flag_tensor}")
 
          
-    except:
+    except Exception as e:
         
         flag_tensor = torch.zeros((1))
 
