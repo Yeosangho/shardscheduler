@@ -287,9 +287,9 @@ class ShardScheduler(torch.optim.Optimizer):
 
         try :
             #bucket size to parameter_num
+            time.sleep(3) 
             param_num = (self._size/(self._size+1)) * self.bucket_size * 1024 * 1024 / 4             
-            self.bucket = Bucket(param_num, size) #parameter_num
-            time.sleep(3)           
+            self.bucket = Bucket(param_num, size) #parameter_num          
             with torch.cuda.stream(self.comm_stream):
                 #self.scheduler_ready.acquire()
                 self.run_schedule(self.init_schedules , init=True)
