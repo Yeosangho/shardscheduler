@@ -129,7 +129,10 @@ while True :
         dist.all_reduce(flag_tensor)
         print(f"process result {flag_tensor}")      
         if(flag_tesnor.item() != 0):
-            print(e.output)
+            with open(f'log_{exp_tag}.txt', 'a') as f:
+                f.write(str(error))
+                f.write(str(e.output))
+                f.write(traceback.format_exc())
     finally:
         if(flag_tensor.item() == 0):
             fsdp_ratio += 0.05
