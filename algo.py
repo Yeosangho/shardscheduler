@@ -171,22 +171,14 @@ def schedule_ops(target_comm, target_comp, comp_ops, alpha, beta):
         target_comp.scheduled_params[comm_type].append(param_num)
 
         target_comm.set_scheduled_comp(target_comp, param_num, time)
-        target_comp.overlappable_time -= time     
-def schedule(adaptive_sdp, layer_bench_file_name='layer_bench.csv'):
-    #schedule
+        target_comp.overlappable_time -= time
 
+def read_profile_info(comp_ops, forward_ops, backward_ops, param_nums, layer_bench_file_name):
 
     total_comp_times = 0
     total_backward_times = 0
     total_forward_times = 0
-    comp_times = {}
-    forward_times = {}
-    backward_times = {}
-    all_comp_times = {}
-    param_nums = {}
-    forward_ops = [] 
-    backward_ops = [] 
-    comp_ops = []
+
     f = open(layer_bench_file_name,'r')
     rdr = csv.reader(f)
     idx = 0
@@ -226,6 +218,24 @@ def schedule(adaptive_sdp, layer_bench_file_name='layer_bench.csv'):
     for line in rdr:
         alpha = float(line[0])
         beta = float(line[1])
+    return alpha, beta, total_comp_times, total_backward_times, total_forward_times
+
+def schedule(adaptive_sdp, layer_bench_file_name='layer_bench.csv'):
+    #schedule
+
+
+    total_comp_times = 0
+    total_backward_times = 0
+    total_forward_times = 0
+    comp_times = {}
+    forward_times = {}
+    backward_times = {}
+    all_comp_times = {}
+    param_nums = {}
+    forward_ops = [] 
+    backward_ops = [] 
+    comp_ops = []
+    alpha, beta, total_comp_times, total_backward_times, total_forward_times = read_profile_info(comp_ops, forward_ops, backward_ops, param_nums, layer_bench_file_name)
 
 
     #print(comp_times)

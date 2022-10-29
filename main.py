@@ -371,7 +371,7 @@ class Trainer:
 		#data = self.datasets[self.data_index%len(self.datasets)]
 		count = 0
 		print("bench 3")
-		start = 0
+		start = time.time()
 		for batch_idx, (data, target) in enumerate(self.train_loader):
 			if(count == 5):
 				start = time.time()

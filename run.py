@@ -1,13 +1,25 @@
 import subprocess
 import os, csv
-
+import math
 import argparse
 
 import torch 
 import torch.nn as nn
 import torch.distributed as dist
 
+from algo import read_profile_info
 
+def make_bucket_list(alpha, beta, comp_ops):
+	bucket_size_list = []
+	min_bucket_size = 10000
+	for comp in comp_ops : 
+		if(comp.overlappable_time - alpha > 0):
+			bucket_size = (comp.overlappable_time - alpha)/beta
+			if(min_bucket_size < bucket_size ):
+				bucket_size_list.append(math.ceil(bucket_size))
+
+	return sorted(bucket_size_list)
+	
 
 
 parser = argparse.ArgumentParser()
@@ -31,10 +43,15 @@ os.environ['MASTER_PORT'] = '30001'
 #3.1 AG -> RS has same priority -> select AG if current layer ops is in forward ops, else if select RS  
 
 
+#set_bucket size list 
+comp_ops = []
+param_nums = {}
+forward_ops = []
+backward_ops = []
+layer_bench_file_name = 'layer_bench.csv'
+alpha, beta, total_comp_times, total_backward_times, total_forward_times = read_profile_info(comp_ops, forward_ops, backward_ops, param_nums, layer_bench_file_name)
 
-
-
-
+bucket_list = make_bucket_list(alpha, beta, comp_ops)
 
 
 #training
@@ -42,11 +59,11 @@ dist.init_process_group(backend='gloo', world_size=2, rank=args.rank)
 proc_exec = True
 target_mem = 0.6
 flag_tensor = torch.ones((1))
-sdp_ratio = 1.0
-fsdp_ratio = 0.0
+sdp_ratio = 0.0
+fsdp_ratio = 1.0
 dp_ratio = 0.0
-bucket_size = 10
-
+bucket_size = bucket_list[0]
+bucket_idx = 0 
 while proc_exec :
     try:
         print(f"start proc {target_mem}")
@@ -64,14 +81,16 @@ while proc_exec :
         dist.all_reduce(flag_tensor)
         #process result
         print(f"process result {flag_tensor}")
-        #exit()
+        #mem error is not occured !! -> no more sharding!! + it can increase bucket size more!!
+        bucket_idx += 1
+        bucket_size = bucket_list[bucket_idx]
+
     except subprocess.CalledProcessError as e:
         #print(e.output)
         flag_tensor = torch.zeros((1))
 
         dist.all_reduce(flag_tensor)
         print(f"process result {flag_tensor}")      
-        #target_mem += 0.1
-        #for line in e.output.splitlines():
-        #    print(line)
-        proc_exec = True
+        #mem error occured !!! -> more sharding!!!
+        sdp_ratio += 0.1
+        dp_ratio -= 0.1
