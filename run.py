@@ -12,7 +12,7 @@ from algo import read_profile_info
 
 def make_bucket_list(alpha, beta, comp_ops, total_param_num):
     bucket_size_list = []
-    min_bucket_size = 50000
+    min_bucket_size = 100000
     possible_overlappable_parameter_num = 0
     #case 1 : consider RS/AG cases
     for comp in comp_ops : 
@@ -87,7 +87,8 @@ bucket_list = make_static_bucket_list()
 
 
 #training
-dist.init_process_group(backend='gloo', world_size=2, rank=args.rank)
+world_size = 2
+dist.init_process_group(backend='gloo', world_size=world_size, rank=args.rank)
 proc_exec = True
 target_mem = 0.485
 flag_tensor = torch.ones((1))
@@ -119,11 +120,17 @@ while True :
         #process result
         print(f"process result {flag_tensor}")
         #mem error is not occured !! -> no more sharding!! + it can increase bucket size more!!
-        bucket_idx += 1
-        if(bucket_idx >= len(bucket_list)):
-        	os._exit(0)
-        bucket_size = bucket_list[bucket_idx] / (1024 * 1024)
-		
+        if(flag_tensor.item() == world_size):
+            bucket_idx += 1
+            if(bucket_idx >= len(bucket_list)):
+            	os._exit(0)
+            bucket_size = bucket_list[bucket_idx] / (1024 * 1024)
+        else:
+            #mem error occured !!! -> more sharding!!!
+            sdp_ratio += 0.05
+            dp_ratio -= 0.05
+            if(sdp_ratio > 1.0):
+                os._exit(0)            
     except subprocess.CalledProcessError as e:
         #print(e.output)
         flag_tensor = torch.zeros((1))
