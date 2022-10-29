@@ -128,8 +128,7 @@ class ShardScheduler(torch.optim.Optimizer):
         for p in model.parameters():
             self._priority_indexes[p] = priority
             priority += 1
-        #bucket size to parameter_num
-        param_num = (size/(size+1)) * self.bucket_size * 1024 * 1024 / 4 
+
 
         
         self.profile_layer = profile_layer
@@ -284,10 +283,13 @@ class ShardScheduler(torch.optim.Optimizer):
 
     def _poll_FSDP(self, ):
         print(self.comm_stream)
-        self.bucket = Bucket(param_num, size) #parameter_num
-        time.sleep(3)
+
 
         try :
+            #bucket size to parameter_num
+            param_num = (size/(size+1)) * self.bucket_size * 1024 * 1024 / 4             
+            self.bucket = Bucket(param_num, size) #parameter_num
+            time.sleep(3)           
             with torch.cuda.stream(self.comm_stream):
                 #self.scheduler_ready.acquire()
                 self.run_schedule(self.init_schedules , init=True)
