@@ -117,7 +117,7 @@ while True :
         	], stdout=subprocess.PIPE)   
         print(f'waiting proc')
         out = proc.communicate()
-        print(f"returncode {out.returncode}")
+        print(f"returncode {proc.returncode}")
         flag_tensor = torch.ones((1))
 
         dist.all_reduce(flag_tensor)
