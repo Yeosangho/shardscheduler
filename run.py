@@ -90,11 +90,11 @@ bucket_list = make_static_bucket_list()
 world_size = 2
 dist.init_process_group(backend='gloo', world_size=world_size, rank=args.rank)
 proc_exec = True
-target_mem = 0.485
+target_mem = 0.4
 flag_tensor = torch.ones((1))
-sdp_ratio = 0.0
+sdp_ratio = 1.0
 fsdp_ratio = 0.0
-dp_ratio = 1.0
+dp_ratio = 0.0
 bucket_size = bucket_list[0] / (1024*1024)
 bucket_idx = 0 
 now = datetime.datetime.now()
@@ -127,9 +127,9 @@ while True :
             bucket_size = bucket_list[bucket_idx] / (1024 * 1024)
         else:
             #mem error occured !!! -> more sharding!!!
-            sdp_ratio += 0.05
-            dp_ratio -= 0.05
-            if(sdp_ratio > 1.0):
+            fsdp_ratio += 0.05
+            sdp_ratio -= 0.05
+            if(fsdp_ratio > 1.0):
                 os._exit(0)            
     except subprocess.CalledProcessError as e:
         #print(e.output)
@@ -138,7 +138,7 @@ while True :
         dist.all_reduce(flag_tensor)
         print(f"process result {flag_tensor}")      
         #mem error occured !!! -> more sharding!!!
-        sdp_ratio += 0.05
-        dp_ratio -= 0.05
-        if(sdp_ratio > 1.0):
+        fsdp_ratio += 0.05
+        sdp_ratio -= 0.05
+        if(fsdp_ratio > 1.0):
         	os._exit(0)
