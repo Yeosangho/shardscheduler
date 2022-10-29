@@ -132,7 +132,7 @@ while True :
             if(fsdp_ratio > 1.0):
                 os._exit(0)            
     except subprocess.CalledProcessError as e:
-        print(e.output)
+        #print(e.output)
         flag_tensor = torch.zeros((1))
 
         dist.all_reduce(flag_tensor)

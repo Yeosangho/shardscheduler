@@ -352,7 +352,7 @@ class Trainer:
 		                                self.partition_threshold, self._done_counts, self._partition_counts,
 										self.health_check_scheduler_thread,
 										self.health_check_thread_ready,
-										self.trial_info
+										self.trial_info,
 										self._locks,
 
 										self._conditions,
