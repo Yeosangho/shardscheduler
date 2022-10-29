@@ -79,7 +79,7 @@ backward_ops = []
 layer_bench_file_name = 'layer_bench.csv'
 alpha, beta, total_comp_times, total_backward_times, total_forward_times, total_param_num, total_layer_num = read_profile_info(comp_ops, forward_ops, backward_ops, param_nums, layer_bench_file_name)
 
-bucket_list = make_bucket_list(alpha, beta, comp_ops)
+bucket_list = make_bucket_list(alpha, beta, comp_ops, total_param_num)
 print(bucket_list)
 bucket_list = make_static_bucket_list()
 
