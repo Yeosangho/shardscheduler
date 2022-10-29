@@ -64,7 +64,7 @@ def run(health_check_main_proc, health_check_scheduler_thread, health_check_thre
 				time.sleep(0.5)
 			break
 		time.sleep(0.5)
-		health_check_thread_ready.acquire()	
+		health_check_thread_ready.release()	
 	print("!!!!!!!!!!! run with exception")
 	#health_check_main_proc.acquire()
 	#print("lock")
@@ -135,7 +135,7 @@ class Trainer:
 		#    self.process_groups.append(ng) 
 
 		#before loading model, waiting for health check thread is ready.
-		while not health_check_thread_ready.locked() :
+		while health_check_thread_ready.locked() :
 			time.sleep(0.5)
 
 		self.batch_size = 16
@@ -506,6 +506,7 @@ if __name__ == '__main__':
 	health_check_main_proc = threading.Lock()
 	health_check_scheduler_thread = threading.Lock()
 	health_check_thread_ready = threading.Lock()
+	health_check_thread_ready.acquire()
 	try :
 		#run(world_size, rank)
 		#comm_stream = torch.cuda.Stream()
