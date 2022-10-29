@@ -437,7 +437,6 @@ class ShardScheduler(torch.optim.Optimizer):
                         self.bucket.flush()
 
                 elif(comm.commType== "RS" and init == False): #after backward
-                    self.fusion_buffer = torch.zeros(500*1024*1024).cuda()
                     remains = 0
                     stopped_idx = 0
                     comm_continue = True
