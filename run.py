@@ -53,15 +53,15 @@ alpha, beta, total_comp_times, total_backward_times, total_forward_times = read_
 
 bucket_list = make_bucket_list(alpha, beta, comp_ops)
 #print(bucket_list)
-'''
+
 #training
 dist.init_process_group(backend='gloo', world_size=2, rank=args.rank)
 proc_exec = True
-target_mem = 0.6
+target_mem = 0.5
 flag_tensor = torch.ones((1))
 sdp_ratio = 0.0
-fsdp_ratio = 1.0
-dp_ratio = 0.0
+fsdp_ratio = 0.0
+dp_ratio = 1.0
 bucket_size = bucket_list[0]
 bucket_idx = 0 
 now = datetime.datetime.now()
@@ -102,4 +102,3 @@ while True :
         dp_ratio -= 0.1
         if(sdp_ratio > 1.0):
         	os._exit(0)
-'''
