@@ -287,9 +287,9 @@ class ShardScheduler(torch.optim.Optimizer):
 
         try :
             #bucket size to parameter_num
-            time.sleep(3) 
+            time.sleep(10) 
             param_num = (self._size/(self._size+1)) * self.bucket_size * 1024 * 1024 / 4             
-            self.bucket = Bucket(param_num, size) #parameter_num          
+            self.bucket = Bucket(param_num, self._size) #parameter_num          
             with torch.cuda.stream(self.comm_stream):
                 #self.scheduler_ready.acquire()
                 self.run_schedule(self.init_schedules , init=True)
@@ -299,6 +299,7 @@ class ShardScheduler(torch.optim.Optimizer):
                 while not self._stop_event.is_set():
                     self.run_schedule(self.schedules, init=False)
         except RuntimeError as error :
+            print("Runtime error in scheduler")
             print(traceback.format_exc())
             #dist.destroy_process_group()
             self.health_check_lock.acquire()
