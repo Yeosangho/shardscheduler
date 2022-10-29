@@ -128,7 +128,7 @@ def schedule_ops(target_comm, target_comp, comp_ops, alpha, beta, max_buffered_p
 
 
     #파라미터의 크기 및 텐서 퓨전 버퍼 크기를 반영하여 추가되는 Latency에 대한 패널티 부과 
-    partition_num = int(target_comm.overlappable_param_num / MAX_PARAM_NUM) + 1
+    partition_num = int(target_comm.overlappable_param_num / max_buffered_param_num) + 1
 
     time = partition_num * alpha + beta * target_comm.overlappable_param_num * 4 * ar_factor
     param_num = target_comm.overlappable_param_num
@@ -136,7 +136,7 @@ def schedule_ops(target_comm, target_comp, comp_ops, alpha, beta, max_buffered_p
 
 
     over_param_num = 0
-    residual_param_num = sum(target_comp.scheduled_params[comm_type])% MAX_PARAM_NUM 
+    residual_param_num = sum(target_comp.scheduled_params[comm_type])% max_buffered_param_num 
     if(residual_param_num > 0):
         time = time - alpha
 

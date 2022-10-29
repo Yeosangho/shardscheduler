@@ -353,7 +353,7 @@ class ShardScheduler(torch.optim.Optimizer):
                             org_size = p._orig_size
                             shard_size = p_data.numel()
                             start_idx = int(shard_size * partiable_param.start_ratio)
-                            #print(partiable_param.end_ratio)
+                            print(partiable_param.end_ratio)
                             end_idx = int(shard_size * partiable_param.end_ratio)    
 
                             if(p.data_ptr() == self.profile_layer[0].data_ptr()):
@@ -387,7 +387,7 @@ class ShardScheduler(torch.optim.Optimizer):
                                 break
                         if(idx == len(comm.params) -1 and not is_break):
                             comm_continue = False 
-                    #print(f"ag p.shape {p.shape}" ) 
+                        print(f"ag p.shape {p.shape}" ) 
                     #print(f"end-start {end_idx-start_idx}")
                         #print("############################")
                         ##output_tensor_list = list(bucket.output.view(world_size, -1)[:self.bucket.offset].unbind(0))
