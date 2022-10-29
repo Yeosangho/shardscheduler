@@ -55,7 +55,7 @@ def run(health_check_main_proc, health_check_scheduler_thread, health_check_thre
 	handle = dist.broadcast(tensor_one, group=groups[f"{rank}:{(rank-1)%world_size}"], src=(rank-1)%world_size, async_op=True)
 	#handle.wait()
 	while not handle.is_completed() :
-		health_check_thread_ready.acquire()
+		
 		print(f"wait src from {(rank-1)%world_size}")
 		if health_check_main_proc.locked() or health_check_scheduler_thread.locked():
 			handle_me = dist.broadcast(tensor_one, group=groups[f"{(rank-1)%world_size}:{rank}"], src=rank, async_op=True)
@@ -63,7 +63,8 @@ def run(health_check_main_proc, health_check_scheduler_thread, health_check_thre
 				print(f"broadcast {rank}")
 				time.sleep(0.5)
 			break
-		time.sleep(0.5)	
+		time.sleep(0.5)
+		health_check_thread_ready.acquire()	
 	print("!!!!!!!!!!! run with exception")
 	#health_check_main_proc.acquire()
 	#print("lock")
