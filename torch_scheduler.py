@@ -131,7 +131,7 @@ class ShardScheduler(torch.optim.Optimizer):
         #bucket size to parameter_num
         param_num = (size/(size+1)) * self.bucket_size * 1024 * 1024 / 4 
 
-        self.bucket = Bucket(param_num, size) #parameter_num
+        
         self.profile_layer = profile_layer
         # Poll whether the tensor is ready for allreduce or whether the allreduce is finished.
         self.event_queue = queue.Queue()
@@ -284,6 +284,7 @@ class ShardScheduler(torch.optim.Optimizer):
 
     def _poll_FSDP(self, ):
         print(self.comm_stream)
+        self.bucket = Bucket(param_num, size) #parameter_num
         time.sleep(3)
 
         try :
