@@ -39,6 +39,8 @@ def make_bucket_list(alpha, beta, comp_ops, total_param_num):
         buffer_for_residual = math.ceil(residual_param_num / idx)
         if(buffer_for_residual > max_overlappable_param_num):
             bucket_size_list.append(buffer_for_residual)
+        else:
+            break
         idx += 1
 
     return sorted(bucket_size_list)
