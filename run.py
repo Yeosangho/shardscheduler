@@ -123,6 +123,7 @@ while True :
 
          
     except subprocess.CalledProcessError as e:
+        out = proc.communicate()
         flag_tensor = torch.zeros((1))
 
         dist.all_reduce(flag_tensor)
@@ -130,13 +131,12 @@ while True :
         if(flag_tensor.item() != 0):
             with open(f'log_handler_{dt_string}.txt', 'a') as f:
                 f.write(str(e))
-                f.write(str(e.output))
-                f.write(traceback.format_exc())
+                f.write(str(out[1]))
         else:
             with open(f'log_handler2_{dt_string}.txt', 'a') as f:
                 f.write(str(e))
-                f.write(str(e.output))
-                f.write(traceback.format_exc())            
+                f.write(str(out[1]))
+       
     finally:
         if(flag_tensor.item() == 0):
             fsdp_ratio += 0.05
@@ -153,4 +153,4 @@ while True :
             bucket_size = bucket_list[bucket_idx] / (1024 * 1024)
         else:
             print("retry same case!")
-        os.kill(proc.pid)
+        os.kill(proc.pid, 9)
