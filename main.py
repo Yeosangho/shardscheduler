@@ -106,6 +106,7 @@ class Trainer:
 	def __init__(self, world_size, rank,  bucket_size, count, adaptive_shard_ratio,  health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready):
 		self.health_check_scheduler_thread = health_check_scheduler_thread
 		self.health_check_main_proc = health_check_main_proc
+		self.health_check_thread_ready = health_check_thread_ready
 		self.train_continue = True 
 		#torch.backends.cudnn.benchmark = True
 		#world_size = int(os.environ["WORLD_SIZE"])
@@ -342,6 +343,7 @@ class Trainer:
 		self.optimizer = ShardScheduler(self.sharded_module, self.sharded_module.named_parameters(), self.world_size, self.rank, self.optimizer,
 		                                self.partition_threshold, self._done_counts, self._partition_counts,
 										self.health_check_scheduler_thread,
+										self.health_check_thread_ready,
 										self._locks,
 
 										self._conditions,
