@@ -100,12 +100,12 @@ bucket_size = bucket_list[0] / (1024*1024)
 bucket_idx = 0 
 now = datetime.datetime.now()
 dt_string = now.strftime("%d-%m-%Y_%H:%M:%S")
-a = None
+proc = None
 while True :
     try:
         print(f"start proc {target_mem}")
         print(flag_tensor)
-        a = subprocess.check_output([args.python_path, 'main.py', 
+        proc = subprocess.Popen([args.python_path, 'main.py', 
         	'--rank', str(args.rank), 
         	'--sdp_ratio',  str(sdp_ratio),
         	'--fsdp_ratio', str(fsdp_ratio),
@@ -113,7 +113,7 @@ while True :
         	'--bucket_size', str(bucket_size),
         	'--target_memory', str(target_mem),
         	'--exp_tag', dt_string
-        	])      
+        	], stdout=subprocess.PIPE)   
         print(f'end proc')
         flag_tensor = torch.ones((1))
 
@@ -153,4 +153,4 @@ while True :
             bucket_size = bucket_list[bucket_idx] / (1024 * 1024)
         else:
             print("retry same case!")
-        os.kill(a.pid)
+        os.kill(proc.pid)
