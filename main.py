@@ -509,6 +509,18 @@ if __name__ == '__main__':
 		#comm_stream = torch.cuda.Stream()
 
 		#group = dist.new_group(timeout=datetime.timedelta(seconds=5),)
+
+		groups = {}
+		for i in range(world_size):
+			for j in range(world_size):
+				if(i != j):
+					group = dist.new_group([i,j], backend='gloo')
+					groups[f'{i}:{j}'] = group
+							
+		thread = threading.Thread(target=run, args=(health_check_main_proc, health_check_scheduler_thread, health_check_thread_ready, groups, world_size, rank, trainer))
+		thread.daemon = True
+		thread.start()	
+
 		trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready) 
 
 		def custom_hook(args):
@@ -531,16 +543,9 @@ if __name__ == '__main__':
 
 			sys.exit("1")
 			#exit()			
-		groups = {}
-		for i in range(world_size):
-			for j in range(world_size):
-				if(i != j):
-					group = dist.new_group([i,j], backend='gloo')
-					groups[f'{i}:{j}'] = group
+
 		#run(comm_stream, group, world_size, rank)
-		thread = threading.Thread(target=run, args=(health_check_main_proc, health_check_scheduler_thread, health_check_thread_ready, groups, world_size, rank, trainer))
-		thread.daemon = True
-		thread.start()	
+
 		print("1")	
 		#if(rank == 0):
 		#	tensor_one = torch.ones(1)
