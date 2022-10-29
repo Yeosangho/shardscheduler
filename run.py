@@ -115,7 +115,7 @@ while True :
         	'--target_memory', str(target_mem),
         	'--exp_tag', dt_string
         	], stdout=subprocess.PIPE)   
-        print(f'end proc')
+        print(f'waiting proc')
         out = proc.communicate()
         flag_tensor = torch.ones((1))
 
@@ -155,4 +155,5 @@ while True :
             bucket_size = bucket_list[bucket_idx] / (1024 * 1024)
         else:
             print("retry same case!")
-        os.kill(proc.pid, 9)
+        print(proc.pid)
+        #os.kill(proc.pid, 9)
