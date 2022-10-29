@@ -133,7 +133,7 @@ class Trainer:
 		#    self.process_groups.append(ng) 
 
 		#before loading model, waiting for health check thread is ready.
-		while is not health_check_thread_ready.locked() :
+		while not health_check_thread_ready.locked() :
 			time.sleep(0.5)
 
 		self.batch_size = 16
