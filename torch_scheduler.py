@@ -314,7 +314,7 @@ class ShardScheduler(torch.optim.Optimizer):
             print("Runtime error in scheduler")
             print(traceback.format_exc())
             with open(f'log_scheduler_{self.exp_tag}.txt', 'a') as f:
-                f.write(str(e))
+                f.write(str(error))
                 f.write(traceback.format_exc())            
             #dist.destroy_process_group()
             self.health_check_lock.acquire()
