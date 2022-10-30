@@ -150,7 +150,7 @@ class Trainer:
 		#self.model = models.resnet101()
 
 		print(f"before init model  {torch.cuda.memory_allocated() / 1024 /1024}") 
-		self.model = ResNet(Bottleneck, [3, 8, 36, 3]) #it means "resnet18 model"
+		self.model = ResNet(Bottleneck,  [3, 8, 36, 3]) #it means "resnet18 model"
 		self.model.cuda()
 
 		print(f"after init model  {torch.cuda.memory_allocated() / 1024 /1024}") 
@@ -212,7 +212,7 @@ class Trainer:
 		self.train_loader = torch.utils.data.DataLoader(
 		    self.train_dataset , batch_size=32, shuffle=True, num_workers=2)
 		print(f"after init dataset  {torch.cuda.memory_allocated() / 1024 /1024}") 
-		
+
 		#summary(self.model, ( 3, 32, 32))
 		self.profiled_memory_utilization = []
 
@@ -347,21 +347,20 @@ class Trainer:
 		dist.barrier()
 		print(f"before init optimizer  {torch.cuda.memory_allocated() / 1024 /1024}") 
 		#self.optimizer = torch.optim.SGD(self.sharded_module.parameters() , lr=0.001, momentum=0.9, nesterov=True)
-		
 		self.optimizer = torch.optim.Adam(self.sharded_module.parameters(), lr=0.001, betas=(0.9, 0.999), eps=1e-08, weight_decay=0, amsgrad=False)
-		#self.optimizer = ShardScheduler(self.sharded_module, self.sharded_module.named_parameters(), self.world_size, self.rank, self.optimizer,
-		#                                self.partition_threshold, self._done_counts, self._partition_counts,
-		#								self.health_check_scheduler_thread,
-		#								self.health_check_thread_ready,
-		#								self.trial_info,
-		#								thread,
-		#								self._locks,
-#
-		#								self._conditions,
-#
-		#								self.profile_target_layer, 
-		#								self.bucket_size,
-		#								10**6, self.comm_stream, self._schedule_comm_init, self._scheduled_comms)
+		self.optimizer = ShardScheduler(self.sharded_module, self.sharded_module.named_parameters(), self.world_size, self.rank, self.optimizer,
+		                                self.partition_threshold, self._done_counts, self._partition_counts,
+										self.health_check_scheduler_thread,
+										self.health_check_thread_ready,
+										self.trial_info,
+										thread,
+										self._locks,
+
+										self._conditions,
+
+										self.profile_target_layer, 
+										self.bucket_size,
+										10**6, self.comm_stream, self._schedule_comm_init, self._scheduled_comms)
 		print(f"after init optimizer  {torch.cuda.memory_allocated() / 1024 /1024}") 
 		
 		self.criterion = nn.CrossEntropyLoss()
@@ -369,8 +368,6 @@ class Trainer:
 		#if(wftp == True):
 		#	self._register_hooks()
 		self.scaler = GradScaler()
-		#self.model = None
-		#torch.cuda.empty_cache()
 		print("end inittialization trainer")
 
 	def benchmark_step(self):
@@ -396,23 +393,28 @@ class Trainer:
 
 			print(f"before forward  {torch.cuda.memory_allocated()/1024**2} {torch.cuda.memory_reserved()/1024**2} {(torch.cuda.memory_allocated() + torch.cuda.memory_reserved()) / 1024 /1024}") 	
 			#print(f"!!!!!!!!!!!!!!!! {torch.cuda.memory_reserved()}")
-			#print(torch.cuda.memory_stats())			
+			#print(torch.cuda.memory_stats())	
+			if self._locks['BWTOFW'].locked():   
+				self._release_lock(self._locks['BWTOFW'], self._conditions['BWTOFW'])				
 			output = self.sharded_module(data)
 
 			#while not self.optimizer.scheduler_ready.locked():
 			#	time.sleep(0.01)
+			if self._locks['FWTOBW'].locked():   
+				self._release_lock(self._locks['FWTOBW'], self._conditions['FWTOBW'])
+
 
 			print(f"after forward {torch.cuda.memory_allocated()/1024**2} {torch.cuda.memory_reserved()/1024**2} {(torch.cuda.memory_allocated() + torch.cuda.memory_reserved()) / 1024 /1024}") 	
 			print(output.sum())
 			loss = self.criterion(output, target)
 			print(loss)
-			#torch.cuda.empty_cache()
 			print(f"before backward {torch.cuda.memory_allocated()/1024**2} {torch.cuda.memory_reserved()/1024**2} {(torch.cuda.memory_allocated() + torch.cuda.memory_reserved()) / 1024 /1024}") 	
-	#		
+	#	
 			loss.backward()
+			if self._locks['BWTOFW'].locked():   
+				self._release_lock(self._locks['BWTOFW'], self._conditions['BWTOFW'])
 
-			self.optimizer.step()
-			print(f"after backward {torch.cuda.memory_allocated()/1024**2} {torch.cuda.memory_reserved()/1024**2} {(torch.cuda.memory_allocated() + torch.cuda.memory_reserved()) / 1024 /1024}") 	
+			print(f"after backward  {(torch.cuda.memory_allocated() + torch.cuda.memory_reserved()) / 1024 /1024}") 
 			if(not self.train_continue):
 				break
 			count += 1
