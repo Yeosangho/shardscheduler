@@ -29,7 +29,7 @@ target_dtype = torch.long
 input_shape = 32, 3, 32, 32,
 input_dtype = torch.float
 criterion = nn.CrossEntropyLoss()
-model = ResNet(Bottleneck, [3, 4, 6, 3]) #it means "resnet18 model"
+model = ResNet(Bottleneck, [3, 8, 36, 3]) #it means "resnet18 model"
 model.cuda()
 print(len(list(model.named_parameters())))
 for n,p in model.named_parameters():
@@ -49,7 +49,7 @@ with open("layer_bench.csv", "w") as f:
 proc_exec = True
 target_mem = 7.3
 
-
+'''
 comm_profiler = CommunicationProfiler(dist.all_gather)
 sizes, times  = comm_profiler.benchmark()
 print(sizes)
@@ -69,3 +69,4 @@ net_info = torch.Tensor([alpha, beta])
 dist.broadcast(net_info, src=0, group=group)
 with open("net_bench.csv", "w") as f:
     f.write(f"{net_info[0]}, {net_info[1]}")
+'''
