@@ -243,7 +243,7 @@ class DataParallel_Custom(nn.Module):
         reshard_after_forward: bool = True,
         mixed_precision: bool = True,
         fp32_reduce_scatter: bool = False,
-        flatten_parameters: bool = True,
+        flatten_parameters: bool = False,
         move_params_to_cpu: bool = False,
         compute_dtype: Optional[torch.dtype] = None,
         buffer_dtype: Optional[torch.dtype] = None,
@@ -336,7 +336,7 @@ class DataParallel_Custom(nn.Module):
         self._num_flatten_params = len(self._dp_wrapped_module.flat_params)
         self._param_name_groups = param_name_groups
         self._shard_parameters_()
-        #self._reset_lazy_init()
+        self._reset_lazy_init()
         self.training_state = TrainingState.IDLE
         # enable pytorch sync_bn just in case model contains sync_bn layers.
         self._pre_backward_hook_has_run = False
