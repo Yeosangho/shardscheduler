@@ -269,78 +269,77 @@ class DataParallel_Custom(nn.Module):
     ):
         init_start = time.time()
         super().__init__()
-        self.process_group = process_group or get_process_group_cached()
-        self.rank = self.process_group.rank()
-        self.world_size = self.process_group.size()
-        self.mixed_precision = mixed_precision
-        self.flatten_parameters = flatten_parameters
-        self.compute_dtype = compute_dtype or (torch.float16 if mixed_precision else torch.float32)
-        self.buffer_dtype = buffer_dtype or self.compute_dtype
-        self.bucket_cap_mb = bucket_cap_mb
-        self.compute_device = compute_device or _get_default_cuda_device(module)
-        self.state_dict_device = state_dict_device or self.compute_device
-        self.clear_autocast_cache = clear_autocast_cache
-        self.force_input_to_fp32 = force_input_to_fp32
-        self.verbose = verbose
+        #self.process_group = process_group or get_process_group_cached()
+        #self.rank = self.process_group.rank()
+        #self.world_size = self.process_group.size()
+        #self.mixed_precision = mixed_precision
+        #self.flatten_parameters = flatten_parameters
+        #self.compute_dtype = compute_dtype or (torch.float16 if mixed_precision else torch.float32)
+        #self.buffer_dtype = buffer_dtype or self.compute_dtype
+        #self.bucket_cap_mb = bucket_cap_mb
+        #self.compute_device = compute_device or _get_default_cuda_device(module)
+        #self.state_dict_device = state_dict_device or self.compute_device
+        #self.clear_autocast_cache = clear_autocast_cache
+        #self.force_input_to_fp32 = force_input_to_fp32
+        #self.verbose = verbose
 #
-        self.gradient_predivide_factor: float = self._get_gradient_predivide_factor(self.world_size)
-        self.gradient_postdivide_factor: float = self.world_size / self.gradient_predivide_factor
+        #self.gradient_predivide_factor: float = self._get_gradient_predivide_factor(self.world_size)
+        #self.gradient_postdivide_factor: float = self.world_size / self.gradient_predivide_factor
 #
-        self.numel_padded_per_param: List[int] = []
-        self.has_full_params = False
-        # skip validation if the process group was created above
+        #self.numel_padded_per_param: List[int] = []
+        #self.has_full_params = False
+        ## skip validation if the process group was created above
 #
-       
-        self._locks = locks
+       #
+        #self._locks = locks
 #
-        self._conditions = conditions
-        self.profile_layer = profile_layer
+        #self._conditions = conditions
+        #self.profile_layer = profile_layer
 #
-        self._memory_record = memory_record 
-        if process_group:
-            validate_process_group(self.compute_device, self.process_group)
+        #self._memory_record = memory_record 
+        #if process_group:
+        #    validate_process_group(self.compute_device, self.process_group)
 #
-        param_names = []
-        params = []
-        for param_name, param in module.named_parameters():
-            if not hasattr(param, "_is_sharded"):
-                param_names.append(param_name)
-                params.append(param)
-                
+        #param_names = []
+        #params = []
+        #for param_name, param in module.named_parameters():
+        #    if not hasattr(param, "_is_sharded"):
+        #        param_names.append(param_name)
+        #        params.append(param)
+        #        
 #
-        self._has_params = len(params) > 0            
-        # For now, it is either all flatten or none flatten. This will be extended to
-        # multiple flatten groups in my next PR.
-        to_be_flatten_params: List[List[Parameter]] = [[]]
-        non_flatten_params = params
-        param_name_groups = [[n] for n in param_names]
-        if self.flatten_parameters:
-            to_be_flatten_params = [params]
-            non_flatten_params = []
-            param_name_groups = [param_names]
-        del param_names
+        #self._has_params = len(params) > 0            
+        ## For now, it is either all flatten or none flatten. This will be extended to
+        ## multiple flatten groups in my next PR.
+        #to_be_flatten_params: List[List[Parameter]] = [[]]
+        #non_flatten_params = params
+        #param_name_groups = [[n] for n in param_names]
+        #if self.flatten_parameters:
+        #    to_be_flatten_params = [params]
+        #    non_flatten_params = []
+        #    param_name_groups = [param_names]
+        #del param_names
 #
-        #self._fsdp_wrapped_module: nn.Module = FlattenParamsWrapper(module, param_list=to_be_flatten_params)
-        self._dp_wrapped_module: nn.Module = FlattenParamsWrapper(module, param_list=to_be_flatten_params)
-        self._require_backward_grad_sync: bool = True
-        del module  # free original module in case it helps garbage collection
+        ##self._fsdp_wrapped_module: nn.Module = FlattenParamsWrapper(module, param_list=to_be_flatten_params)
+        #self._dp_wrapped_module: nn.Module = FlattenParamsWrapper(module, param_list=to_be_flatten_params)
+        #self._require_backward_grad_sync: bool = True
+        #del module  # free original module in case it helps garbage collection
 #
-        # Now, in this FSDP wrapper class, we keep a list of to-be-flatten and not-to-be-flatten
-        # params for doing sharding, gradient hooks, etc. Note, the ordering of the
-        # list matters: flatten params are always in the front.
-        #
-        # The self._num_flatten_params and self._param_name_groups are computed
-        # and kept here to support summon_full_params and shard-to-full weight
-        # consolidation.
-        self.params = cast(List[Parameter], self._dp_wrapped_module.flat_params) + non_flatten_params
-        self._num_flatten_params = len(self._dp_wrapped_module.flat_params)
-        self._param_name_groups = param_name_groups
-        self._shard_parameters_()
-        self._reset_lazy_init()
-        self.training_state = TrainingState.IDLE
-        # enable pytorch sync_bn just in case model contains sync_bn layers.
-        self._pre_backward_hook_has_run = False
-        torch.cuda.empty_cache()
+        ## Now, in this FSDP wrapper class, we keep a list of to-be-flatten and not-to-be-flatten
+        ## params for doing sharding, gradient hooks, etc. Note, the ordering of the
+        ## list matters: flatten params are always in the front.
+        ##
+        ## The self._num_flatten_params and self._param_name_groups are computed
+        ## and kept here to support summon_full_params and shard-to-full weight
+        ## consolidation.
+        #self.params = cast(List[Parameter], self._dp_wrapped_module.flat_params) + non_flatten_params
+        #self._num_flatten_params = len(self._dp_wrapped_module.flat_params)
+        #self._param_name_groups = param_name_groups
+        #self._shard_parameters_()
+        #self._reset_lazy_init()
+        #self.training_state = TrainingState.IDLE
+        ## enable pytorch sync_bn just in case model contains sync_bn layers.
+        #self._pre_backward_hook_has_run = False
 
 
     def _setup_streams(self) -> None:
@@ -641,9 +640,61 @@ class DataParallel_Custom(nn.Module):
 
 
     def forward(self, *args: Any, **kwargs: Any) -> torch.Tensor:
+        self._lazy_init()
 
+        # Start of a forward pass.
+        self.training_state = TrainingState.FORWARD
+        #with open("foo.txt", "a") as f:
+        #    f.write("Life is too short, you need python")
+        # For root and mixed precision, we convert the input to FP16 (no_grad is needed for
+        # the conversion).
+        if self._is_root and self.mixed_precision:
+            args, kwargs = cast_floats_to_right_precision(True, True, *args, **kwargs)
+
+        # If enabled, convert the input to FP32 if we are in full precision.
+        # no_grad is not used because the input might be for a non-root instance,
+        # which mean autograd needs to go through the conversion.
+        if self.force_input_to_fp32 and not self.mixed_precision:
+            args, kwargs = cast_floats_to_right_precision(False, False, *args, **kwargs)
+#
+        # All-gather full parameters. This will also transfer FP32 parameters to
+        # ``self.compute_dtype`` (e.g., FP16 if *mixed_precision* is ``True``).
+        self._rebuild_full_params()
+        #for p in self.params : 
+            #print(f"before rebuild full params {p._full_param_padded.shape}")
+            #if(p.data_ptr() == self.profile_layer[0].data_ptr()):
+            #print(f"before unlock :: forward shape : {p.shape} sum : {p.sum()}")
+
+            #self._wait_unlock(self._locks['AR'][p], self._conditions['AR'][p])
+            #self._release_lock(self._locks['FW'][p], self._conditions['FW'][p])
+
+            #if(p.data_ptr() == self.profile_layer[0].data_ptr()):
+            #print(f"after unlock :: forward shape : {p.shape} sum : {p.sum()}")   
+
+
+        # Register backward hooks to reshard params and reduce-scatter grads.
+        # These need to be re-registered every forward pass.
+        #self._rebuild_full_params()
+
+        self._register_post_backward_hooks()
         outputs = self.module(*args, **kwargs)
+        #print(torch.cuda.memory_allocated() / 1024 /1024) 
+        memory_allocated = torch.cuda.memory_allocated() / 1024 /1024
+        #print(f"after backward {torch.cuda.memory_allocated() / 1024 /1024}") 
+        self._memory_record.append(memory_allocated)            
+        self._use_fp32_param_shard()
+        outputs = self._register_pre_backward_hooks(outputs)
+        # Done with a forward pass.
+        #print("11111")
+        self.training_state = TrainingState.IDLE
 
+        #if self.clear_autocast_cache:
+        #for p in self.params : 
+        #    self._acquire_lock(self._locks['AR'][p])    
+
+
+        #torch.clear_autocast_cache()
+        #torch.cuda.empty_cache()
         return outputs
         
     def _register_pre_backward_hooks(self, outputs: Any) -> Any:

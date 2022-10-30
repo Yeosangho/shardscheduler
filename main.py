@@ -369,8 +369,8 @@ class Trainer:
 		#if(wftp == True):
 		#	self._register_hooks()
 		self.scaler = GradScaler()
-		self.model = None
-		torch.cuda.empty_cache()
+		#self.model = None
+		#torch.cuda.empty_cache()
 		print("end inittialization trainer")
 
 	def benchmark_step(self):
@@ -406,7 +406,7 @@ class Trainer:
 			print(output.sum())
 			loss = self.criterion(output, target)
 			print(loss)
-			torch.cuda.empty_cache()
+			#torch.cuda.empty_cache()
 			print(f"before backward {torch.cuda.memory_allocated()/1024**2} {torch.cuda.memory_reserved()/1024**2} {(torch.cuda.memory_allocated() + torch.cuda.memory_reserved()) / 1024 /1024}") 	
 	#		
 			loss.backward()
