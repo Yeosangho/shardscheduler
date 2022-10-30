@@ -339,7 +339,7 @@ class Trainer:
 		self.profile_target_layer.append(params_list[20])
 		#make_schedules_adaptive_sdp_auto(params_list, self._schedule_comm_init, self._scheduled_comms, self._locks, adaptive_sdp_modules)
 		max_param_num = get_param_num_by_buffer_size(self.world_size, self.bucket_size)
-		schedule(adaptive_sdp_modules, max_param_num, layer_bench_file_name='layer_bench.csv')
+		schedule(adaptive_sdp_modules, max_param_num, layer_bench_file_name='layer_bench_resnet152.csv')
 
 		make_schedule_from_json(params_list, self._schedule_comm_init, self._scheduled_comms, self._locks, adaptive_sdp_modules)
 		#make_schedule_wfbp_sdp(params_list, self._schedule_comm_init, self._scheduled_comms, self._locks)
@@ -394,14 +394,14 @@ class Trainer:
 			print(f"before forward  {torch.cuda.memory_allocated()/1024**2} {torch.cuda.memory_reserved()/1024**2} {(torch.cuda.memory_allocated() + torch.cuda.memory_reserved()) / 1024 /1024}") 	
 			#print(f"!!!!!!!!!!!!!!!! {torch.cuda.memory_reserved()}")
 			#print(torch.cuda.memory_stats())	
-			#if self._locks['BWTOFW'].locked():   
-			#	self._release_lock(self._locks['BWTOFW'], self._conditions['BWTOFW'])				
+			if self._locks['BWTOFW'].locked():   
+				self._release_lock(self._locks['BWTOFW'], self._conditions['BWTOFW'])				
 			output = self.sharded_module(data)
 
 			#while not self.optimizer.scheduler_ready.locked():
 			#	time.sleep(0.01)
-			#if self._locks['FWTOBW'].locked():   
-			#	self._release_lock(self._locks['FWTOBW'], self._conditions['FWTOBW'])
+			if self._locks['FWTOBW'].locked():   
+				self._release_lock(self._locks['FWTOBW'], self._conditions['FWTOBW'])
 
 
 			print(f"after forward {torch.cuda.memory_allocated()/1024**2} {torch.cuda.memory_reserved()/1024**2} {(torch.cuda.memory_allocated() + torch.cuda.memory_reserved()) / 1024 /1024}") 	
@@ -411,8 +411,8 @@ class Trainer:
 			print(f"before backward {torch.cuda.memory_allocated()/1024**2} {torch.cuda.memory_reserved()/1024**2} {(torch.cuda.memory_allocated() + torch.cuda.memory_reserved()) / 1024 /1024}") 	
 	#	
 			loss.backward()
-			#if self._locks['BWTOFW'].locked():   
-			#	self._release_lock(self._locks['BWTOFW'], self._conditions['BWTOFW'])
+			if self._locks['BWTOFW'].locked():   
+				self._release_lock(self._locks['BWTOFW'], self._conditions['BWTOFW'])
 
 			print(f"after backward  {(torch.cuda.memory_allocated() + torch.cuda.memory_reserved()) / 1024 /1024}") 
 			if(not self.train_continue):
