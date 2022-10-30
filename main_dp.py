@@ -244,19 +244,15 @@ class Trainer:
 			print(f"data : {data.shape}")
 
 			target = target.cuda()
-			torch.cuda.empty_cache()
 			print(f"before forward  {torch.cuda.memory_allocated()/1024**2} {torch.cuda.memory_reserved()/1024**2} {(torch.cuda.memory_allocated() + torch.cuda.memory_reserved()) / 1024 /1024}") 	
 			output = self.model(data)
-			torch.cuda.empty_cache()
 			print(f"after forward  {torch.cuda.memory_allocated()/1024**2} {torch.cuda.memory_reserved()/1024**2} {(torch.cuda.memory_allocated() + torch.cuda.memory_reserved()) / 1024 /1024}") 
 			loss = self.criterion(output, target)
-			torch.cuda.empty_cache()
 			print(f"before backward  {torch.cuda.memory_allocated()/1024**2} {torch.cuda.memory_reserved()/1024**2} {(torch.cuda.memory_allocated() + torch.cuda.memory_reserved()) / 1024 /1024}") 
 	#	
 			loss.backward()
 
 			self.optimizer.step()
-			torch.cuda.empty_cache()
 			print(f"after backward {torch.cuda.memory_allocated()/1024**2} {torch.cuda.memory_reserved()/1024**2} {(torch.cuda.memory_allocated() + torch.cuda.memory_reserved()) / 1024 /1024}") 
 			if(not self.train_continue):
 				break
