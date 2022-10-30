@@ -340,6 +340,7 @@ class DataParallel_Custom(nn.Module):
         self.training_state = TrainingState.IDLE
         # enable pytorch sync_bn just in case model contains sync_bn layers.
         self._pre_backward_hook_has_run = False
+        torch.cuda.empty_cache()
 
 
     def _setup_streams(self) -> None:
