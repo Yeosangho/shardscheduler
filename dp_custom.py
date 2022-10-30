@@ -660,18 +660,14 @@ class DataParallel_Custom(nn.Module):
         # All-gather full parameters. This will also transfer FP32 parameters to
         # ``self.compute_dtype`` (e.g., FP16 if *mixed_precision* is ``True``).
         self._rebuild_full_params()
-        #for p in self.params : 
+        for p in self.params : 
             #print(f"before rebuild full params {p._full_param_padded.shape}")
             #if(p.data_ptr() == self.profile_layer[0].data_ptr()):
             #print(f"before unlock :: forward shape : {p.shape} sum : {p.sum()}")
-
-            #self._wait_unlock(self._locks['AR'][p], self._conditions['AR'][p])
-            #self._release_lock(self._locks['FW'][p], self._conditions['FW'][p])
-
+            self._wait_unlock(self._locks['AR'][p], self._conditions['AR'][p])
+            self._release_lock(self._locks['FW'][p], self._conditions['FW'][p])
             #if(p.data_ptr() == self.profile_layer[0].data_ptr()):
-            #print(f"after unlock :: forward shape : {p.shape} sum : {p.sum()}")   
-            
-              
+            #print(f"after unlock :: forward shape : {p.shape} sum : {p.sum()}")     
         # Register backward hooks to reshard params and reduce-scatter grads.
         # These need to be re-registered every forward pass.
         #self._rebuild_full_params()
@@ -687,10 +683,9 @@ class DataParallel_Custom(nn.Module):
         # Done with a forward pass.
         #print("11111")
         self.training_state = TrainingState.IDLE
-
         #if self.clear_autocast_cache:
-        #for p in self.params : 
-        #    self._acquire_lock(self._locks['AR'][p])    
+        for p in self.params : 
+            self._acquire_lock(self._locks['AR'][p])    
 
 
         #torch.clear_autocast_cache()
@@ -724,10 +719,8 @@ class DataParallel_Custom(nn.Module):
             #if self._is_root:
                 #print("_pre_backward_hook")
                 #self._queue_wait_for_post_backward()
-
-            #for p in self.params : 
-            #    self._release_lock(self._locks['BW'][p], self._conditions['BW'][p])      
-
+            for p in self.params : 
+                self._release_lock(self._locks['BW'][p], self._conditions['BW'][p])            
             #self._use_full_params()
 
             # Only run the ``self._prep_grads_for_backward`` once per iteration (i.e. in case
