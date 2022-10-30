@@ -243,7 +243,7 @@ class DataParallel_Custom(nn.Module):
         reshard_after_forward: bool = True,
         mixed_precision: bool = True,
         fp32_reduce_scatter: bool = False,
-        flatten_parameters: bool = False,
+        flatten_parameters: bool = True,
         move_params_to_cpu: bool = False,
         compute_dtype: Optional[torch.dtype] = None,
         buffer_dtype: Optional[torch.dtype] = None,
