@@ -369,6 +369,8 @@ class Trainer:
 		#if(wftp == True):
 		#	self._register_hooks()
 		self.scaler = GradScaler()
+		self.model = None
+		torch.cuda.empty_cache()
 		print("end inittialization trainer")
 
 	def benchmark_step(self):
