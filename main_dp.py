@@ -214,7 +214,7 @@ class Trainer:
 		print(f"after init dataset  {torch.cuda.memory_allocated() / 1024 /1024}") 
 
 		#self.optimizer = torch.optim.SGD(self.sharded_module.parameters() , lr=0.001, momentum=0.9, nesterov=True)
-		self.optimizer = torch.optim.Adam(self.sharded_module.parameters(), lr=0.001, betas=(0.9, 0.999), eps=1e-08, weight_decay=0, amsgrad=False)
+		self.optimizer = torch.optim.Adam(self.model.parameters(), lr=0.001, betas=(0.9, 0.999), eps=1e-08, weight_decay=0, amsgrad=False)
 
 		
 		self.criterion = nn.CrossEntropyLoss()
