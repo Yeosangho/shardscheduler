@@ -395,7 +395,7 @@ class Trainer:
 			print(f"before forward  {torch.cuda.memory_allocated()/1024**2} {torch.cuda.memory_reserved()/1024**2} {(torch.cuda.memory_allocated() + torch.cuda.memory_reserved()) / 1024 /1024}") 	
 			#print(f"!!!!!!!!!!!!!!!! {torch.cuda.memory_reserved()}")
 			#print(torch.cuda.memory_stats())			
-			output = self.model(data)
+			output = self.sharded_module(data)
 
 			#while not self.optimizer.scheduler_ready.locked():
 			#	time.sleep(0.01)
