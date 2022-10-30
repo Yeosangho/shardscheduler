@@ -640,54 +640,9 @@ class DataParallel_Custom(nn.Module):
 
 
     def forward(self, *args: Any, **kwargs: Any) -> torch.Tensor:
-        self._lazy_init()
 
-        # Start of a forward pass.
-        self.training_state = TrainingState.FORWARD
-        #with open("foo.txt", "a") as f:
-        #    f.write("Life is too short, you need python")
-        # For root and mixed precision, we convert the input to FP16 (no_grad is needed for
-        # the conversion).
-        if self._is_root and self.mixed_precision:
-            args, kwargs = cast_floats_to_right_precision(True, True, *args, **kwargs)
-
-        # If enabled, convert the input to FP32 if we are in full precision.
-        # no_grad is not used because the input might be for a non-root instance,
-        # which mean autograd needs to go through the conversion.
-        if self.force_input_to_fp32 and not self.mixed_precision:
-            args, kwargs = cast_floats_to_right_precision(False, False, *args, **kwargs)
-#
-        # All-gather full parameters. This will also transfer FP32 parameters to
-        # ``self.compute_dtype`` (e.g., FP16 if *mixed_precision* is ``True``).
-        #self._rebuild_full_params()
-        #for p in self.params : 
-            #print(f"before rebuild full params {p._full_param_padded.shape}")
-            #if(p.data_ptr() == self.profile_layer[0].data_ptr()):
-            #print(f"before unlock :: forward shape : {p.shape} sum : {p.sum()}")
-
-            #self._wait_unlock(self._locks['AR'][p], self._conditions['AR'][p])
-            #self._release_lock(self._locks['FW'][p], self._conditions['FW'][p])
-
-            #if(p.data_ptr() == self.profile_layer[0].data_ptr()):
-            #print(f"after unlock :: forward shape : {p.shape} sum : {p.sum()}")     
-        # Register backward hooks to reshard params and reduce-scatter grads.
-        # These need to be re-registered every forward pass.
-        #self._rebuild_full_params()
-
-        #self._register_post_backward_hooks()
         outputs = self.module(*args, **kwargs)
-        #print(torch.cuda.memory_allocated() / 1024 /1024) 
-        memory_allocated = torch.cuda.memory_allocated() / 1024 /1024
-        #print(f"after backward {torch.cuda.memory_allocated() / 1024 /1024}") 
-        self._memory_record.append(memory_allocated)            
-        #self._use_fp32_param_shard()
-        #outputs = self._register_pre_backward_hooks(outputs)
-        # Done with a forward pass.
-        #print("11111")
-        self.training_state = TrainingState.IDLE
-        #if self.clear_autocast_cache:
-        #for p in self.params : 
-        #    self._acquire_lock(self._locks['AR'][p])    
+
 
 
         #torch.clear_autocast_cache()
