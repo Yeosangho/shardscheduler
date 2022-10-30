@@ -150,7 +150,7 @@ class Trainer:
 		#self.model = models.resnet101()
 
 		print(f"before init model  {torch.cuda.memory_allocated() / 1024 /1024}") 
-		self.model = ResNet(Bottleneck, [3, 4, 6, 3]) #it means "resnet18 model"
+		self.model = ResNet(Bottleneck, [3, 8, 36, 3]) #it means "resnet18 model"
 		self.model.cuda()
 
 		print(f"after init model  {torch.cuda.memory_allocated() / 1024 /1024}") 
