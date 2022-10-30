@@ -721,8 +721,10 @@ class DataParallel_Custom(nn.Module):
             #if self._is_root:
                 #print("_pre_backward_hook")
                 #self._queue_wait_for_post_backward()
-            for p in self.params : 
-                self._release_lock(self._locks['BW'][p], self._conditions['BW'][p])            
+
+            #for p in self.params : 
+            #    self._release_lock(self._locks['BW'][p], self._conditions['BW'][p])      
+                  
             #self._use_full_params()
 
             # Only run the ``self._prep_grads_for_backward`` once per iteration (i.e. in case
