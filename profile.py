@@ -42,7 +42,7 @@ dist.all_reduce(btimes, op=dist.ReduceOp.MAX, group=group)
 ftimes = torch.Tensor(layer_bench[2].copy())
 dist.all_reduce(ftimes, op=dist.ReduceOp.MAX, group=group)
 
-with open("layer_bench.csv", "w") as f:
+with open("layer_bench_resnet152.csv", "w") as f:
     wr = csv.writer(f)
     for name, btime, ftime, num in zip(layer_bench[0], btimes, ftimes, layer_bench[3]):
         wr.writerow([name, btime.item(), ftime.item(), num])
