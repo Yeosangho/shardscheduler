@@ -674,7 +674,7 @@ class DataParallel_Custom(nn.Module):
         # These need to be re-registered every forward pass.
         #self._rebuild_full_params()
 
-        self._register_post_backward_hooks()
+        #self._register_post_backward_hooks()
         outputs = self.module(*args, **kwargs)
         #print(torch.cuda.memory_allocated() / 1024 /1024) 
         memory_allocated = torch.cuda.memory_allocated() / 1024 /1024
