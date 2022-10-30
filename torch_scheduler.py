@@ -544,7 +544,7 @@ class ShardScheduler(torch.optim.Optimizer):
                                 #param.grad.data = None
                                 grad = None
                                 param.grad = None
-                                #torch.cuda.empty_cache() 
+                                torch.cuda.empty_cache() 
                                 #param.grad = None
                                 #param.sum()    
     
