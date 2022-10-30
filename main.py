@@ -406,8 +406,9 @@ class Trainer:
 			print(output.sum())
 			loss = self.criterion(output, target)
 			print(loss)
+			torch.cuda.empty_cache()
 			print(f"before backward {torch.cuda.memory_allocated()/1024**2} {torch.cuda.memory_reserved()/1024**2} {(torch.cuda.memory_allocated() + torch.cuda.memory_reserved()) / 1024 /1024}") 	
-	#	
+	#		
 			loss.backward()
 
 			self.optimizer.step()
