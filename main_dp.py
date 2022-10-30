@@ -261,8 +261,8 @@ class Trainer:
 			if(not self.train_continue):
 				break
 			count += 1
-			#if(count == 5):
-			#	break
+			if(count == 5):
+				break
 		#torch.cuda.synchronize()
 		execution_time = time.time() -start
 		trial_info["time"] = time.time() - start
