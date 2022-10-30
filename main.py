@@ -339,7 +339,7 @@ class Trainer:
 		self.profile_target_layer.append(params_list[20])
 		#make_schedules_adaptive_sdp_auto(params_list, self._schedule_comm_init, self._scheduled_comms, self._locks, adaptive_sdp_modules)
 		max_param_num = get_param_num_by_buffer_size(self.world_size, self.bucket_size)
-		schedule(adaptive_sdp_modules, max_param_num, layer_bench_file_name='layer_bench_resnet152.csv')
+		schedule(adaptive_sdp_modules, max_param_num, layer_bench_file_name='layer_bench.csv')
 
 		make_schedule_from_json(params_list, self._schedule_comm_init, self._scheduled_comms, self._locks, adaptive_sdp_modules)
 		#make_schedule_wfbp_sdp(params_list, self._schedule_comm_init, self._scheduled_comms, self._locks)
