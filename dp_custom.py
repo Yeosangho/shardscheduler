@@ -660,14 +660,14 @@ class DataParallel_Custom(nn.Module):
         # All-gather full parameters. This will also transfer FP32 parameters to
         # ``self.compute_dtype`` (e.g., FP16 if *mixed_precision* is ``True``).
         self._rebuild_full_params()
-        for p in self.params : 
+        #for p in self.params : 
             #print(f"before rebuild full params {p._full_param_padded.shape}")
             #if(p.data_ptr() == self.profile_layer[0].data_ptr()):
             #print(f"before unlock :: forward shape : {p.shape} sum : {p.sum()}")
 
             #self._wait_unlock(self._locks['AR'][p], self._conditions['AR'][p])
             #self._release_lock(self._locks['FW'][p], self._conditions['FW'][p])
-            
+
             #if(p.data_ptr() == self.profile_layer[0].data_ptr()):
             #print(f"after unlock :: forward shape : {p.shape} sum : {p.sum()}")     
         # Register backward hooks to reshard params and reduce-scatter grads.
