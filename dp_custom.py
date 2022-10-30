@@ -335,7 +335,7 @@ class DataParallel_Custom(nn.Module):
         self.params = cast(List[Parameter], self._dp_wrapped_module.flat_params) + non_flatten_params
         self._num_flatten_params = len(self._dp_wrapped_module.flat_params)
         self._param_name_groups = param_name_groups
-        #self._shard_parameters_()
+        self._shard_parameters_()
         #self._reset_lazy_init()
         self.training_state = TrainingState.IDLE
         # enable pytorch sync_bn just in case model contains sync_bn layers.
