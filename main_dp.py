@@ -244,23 +244,25 @@ class Trainer:
 			print(f"data : {data.shape}")
 
 			target = target.cuda()
-
-			print(f"before forward  {(torch.cuda.memory_allocated() + torch.cuda.memory_reserved()) / 1024 /1024}") 	
+			torch.cuda.empty_cache()
+			print(f"before forward  {torch.cuda.memory_allocated()/1024**2} {torch.cuda.memory_reserved()/1024**2} {(torch.cuda.memory_allocated() + torch.cuda.memory_reserved()) / 1024 /1024}") 	
 			output = self.model(data)
-
-			print(f"after forward  {(torch.cuda.memory_allocated() + torch.cuda.memory_reserved()) / 1024 /1024}") 
+			torch.cuda.empty_cache()
+			print(f"after forward  {torch.cuda.memory_allocated()/1024**2} {torch.cuda.memory_reserved()/1024**2} {(torch.cuda.memory_allocated() + torch.cuda.memory_reserved()) / 1024 /1024}") 
 			loss = self.criterion(output, target)
-			print(f"before backward  {(torch.cuda.memory_allocated() + torch.cuda.memory_reserved()) / 1024 /1024}") 
+			torch.cuda.empty_cache()
+			print(f"before backward  {torch.cuda.memory_allocated()/1024**2} {torch.cuda.memory_reserved()/1024**2} {(torch.cuda.memory_allocated() + torch.cuda.memory_reserved()) / 1024 /1024}") 
 	#	
 			loss.backward()
 
 			self.optimizer.step()
-			print(f"after backward  {(torch.cuda.memory_allocated() + torch.cuda.memory_reserved()) / 1024 /1024}") 
+			torch.cuda.empty_cache()
+			print(f"after backward {torch.cuda.memory_allocated()/1024**2} {torch.cuda.memory_reserved()/1024**2} {(torch.cuda.memory_allocated() + torch.cuda.memory_reserved()) / 1024 /1024}") 
 			if(not self.train_continue):
 				break
 			count += 1
-			if(count == 5):
-				break
+			#if(count == 5):
+			#	break
 		#torch.cuda.synchronize()
 		execution_time = time.time() -start
 		trial_info["time"] = time.time() - start
