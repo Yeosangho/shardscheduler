@@ -352,7 +352,7 @@ if __name__ == '__main__':
 	target_memory = args.target_memory  *1024 * 1024 * 1024
 	fraction = target_memory  /  total_memory
 	print(fraction)
-	#torch.cuda.set_per_process_memory_fraction(fraction, 0)    	
+	torch.cuda.set_per_process_memory_fraction(fraction, 0)    	
 	parameter_num = int(2.0 * 1024 * 1024 * 1024 / 4)
 	count = 0
 	dist.init_process_group(backend='nccl', world_size=world_size, rank=rank)
