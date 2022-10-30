@@ -686,8 +686,8 @@ class DataParallel_Custom(nn.Module):
         #print("11111")
         self.training_state = TrainingState.IDLE
         #if self.clear_autocast_cache:
-        for p in self.params : 
-            self._acquire_lock(self._locks['AR'][p])    
+        #for p in self.params : 
+        #    self._acquire_lock(self._locks['AR'][p])    
 
 
         #torch.clear_autocast_cache()
@@ -724,7 +724,7 @@ class DataParallel_Custom(nn.Module):
 
             #for p in self.params : 
             #    self._release_lock(self._locks['BW'][p], self._conditions['BW'][p])      
-                  
+
             #self._use_full_params()
 
             # Only run the ``self._prep_grads_for_backward`` once per iteration (i.e. in case
