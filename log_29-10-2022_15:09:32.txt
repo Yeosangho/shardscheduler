@@ -1,0 +1,10 @@
+CUDA out of memory. Tried to allocate 20.00 MiB (GPU 0; 9.78 GiB total capacity; 342.25 MiB already allocated; 7.58 GiB free; 409.60 MiB allowed; 400.00 MiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONFTraceback (most recent call last):
+  File "main.py", line 592, in <module>
+    trainer.benchmark_step()
+  File "main.py", line 412, in benchmark_step
+    loss.backward()
+  File "/opt/conda/lib/python3.8/site-packages/torch/_tensor.py", line 363, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph, inputs=inputs)
+  File "/opt/conda/lib/python3.8/site-packages/torch/autograd/__init__.py", line 173, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+RuntimeError: CUDA out of memory. Tried to allocate 20.00 MiB (GPU 0; 9.78 GiB total capacity; 342.25 MiB already allocated; 7.58 GiB free; 409.60 MiB allowed; 400.00 MiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
