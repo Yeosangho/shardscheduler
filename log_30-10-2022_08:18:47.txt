@@ -1,0 +1,14 @@
+CUDA out of memory. Tried to allocate 2.00 MiB (GPU 0; 9.78 GiB total capacity; 396.03 MiB already allocated; 7.58 GiB free; 409.60 MiB allowed; 408.00 MiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONFTraceback (most recent call last):
+  File "main_dp.py", line 434, in <module>
+    trainer.benchmark_step()
+  File "main_dp.py", line 257, in benchmark_step
+    self.optimizer.step()
+  File "/opt/conda/lib/python3.8/site-packages/torch/optim/optimizer.py", line 88, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/conda/lib/python3.8/site-packages/torch/autograd/grad_mode.py", line 27, in decorate_context
+    return func(*args, **kwargs)
+  File "/opt/conda/lib/python3.8/site-packages/torch/optim/adam.py", line 141, in step
+    F.adam(params_with_grad,
+  File "/opt/conda/lib/python3.8/site-packages/torch/optim/_functional.py", line 105, in adam
+    denom = (exp_avg_sq.sqrt() / math.sqrt(bias_correction2)).add_(eps)
+RuntimeError: CUDA out of memory. Tried to allocate 2.00 MiB (GPU 0; 9.78 GiB total capacity; 396.03 MiB already allocated; 7.58 GiB free; 409.60 MiB allowed; 408.00 MiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
