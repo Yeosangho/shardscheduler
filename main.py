@@ -485,11 +485,10 @@ class Trainer:
 
 	
 if __name__ == '__main__':
-	os.environ['MASTER_ADDR'] = '210.107.197.219'
-	os.environ['MASTER_PORT'] = '30005'
-	os.environ["NCCL_SOCKET_IFNAME"]="eno1,eth0"
+    world_size = int(os.environ["WORLD_SIZE"])
+    rank = int(os.environ["SLURM_PROCID"])
+
 	parser = argparse.ArgumentParser()
-	parser.add_argument('--rank', dest='rank', default=0, type=int)
 	parser.add_argument('--target_memory', default=7.0, type=float)
 	parser.add_argument('--sdp_ratio', default=0, type=float)
 	parser.add_argument('--fsdp_ratio', default=0, type=float)
@@ -499,9 +498,7 @@ if __name__ == '__main__':
 
 	args = parser.parse_args()
 		#try :
-	world_size = 2
 	bucket_size = args.bucket_size
-	rank = args.rank
 	adaptive_shard_ratio = {}
 	adaptive_shard_ratio['dp'] = args.dp_ratio
 	adaptive_shard_ratio['sdp'] = args.sdp_ratio
