@@ -485,8 +485,8 @@ class Trainer:
 
 	
 if __name__ == '__main__':
-    world_size = int(os.environ["WORLD_SIZE"])
-    rank = int(os.environ["SLURM_PROCID"])
+	world_size = int(os.environ["WORLD_SIZE"])
+	rank = int(os.environ["SLURM_PROCID"])
 
 	parser = argparse.ArgumentParser()
 	parser.add_argument('--target_memory', default=7.0, type=float)
