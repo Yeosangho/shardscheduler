@@ -39,8 +39,15 @@ from test_cases import *
 from algo import schedule
 from logger import write_trial
 
+def is_any_completed(handles):
 
-def run(health_check_main_proc, health_check_scheduler_thread, health_check_thread_ready, group, world_size, rank, trial_info):
+    for handle in handles:
+        if handle.is_completed():
+            return True
+    return False 
+
+
+def run(health_check_main_proc, health_check_scheduler_thread, health_check_thread_ready, groups, world_size, rank, trial_info):
 	thread_name = threading.current_thread().name
 
 	#for i in range(world_size):
@@ -52,14 +59,18 @@ def run(health_check_main_proc, health_check_scheduler_thread, health_check_thre
 	#	queue.append(handle)
 	#	time.sleep(0.5)
 	tensor_one = torch.ones(1)
-	queue = []		
-	handle = dist.broadcast(tensor_one, group=groups[f"{rank}:{(rank-1)%world_size}"], src=(rank-1)%world_size, async_op=True)
-	#handle.wait()
-	while not handle.is_completed() :
+	queue = []
+	handles = []
+	for i in range(world_size):
+		if(i!=rank):		
+			handle = dist.broadcast(tensor_one, group=groups[f"{i}"], src=i, async_op=True)
+			handles.append(handle)
+			#handle.wait()
+	while not is_any_completed(handles) :
 		
 		print(f"wait src from {(rank-1)%world_size}")
 		if health_check_main_proc.locked() or health_check_scheduler_thread.locked():
-			handle_me = dist.broadcast(tensor_one, group=groups[f"{(rank-1)%world_size}:{rank}"], src=rank, async_op=True)
+			handle_me = dist.broadcast(tensor_one, group=groups[f"{rank}"], src=rank, async_op=True)
 			while not handle_me.is_completed() :
 				print(f"broadcast {rank}")
 				time.sleep(0.5)
@@ -545,8 +556,9 @@ if __name__ == '__main__':
 		for i in range(world_size):
 			for j in range(world_size):
 				if(i != j):
-					group = dist.new_group([i,j], backend='gloo')
-					groups[f'{i}:{j}'] = group
+					proc_list = list(range(world_size))
+					group = dist.new_group(proc_list, backend='gloo')
+					groups[f'{i}'] = group
 
 		thread = threading.Thread(target=run, args=(health_check_main_proc, health_check_scheduler_thread, health_check_thread_ready, groups, world_size, rank, trial_info))
 		thread.daemon = True
