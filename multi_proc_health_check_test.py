@@ -70,8 +70,11 @@ if __name__ == '__main__':
     thread.daemon = True
     thread.start()
     target_ranks = [1,2]
-    if(rank not in target_ranks):	
-        time.sleep(10)
+    if(rank not in target_ranks):
+        for i in range(30):
+            time.sleep(1)
+            print(f"{i+1}")	
+        
     elif(rank in target_ranks):
         time.sleep(5)
         health_check_main_proc.acquire()
