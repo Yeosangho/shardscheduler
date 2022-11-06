@@ -407,9 +407,10 @@ class Trainer:
 			#print(f"!!!!!!!!!!!!!!!! {torch.cuda.memory_reserved()}")
 			#print(torch.cuda.memory_stats())	
 			if self._locks['BWTOFW'].locked():   
-				self._release_lock(self._locks['BWTOFW'], self._conditions['BWTOFW'])				
-			output = self.sharded_module(data)
+				self._release_lock(self._locks['BWTOFW'], self._conditions['BWTOFW'])
 
+			output = self.sharded_module(data)
+			self._acquire_lock(self._locks["BWTOFW"])
 			#while not self.optimizer.scheduler_ready.locked():
 			#	time.sleep(0.01)
 			if self._locks['FWTOBW'].locked():   
@@ -423,11 +424,13 @@ class Trainer:
 			print(f"before backward {torch.cuda.memory_allocated()/1024**2} {torch.cuda.memory_reserved()/1024**2} {(torch.cuda.memory_allocated() + torch.cuda.memory_reserved()) / 1024 /1024}") 	
 	#	
 			loss.backward()
-			torch.cuda.synchronize()
+			self._acquire_lock(self._locks["FWTOBW"])
+
+			print(f"after backward  {(torch.cuda.memory_allocated() + torch.cuda.memory_reserved()) / 1024 /1024}") 
+
 			if self._locks['BWTOFW'].locked():   
 				self._release_lock(self._locks['BWTOFW'], self._conditions['BWTOFW'])
 
-			print(f"after backward  {(torch.cuda.memory_allocated() + torch.cuda.memory_reserved()) / 1024 /1024}") 
 			if(not self.train_continue):
 				break
 			count += 1
@@ -462,7 +465,8 @@ class Trainer:
 			self._release_lock(self._locks['FWTOBW'], self._conditions['FWTOBW'])			
 
 	def _acquire_lock(self, lock):
-		lock.acquire()    	
+		if not lock.locked():
+			lock.acquire()    	
 	def _wait_lock(self, lock, condition):
 	    if lock.locked():
 	        None

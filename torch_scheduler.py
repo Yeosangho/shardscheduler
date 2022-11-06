@@ -269,10 +269,14 @@ class ShardScheduler(torch.optim.Optimizer):
         lock.acquire()    
 
     def _wait_lock(self, lock, condition):
+        print("!!!!!!!!!!!!!!!!")
+        print(lock.locked())        
         if lock.locked():
             None
         else :
             with condition :
+                print("!!!!!!!!!!!!!!!!! condition wait")
+
                 condition.wait()
     
     def _release_lock(self, lock, condition):
@@ -282,10 +286,13 @@ class ShardScheduler(torch.optim.Optimizer):
             condition.notify_all()
 
     def _wait_unlock(self, lock, condition):
+        print("!!!!!!!!!!!!!!!!")
+        print(lock.locked())         
         if not lock.locked():
             None 
         else :
             with condition :
+                print("!!!!!!!!!!!!!!!!! condition wait")
                 condition.wait()
 
     def _poll_FSDP(self, ):
@@ -331,6 +338,7 @@ class ShardScheduler(torch.optim.Optimizer):
             if(task.compType == 'FW' or task.compType == 'BW'):
                 self._wait_unlock(self._locks[task.compType][task.comp], self._conditions[task.compType][task.comp])  
             else:
+                print("wait lock!!!!!!!!!!!!!")
                 self._wait_unlock(self._locks[task.compType], self._conditions[task.compType])  
             #print(f"after {task.compType}")
 
@@ -562,6 +570,8 @@ class ShardScheduler(torch.optim.Optimizer):
                             print(partiable_param.start_ratio)
                             print(partiable_param.end_ratio)
                             print(stopped_idx)
+                            print(p.grad)
+                            print(p.requires_grad)
                             grad = p.grad.data        
 
                             org_size = p._orig_size.numel()
