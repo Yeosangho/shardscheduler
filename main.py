@@ -423,6 +423,7 @@ class Trainer:
 			print(f"before backward {torch.cuda.memory_allocated()/1024**2} {torch.cuda.memory_reserved()/1024**2} {(torch.cuda.memory_allocated() + torch.cuda.memory_reserved()) / 1024 /1024}") 	
 	#	
 			loss.backward()
+			time.sleep(0.2)
 			if self._locks['BWTOFW'].locked():   
 				self._release_lock(self._locks['BWTOFW'], self._conditions['BWTOFW'])
 
