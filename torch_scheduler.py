@@ -557,8 +557,8 @@ class ShardScheduler(torch.optim.Optimizer):
                         is_break = False
                         for idx, partiable_param in enumerate(comm.params[stopped_idx:], start=stopped_idx): 
                             p = partiable_param.param
-                            #print("#####################")
-                            #print(p.shape)
+                            print("#####################")
+                            print(p.shape)
                             #print(partiable_param.start_ratio)
                             #print(partiable_param.end_ratio)
                             grad = p.grad.data        
