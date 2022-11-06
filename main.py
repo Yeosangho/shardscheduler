@@ -130,7 +130,6 @@ class Trainer:
 		self.world_size = world_size
 		self.bucket_size = bucket_size
 		print(f'world_size : {world_size}')
-		ngpus_per_node = torch.cuda.device_count()
 		#self.shard = shard
 		#rank = int(os.environ['SLURM_PROCID'])
 		self.rank = rank
@@ -138,9 +137,6 @@ class Trainer:
 		print(f'rank : {rank}')
 
 
-		self.device = torch.device("cuda:"  + str(rank%ngpus_per_node))
-		torch.cuda.set_device(rank%ngpus_per_node)
-		print("cuda:"  + str(rank%ngpus_per_node))
 		self.process_groups = []
 		world_list = [x for x in range(world_size) ]
 
@@ -220,7 +216,7 @@ class Trainer:
 		#                          batch_size=128, 
 		#                          shuffle=True)	
 		self.train_dataset = datasets.CIFAR10(
-		    root='cifar10-data', train=True, download=True, transform=transforms.ToTensor())
+		    root='/scratch/hpc72a03/cifar10-data', train=True, download=False, transform=transforms.ToTensor())
 		self.train_loader = torch.utils.data.DataLoader(
 		    self.train_dataset , batch_size=32, shuffle=True, num_workers=2)
 		print(f"after init dataset  {torch.cuda.memory_allocated() / 1024 /1024}") 
@@ -229,7 +225,10 @@ class Trainer:
 		self.profiled_memory_utilization = []
 
 		print("111")
-		self.comm_stream = torch.cuda.Stream()
+		ngpus_per_node = torch.cuda.device_count()
+
+		device_id = rank%ngpus_per_node		
+		self.comm_stream = torch.cuda.Stream(device_id)
 		print("222")
 
 		self.wrap_params = dict( mixed_precision=False, flatten_parameters=True, 
@@ -347,11 +346,11 @@ class Trainer:
 			#self._conditions["RS"]        = self._rs_conditions      
 
 		params_list = list(self.sharded_module.parameters())
-
 		self.profile_target_layer.append(params_list[20])
 		#make_schedules_adaptive_sdp_auto(params_list, self._schedule_comm_init, self._scheduled_comms, self._locks, adaptive_sdp_modules)
 		max_param_num = get_param_num_by_buffer_size(self.world_size, self.bucket_size)
 		schedule(adaptive_sdp_modules, max_param_num, layer_bench_file_name='layer_bench.csv')
+		dist.barrier()
 
 		make_schedule_from_json(params_list, self._schedule_comm_init, self._scheduled_comms, self._locks, adaptive_sdp_modules)
 		#make_schedule_wfbp_sdp(params_list, self._schedule_comm_init, self._scheduled_comms, self._locks)
@@ -393,8 +392,7 @@ class Trainer:
 		print("bench 3")
 		start = time.time()
 		for batch_idx, (data, target) in enumerate(self.train_loader):
-			if(count == 5):
-				start = time.time()
+
 			self.data_index += 1
 			data = data.cuda()
 			print("bench 4")
@@ -518,11 +516,17 @@ if __name__ == '__main__':
 	
 	torch.cuda.empty_cache()
 	gc.collect()
-	total_memory = torch.cuda.get_device_properties(0).total_memory
+	
+	ngpus_per_node = torch.cuda.device_count()
+
+	device_id = rank%ngpus_per_node
+	total_memory = torch.cuda.get_device_properties(device_id).total_memory
 	target_memory = args.target_memory  *1024 * 1024 * 1024
 	fraction = target_memory  /  total_memory
 	print(fraction)
-	torch.cuda.set_per_process_memory_fraction(fraction, 0)    	
+
+	torch.cuda.set_device(device_id)	
+	torch.cuda.set_per_process_memory_fraction(fraction, device_id)    	
 	parameter_num = int(2.0 * 1024 * 1024 * 1024 / 4)
 	count = 0
 	dist.init_process_group(backend='nccl', world_size=world_size, rank=rank)
