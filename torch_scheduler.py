@@ -324,7 +324,7 @@ class ShardScheduler(torch.optim.Optimizer):
 
     def run_schedule(self, schedule, init=False):
         for task in schedule:   
-            #print(f"before {task.compType}")
+            print(f"before {task.compType}")
      
             if(self._stop_event.is_set()):
                 break           
