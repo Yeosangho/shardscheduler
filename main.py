@@ -6,7 +6,7 @@ import torch.distributed as dist
 import torch.nn as nn
 from torch.cuda.amp import autocast
 from torch.cuda.amp import GradScaler
-
+from torch.utils.data.distributed import DistributedSampler
 
 from torchvision import datasets
 from torchvision import transforms
@@ -217,8 +217,9 @@ class Trainer:
 		#                          shuffle=True)	
 		self.train_dataset = datasets.CIFAR10(
 		    root='/scratch/hpc72a03/cifar10-data', train=True, download=False, transform=transforms.ToTensor())
+		train_sampler = DistributedSampler(dataset=self.train_dataset, shuffle=False)
 		self.train_loader = torch.utils.data.DataLoader(
-		    self.train_dataset , batch_size=32, shuffle=True, num_workers=2)
+		    self.train_dataset , batch_size=32, sampler=train_sampler, shuffle=False, num_workers=2)
 		print(f"after init dataset  {torch.cuda.memory_allocated() / 1024 /1024}") 
 
 		#summary(self.model, ( 3, 32, 32))
@@ -279,19 +280,19 @@ class Trainer:
 		with enable_wrap(**self.wrap_params):
 			self.sharded_module = auto_wrap(adaptive_sdp, self.model)
 			print(len(list(self.sharded_module.named_parameters())))
-			adaptive_sdp_modules = {}
-			adaptive_sdp_modules['FSDP'] = 0 
-			adaptive_sdp_modules['SDP'] = 0
-			adaptive_sdp_modules['DP'] = 0
+			self.adaptive_sdp_modules = {}
+			self.adaptive_sdp_modules['FSDP'] = 0 
+			self.adaptive_sdp_modules['SDP'] = 0
+			self.adaptive_sdp_modules['DP'] = 0
 
 			for n, p in self.sharded_module.named_parameters():
 				print(n)
 				if('_fsdp_wrapped_module' in n):
-					adaptive_sdp_modules['FSDP'] += 1
+					self.adaptive_sdp_modules['FSDP'] += 1
 				elif('_sdp_wrapped_module' in n):
-					adaptive_sdp_modules['SDP'] += 1
+					self.adaptive_sdp_modules['SDP'] += 1
 				elif('_dp_wrapped_module' in n):
-					adaptive_sdp_modules['DP'] += 1
+					self.adaptive_sdp_modules['DP'] += 1
 
 
 			for n, p in self.sharded_module.named_parameters():
@@ -349,10 +350,10 @@ class Trainer:
 		self.profile_target_layer.append(params_list[20])
 		#make_schedules_adaptive_sdp_auto(params_list, self._schedule_comm_init, self._scheduled_comms, self._locks, adaptive_sdp_modules)
 		max_param_num = get_param_num_by_buffer_size(self.world_size, self.bucket_size)
-		schedule(adaptive_sdp_modules, max_param_num, layer_bench_file_name='layer_bench.csv')
+		schedule(self.adaptive_sdp_modules, max_param_num, layer_bench_file_name='profile_data/layer_bench_resnet50_cas_v100_4_node2.csv')
 		dist.barrier()
 
-		make_schedule_from_json(params_list, self._schedule_comm_init, self._scheduled_comms, self._locks, adaptive_sdp_modules)
+		make_schedule_from_json(params_list, self._schedule_comm_init, self._scheduled_comms, self._locks, self.adaptive_sdp_modules)
 		#make_schedule_wfbp_sdp(params_list, self._schedule_comm_init, self._scheduled_comms, self._locks)
 		#os._exit(1)
 		dist.barrier()
@@ -404,10 +405,9 @@ class Trainer:
 			print(f"before forward  {torch.cuda.memory_allocated()/1024**2} {torch.cuda.memory_reserved()/1024**2} {(torch.cuda.memory_allocated() + torch.cuda.memory_reserved()) / 1024 /1024}") 	
 			#print(f"!!!!!!!!!!!!!!!! {torch.cuda.memory_reserved()}")
 			#print(torch.cuda.memory_stats())	
-			if self._locks['BWTOFW'].locked():   
+			if self._locks['BWTOFW'].locked() and self.adaptive_sdp_modules["FSDP"] + self.adaptive_sdp_modules["SDP"] > 0:   
 				self._release_lock(self._locks['BWTOFW'], self._conditions['BWTOFW'])				
 			output = self.sharded_module(data)
-
 			#while not self.optimizer.scheduler_ready.locked():
 			#	time.sleep(0.01)
 			if self._locks['FWTOBW'].locked():   
@@ -485,7 +485,8 @@ class Trainer:
 if __name__ == '__main__':
 	world_size = int(os.environ["WORLD_SIZE"])
 	rank = int(os.environ["SLURM_PROCID"])
-
+	os.environ['MASTER_PORT'] = os.environ['TRAINER_PORT']
+	
 	parser = argparse.ArgumentParser()
 	parser.add_argument('--target_memory', default=7.0, type=float)
 	parser.add_argument('--sdp_ratio', default=0, type=float)
@@ -514,6 +515,7 @@ if __name__ == '__main__':
 	#world_size = int(os.environ["WORLD_SIZE"])
 	#rank = int(os.environ['SLURM_PROCID'])	
 	
+
 	torch.cuda.empty_cache()
 	gc.collect()
 	

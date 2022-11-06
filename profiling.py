@@ -253,22 +253,23 @@ def benchmark_gpt2(model, input_shape, input_dtype, label_shape, label_dtype):
     return seq_keys[::-1], layerwise_times[::-1], forward_times[::-1],  p.get_backward_key_sizes()[::-1]
 
 class CommunicationProfiler(object):
-    def __init__(self, comm_op, sizes=None):
+    def __init__(self, comm_op, rank, world_size=None):
         self.comm_op = comm_op
-        self.sizes = sizes
+        self.rank = rank
+        self.world_size = world_size
         self.all_reduce_stream = torch.cuda.Stream()
 
     def benchmark(self, num_iters=30):
-        if self.sizes is None:
-            small_sizes = [8*1024*i for i in range(50, 200)] # 1K to 1M
-            large_sizes = [1024*1024*i for i in range(8)] # 1M to 512M
-            sizes = small_sizes+large_sizes
-        else:
-            sizes = self.sizes
+
+        small_sizes = [8*1024*i for i in range(50, 200)] # 1K to 1M
+        large_sizes = [1024*1024*i for i in range(8)] # 1M to 512M
+        sizes = small_sizes + large_sizes
+        all_gather_sizes = [e*self.world_size for e in sizes]
+
         warmup = 100
         size = 1024
         tensor = torch.rand(size).float().cuda()
-        tensor_list = [torch.zeros_like(tensor).cuda() for _ in range(2)]
+        tensor_list = [torch.zeros_like(tensor).cuda() for _ in range(self.world_size)]
 
         stime = time.time()
         for i in range(warmup):
@@ -279,7 +280,7 @@ class CommunicationProfiler(object):
         elapsed_times = []
         for s in sizes:
             tensor = torch.rand(s).float().cuda()
-            tensor_list = [torch.zeros_like(tensor).cuda() for _ in range(2)]
+            tensor_list = [torch.zeros_like(tensor).cuda() for _ in range(self.world_size)]
 
             #option 1
             #stime = time.time()
@@ -305,6 +306,6 @@ class CommunicationProfiler(object):
             print("!")
             elapsed_times.append((etime-stime)/num_iters)
 
-        return sizes, elapsed_times
+        return all_gather_sizes, elapsed_times
 
 

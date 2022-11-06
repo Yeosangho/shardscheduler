@@ -214,7 +214,7 @@ def read_profile_info(comp_ops, forward_ops, backward_ops, param_nums, layer_ben
     #        comp_op.idx += layer_len
 
 
-    f = open('net_bench.csv','r')
+    f = open('profile_data/net_bench_cas_v100_4_node2.csv','r')
     rdr = csv.reader(f)
     alpha =  None
     beta = None
