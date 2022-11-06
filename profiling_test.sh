@@ -16,8 +16,7 @@ module purge
 module load cuda/11.3 python/3.7.1
 ### change 5-digit MASTER_PORT as you wish, slurm will raise Error if duplicated with others
 ### change WORLD_SIZE as gpus/node * num_nodes
-export TRAINER_PORT=12342
-export HANDLER_PORT=30001
+export MASTER_PORT=30001
 export WORLD_SIZE=8
 export GLOO_SOCKET_IFNAME=ib0
 export NCCL_SOCKET_IFNAME=ib0
@@ -35,5 +34,6 @@ echo "MASTER_ADDR="$MASTER_ADDR
 source activate shard
 
 ### the command to run
-#srun /home01/hpc72a03/.conda/envs/shard/bin/python main.py --sdp_ratio 0.0 --fsdp_ratio 0.0 --dp_ratio 1.0 --bucket_size 10 --target_memory 0.53
-srun /home01/hpc72a03/.conda/envs/shard/bin/python run.py --python_path "/home01/hpc72a03/.conda/envs/shard/bin/python"
+#srun /home01/hpc72a03/.conda/envs/shard/bin/python main.py --sdp_ratio 1.0 --fsdp_ratio 0.0 --dp_ratio 0.0 --bucket_size 1 --target_memory 0.51
+#srun /home01/hpc72a03/.conda/envs/shard/bin/python run.py --python_path "/home01/hpc72a03/.conda/envs/shard/bin/python"
+srun /home01/hpc72a03/.conda/envs/shard/bin/python profile.py --tag_name "cas_v100_4_node2"
