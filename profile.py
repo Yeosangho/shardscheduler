@@ -26,6 +26,7 @@ torch.cuda.set_device(device_id)
     
 dist.init_process_group(backend='nccl', world_size=world_size, rank=rank)
 group = dist.new_group(backend='gloo')
+
 #프로파일러 코드들 ==> 독립된 프로세스로 호출하고, 프로파일링 결과를 파일에 기록하도록 구성하기.
 #(이래야 프로파일링 결과로 실행되는 학습에 영향(메모리, 통신 백엔드)을 안줌)
 

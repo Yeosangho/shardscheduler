@@ -82,12 +82,12 @@ for review in reviews:
     doc_lengths.append(len(review))
 
 doc_lengths = np.array(doc_lengths)
-tokenizer = GPT2Tokenizer.from_pretrained('gpt2', bos_token='<|startoftext|>', eos_token='<|endoftext|>', pad_token='<|pad|>')
+tokenizer = GPT2Tokenizer.from_pretrained('gpt2-large', bos_token='<|startoftext|>', eos_token='<|endoftext|>', pad_token='<|pad|>')
 batch_size = 2
 
 class GPT2Dataset(Dataset):
 
-  def __init__(self, txt_list, tokenizer, gpt2_type="gpt2", max_length=768):
+  def __init__(self, txt_list, tokenizer, gpt2_type="gpt2-large", max_length=768):
 
     self.tokenizer = tokenizer
     self.input_ids = []
@@ -133,7 +133,7 @@ validation_dataloader = DataLoader(
         )
 
 # I'm not really doing anything with the config buheret
-configuration = GPT2Config.from_pretrained('gpt2', output_hidden_states=False)
+configuration = GPT2Config.from_pretrained('gpt2-large', output_hidden_states=False)
 
 # instantiate the model
 model = GPT2LMHeadModel.from_pretrained("gpt2", config=configuration)

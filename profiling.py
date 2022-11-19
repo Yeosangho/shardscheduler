@@ -263,7 +263,8 @@ class CommunicationProfiler(object):
 
         small_sizes = [8*1024*i for i in range(50, 200)] # 1K to 1M
         large_sizes = [1024*1024*i for i in range(8)] # 1M to 512M
-        sizes = small_sizes + large_sizes
+        #sizes = small_sizes + large_sizes
+        sizes = large_sizes
         all_gather_sizes = [e*self.world_size for e in sizes]
 
         warmup = 100
@@ -296,10 +297,7 @@ class CommunicationProfiler(object):
             #option 2
             stime = time.time()
             for i in range(num_iters):
-                handle = self.comm_op(tensor_list, tensor, async_op=True)
-                while not handle.is_completed():
-                    time.sleep(0.001)
-                handle.wait()
+                self.comm_op(tensor_list, tensor)
             etime = time.time()
 
 

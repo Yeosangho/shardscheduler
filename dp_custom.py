@@ -644,18 +644,6 @@ class DataParallel_Custom(nn.Module):
 
         # Start of a forward pass.
         self.training_state = TrainingState.FORWARD
-        #with open("foo.txt", "a") as f:
-        #    f.write("Life is too short, you need python")
-        # For root and mixed precision, we convert the input to FP16 (no_grad is needed for
-        # the conversion).
-        if self._is_root and self.mixed_precision:
-            args, kwargs = cast_floats_to_right_precision(True, True, *args, **kwargs)
-
-        # If enabled, convert the input to FP32 if we are in full precision.
-        # no_grad is not used because the input might be for a non-root instance,
-        # which mean autograd needs to go through the conversion.
-        if self.force_input_to_fp32 and not self.mixed_precision:
-            args, kwargs = cast_floats_to_right_precision(False, False, *args, **kwargs)
 #
         # All-gather full parameters. This will also transfer FP32 parameters to
         # ``self.compute_dtype`` (e.g., FP16 if *mixed_precision* is ``True``).

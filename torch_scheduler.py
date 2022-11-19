@@ -299,7 +299,10 @@ class ShardScheduler(torch.optim.Optimizer):
             #os._exit(0)
 
             #bucket size to parameter_num
-            
+            ngpus_per_node = torch.cuda.device_count()
+        
+            device_id = self._rank%ngpus_per_node
+            torch.cuda.set_device(device_id)                
     
             with torch.cuda.stream(self.comm_stream):
                 while self.health_check_thread_ready.locked():
@@ -308,12 +311,12 @@ class ShardScheduler(torch.optim.Optimizer):
                 param_num =  get_param_num_by_buffer_size(self._size, self.bucket_size)  
                 self.bucket = Bucket(param_num, self._size) #parameter_num      
                 #self.scheduler_ready.acquire()
-                self.run_schedule(self.init_schedules , init=True)
+                self.run_schedule(self.init_schedules , self.comm_stream, init=True)
                 #self.scheduler_ready.acquire()
                 #exit()
                 print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
                 while not self._stop_event.is_set():
-                    self.run_schedule(self.schedules, init=False)
+                    self.run_schedule(self.schedules, self.comm_stream, init=False)
         except RuntimeError as error :
             print("Runtime error in scheduler")
             print(traceback.format_exc())
@@ -324,16 +327,16 @@ class ShardScheduler(torch.optim.Optimizer):
             self.health_check_lock.acquire()
             self.health_check_thread.join()
 
-    def run_schedule(self, schedule, init=False):
-        for task in schedule:   
+    def run_schedule(self, schedule, comm_stream, init=False):
+        for task in schedule:
+              
             #print(f"before {task.compType}")
      
-            if(self._stop_event.is_set()):
-                break           
             if(task.compType == 'FW' or task.compType == 'BW'):
                 self._wait_unlock(self._locks[task.compType][task.comp], self._conditions[task.compType][task.comp])  
             else:
-                self._wait_unlock(self._locks[task.compType], self._conditions[task.compType])  
+                self._wait_unlock(self._locks[task.compType], self._conditions[task.compType])
+            start = time.time()   
             #print(f"after {task.compType}")
 
             for comm in task.comms : 
@@ -397,9 +400,8 @@ class ShardScheduler(torch.optim.Optimizer):
                     #print(f"end-start {end_idx-start_idx}")
                         #print("############################")
                         ##output_tensor_list = list(bucket.output.view(world_size, -1)[:self.bucket.offset].unbind(0))
-                        handle = dist._all_gather_base(self.bucket.org_buffer[:self.bucket.offset*self._size], self.bucket.shard_buffer[:self.bucket.offset], async_op=True)
-                        while not handle.is_completed() :
-                            time.sleep(0.001)
+                        dist._all_gather_base(self.bucket.org_buffer[:self.bucket.offset*self._size], self.bucket.shard_buffer[:self.bucket.offset])
+             
                         output_tensor = self.bucket.org_buffer[:self.bucket.offset*self._size].view(self._size, -1)
                         pre_offset = 0
                         #!!!!!")
@@ -407,8 +409,7 @@ class ShardScheduler(torch.optim.Optimizer):
                             #p._full_param_padded.storage().resize_(0)
                             param = param_wrap.param
                             p_size = param._full_param_padded.size()
-                            if(param_wrap.start_idx == 0):
-                                param._full_param_padded.storage().resize_(p_size.numel())                      
+                            param._full_param_padded.storage().resize_(p_size.numel())                      
                             #print(param._full_param_padded.shape)
                             #print(param_wrap.shard_size)
                             listed_full_param = param._full_param_padded.view(self._size,param_wrap.shard_size)
@@ -506,9 +507,7 @@ class ShardScheduler(torch.optim.Optimizer):
                         if(idx == len(comm.params) -1 and not is_break ):
                             comm_continue = False                         
                         #print(self.bucket.offset)
-                        handle = dist._reduce_scatter_base(self.bucket.shard_buffer[:self.bucket.offset], self.bucket.org_buffer[:, :self.bucket.offset].contiguous(), async_op=True)  
-                        while not handle.is_completed():
-                            time.sleep(0.001)
+                        dist._reduce_scatter_base(self.bucket.shard_buffer[:self.bucket.offset], self.bucket.org_buffer[:, :self.bucket.offset].contiguous())  
                         self.bucket.shard_buffer[:self.bucket.offset]= self.bucket.shard_buffer[:self.bucket.offset] / self._size    
                         pre_offset = 0
                         count = 0
@@ -530,11 +529,11 @@ class ShardScheduler(torch.optim.Optimizer):
                                 #print(f"output p.grad[0] {param.grad.shape} {torch.sum(param.grad)}")
 
                                 #param.grad.data = param.grad.data 
-                                if(param.data_ptr() == self.profile_layer[0].data_ptr()):
-                                    print('after rs')
-                                    print(param.shape)
-                                    print("###################")
-                                    print(param.grad.sum())
+                                #if(param.data_ptr() == self.profile_layer[0].data_ptr()):
+                                #    print('after rs')
+                                #    print(param.shape)
+                                #    print("###################")
+                                #    print(param.grad.sum())
                                 
                                 #print(count)
                                 #print(param_wrap.shard_size)
@@ -555,77 +554,32 @@ class ShardScheduler(torch.optim.Optimizer):
                     remains = 0
                     stopped_idx = 0
                     comm_continue = True
-                    while comm_continue : 
-                        is_break = False
-                        for idx, partiable_param in enumerate(comm.params[stopped_idx:], start=stopped_idx): 
-                            p = partiable_param.param
-                            #print("#########################")
-                            #print(p.shape)
-                            #print(partiable_param.start_ratio)
-                            #print(partiable_param.end_ratio)
-                            grad = p.grad.data        
 
-                            org_size = p._orig_size.numel()
-                            start_idx = int(org_size * partiable_param.start_ratio)
-                            end_idx = int(org_size * partiable_param.end_ratio)                            
+                    for partiable_param in comm.params: 
+                        p = partiable_param.param
+                        #print("#########################")
+                        #print(p.shape)
+                        #print(partiable_param.start_ratio)
+                        #print(partiable_param.end_ratio)
+                        grad = p.grad.data                            
     
-                            
-                            if(remains == 0):
-                                remains = self.bucket.push(grad=grad,
-                                                param = p,
-                                                start_idx=start_idx,
-                                                end_idx=end_idx,
-                                                org_size=org_size, 
-                                                shard_size=-1, 
-                                                commType='AR')  
-                            else:
-                                remains = self.bucket.push(grad=grad,
-                                                param = p,
-                                                start_idx=end_idx - remains,
-                                                end_idx=end_idx,
-                                                org_size=org_size, 
-                                                shard_size=-1, 
-                                                commType='AR')  
-                            if(remains>0):
-                                stopped_idx = idx
-                                is_break = True
-                                break                                            
-                            grad_chunks=None
-                        if(idx == len(comm.params) -1 and not is_break ):
-                            comm_continue = False  
+                        dist.all_reduce(p.grad.data, async_op=False)
+                        #while not handle.is_completed():
+                        #    time.sleep(0.0001)
 
-                        handle = dist.all_reduce(self.bucket.fusion_buffer[:self.bucket.offset], async_op=True)  
-                        while not handle.is_completed():
-                            time.sleep(0.001)     
-                        self.bucket.fusion_buffer[:self.bucket.offset]=  self.bucket.fusion_buffer[:self.bucket.offset] / self._size
-                        pre_offset = 0
-                        for param_wrap, offset in zip(self.bucket.params.params, self.bucket.params.offsets):   
-
-                            param = param_wrap.param  
-
-                            param.grad.data[param_wrap.start_idx:param_wrap.end_idx].copy_(self.bucket.fusion_buffer[pre_offset:offset])
-                            pre_offset = offset
-
-                            if(param_wrap.end_idx == param_wrap.org_size):
-                                #if(param.data_ptr() == self.profile_layer[0].data_ptr()):
-                                        #print('after ar')
-                                        #print(param.shape)
-                                        #print(param.grad.sum())  
-                                self._adam(param)
-                                self._zero_one_grad(param)
-                                #torch.cuda.empty_cache() 
-                                self._release_lock(self._locks['AR'][param], self._conditions['AR'][param])
-
-                                grad = None
-                                #p.grad = None                          
-                        self.bucket.flush()
+                        #if(param.data_ptr() == self.profile_layer[0].data_ptr()):
+                                #print('after ar')
+                        self._adam(p)
+                        self._zero_one_grad(p)
+                        #torch.cuda.empty_cache() 
+                        self._release_lock(self._locks['AR'][p], self._conditions['AR'][p])
+    
+                        grad = None                     
+                    #self.bucket.flush()
 
             if(task.compType == 'FW' or task.compType == 'BW'):
-                #if(not self.health_check_lock.locked()):
                 self._acquire_lock(self._locks[task.compType][task.comp])
             else:
-                #print(task.compType)
-                #if(not self.health_check_lock.locked()):
                 self._acquire_lock(self._locks[task.compType])   
 
 

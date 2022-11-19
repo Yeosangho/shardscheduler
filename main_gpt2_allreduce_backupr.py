@@ -390,10 +390,10 @@ class Trainer:
 			print("!!!")
 			start_time = time.time()
 			for n,p in self.model.named_parameters():
-
+#
 				grad_clone = torch.clone(p.grad.data)
 				dist.all_reduce(grad_clone, async_op=False)
-	
+	#
 				p.grad.data.copy_(grad_clone)
 
 			self.optimizer.step()

@@ -2,7 +2,7 @@
 
 #SBATCH -J pytorch_test
 #SBATCH -p cas_v100_4
-#SBATCH --nodes=2 
+#SBATCH --nodes=2
 #SBATCH --ntasks-per-node=4
 #SBATCH -o %x_%j.out
 #SBATCH -e %x_%j.err
@@ -36,4 +36,4 @@ source activate shard
 ### the command to run
 #srun /home01/hpc72a03/.conda/envs/shard/bin/python main.py --sdp_ratio 1.0 --fsdp_ratio 0.0 --dp_ratio 0.0 --bucket_size 1 --target_memory 0.51
 #srun /home01/hpc72a03/.conda/envs/shard/bin/python run.py --python_path "/home01/hpc72a03/.conda/envs/shard/bin/python"
-srun /home01/hpc72a03/.conda/envs/shard/bin/python profile.py --tag_name "cas_v100_4_node2"
+srun /home01/hpc72a03/.conda/envs/shard/bin/python profile_gpt2.py --tag_name "cas_v100_4_2"

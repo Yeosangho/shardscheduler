@@ -367,7 +367,7 @@ class Trainer:
 		start = time.time()
 		self.sharded_module.train()
 
-		for batch in tqdm(self.train_loader):
+		for _, batch in tqdm(self.train_loader):
 
 			b_input_ids = batch[0].cuda()
 			b_labels = batch[0].cuda()
@@ -379,16 +379,16 @@ class Trainer:
 
 			if self._locks['BWTOFW'].locked() and self.adaptive_sdp_modules["FSDP"] + self.adaptive_sdp_modules["SDP"] > 0:   
 				self._release_lock(self._locks['BWTOFW'], self._conditions['BWTOFW'])
-			#if count > 0:
-			#	self._wait_lock(self._locks['BWTOFW'], self._conditions['BWTOFW'])
+			if count > 0:
+				self._wait_lock(self._locks['BWTOFW'], self._conditions['BWTOFW'])
 			output = self.sharded_module( b_input_ids,
                           labels=b_labels, 
                           attention_mask = b_masks,
                           token_type_ids=None
                         )
 	
-			#if self._locks['FWTOBW'].locked():   
-			#	self._release_lock(self._locks['FWTOBW'], self._conditions['FWTOBW'])
+			if self._locks['FWTOBW'].locked():   
+				self._release_lock(self._locks['FWTOBW'], self._conditions['FWTOBW'])
 
 
 			#print(f"after forward {torch.cuda.memory_allocated()/1024**2} {torch.cuda.memory_reserved()/1024**2} {(torch.cuda.memory_allocated() + torch.cuda.memory_reserved()) / 1024 /1024}") 	

@@ -2,7 +2,7 @@
 
 #SBATCH -J pytorch_test
 #SBATCH -p cas_v100_4
-#SBATCH --nodes=2 
+#SBATCH --nodes=1 
 #SBATCH --ntasks-per-node=4
 #SBATCH -o %x_%j.out
 #SBATCH -e %x_%j.err
@@ -18,7 +18,7 @@ module load cuda/11.3 python/3.7.1
 ### change WORLD_SIZE as gpus/node * num_nodes
 export TRAINER_PORT=12342
 export HANDLER_PORT=30001
-export WORLD_SIZE=8
+export WORLD_SIZE=4
 export GLOO_SOCKET_IFNAME=ib0
 export NCCL_SOCKET_IFNAME=ib0
 export MASTER_SOCKET_IFNAME=ib0
@@ -36,4 +36,5 @@ source activate shard
 
 ### the command to run
 #srun /home01/hpc72a03/.conda/envs/shard/bin/python main.py --sdp_ratio 0.0 --fsdp_ratio 0.0 --dp_ratio 1.0 --bucket_size 10 --target_memory 0.53
-srun /home01/hpc72a03/.conda/envs/shard/bin/python run.py --python_path "/home01/hpc72a03/.conda/envs/shard/bin/python"
+srun /home01/hpc72a03/.conda/envs/shard/bin/python main_gpt2_with_health_checker.py --sdp_ratio 0.0 --fsdp_ratio 0.0 --dp_ratio 1.0 --bucket_size 500 --target_memory 31
+#srun /home01/hpc72a03/.conda/envs/shard/bin/python run.py --python_path "/home01/hpc72a03/.conda/envs/shard/bin/python"

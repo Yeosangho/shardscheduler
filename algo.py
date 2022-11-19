@@ -152,18 +152,18 @@ def schedule_ops(target_comm, target_comp, comp_ops, alpha, beta, max_buffered_p
                                                 ar_factor,
                                                 max_buffered_param_num,
                                                 )
-        if(target_comp.overlappable_time > latency_penalty * alpha):
-            overlapped_param_num = (target_comp.overlappable_time - latency_penalty*alpha) / (beta*4 * ar_factor)
-            if(target_comm.overlappable_param_num - overlapped_param_num < unit):
-                overlapped_param_num = target_comm.overlappable_param_num
-            target_comp.overlappable_time = 0 
-            comp_ops.remove(target_comp)
-            target_comp.scheduled_comm[comm_type].append(target_comm)
-            target_comp.scheduled_params[comm_type].append(overlapped_param_num)
-            target_comm.set_scheduled_comp(target_comp, overlapped_param_num, target_comp.overlappable_time)  
-        else:
+        #if(target_comp.overlappable_time > latency_penalty * alpha):
+            #overlapped_param_num = (target_comp.overlappable_time - latency_penalty*alpha) / (beta*4 * ar_factor)
+            #if(target_comm.overlappable_param_num - overlapped_param_num < unit):
+        overlapped_param_num = target_comm.overlappable_param_num
+        target_comp.overlappable_time = 0 
+        comp_ops.remove(target_comp)
+        target_comp.scheduled_comm[comm_type].append(target_comm)
+        target_comp.scheduled_params[comm_type].append(overlapped_param_num)
+        target_comm.set_scheduled_comp(target_comp, overlapped_param_num, target_comp.overlappable_time)  
+        #else:
             #print("111")
-            target_comp.schedulable_comms.remove(target_comm)
+        target_comp.schedulable_comms.remove(target_comm)
 
 
     elif(time <= target_comp.overlappable_time) :
@@ -173,7 +173,7 @@ def schedule_ops(target_comm, target_comp, comp_ops, alpha, beta, max_buffered_p
         target_comm.set_scheduled_comp(target_comp, param_num, time)
         target_comp.overlappable_time -= time
 
-def read_profile_info(comp_ops, forward_ops, backward_ops, param_nums, layer_bench_file_name):
+def read_profile_info(comp_ops, forward_ops, backward_ops, param_nums, layer_bench_file_name, net_bench_file_name):
 
     total_comp_times = 0
     total_backward_times = 0
@@ -214,7 +214,7 @@ def read_profile_info(comp_ops, forward_ops, backward_ops, param_nums, layer_ben
     #        comp_op.idx += layer_len
 
 
-    f = open('profile_data/net_bench_cas_v100_4_node2.csv','r')
+    f = open(net_bench_file_name,'r')
     rdr = csv.reader(f)
     alpha =  None
     beta = None
@@ -223,7 +223,7 @@ def read_profile_info(comp_ops, forward_ops, backward_ops, param_nums, layer_ben
         beta = float(line[1])
     return alpha, beta, total_comp_times, total_backward_times, total_forward_times, total_param_num, total_layer_num
 
-def schedule(adaptive_sdp, max_buffered_param_num, layer_bench_file_name='layer_bench.csv'):
+def schedule(adaptive_sdp, max_buffered_param_num, layer_bench_file_name='layer_bench.csv', net_bench_file_name='net_bench.csv'):
     #schedule
 
 
@@ -238,7 +238,11 @@ def schedule(adaptive_sdp, max_buffered_param_num, layer_bench_file_name='layer_
     forward_ops = [] 
     backward_ops = [] 
     comp_ops = []
-    alpha, beta, total_comp_times, total_backward_times, total_forward_times, _, _ = read_profile_info(comp_ops, forward_ops, backward_ops, param_nums, layer_bench_file_name)
+    alpha, beta, total_comp_times, total_backward_times, total_forward_times, _, _ = read_profile_info(comp_ops, \
+                                                            forward_ops, backward_ops, param_nums, \
+                                                            layer_bench_file_name, \
+                                                            net_bench_file_name
+                                                            )
 
 
     #print(comp_times)
@@ -374,7 +378,7 @@ def schedule(adaptive_sdp, max_buffered_param_num, layer_bench_file_name='layer_
         #print(ordered_comp_ops[0])
         #print(schedulable_comms)
         #4 Find comm ops with low schedulable range
-
+#
         def compare(item1, item2):
             if ordered_comp_ops[0].type == 'forward' and item1.type != item2.type:
                 if(item1.type == 'ag'):
@@ -396,33 +400,33 @@ def schedule(adaptive_sdp, max_buffered_param_num, layer_bench_file_name='layer_
                     return 0
             else:
                 return 0
-
+#
         ordered_comm_ops = sorted(schedulable_comms, key=functools.cmp_to_key(compare), reverse=True) #schedulable_comms.sort( key=compare)
         ordered_comm_ops = sorted(ordered_comm_ops, key=lambda x:x.get_possible_schedulable_time())
-
-
+#
+#
         if(len(ordered_comm_ops) == 0):
             print("impossible to overlap!")
             comp_ops.remove(ordered_comp_ops[0])
-
+#
         else:
             #for comm in ordered_comm_ops:
                 #print(comm)
             target_comm = ordered_comm_ops[0]
-
+#
             target_comp = ordered_comp_ops[0]
             #print(f"target_comm {target_comm}")
             #print(f"target_comp {target_comp}")
             #print(comm.type)
             schedule_ops(target_comm, target_comp, comp_ops, alpha, beta, max_buffered_param_num)
-
+#
             if(target_comm.overlappable_param_num == 0):
                 for comp in comp_ops:
                     if(target_comm in comp.schedulable_comms):
                         #print("remove comms!")
                         comp.schedulable_comms.remove(target_comm)
-
-
+#
+#
         if(len(comp_ops) == 0):
             continue_schedule = False
             #print("comp_ops is zero!")
