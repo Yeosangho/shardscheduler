@@ -40,12 +40,14 @@ from transformers import AdamW, get_linear_schedule_with_warmup
 
 from auto_wrap_custom import enable_wrap, auto_wrap, wrap
 from torch_scheduler import ShardScheduler, get_param_num_by_buffer_size
-from test_cases import make_schedule_from_json
+from schedule_converter import make_schedule_from_json
 from algo import schedule
 from logger import write_trial
 from memory_hook import register_memory_profiling_hooks
 from dp_custom import DataParallel_Custom as DP
 from ar_bucketer import ARBucketer 
+from comm_mixin import CommMixin
+
 def is_any_completed(handles):
 
     for handle in handles:
@@ -126,7 +128,7 @@ class GPT2Dataset(Dataset):
   def __getitem__(self, idx):
     return self.input_ids[idx], self.attn_masks[idx] 
 
-class Trainer:
+class Trainer(CommMixin):
 	def __init__(self, world_size, rank,  bucket_size, count, adaptive_shard_ratio,  health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread):
 		self.health_check_scheduler_thread = health_check_scheduler_thread
 		self.health_check_main_proc = health_check_main_proc
@@ -193,7 +195,7 @@ class Trainer:
 		self._done_counts = {}
 
 		self.model_parameter_names = {}
-		
+		self.synced_param_num_dict = {}
 
 		self.datasets = []
 		self.target = None
@@ -246,7 +248,8 @@ class Trainer:
 								init_comm_schedule=self._schedule_comm_init,
 								comm_schedule =self._scheduled_comms, 
 								param_name_dict=self.model_parameter_names,
-								bucketer=self.bucketer
+								bucketer=self.bucketer,
+								synced_param_num_dict=self.synced_param_num_dict
 								)
 		self.memory_hook_params = dict(memory_record=self.profiled_memory_utilization)
 					
@@ -299,7 +302,8 @@ class Trainer:
 				for scheduled_comp in ["FW", "BW"]:
 					self._schedule_comm_init[scheduled_comp][n] = None
 					self._scheduled_comms[scheduled_comp][n] = None
-				self.model_parameter_names[p] = n	
+				self.model_parameter_names[p] = n
+				self.synced_param_num_dict[p] = 0	
 				params_name_list.append(n)
 				params_list.append(p)
 				print(p)
@@ -309,14 +313,14 @@ class Trainer:
 			dist.barrier()
 #
 			max_param_num = get_param_num_by_buffer_size(self.world_size, self.bucket_size)
-			#if(self.rank == 0):
-			#	schedule(self.adaptive_sdp_modules, max_param_num, \
-			#		layer_bench_file_name='profile_data/layer_bench_gpt2_cas_v100_4_2.csv', net_bench_file_name='profile_data/net_bench_cas_v100_4_2.csv')
-			#dist.barrier()
+			if(self.rank == 0):
+				schedule(self.world_size, self.adaptive_sdp_modules, max_param_num, \
+					layer_bench_file_name='profile_data/layer_bench_gpt2_cas_v100_4_2.csv', net_bench_file_name='profile_data/net_bench_cas_v100_4_2.csv')
+			dist.barrier()
 #	#
 			make_schedule_from_json(params_list, params_name_list, self._schedule_comm_init, self._scheduled_comms, self._locks, self.adaptive_sdp_modules)
 #	#
-#		dist.barrier()
+		dist.barrier()
 
 		self.optimizer = torch.optim.Adam(self.sharded_module.parameters(), lr=0.1, betas=(0.9, 0.999), eps=1e-08, weight_decay=0, amsgrad=False)
 		self.optimizer = ShardScheduler(self.sharded_module, self.sharded_module.named_parameters(), self.world_size, self.rank, self.optimizer,
@@ -339,27 +343,43 @@ class Trainer:
 
 		self.scaler = GradScaler()
 		print("end inittialization trainer")
+		
+		
+	def set_comm_mixin(self):
+		self.set_bucketer(self.bucketer)
+		self.set_param_name_dict(self.model_parameter_names)
+		self.set_synced_param_num_dict(self.synced_param_num_dict)
+
+
+	def communicate_nonoverlap(self, tag_name):
+		task = self._scheduled_comms.get(tag_name, None)
+		if task is not None:
+			if bool(task):
+				for comm in task.comms : 
+					self.do_communication(comm, tag_name=tag_name)	
+
 
 	def benchmark_step(self):
 
 		count = 0
 		start = time.time()
+		self.set_comm_mixin()
 		self.sharded_module.train()
 
 		for batch in tqdm(self.train_loader):
+
 
 			b_input_ids = batch[0].cuda()
 			b_labels = batch[0].cuda()
 			b_masks = batch[1].cuda()
 
-
+			self.communicate_nonoverlap("BWTOFW")
 			output = self.sharded_module( b_input_ids,
                           labels=b_labels, 
                           attention_mask = b_masks,
                           token_type_ids=None
                         )
-	
-
+			self.communicate_nonoverlap("FWTOBW")
 
 			loss = output[0] 
 			if(rank == 0):

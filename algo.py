@@ -54,17 +54,18 @@ class CommOp:
         self.time = time
         self.orig_size = param_num
         self.residual_time = time 
-        
-        self.param_num = param_num
-        self.sharded_param_num = sharded_param_num
-        self.full_padded_param_num = full_padded_param_num
-
-        if(self.comm_type == 'ar'):
+                
+        if(self.type == 'ar'):
             self.overlappable_param_num = param_num
-        elif self.comm_type == 'ag' or self.comm_type == 'ag_fsdp':
+            self.param_num = param_num
+        elif self.type == 'ag' or self.type == 'ag_fsdp':
             self.overlappable_param_num = sharded_param_num
-        elif self.comm_type == 'rs':
+            self.sharded_param_num = sharded_param_num
+            self.param_num = sharded_param_num
+        elif self.type == 'rs':
             self.overlappable_param_num = full_padded_param_num
+            self.param_num = full_padded_param_num
+            self.full_padded_param_num = full_padded_param_num
 
         self.schedulable_comps = []
         self.scheduled_comps = []
@@ -143,7 +144,6 @@ def schedule_ops(target_comm, target_comp, comp_ops, alpha, beta, max_buffered_p
 
     time = partition_num * alpha + beta * target_comm.overlappable_param_num * 4 * ar_factor
     param_num = target_comm.overlappable_param_num
-    unit = math.ceil(target_comm.orig_size * 0.0001)
 
 
     over_param_num = 0
@@ -165,13 +165,13 @@ def schedule_ops(target_comm, target_comp, comp_ops, alpha, beta, max_buffered_p
                                                 max_buffered_param_num,
                                                 )
         if(target_comp.overlappable_time > latency_penalty * alpha):
-            overlapped_param_num = (target_comp.overlappable_time - latency_penalty*alpha) / (beta*4 * ar_factor)
-            if(target_comm.overlappable_param_num - overlapped_param_num < unit):
-                overlapped_param_num = target_comm.overlappable_param_num
+            overlapped_param_num = math.ceil((target_comp.overlappable_time - latency_penalty*alpha) / (beta*4 * ar_factor))
+
             target_comp.overlappable_time = 0 
             comp_ops.remove(target_comp)
             target_comp.scheduled_comm[comm_type].append(target_comm)
             target_comp.scheduled_params[comm_type].append(overlapped_param_num)
+            print(f"target comp overlapped_param_num {overlapped_param_num}")
             target_comm.set_scheduled_comp(target_comp, overlapped_param_num, target_comp.overlappable_time)  
         else:
             #print("111")
@@ -181,11 +181,11 @@ def schedule_ops(target_comm, target_comp, comp_ops, alpha, beta, max_buffered_p
     elif(time <= target_comp.overlappable_time) :
         target_comp.scheduled_comm[comm_type].append(target_comm)
         target_comp.scheduled_params[comm_type].append(param_num)
-
+        print(f"line 184 :: target comp overlapped_param_num {param_num}")
         target_comm.set_scheduled_comp(target_comp, param_num, time)
         target_comp.overlappable_time -= time
 
-def read_profile_info(world_size, comp_ops, forward_ops, backward_ops, param_nums, sharded_param_nums, full_padded_param_nums, layer_bench_file_name, net_bench_file_name, world_size):
+def read_profile_info(world_size, comp_ops, forward_ops, backward_ops, param_nums, sharded_param_nums, full_padded_param_nums, layer_bench_file_name, net_bench_file_name):
 
     total_comp_times = 0
     total_backward_times = 0
@@ -213,7 +213,7 @@ def read_profile_info(world_size, comp_ops, forward_ops, backward_ops, param_num
         sharded_param_nums[layer_name] = math.ceil(int(line[3])/world_size)
         full_padded_param_nums[layer_name] = sharded_param_nums[layer_name] * world_size
 
-        total_param_num += int(line[3]) = 
+        total_param_num += int(line[3])
         forward_op = CompOp(layer_name, idx, ftime, 'forward')
         forward_ops.append(forward_op)
         backward_op = CompOp(layer_name, idx, btime, 'backward')
@@ -260,7 +260,7 @@ def schedule(world_size, adaptive_sdp, max_buffered_param_num, layer_bench_file_
     forward_ops = [] 
     backward_ops = [] 
     comp_ops = []
-    alpha, beta, total_comp_times, total_backward_times, total_forward_times, _, _ = read_profile_info(world_size, comp_ops, forward_ops, backward_ops, param_nums, sharded_param_nums, full_padded_param_nums, layer_bench_file_name, net_bench_file_name, world_size)
+    alpha, beta, total_comp_times, total_backward_times, total_forward_times, _, _ = read_profile_info(world_size, comp_ops, forward_ops, backward_ops, param_nums, sharded_param_nums, full_padded_param_nums, layer_bench_file_name, net_bench_file_name)
 
 
     #print(comp_times)

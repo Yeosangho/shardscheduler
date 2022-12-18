@@ -52,7 +52,7 @@ from fairscale.utils.params import calc_grad_norm, recursive_copy_to_device
 from fairscale.utils.state_dict import replace_by_prefix_
 
 from fairscale.nn.data_parallel import fsdp_optim_utils as ou
-
+from comm_mixin import CommMixin
 if TYPE_CHECKING:
     from collections import OrderedDict  # noqa: F401
 # TODO: Remove the toggle here when github open issue #801 is resolved.
@@ -86,7 +86,7 @@ class TrainingState(Enum):
     SUMMON_FULL_PARAMS = auto()
 
 
-class DataParallel_Custom(nn.Module):
+class DataParallel_Custom(nn.Module, CommMixin):
     """
     A wrapper for sharding Module parameters across data parallel workers. This
     is inspired by `Xu et al.`_ as well as the ZeRO Stage 3 from DeepSpeed_.
@@ -272,14 +272,18 @@ class DataParallel_Custom(nn.Module):
         init_comm_schedule=None,
         comm_schedule=None,
         param_name_dict=None,
-        bucketer=None
+        bucketer=None,
+        synced_param_num_dict=None
     ):
         init_start = time.time()
         super().__init__()
+        self.synced_param_num_dict = synced_param_num_dict
         self.scheduled_task_per_param = {}
         self.bucketer=bucketer
         self.param_name_dict = param_name_dict
-
+        self.set_bucketer(self.bucketer)
+        self.set_param_name_dict(self.param_name_dict)
+        self.set_synced_param_num_dict(self.synced_param_num_dict)
         self.init_comm_schedule = init_comm_schedule
         self.comm_schedule = comm_schedule
         self.comm_stream = comm_stream
@@ -657,15 +661,21 @@ class DataParallel_Custom(nn.Module):
 
     def communicate_forward(self):
         for p in self.params :
-            
+            param_name = self.param_name_dict[p]
+            if self.synced_param_num_dict[p] == p._orig_size.numel() :
+                print(f"param {param_name} is fully commnicated")
+            else:
+                print(f"param {param_name} is not fully commnicated!!! communicated parameter : {self.synced_param_num_dict[p]} orig size : {p._orig_size.numel()}")
+            self.synced_param_num_dict[p] = 0    
             task = self.scheduled_task_per_param.get(p, None)
+            print(f"param_name :: {param_name} communicated param num : {self.synced_param_num_dict[p]}")
             if task is None:
                 param_name = self.param_name_dict[p]
-                task = self.search_scheduled_comm(self.init_comm_schedule, param_name, 'FW')
+                task = self.search_scheduled_comm(self.comm_schedule, param_name, 'FW')
                 self.scheduled_task_per_param[p] = task
 
                 print("########### task is not assigned to module############")
-                print(f"scheduled task in {p} :: {self.scheduled_task_per_param[p]}")
+                print(f"scheduled task in {param_name} :: {self.scheduled_task_per_param[p]}")
 
             elif task is not None:
                 print("########### task is assigned to module############")
@@ -675,41 +685,6 @@ class DataParallel_Custom(nn.Module):
             if(type(task) != str):
                 for comm in task.comms : 
                     self.do_communication(comm)
-
-
-    def do_communication(self, comm):
-        if comm.commType == "AG":
-            None
-        elif comm.commType == "AR":
-            for idx, partiable_param in enumerate(comm.params): 
-                self.do_allreduce_async(partiable_param)
-            self.bucketer.flush()
-
-        elif comm.commType == "RS":
-            None 
-
-    def do_allreduce_async(self, partiable_param):
-        print("do all reduce async")
-        p = partiable_param.param
-        #print("#####################")
-        #print(p.shape)
-        #print(partiable_param.start_ratio)
-        #print(partiable_param.end_ratio)
-        if p.grad is not None:
-            grad = p.grad.data        
-            param_name = self.param_name_dict[p]
-            org_size = p._orig_size.numel()
-            start_idx = int(org_size * partiable_param.start_ratio)
-            end_idx = int(org_size * partiable_param.end_ratio)                            
-        
-            self.bucketer.allreduce_async(grad=grad,
-                                                param_name=param_name,
-                                                param=p,
-                                                start_idx=start_idx,
-                                                end_idx=end_idx,
-                                                org_size=org_size, 
-                                                shard_size=-1, 
-                                                commType='AR')
 
 
     def forward(self, *args: Any, **kwargs: Any) -> torch.Tensor:
@@ -734,17 +709,13 @@ class DataParallel_Custom(nn.Module):
 
     def communicate_backward(self):
         for p in self.params :
-            print(self.comm_schedule)
-
-            task = self.search_scheduled_comm(self.init_comm_schedule, p, 'BW')
-            if task is not None:
-                assigned_comms = task
-                print(f"BW allgather init_scheudle comm {assigned_comms}")
-
-            task = self.search_scheduled_comm(self.comm_schedule, p, 'BW')
+            param_name = self.param_name_dict[p]
+            task = self.search_scheduled_comm(self.comm_schedule, param_name, 'BW')
             if task is not None:    
                 assigned_comms = task
-                print(f"BW allgather scheudle comm {assigned_comms}")        
+            if(type(task) != str):
+                for comm in task.comms : 
+                    self.do_communication(comm)     
 
     def _register_pre_backward_hooks(self, outputs: Any) -> Any:
         """Register pre-backward hook to run before the wrapped module's
@@ -767,7 +738,7 @@ class DataParallel_Custom(nn.Module):
 
             if not self._pre_backward_hook_has_run:
                 self._pre_backward_hook_has_run = True
-            #self.communicate_backward()
+            self.communicate_backward()
 
                      
 

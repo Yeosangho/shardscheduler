@@ -1,5 +1,6 @@
 import math
 import torch
+import torch.distributed as dist
 
 
 
@@ -72,7 +73,7 @@ class ARBucketer:
 
         if(org_size == param_size):
             print("check shard size is equal to param_size")
-    def iterative_push(self, param, grad, params, start_idx, end_idx, org_size, shard_size, commType)
+    def iterative_push(self, param, grad, params, start_idx, end_idx, org_size, shard_size, commType):
         remains = self.push( param, grad, params, start_idx, end_idx, org_size, shard_size, commType)
         while remains > 0:
             self.flush()
@@ -97,5 +98,5 @@ class ARBucketer:
     def flush(self):
         self.offset = 0
         self.params.flush()
-        self.org_buffer = self.org_buffer.view(-1)
+        self.fusion_buffer = self.fusion_buffer.view(-1)
 
