@@ -1,0 +1,36 @@
+[00;33m 	'cuda/11.3' does not supports the {CUDA_MPI}. [0m
+[00;34m 	{CUDA_MPI} is only supported in cuda 11.4 version. [0m
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Downloading:   0%|          | 0.00/548M [00:00<?, ?B/s]Downloading:   2%|▏         | 8.39M/548M [00:00<00:06, 83.7MB/s]Downloading:   4%|▎         | 20.5M/548M [00:00<00:04, 106MB/s] Downloading:   6%|▌         | 32.2M/548M [00:00<00:04, 111MB/s]Downloading:   8%|▊         | 43.8M/548M [00:00<00:04, 113MB/s]Downloading:  10%|█         | 55.3M/548M [00:00<00:04, 114MB/s]Downloading:  12%|█▏        | 67.1M/548M [00:00<00:04, 114MB/s]Downloading:  14%|█▍        | 78.9M/548M [00:00<00:04, 115MB/s]Downloading:  16%|█▋        | 90.4M/548M [00:00<00:03, 115MB/s]Downloading:  19%|█▊        | 102M/548M [00:00<00:03, 115MB/s] Downloading:  21%|██        | 113M/548M [00:01<00:03, 115MB/s]Downloading:  23%|██▎       | 125M/548M [00:01<00:03, 117MB/s]Downloading:  25%|██▌       | 137M/548M [00:01<00:03, 117MB/s]Downloading:  27%|██▋       | 149M/548M [00:01<00:03, 103MB/s]Downloading:  29%|██▉       | 159M/548M [00:01<00:04, 96.7MB/s]Downloading:  31%|███▏      | 172M/548M [00:01<00:03, 103MB/s] Downloading:  33%|███▎      | 183M/548M [00:01<00:03, 107MB/s]Downloading:  36%|███▌      | 195M/548M [00:01<00:03, 109MB/s]Downloading:  38%|███▊      | 206M/548M [00:01<00:03, 111MB/s]Downloading:  40%|███▉      | 218M/548M [00:01<00:02, 113MB/s]Downloading:  42%|████▏     | 230M/548M [00:02<00:02, 115MB/s]Downloading:  44%|████▍     | 242M/548M [00:02<00:02, 115MB/s]Downloading:  46%|████▌     | 253M/548M [00:02<00:02, 116MB/s]Downloading:  48%|████▊     | 265M/548M [00:02<00:02, 116MB/s]Downloading:  51%|█████     | 277M/548M [00:02<00:02, 116MB/s]Downloading:  53%|█████▎    | 289M/548M [00:02<00:02, 117MB/s]Downloading:  55%|█████▍    | 301M/548M [00:02<00:02, 109MB/s]Downloading:  57%|█████▋    | 312M/548M [00:02<00:02, 86.8MB/s]Downloading:  59%|█████▉    | 323M/548M [00:02<00:02, 93.7MB/s]Downloading:  61%|██████    | 335M/548M [00:03<00:02, 101MB/s] Downloading:  63%|██████▎   | 347M/548M [00:03<00:01, 105MB/s]Downloading:  65%|██████▌   | 359M/548M [00:03<00:01, 108MB/s]Downloading:  68%|██████▊   | 370M/548M [00:03<00:01, 110MB/s]Downloading:  70%|██████▉   | 382M/548M [00:03<00:01, 112MB/s]Downloading:  72%|███████▏  | 394M/548M [00:03<00:01, 114MB/s]Downloading:  74%|███████▍  | 406M/548M [00:03<00:01, 115MB/s]Downloading:  76%|███████▌  | 417M/548M [00:03<00:01, 116MB/s]Downloading:  78%|███████▊  | 429M/548M [00:03<00:01, 113MB/s]Downloading:  81%|████████  | 441M/548M [00:04<00:00, 117MB/s]Downloading:  83%|████████▎ | 453M/548M [00:04<00:00, 99.6MB/s]Downloading:  85%|████████▍ | 464M/548M [00:04<00:01, 67.0MB/s]Downloading:  86%|████████▋ | 473M/548M [00:04<00:01, 72.9MB/s]Downloading:  88%|████████▊ | 485M/548M [00:04<00:00, 82.6MB/s]Downloading:  91%|█████████ | 496M/548M [00:04<00:00, 90.7MB/s]Downloading:  93%|█████████▎| 508M/548M [00:04<00:00, 97.0MB/s]Downloading:  95%|█████████▍| 520M/548M [00:04<00:00, 103MB/s] Downloading:  97%|█████████▋| 532M/548M [00:05<00:00, 107MB/s]Downloading:  99%|█████████▉| 543M/548M [00:05<00:00, 110MB/s]Downloading: 100%|██████████| 548M/548M [00:05<00:00, 105MB/s]
+OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.
+OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.
+OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 529, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 376, in benchmark_step
+    print(f"target : {target.shape} {target.type()}")
+UnboundLocalError: local variable 'target' referenced before assignment
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 529, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 376, in benchmark_step
+    print(f"target : {target.shape} {target.type()}")
+UnboundLocalError: local variable 'target' referenced before assignment
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 529, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 376, in benchmark_step
+    print(f"target : {target.shape} {target.type()}")
+UnboundLocalError: local variable 'target' referenced before assignment
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 529, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 376, in benchmark_step
+    print(f"target : {target.shape} {target.type()}")
+UnboundLocalError: local variable 'target' referenced before assignment
+srun: error: gpu07: tasks 0-2: Exited with exit code 1
+srun: error: gpu07: task 3: Exited with exit code 1

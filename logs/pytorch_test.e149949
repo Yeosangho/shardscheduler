@@ -1,0 +1,60 @@
+[00;33m 	'cuda/11.3' does not supports the {CUDA_MPI}. [0m
+[00;34m 	{CUDA_MPI} is only supported in cuda 11.4 version. [0m
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 43, in <module>
+    from torch_scheduler import ShardScheduler, get_param_num_by_buffer_size
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 576
+    p = parcomm.params[0]ram
+                         ^
+SyntaxError: invalid syntax
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 43, in <module>
+    from torch_scheduler import ShardScheduler, get_param_num_by_buffer_size
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 576
+    p = parcomm.params[0]ram
+                         ^
+SyntaxError: invalid syntax
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 43, in <module>
+    from torch_scheduler import ShardScheduler, get_param_num_by_buffer_size
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 576
+    p = parcomm.params[0]ram
+                         ^
+SyntaxError: invalid syntax
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 43, in <module>
+    from torch_scheduler import ShardScheduler, get_param_num_by_buffer_size
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 576
+    p = parcomm.params[0]ram
+                         ^
+SyntaxError: invalid syntax
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 43, in <module>
+    from torch_scheduler import ShardScheduler, get_param_num_by_buffer_size
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 576
+    p = parcomm.params[0]ram
+                         ^
+SyntaxError: invalid syntax
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 43, in <module>
+    from torch_scheduler import ShardScheduler, get_param_num_by_buffer_size
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 576
+    p = parcomm.params[0]ram
+                         ^
+SyntaxError: invalid syntax
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 43, in <module>
+    from torch_scheduler import ShardScheduler, get_param_num_by_buffer_size
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 576
+    p = parcomm.params[0]ram
+                         ^
+SyntaxError: invalid syntax
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 43, in <module>
+    from torch_scheduler import ShardScheduler, get_param_num_by_buffer_size
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 576
+    p = parcomm.params[0]ram
+                         ^
+SyntaxError: invalid syntax
+srun: error: gpu18: tasks 0-3: Exited with exit code 1
+srun: error: gpu19: tasks 4-7: Exited with exit code 1

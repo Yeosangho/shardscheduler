@@ -1,0 +1,34 @@
+[00;33m 	'cuda/11.3' does not supports the {CUDA_MPI}. [0m
+[00;34m 	{CUDA_MPI} is only supported in cuda 11.4 version. [0m
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.
+OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 525, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 393, in benchmark_step
+    print(output.sum())
+AttributeError: 'CausalLMOutputWithCrossAttentions' object has no attribute 'sum'
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 525, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 393, in benchmark_step
+    print(output.sum())
+AttributeError: 'CausalLMOutputWithCrossAttentions' object has no attribute 'sum'
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 525, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 393, in benchmark_step
+    print(output.sum())
+AttributeError: 'CausalLMOutputWithCrossAttentions' object has no attribute 'sum'
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 525, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 393, in benchmark_step
+    print(output.sum())
+AttributeError: 'CausalLMOutputWithCrossAttentions' object has no attribute 'sum'
+srun: error: gpu07: tasks 0-2: Exited with exit code 1
+srun: error: gpu07: task 3: Exited with exit code 1

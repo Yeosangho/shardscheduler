@@ -1,0 +1,36 @@
+[00;33m 	'cuda/11.3' does not supports the {CUDA_MPI}. [0m
+[00;34m 	{CUDA_MPI} is only supported in cuda 11.4 version. [0m
+[W socket.cpp:401] [c10d] The server socket has failed to bind to [::]:12342 (errno: 98 - Address already in use).
+[W socket.cpp:401] [c10d] The server socket has failed to bind to 0.0.0.0:12342 (errno: 98 - Address already in use).
+[E socket.cpp:435] [c10d] The server socket has failed to listen on any local network address.
+Traceback (most recent call last):
+  File "run.py", line 90, in <module>
+    dist.init_process_group(backend='gloo', world_size=world_size, rank=rank)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/distributed/distributed_c10d.py", line 602, in init_process_group
+    default_pg = _new_process_group_helper(
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/distributed/distributed_c10d.py", line 703, in _new_process_group_helper
+    pg = ProcessGroupGloo(prefix_store, rank, world_size, timeout=timeout)
+RuntimeError: [/opt/conda/conda-bld/pytorch_1646755903507/work/third_party/gloo/gloo/transport/tcp/pair.cc:799] connect [10.159.0.20]:41909: Connection refused
+Traceback (most recent call last):
+  File "run.py", line 90, in <module>
+    dist.init_process_group(backend='gloo', world_size=world_size, rank=rank)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/distributed/distributed_c10d.py", line 602, in init_process_group
+    default_pg = _new_process_group_helper(
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/distributed/distributed_c10d.py", line 703, in _new_process_group_helper
+    pg = ProcessGroupGloo(prefix_store, rank, world_size, timeout=timeout)
+RuntimeError: [/opt/conda/conda-bld/pytorch_1646755903507/work/third_party/gloo/gloo/transport/tcp/pair.cc:799] connect [10.159.0.20]:36490: Connection refused
+Traceback (most recent call last):
+  File "run.py", line 90, in <module>
+    dist.init_process_group(backend='gloo', world_size=world_size, rank=rank)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/distributed/distributed_c10d.py", line 595, in init_process_group
+    store, rank, world_size = next(rendezvous_iterator)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/distributed/rendezvous.py", line 232, in _env_rendezvous_handler
+    store = _create_c10d_store(master_addr, master_port, rank, world_size, timeout)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/distributed/rendezvous.py", line 160, in _create_c10d_store
+    return TCPStore(
+RuntimeError: The server socket has failed to listen on any local network address. The server socket has failed to bind to [::]:12342 (errno: 98 - Address already in use). The server socket has failed to bind to 0.0.0.0:12342 (errno: 98 - Address already in use).
+srun: error: gpu20: task 0: Exited with exit code 1
+srun: error: gpu21: tasks 2-3: Exited with exit code 1
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** JOB 148142 ON gpu20 CANCELLED AT 2022-11-06T17:12:10 ***
+slurmstepd: error: *** STEP 148142.0 ON gpu20 CANCELLED AT 2022-11-06T17:12:10 ***

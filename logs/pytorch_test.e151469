@@ -1,0 +1,105 @@
+[00;33m 	'cuda/11.3' does not supports the {CUDA_MPI}. [0m
+[00;34m 	{CUDA_MPI} is only supported in cuda 11.4 version. [0m
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+  0%|          | 0/75 [00:00<?, ?it/s]/scratch/hpc72a03/shardscheduler/torch_scheduler.py:774: UserWarning: This overload of add_ is deprecated:
+	add_(Number alpha, Tensor other)
+Consider using one of the following signatures instead:
+	add_(Tensor other, *, Number alpha) (Triggered internally at  /opt/conda/conda-bld/pytorch_1646755903507/work/torch/csrc/utils/python_arg_parser.cpp:1055.)
+  exp_avg.mul_(beta1).add_(1 - beta1, grad)
+  0%|          | 0/75 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 466, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 341, in benchmark_step
+    loss.backward()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/_tensor.py", line 363, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph, inputs=inputs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/autograd/__init__.py", line 173, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/autograd/grad_mode.py", line 27, in decorate_context
+    return func(*args, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 810, in _post_backward_hook
+    self._use_fp32_param_shard([param])
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/autograd/grad_mode.py", line 27, in decorate_context
+    return func(*args, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 628, in _use_fp32_param_shard
+    p.data = p._fp32_shard
+AttributeError: 'FlatParameter' object has no attribute '_fp32_shard'
+  0%|          | 0/75 [00:00<?, ?it/s]/scratch/hpc72a03/shardscheduler/torch_scheduler.py:774: UserWarning: This overload of add_ is deprecated:
+	add_(Number alpha, Tensor other)
+Consider using one of the following signatures instead:
+	add_(Tensor other, *, Number alpha) (Triggered internally at  /opt/conda/conda-bld/pytorch_1646755903507/work/torch/csrc/utils/python_arg_parser.cpp:1055.)
+  exp_avg.mul_(beta1).add_(1 - beta1, grad)
+  0%|          | 0/75 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 466, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 341, in benchmark_step
+    loss.backward()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/_tensor.py", line 363, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph, inputs=inputs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/autograd/__init__.py", line 173, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/autograd/grad_mode.py", line 27, in decorate_context
+    return func(*args, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 810, in _post_backward_hook
+    self._use_fp32_param_shard([param])
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/autograd/grad_mode.py", line 27, in decorate_context
+    return func(*args, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 628, in _use_fp32_param_shard
+    p.data = p._fp32_shard
+AttributeError: 'FlatParameter' object has no attribute '_fp32_shard'
+  0%|          | 0/75 [00:00<?, ?it/s]/scratch/hpc72a03/shardscheduler/torch_scheduler.py:774: UserWarning: This overload of add_ is deprecated:
+	add_(Number alpha, Tensor other)
+Consider using one of the following signatures instead:
+	add_(Tensor other, *, Number alpha) (Triggered internally at  /opt/conda/conda-bld/pytorch_1646755903507/work/torch/csrc/utils/python_arg_parser.cpp:1055.)
+  exp_avg.mul_(beta1).add_(1 - beta1, grad)
+  0%|          | 0/75 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 466, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 341, in benchmark_step
+    loss.backward()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/_tensor.py", line 363, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph, inputs=inputs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/autograd/__init__.py", line 173, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/autograd/grad_mode.py", line 27, in decorate_context
+    return func(*args, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 810, in _post_backward_hook
+    self._use_fp32_param_shard([param])
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/autograd/grad_mode.py", line 27, in decorate_context
+    return func(*args, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 628, in _use_fp32_param_shard
+    p.data = p._fp32_shard
+AttributeError: 'FlatParameter' object has no attribute '_fp32_shard'
+  0%|          | 0/75 [00:00<?, ?it/s]/scratch/hpc72a03/shardscheduler/torch_scheduler.py:774: UserWarning: This overload of add_ is deprecated:
+	add_(Number alpha, Tensor other)
+Consider using one of the following signatures instead:
+	add_(Tensor other, *, Number alpha) (Triggered internally at  /opt/conda/conda-bld/pytorch_1646755903507/work/torch/csrc/utils/python_arg_parser.cpp:1055.)
+  exp_avg.mul_(beta1).add_(1 - beta1, grad)
+  0%|          | 0/75 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 466, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 341, in benchmark_step
+    loss.backward()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/_tensor.py", line 363, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph, inputs=inputs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/autograd/__init__.py", line 173, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/autograd/grad_mode.py", line 27, in decorate_context
+    return func(*args, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 810, in _post_backward_hook
+    self._use_fp32_param_shard([param])
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/autograd/grad_mode.py", line 27, in decorate_context
+    return func(*args, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 628, in _use_fp32_param_shard
+    p.data = p._fp32_shard
+AttributeError: 'FlatParameter' object has no attribute '_fp32_shard'
+srun: error: gpu20: tasks 1,3: Exited with exit code 1
+srun: error: gpu20: task 2: Exited with exit code 1
+srun: error: gpu20: task 0: Exited with exit code 1

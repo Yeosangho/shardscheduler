@@ -1,0 +1,22 @@
+==========================================
+SLURM_JOB_ID = 155384
+SLURM_NODELIST = gpu[16-17]
+==========================================
+NODELIST=gpu[16-17]
+MASTER_ADDR=gpu16
+world_size : 8
+rank : 2
+world_size : 8
+rank : 7
+world_size : 8
+rank : 4
+world_size : 8
+rank : 5
+world_size : 8
+rank : 6
+world_size : 8
+rank : 0
+world_size : 8
+rank : 1
+world_size : 8
+rank : 3

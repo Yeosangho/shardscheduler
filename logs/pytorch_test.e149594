@@ -1,0 +1,74 @@
+[00;33m 	'cuda/11.3' does not supports the {CUDA_MPI}. [0m
+[00;34m 	{CUDA_MPI} is only supported in cuda 11.4 version. [0m
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 524, in <module>
+    trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread) 
+  File "main_gpt2_with_health_checker.py", line 265, in __init__
+    self.hooked_module = auto_memory_hook_wrap(self.model)
+  File "/scratch/hpc72a03/shardscheduler/memory_hook_wrap.py", line 211, in auto_memory_hook_wrap
+    wrapped_module, remainder = ConfigAutoWrap.recursive_wrap('front',  module, auto_wrap_policy=auto_wrap_policy, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/memory_hook_wrap.py", line 288, in recursive_wrap
+    wrapped_child, num_wrapped_params = ConfigAutoWrap.recursive_wrap(name,
+  File "/scratch/hpc72a03/shardscheduler/memory_hook_wrap.py", line 288, in recursive_wrap
+    wrapped_child, num_wrapped_params = ConfigAutoWrap.recursive_wrap(name,
+  File "/scratch/hpc72a03/shardscheduler/memory_hook_wrap.py", line 304, in recursive_wrap
+    return wrap(module, **kwargs), num_params
+  File "/scratch/hpc72a03/shardscheduler/memory_hook_wrap.py", line 170, in wrap
+    return MemoryHooker(module, **wrap_overrides) 
+TypeError: __init__() got an unexpected keyword argument 'memory_Record'
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 524, in <module>
+    trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread) 
+  File "main_gpt2_with_health_checker.py", line 265, in __init__
+    self.hooked_module = auto_memory_hook_wrap(self.model)
+  File "/scratch/hpc72a03/shardscheduler/memory_hook_wrap.py", line 211, in auto_memory_hook_wrap
+    wrapped_module, remainder = ConfigAutoWrap.recursive_wrap('front',  module, auto_wrap_policy=auto_wrap_policy, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/memory_hook_wrap.py", line 288, in recursive_wrap
+    wrapped_child, num_wrapped_params = ConfigAutoWrap.recursive_wrap(name,
+  File "/scratch/hpc72a03/shardscheduler/memory_hook_wrap.py", line 288, in recursive_wrap
+    wrapped_child, num_wrapped_params = ConfigAutoWrap.recursive_wrap(name,
+  File "/scratch/hpc72a03/shardscheduler/memory_hook_wrap.py", line 304, in recursive_wrap
+    return wrap(module, **kwargs), num_params
+  File "/scratch/hpc72a03/shardscheduler/memory_hook_wrap.py", line 170, in wrap
+    return MemoryHooker(module, **wrap_overrides) 
+TypeError: __init__() got an unexpected keyword argument 'memory_Record'
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 524, in <module>
+    trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread) 
+  File "main_gpt2_with_health_checker.py", line 265, in __init__
+    self.hooked_module = auto_memory_hook_wrap(self.model)
+  File "/scratch/hpc72a03/shardscheduler/memory_hook_wrap.py", line 211, in auto_memory_hook_wrap
+    wrapped_module, remainder = ConfigAutoWrap.recursive_wrap('front',  module, auto_wrap_policy=auto_wrap_policy, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/memory_hook_wrap.py", line 288, in recursive_wrap
+    wrapped_child, num_wrapped_params = ConfigAutoWrap.recursive_wrap(name,
+  File "/scratch/hpc72a03/shardscheduler/memory_hook_wrap.py", line 288, in recursive_wrap
+    wrapped_child, num_wrapped_params = ConfigAutoWrap.recursive_wrap(name,
+  File "/scratch/hpc72a03/shardscheduler/memory_hook_wrap.py", line 304, in recursive_wrap
+    return wrap(module, **kwargs), num_params
+  File "/scratch/hpc72a03/shardscheduler/memory_hook_wrap.py", line 170, in wrap
+    return MemoryHooker(module, **wrap_overrides) 
+TypeError: __init__() got an unexpected keyword argument 'memory_Record'
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 524, in <module>
+    trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread) 
+  File "main_gpt2_with_health_checker.py", line 265, in __init__
+    self.hooked_module = auto_memory_hook_wrap(self.model)
+  File "/scratch/hpc72a03/shardscheduler/memory_hook_wrap.py", line 211, in auto_memory_hook_wrap
+    wrapped_module, remainder = ConfigAutoWrap.recursive_wrap('front',  module, auto_wrap_policy=auto_wrap_policy, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/memory_hook_wrap.py", line 288, in recursive_wrap
+    wrapped_child, num_wrapped_params = ConfigAutoWrap.recursive_wrap(name,
+  File "/scratch/hpc72a03/shardscheduler/memory_hook_wrap.py", line 288, in recursive_wrap
+    wrapped_child, num_wrapped_params = ConfigAutoWrap.recursive_wrap(name,
+  File "/scratch/hpc72a03/shardscheduler/memory_hook_wrap.py", line 304, in recursive_wrap
+    return wrap(module, **kwargs), num_params
+  File "/scratch/hpc72a03/shardscheduler/memory_hook_wrap.py", line 170, in wrap
+    return MemoryHooker(module, **wrap_overrides) 
+TypeError: __init__() got an unexpected keyword argument 'memory_Record'
+srun: error: gpu07: task 0: Exited with exit code 1
+srun: error: gpu07: task 3: Exited with exit code 1
+srun: error: gpu07: task 2: Exited with exit code 1
+srun: error: gpu07: task 1: Exited with exit code 1

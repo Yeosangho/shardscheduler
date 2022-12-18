@@ -1,0 +1,24 @@
+[3] is setting up NCCL communicator and retreiving ncclUniqueId from [0] via c10d key-value store by key '0', but store->get('0') got error: Connection reset by peerTraceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 468, in <module>
+    trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread)
+  File "main_gpt2_with_health_checker.py", line 293, in __init__
+    dist.barrier()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/distributed/distributed_c10d.py", line 2776, in barrier
+    work = default_pg.barrier(opts=opts)
+RuntimeError: [3] is setting up NCCL communicator and retreiving ncclUniqueId from [0] via c10d key-value store by key '0', but store->get('0') got error: Connection reset by peer
+[1] is setting up NCCL communicator and retreiving ncclUniqueId from [0] via c10d key-value store by key '0', but store->get('0') got error: Connection reset by peerTraceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 468, in <module>
+    trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread)
+  File "main_gpt2_with_health_checker.py", line 293, in __init__
+    dist.barrier()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/distributed/distributed_c10d.py", line 2776, in barrier
+    work = default_pg.barrier(opts=opts)
+RuntimeError: [1] is setting up NCCL communicator and retreiving ncclUniqueId from [0] via c10d key-value store by key '0', but store->get('0') got error: Connection reset by peer
+[2] is setting up NCCL communicator and retreiving ncclUniqueId from [0] via c10d key-value store by key '0', but store->get('0') got error: Connection reset by peerTraceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 468, in <module>
+    trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread)
+  File "main_gpt2_with_health_checker.py", line 293, in __init__
+    dist.barrier()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/distributed/distributed_c10d.py", line 2776, in barrier
+    work = default_pg.barrier(opts=opts)
+RuntimeError: [2] is setting up NCCL communicator and retreiving ncclUniqueId from [0] via c10d key-value store by key '0', but store->get('0') got error: Connection reset by peer

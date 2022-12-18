@@ -1,0 +1,57 @@
+[00;33m 	'cuda/11.3' does not supports the {CUDA_MPI}. [0m
+[00;34m 	{CUDA_MPI} is only supported in cuda 11.4 version. [0m
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+  0%|          | 0/38 [00:00<?, ?it/s]OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.
+  0%|          | 0/38 [00:00<?, ?it/s]OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.
+  0%|          | 0/38 [00:00<?, ?it/s]OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.
+OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.
+  0%|          | 0/38 [00:00<?, ?it/s]/scratch/hpc72a03/shardscheduler/torch_scheduler.py:739: UserWarning: This overload of add_ is deprecated:
+	add_(Number alpha, Tensor other)
+Consider using one of the following signatures instead:
+	add_(Tensor other, *, Number alpha) (Triggered internally at  /opt/conda/conda-bld/pytorch_1646755903507/work/torch/csrc/utils/python_arg_parser.cpp:1055.)
+  exp_avg.mul_(beta1).add_(1 - beta1, grad)
+/scratch/hpc72a03/shardscheduler/torch_scheduler.py:739: UserWarning: This overload of add_ is deprecated:
+	add_(Number alpha, Tensor other)
+Consider using one of the following signatures instead:
+	add_(Tensor other, *, Number alpha) (Triggered internally at  /opt/conda/conda-bld/pytorch_1646755903507/work/torch/csrc/utils/python_arg_parser.cpp:1055.)
+  exp_avg.mul_(beta1).add_(1 - beta1, grad)
+/scratch/hpc72a03/shardscheduler/torch_scheduler.py:739: UserWarning: This overload of add_ is deprecated:
+	add_(Number alpha, Tensor other)
+Consider using one of the following signatures instead:
+	add_(Tensor other, *, Number alpha) (Triggered internally at  /opt/conda/conda-bld/pytorch_1646755903507/work/torch/csrc/utils/python_arg_parser.cpp:1055.)
+  exp_avg.mul_(beta1).add_(1 - beta1, grad)
+/scratch/hpc72a03/shardscheduler/torch_scheduler.py:739: UserWarning: This overload of add_ is deprecated:
+	add_(Number alpha, Tensor other)
+Consider using one of the following signatures instead:
+	add_(Tensor other, *, Number alpha) (Triggered internally at  /opt/conda/conda-bld/pytorch_1646755903507/work/torch/csrc/utils/python_arg_parser.cpp:1055.)
+  exp_avg.mul_(beta1).add_(1 - beta1, grad)
+  0%|          | 0/38 [00:00<?, ?it/s]/scratch/hpc72a03/shardscheduler/torch_scheduler.py:739: UserWarning: This overload of add_ is deprecated:
+	add_(Number alpha, Tensor other)
+Consider using one of the following signatures instead:
+	add_(Tensor other, *, Number alpha) (Triggered internally at  /opt/conda/conda-bld/pytorch_1646755903507/work/torch/csrc/utils/python_arg_parser.cpp:1055.)
+  exp_avg.mul_(beta1).add_(1 - beta1, grad)
+  0%|          | 0/38 [00:00<?, ?it/s]/scratch/hpc72a03/shardscheduler/torch_scheduler.py:739: UserWarning: This overload of add_ is deprecated:
+	add_(Number alpha, Tensor other)
+Consider using one of the following signatures instead:
+	add_(Tensor other, *, Number alpha) (Triggered internally at  /opt/conda/conda-bld/pytorch_1646755903507/work/torch/csrc/utils/python_arg_parser.cpp:1055.)
+  exp_avg.mul_(beta1).add_(1 - beta1, grad)
+  0%|          | 0/38 [00:00<?, ?it/s]/scratch/hpc72a03/shardscheduler/torch_scheduler.py:739: UserWarning: This overload of add_ is deprecated:
+	add_(Number alpha, Tensor other)
+Consider using one of the following signatures instead:
+	add_(Tensor other, *, Number alpha) (Triggered internally at  /opt/conda/conda-bld/pytorch_1646755903507/work/torch/csrc/utils/python_arg_parser.cpp:1055.)
+  exp_avg.mul_(beta1).add_(1 - beta1, grad)
+  0%|          | 0/38 [00:00<?, ?it/s]/scratch/hpc72a03/shardscheduler/torch_scheduler.py:739: UserWarning: This overload of add_ is deprecated:
+	add_(Number alpha, Tensor other)
+Consider using one of the following signatures instead:
+	add_(Tensor other, *, Number alpha) (Triggered internally at  /opt/conda/conda-bld/pytorch_1646755903507/work/torch/csrc/utils/python_arg_parser.cpp:1055.)
+  exp_avg.mul_(beta1).add_(1 - beta1, grad)
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** JOB 149930 ON gpu18 CANCELLED AT 2022-11-13T16:39:52 ***
+  3%|▎         | 1/38 [00:00<00:35,  1.03it/s]slurmstepd: error: *** STEP 149930.0 ON gpu18 CANCELLED AT 2022-11-13T16:39:52 ***

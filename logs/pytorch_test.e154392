@@ -1,0 +1,144 @@
+[00;33m 	'cuda/11.3' does not supports the {CUDA_MPI}. [0m
+[00;34m 	{CUDA_MPI} is only supported in cuda 11.4 version. [0m
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+  0%|          | 0/75 [00:00<?, ?it/s]/scratch/hpc72a03/shardscheduler/torch_scheduler.py:774: UserWarning: This overload of add_ is deprecated:
+	add_(Number alpha, Tensor other)
+Consider using one of the following signatures instead:
+	add_(Tensor other, *, Number alpha) (Triggered internally at  /opt/conda/conda-bld/pytorch_1646755903507/work/torch/csrc/utils/python_arg_parser.cpp:1055.)
+  exp_avg.mul_(beta1).add_(1 - beta1, grad)
+  0%|          | 0/75 [00:00<?, ?it/s]/scratch/hpc72a03/shardscheduler/torch_scheduler.py:774: UserWarning: This overload of add_ is deprecated:
+	add_(Number alpha, Tensor other)
+Consider using one of the following signatures instead:
+	add_(Tensor other, *, Number alpha) (Triggered internally at  /opt/conda/conda-bld/pytorch_1646755903507/work/torch/csrc/utils/python_arg_parser.cpp:1055.)
+  exp_avg.mul_(beta1).add_(1 - beta1, grad)
+  0%|          | 0/75 [00:00<?, ?it/s]/scratch/hpc72a03/shardscheduler/torch_scheduler.py:774: UserWarning: This overload of add_ is deprecated:
+	add_(Number alpha, Tensor other)
+Consider using one of the following signatures instead:
+	add_(Tensor other, *, Number alpha) (Triggered internally at  /opt/conda/conda-bld/pytorch_1646755903507/work/torch/csrc/utils/python_arg_parser.cpp:1055.)
+  exp_avg.mul_(beta1).add_(1 - beta1, grad)
+  0%|          | 0/75 [00:00<?, ?it/s]/scratch/hpc72a03/shardscheduler/torch_scheduler.py:774: UserWarning: This overload of add_ is deprecated:
+	add_(Number alpha, Tensor other)
+Consider using one of the following signatures instead:
+	add_(Tensor other, *, Number alpha) (Triggered internally at  /opt/conda/conda-bld/pytorch_1646755903507/work/torch/csrc/utils/python_arg_parser.cpp:1055.)
+  exp_avg.mul_(beta1).add_(1 - beta1, grad)
+  1%|▏         | 1/75 [00:00<01:00,  1.22it/s]  1%|▏         | 1/75 [00:00<01:05,  1.12it/s]
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 488, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 353, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 681, in forward
+    outputs = self.module(*args, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/nn/misc/flatten_params_wrapper.py", line 459, in forward
+    return self.module(*inputs, **kwinputs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1046, in forward
+    transformer_outputs = self.transformer(
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 832, in forward
+    inputs_embeds = self.wte(input_ids)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 677, in forward
+    self.communicate_forward()
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 671, in communicate_forward
+    print(f"param variable tracking model? rank :: {self.rank} param name ::  {param_name} value:: {torch.sum(task.comms[0].params[0].param.data())}")
+TypeError: 'Tensor' object is not callable
+  1%|▏         | 1/75 [00:00<01:03,  1.16it/s]  1%|▏         | 1/75 [00:00<01:07,  1.09it/s]
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 488, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 353, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 681, in forward
+    outputs = self.module(*args, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/nn/misc/flatten_params_wrapper.py", line 459, in forward
+    return self.module(*inputs, **kwinputs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1046, in forward
+    transformer_outputs = self.transformer(
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 832, in forward
+    inputs_embeds = self.wte(input_ids)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 677, in forward
+    self.communicate_forward()
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 671, in communicate_forward
+    print(f"param variable tracking model? rank :: {self.rank} param name ::  {param_name} value:: {torch.sum(task.comms[0].params[0].param.data())}")
+TypeError: 'Tensor' object is not callable
+  1%|▏         | 1/75 [00:00<01:03,  1.16it/s]  1%|▏         | 1/75 [00:00<01:12,  1.03it/s]
+  1%|▏         | 1/75 [00:00<01:03,  1.17it/s]  1%|▏         | 1/75 [00:00<01:12,  1.02it/s]
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 488, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 353, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 681, in forward
+    outputs = self.module(*args, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/nn/misc/flatten_params_wrapper.py", line 459, in forward
+    return self.module(*inputs, **kwinputs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1046, in forward
+    transformer_outputs = self.transformer(
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 832, in forward
+    inputs_embeds = self.wte(input_ids)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 677, in forward
+    self.communicate_forward()
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 671, in communicate_forward
+    print(f"param variable tracking model? rank :: {self.rank} param name ::  {param_name} value:: {torch.sum(task.comms[0].params[0].param.data())}")
+TypeError: 'Tensor' object is not callable
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 488, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 353, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 681, in forward
+    outputs = self.module(*args, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/nn/misc/flatten_params_wrapper.py", line 459, in forward
+    return self.module(*inputs, **kwinputs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1046, in forward
+    transformer_outputs = self.transformer(
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 832, in forward
+    inputs_embeds = self.wte(input_ids)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 677, in forward
+    self.communicate_forward()
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 671, in communicate_forward
+    print(f"param variable tracking model? rank :: {self.rank} param name ::  {param_name} value:: {torch.sum(task.comms[0].params[0].param.data())}")
+TypeError: 'Tensor' object is not callable
+srun: error: gpu12: tasks 1-3: Exited with exit code 1
+srun: error: gpu12: task 0: Exited with exit code 1

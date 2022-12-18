@@ -1,0 +1,898 @@
+==========================================
+SLURM_JOB_ID = 151464
+SLURM_NODELIST = gpu20
+==========================================
+NODELIST=gpu20
+MASTER_ADDR=gpu20
+world_size : 4
+rank : 2
+before init dataset  0.0
+      Id  ...                                               Text
+0      1  ...  I have bought several of the Vitality canned d...
+1      2  ...  Product arrived labeled as Jumbo Salted Peanut...
+2      3  ...  This is a confection that has been around a fe...
+3      4  ...  If you are looking for the secret ingredient i...
+4      5  ...  Great taffy at a great price.  There was a wid...
+..   ...  ...                                                ...
+595  596  ...  This is the second purchase of Kettle Potato C...
+596  597  ...  How to achieve potato chip nirvana? It's simpl...
+597  598  ...  I found these more than 10 years ago in a heal...
+598  599  ...  But you will enjoy ever step. I gained 5 lbs w...
+599  600  ...  These are the best spicy chips I have ever had...
+
+[600 rows x 10 columns]
+600
+after init dataset  0.0
+before init model  0.0
+after init model  487.46875
+{'FSDP': 0, 'DP': 125, 'SDP': 0}
+{'FSDP': 0, 'DP': 124, 'SDP': 0}
+{'FSDP': 0, 'DP': 123, 'SDP': 0}
+{'FSDP': 0, 'DP': 122, 'SDP': 0}
+{'FSDP': 0, 'DP': 121, 'SDP': 0}
+{'FSDP': 0, 'DP': 120, 'SDP': 0}
+{'FSDP': 0, 'DP': 119, 'SDP': 0}
+{'FSDP': 0, 'DP': 118, 'SDP': 0}
+{'FSDP': 0, 'DP': 117, 'SDP': 0}
+{'FSDP': 0, 'DP': 116, 'SDP': 0}
+{'FSDP': 0, 'DP': 115, 'SDP': 0}
+{'FSDP': 0, 'DP': 114, 'SDP': 0}
+{'FSDP': 0, 'DP': 113, 'SDP': 0}
+{'FSDP': 0, 'DP': 112, 'SDP': 0}
+{'FSDP': 0, 'DP': 111, 'SDP': 0}
+{'FSDP': 0, 'DP': 110, 'SDP': 0}
+{'FSDP': 0, 'DP': 109, 'SDP': 0}
+{'FSDP': 0, 'DP': 108, 'SDP': 0}
+{'FSDP': 0, 'DP': 107, 'SDP': 0}
+{'FSDP': 0, 'DP': 106, 'SDP': 0}
+{'FSDP': 0, 'DP': 105, 'SDP': 0}
+{'FSDP': 0, 'DP': 104, 'SDP': 0}
+{'FSDP': 0, 'DP': 103, 'SDP': 0}
+{'FSDP': 0, 'DP': 102, 'SDP': 0}
+{'FSDP': 0, 'DP': 101, 'SDP': 0}
+{'FSDP': 0, 'DP': 100, 'SDP': 0}
+{'FSDP': 0, 'DP': 99, 'SDP': 0}
+{'FSDP': 0, 'DP': 98, 'SDP': 0}
+{'FSDP': 0, 'DP': 97, 'SDP': 0}
+{'FSDP': 0, 'DP': 96, 'SDP': 0}
+{'FSDP': 0, 'DP': 95, 'SDP': 0}
+{'FSDP': 0, 'DP': 94, 'SDP': 0}
+{'FSDP': 0, 'DP': 93, 'SDP': 0}
+{'FSDP': 0, 'DP': 92, 'SDP': 0}
+{'FSDP': 0, 'DP': 91, 'SDP': 0}
+{'FSDP': 0, 'DP': 90, 'SDP': 0}
+{'FSDP': 0, 'DP': 89, 'SDP': 0}
+{'FSDP': 0, 'DP': 88, 'SDP': 0}
+{'FSDP': 0, 'DP': 87, 'SDP': 0}
+{'FSDP': 0, 'DP': 86, 'SDP': 0}
+{'FSDP': 0, 'DP': 85, 'SDP': 0}
+{'FSDP': 0, 'DP': 84, 'SDP': 0}
+{'FSDP': 0, 'DP': 83, 'SDP': 0}
+{'FSDP': 0, 'DP': 82, 'SDP': 0}
+{'FSDP': 0, 'DP': 81, 'SDP': 0}
+{'FSDP': 0, 'DP': 80, 'SDP': 0}
+{'FSDP': 0, 'DP': 79, 'SDP': 0}
+{'FSDP': 0, 'DP': 78, 'SDP': 0}
+{'FSDP': 0, 'DP': 77, 'SDP': 0}
+{'FSDP': 0, 'DP': 76, 'SDP': 0}
+{'FSDP': 0, 'DP': 75, 'SDP': 0}
+{'FSDP': 0, 'DP': 74, 'SDP': 0}
+{'FSDP': 0, 'DP': 73, 'SDP': 0}
+{'FSDP': 0, 'DP': 72, 'SDP': 0}
+{'FSDP': 0, 'DP': 71, 'SDP': 0}
+{'FSDP': 0, 'DP': 70, 'SDP': 0}
+{'FSDP': 0, 'DP': 69, 'SDP': 0}
+{'FSDP': 0, 'DP': 68, 'SDP': 0}
+{'FSDP': 0, 'DP': 67, 'SDP': 0}
+{'FSDP': 0, 'DP': 66, 'SDP': 0}
+{'FSDP': 0, 'DP': 65, 'SDP': 0}
+{'FSDP': 0, 'DP': 64, 'SDP': 0}
+{'FSDP': 0, 'DP': 63, 'SDP': 0}
+{'FSDP': 0, 'DP': 62, 'SDP': 0}
+{'FSDP': 0, 'DP': 61, 'SDP': 0}
+{'FSDP': 0, 'DP': 60, 'SDP': 0}
+{'FSDP': 0, 'DP': 59, 'SDP': 0}
+{'FSDP': 0, 'DP': 58, 'SDP': 0}
+{'FSDP': 0, 'DP': 57, 'SDP': 0}
+{'FSDP': 0, 'DP': 56, 'SDP': 0}
+{'FSDP': 0, 'DP': 55, 'SDP': 0}
+{'FSDP': 0, 'DP': 54, 'SDP': 0}
+{'FSDP': 0, 'DP': 53, 'SDP': 0}
+{'FSDP': 0, 'DP': 52, 'SDP': 0}
+{'FSDP': 0, 'DP': 51, 'SDP': 0}
+{'FSDP': 0, 'DP': 50, 'SDP': 0}
+{'FSDP': 0, 'DP': 49, 'SDP': 0}
+{'FSDP': 0, 'DP': 48, 'SDP': 0}
+{'FSDP': 0, 'DP': 47, 'SDP': 0}
+{'FSDP': 0, 'DP': 46, 'SDP': 0}
+{'FSDP': 0, 'DP': 45, 'SDP': 0}
+{'FSDP': 0, 'DP': 44, 'SDP': 0}
+{'FSDP': 0, 'DP': 43, 'SDP': 0}
+{'FSDP': 0, 'DP': 42, 'SDP': 0}
+{'FSDP': 0, 'DP': 41, 'SDP': 0}
+{'FSDP': 0, 'DP': 40, 'SDP': 0}
+{'FSDP': 0, 'DP': 39, 'SDP': 0}
+{'FSDP': 0, 'DP': 38, 'SDP': 0}
+{'FSDP': 0, 'DP': 37, 'SDP': 0}
+{'FSDP': 0, 'DP': 36, 'SDP': 0}
+{'FSDP': 0, 'DP': 35, 'SDP': 0}
+{'FSDP': 0, 'DP': 34, 'SDP': 0}
+{'FSDP': 0, 'DP': 33, 'SDP': 0}
+{'FSDP': 0, 'DP': 32, 'SDP': 0}
+{'FSDP': 0, 'DP': 31, 'SDP': 0}
+{'FSDP': 0, 'DP': 30, 'SDP': 0}
+{'FSDP': 0, 'DP': 29, 'SDP': 0}
+{'FSDP': 0, 'DP': 28, 'SDP': 0}
+{'FSDP': 0, 'DP': 27, 'SDP': 0}
+{'FSDP': 0, 'DP': 26, 'SDP': 0}
+{'FSDP': 0, 'DP': 25, 'SDP': 0}
+{'FSDP': 0, 'DP': 24, 'SDP': 0}
+{'FSDP': 0, 'DP': 23, 'SDP': 0}
+{'FSDP': 0, 'DP': 22, 'SDP': 0}
+{'FSDP': 0, 'DP': 21, 'SDP': 0}
+{'FSDP': 0, 'DP': 20, 'SDP': 0}
+{'FSDP': 0, 'DP': 19, 'SDP': 0}
+{'FSDP': 0, 'DP': 18, 'SDP': 0}
+{'FSDP': 0, 'DP': 17, 'SDP': 0}
+{'FSDP': 0, 'DP': 16, 'SDP': 0}
+{'FSDP': 0, 'DP': 15, 'SDP': 0}
+{'FSDP': 0, 'DP': 14, 'SDP': 0}
+{'FSDP': 0, 'DP': 13, 'SDP': 0}
+{'FSDP': 0, 'DP': 12, 'SDP': 0}
+{'FSDP': 0, 'DP': 11, 'SDP': 0}
+{'FSDP': 0, 'DP': 10, 'SDP': 0}
+{'FSDP': 0, 'DP': 9, 'SDP': 0}
+{'FSDP': 0, 'DP': 8, 'SDP': 0}
+{'FSDP': 0, 'DP': 7, 'SDP': 0}
+{'FSDP': 0, 'DP': 6, 'SDP': 0}
+{'FSDP': 0, 'DP': 5, 'SDP': 0}
+{'FSDP': 0, 'DP': 4, 'SDP': 0}
+{'FSDP': 0, 'DP': 3, 'SDP': 0}
+{'FSDP': 0, 'DP': 2, 'SDP': 0}
+{'FSDP': 0, 'DP': 1, 'SDP': 0}
+_dp_wrapped_module._fpw_module.transformer.wte._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.wpe._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.0.ln_1._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.0.attn.c_attn._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.0.attn.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.0.ln_2._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.0.mlp.c_fc._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.0.mlp.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.1.ln_1._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.1.attn.c_attn._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.1.attn.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.1.ln_2._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.1.mlp.c_fc._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.1.mlp.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.2.ln_1._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.2.attn.c_attn._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.2.attn.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.2.ln_2._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.2.mlp.c_fc._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.2.mlp.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.3.ln_1._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.3.attn.c_attn._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.3.attn.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.3.ln_2._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.3.mlp.c_fc._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.3.mlp.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.4.ln_1._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.4.attn.c_attn._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.4.attn.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.4.ln_2._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.4.mlp.c_fc._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.4.mlp.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.5.ln_1._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.5.attn.c_attn._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.5.attn.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.5.ln_2._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.5.mlp.c_fc._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.5.mlp.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.6.ln_1._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.6.attn.c_attn._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.6.attn.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.6.ln_2._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.6.mlp.c_fc._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.6.mlp.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.7.ln_1._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.7.attn.c_attn._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.7.attn.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.7.ln_2._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.7.mlp.c_fc._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.7.mlp.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.8.ln_1._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.8.attn.c_attn._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.8.attn.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.8.ln_2._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.8.mlp.c_fc._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.8.mlp.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.9.ln_1._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.9.attn.c_attn._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.9.attn.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.9.ln_2._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.9.mlp.c_fc._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.9.mlp.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.10.ln_1._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.10.attn.c_attn._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.10.attn.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.10.ln_2._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.10.mlp.c_fc._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.10.mlp.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.11.ln_1._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.11.attn.c_attn._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.11.attn.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.11.ln_2._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.11.mlp.c_fc._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.11.mlp.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.ln_f._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.lm_head._dp_wrapped_module.flat_param_0
+end inittialization trainer
+world_size : 4
+rank : 0
+before init dataset  0.0
+      Id  ...                                               Text
+0      1  ...  I have bought several of the Vitality canned d...
+1      2  ...  Product arrived labeled as Jumbo Salted Peanut...
+2      3  ...  This is a confection that has been around a fe...
+3      4  ...  If you are looking for the secret ingredient i...
+4      5  ...  Great taffy at a great price.  There was a wid...
+..   ...  ...                                                ...
+595  596  ...  This is the second purchase of Kettle Potato C...
+596  597  ...  How to achieve potato chip nirvana? It's simpl...
+597  598  ...  I found these more than 10 years ago in a heal...
+598  599  ...  But you will enjoy ever step. I gained 5 lbs w...
+599  600  ...  These are the best spicy chips I have ever had...
+
+[600 rows x 10 columns]
+600
+after init dataset  0.0
+before init model  0.0
+after init model  487.46875
+{'FSDP': 0, 'DP': 125, 'SDP': 0}
+{'FSDP': 0, 'DP': 124, 'SDP': 0}
+{'FSDP': 0, 'DP': 123, 'SDP': 0}
+{'FSDP': 0, 'DP': 122, 'SDP': 0}
+{'FSDP': 0, 'DP': 121, 'SDP': 0}
+{'FSDP': 0, 'DP': 120, 'SDP': 0}
+{'FSDP': 0, 'DP': 119, 'SDP': 0}
+{'FSDP': 0, 'DP': 118, 'SDP': 0}
+{'FSDP': 0, 'DP': 117, 'SDP': 0}
+{'FSDP': 0, 'DP': 116, 'SDP': 0}
+{'FSDP': 0, 'DP': 115, 'SDP': 0}
+{'FSDP': 0, 'DP': 114, 'SDP': 0}
+{'FSDP': 0, 'DP': 113, 'SDP': 0}
+{'FSDP': 0, 'DP': 112, 'SDP': 0}
+{'FSDP': 0, 'DP': 111, 'SDP': 0}
+{'FSDP': 0, 'DP': 110, 'SDP': 0}
+{'FSDP': 0, 'DP': 109, 'SDP': 0}
+{'FSDP': 0, 'DP': 108, 'SDP': 0}
+{'FSDP': 0, 'DP': 107, 'SDP': 0}
+{'FSDP': 0, 'DP': 106, 'SDP': 0}
+{'FSDP': 0, 'DP': 105, 'SDP': 0}
+{'FSDP': 0, 'DP': 104, 'SDP': 0}
+{'FSDP': 0, 'DP': 103, 'SDP': 0}
+{'FSDP': 0, 'DP': 102, 'SDP': 0}
+{'FSDP': 0, 'DP': 101, 'SDP': 0}
+{'FSDP': 0, 'DP': 100, 'SDP': 0}
+{'FSDP': 0, 'DP': 99, 'SDP': 0}
+{'FSDP': 0, 'DP': 98, 'SDP': 0}
+{'FSDP': 0, 'DP': 97, 'SDP': 0}
+{'FSDP': 0, 'DP': 96, 'SDP': 0}
+{'FSDP': 0, 'DP': 95, 'SDP': 0}
+{'FSDP': 0, 'DP': 94, 'SDP': 0}
+{'FSDP': 0, 'DP': 93, 'SDP': 0}
+{'FSDP': 0, 'DP': 92, 'SDP': 0}
+{'FSDP': 0, 'DP': 91, 'SDP': 0}
+{'FSDP': 0, 'DP': 90, 'SDP': 0}
+{'FSDP': 0, 'DP': 89, 'SDP': 0}
+{'FSDP': 0, 'DP': 88, 'SDP': 0}
+{'FSDP': 0, 'DP': 87, 'SDP': 0}
+{'FSDP': 0, 'DP': 86, 'SDP': 0}
+{'FSDP': 0, 'DP': 85, 'SDP': 0}
+{'FSDP': 0, 'DP': 84, 'SDP': 0}
+{'FSDP': 0, 'DP': 83, 'SDP': 0}
+{'FSDP': 0, 'DP': 82, 'SDP': 0}
+{'FSDP': 0, 'DP': 81, 'SDP': 0}
+{'FSDP': 0, 'DP': 80, 'SDP': 0}
+{'FSDP': 0, 'DP': 79, 'SDP': 0}
+{'FSDP': 0, 'DP': 78, 'SDP': 0}
+{'FSDP': 0, 'DP': 77, 'SDP': 0}
+{'FSDP': 0, 'DP': 76, 'SDP': 0}
+{'FSDP': 0, 'DP': 75, 'SDP': 0}
+{'FSDP': 0, 'DP': 74, 'SDP': 0}
+{'FSDP': 0, 'DP': 73, 'SDP': 0}
+{'FSDP': 0, 'DP': 72, 'SDP': 0}
+{'FSDP': 0, 'DP': 71, 'SDP': 0}
+{'FSDP': 0, 'DP': 70, 'SDP': 0}
+{'FSDP': 0, 'DP': 69, 'SDP': 0}
+{'FSDP': 0, 'DP': 68, 'SDP': 0}
+{'FSDP': 0, 'DP': 67, 'SDP': 0}
+{'FSDP': 0, 'DP': 66, 'SDP': 0}
+{'FSDP': 0, 'DP': 65, 'SDP': 0}
+{'FSDP': 0, 'DP': 64, 'SDP': 0}
+{'FSDP': 0, 'DP': 63, 'SDP': 0}
+{'FSDP': 0, 'DP': 62, 'SDP': 0}
+{'FSDP': 0, 'DP': 61, 'SDP': 0}
+{'FSDP': 0, 'DP': 60, 'SDP': 0}
+{'FSDP': 0, 'DP': 59, 'SDP': 0}
+{'FSDP': 0, 'DP': 58, 'SDP': 0}
+{'FSDP': 0, 'DP': 57, 'SDP': 0}
+{'FSDP': 0, 'DP': 56, 'SDP': 0}
+{'FSDP': 0, 'DP': 55, 'SDP': 0}
+{'FSDP': 0, 'DP': 54, 'SDP': 0}
+{'FSDP': 0, 'DP': 53, 'SDP': 0}
+{'FSDP': 0, 'DP': 52, 'SDP': 0}
+{'FSDP': 0, 'DP': 51, 'SDP': 0}
+{'FSDP': 0, 'DP': 50, 'SDP': 0}
+{'FSDP': 0, 'DP': 49, 'SDP': 0}
+{'FSDP': 0, 'DP': 48, 'SDP': 0}
+{'FSDP': 0, 'DP': 47, 'SDP': 0}
+{'FSDP': 0, 'DP': 46, 'SDP': 0}
+{'FSDP': 0, 'DP': 45, 'SDP': 0}
+{'FSDP': 0, 'DP': 44, 'SDP': 0}
+{'FSDP': 0, 'DP': 43, 'SDP': 0}
+{'FSDP': 0, 'DP': 42, 'SDP': 0}
+{'FSDP': 0, 'DP': 41, 'SDP': 0}
+{'FSDP': 0, 'DP': 40, 'SDP': 0}
+{'FSDP': 0, 'DP': 39, 'SDP': 0}
+{'FSDP': 0, 'DP': 38, 'SDP': 0}
+{'FSDP': 0, 'DP': 37, 'SDP': 0}
+{'FSDP': 0, 'DP': 36, 'SDP': 0}
+{'FSDP': 0, 'DP': 35, 'SDP': 0}
+{'FSDP': 0, 'DP': 34, 'SDP': 0}
+{'FSDP': 0, 'DP': 33, 'SDP': 0}
+{'FSDP': 0, 'DP': 32, 'SDP': 0}
+{'FSDP': 0, 'DP': 31, 'SDP': 0}
+{'FSDP': 0, 'DP': 30, 'SDP': 0}
+{'FSDP': 0, 'DP': 29, 'SDP': 0}
+{'FSDP': 0, 'DP': 28, 'SDP': 0}
+{'FSDP': 0, 'DP': 27, 'SDP': 0}
+{'FSDP': 0, 'DP': 26, 'SDP': 0}
+{'FSDP': 0, 'DP': 25, 'SDP': 0}
+{'FSDP': 0, 'DP': 24, 'SDP': 0}
+{'FSDP': 0, 'DP': 23, 'SDP': 0}
+{'FSDP': 0, 'DP': 22, 'SDP': 0}
+{'FSDP': 0, 'DP': 21, 'SDP': 0}
+{'FSDP': 0, 'DP': 20, 'SDP': 0}
+{'FSDP': 0, 'DP': 19, 'SDP': 0}
+{'FSDP': 0, 'DP': 18, 'SDP': 0}
+{'FSDP': 0, 'DP': 17, 'SDP': 0}
+{'FSDP': 0, 'DP': 16, 'SDP': 0}
+{'FSDP': 0, 'DP': 15, 'SDP': 0}
+{'FSDP': 0, 'DP': 14, 'SDP': 0}
+{'FSDP': 0, 'DP': 13, 'SDP': 0}
+{'FSDP': 0, 'DP': 12, 'SDP': 0}
+{'FSDP': 0, 'DP': 11, 'SDP': 0}
+{'FSDP': 0, 'DP': 10, 'SDP': 0}
+{'FSDP': 0, 'DP': 9, 'SDP': 0}
+{'FSDP': 0, 'DP': 8, 'SDP': 0}
+{'FSDP': 0, 'DP': 7, 'SDP': 0}
+{'FSDP': 0, 'DP': 6, 'SDP': 0}
+{'FSDP': 0, 'DP': 5, 'SDP': 0}
+{'FSDP': 0, 'DP': 4, 'SDP': 0}
+{'FSDP': 0, 'DP': 3, 'SDP': 0}
+{'FSDP': 0, 'DP': 2, 'SDP': 0}
+{'FSDP': 0, 'DP': 1, 'SDP': 0}
+_dp_wrapped_module._fpw_module.transformer.wte._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.wpe._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.0.ln_1._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.0.attn.c_attn._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.0.attn.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.0.ln_2._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.0.mlp.c_fc._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.0.mlp.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.1.ln_1._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.1.attn.c_attn._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.1.attn.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.1.ln_2._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.1.mlp.c_fc._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.1.mlp.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.2.ln_1._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.2.attn.c_attn._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.2.attn.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.2.ln_2._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.2.mlp.c_fc._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.2.mlp.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.3.ln_1._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.3.attn.c_attn._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.3.attn.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.3.ln_2._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.3.mlp.c_fc._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.3.mlp.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.4.ln_1._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.4.attn.c_attn._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.4.attn.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.4.ln_2._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.4.mlp.c_fc._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.4.mlp.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.5.ln_1._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.5.attn.c_attn._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.5.attn.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.5.ln_2._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.5.mlp.c_fc._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.5.mlp.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.6.ln_1._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.6.attn.c_attn._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.6.attn.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.6.ln_2._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.6.mlp.c_fc._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.6.mlp.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.7.ln_1._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.7.attn.c_attn._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.7.attn.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.7.ln_2._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.7.mlp.c_fc._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.7.mlp.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.8.ln_1._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.8.attn.c_attn._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.8.attn.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.8.ln_2._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.8.mlp.c_fc._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.8.mlp.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.9.ln_1._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.9.attn.c_attn._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.9.attn.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.9.ln_2._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.9.mlp.c_fc._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.9.mlp.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.10.ln_1._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.10.attn.c_attn._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.10.attn.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.10.ln_2._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.10.mlp.c_fc._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.10.mlp.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.11.ln_1._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.11.attn.c_attn._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.11.attn.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.11.ln_2._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.11.mlp.c_fc._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.11.mlp.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.ln_f._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.lm_head._dp_wrapped_module.flat_param_0
+end inittialization trainer
+world_size : 4
+rank : 1
+before init dataset  0.0
+      Id  ...                                               Text
+0      1  ...  I have bought several of the Vitality canned d...
+1      2  ...  Product arrived labeled as Jumbo Salted Peanut...
+2      3  ...  This is a confection that has been around a fe...
+3      4  ...  If you are looking for the secret ingredient i...
+4      5  ...  Great taffy at a great price.  There was a wid...
+..   ...  ...                                                ...
+595  596  ...  This is the second purchase of Kettle Potato C...
+596  597  ...  How to achieve potato chip nirvana? It's simpl...
+597  598  ...  I found these more than 10 years ago in a heal...
+598  599  ...  But you will enjoy ever step. I gained 5 lbs w...
+599  600  ...  These are the best spicy chips I have ever had...
+
+[600 rows x 10 columns]
+600
+after init dataset  0.0
+before init model  0.0
+after init model  487.46875
+{'FSDP': 0, 'DP': 125, 'SDP': 0}
+{'FSDP': 0, 'DP': 124, 'SDP': 0}
+{'FSDP': 0, 'DP': 123, 'SDP': 0}
+{'FSDP': 0, 'DP': 122, 'SDP': 0}
+{'FSDP': 0, 'DP': 121, 'SDP': 0}
+{'FSDP': 0, 'DP': 120, 'SDP': 0}
+{'FSDP': 0, 'DP': 119, 'SDP': 0}
+{'FSDP': 0, 'DP': 118, 'SDP': 0}
+{'FSDP': 0, 'DP': 117, 'SDP': 0}
+{'FSDP': 0, 'DP': 116, 'SDP': 0}
+{'FSDP': 0, 'DP': 115, 'SDP': 0}
+{'FSDP': 0, 'DP': 114, 'SDP': 0}
+{'FSDP': 0, 'DP': 113, 'SDP': 0}
+{'FSDP': 0, 'DP': 112, 'SDP': 0}
+{'FSDP': 0, 'DP': 111, 'SDP': 0}
+{'FSDP': 0, 'DP': 110, 'SDP': 0}
+{'FSDP': 0, 'DP': 109, 'SDP': 0}
+{'FSDP': 0, 'DP': 108, 'SDP': 0}
+{'FSDP': 0, 'DP': 107, 'SDP': 0}
+{'FSDP': 0, 'DP': 106, 'SDP': 0}
+{'FSDP': 0, 'DP': 105, 'SDP': 0}
+{'FSDP': 0, 'DP': 104, 'SDP': 0}
+{'FSDP': 0, 'DP': 103, 'SDP': 0}
+{'FSDP': 0, 'DP': 102, 'SDP': 0}
+{'FSDP': 0, 'DP': 101, 'SDP': 0}
+{'FSDP': 0, 'DP': 100, 'SDP': 0}
+{'FSDP': 0, 'DP': 99, 'SDP': 0}
+{'FSDP': 0, 'DP': 98, 'SDP': 0}
+{'FSDP': 0, 'DP': 97, 'SDP': 0}
+{'FSDP': 0, 'DP': 96, 'SDP': 0}
+{'FSDP': 0, 'DP': 95, 'SDP': 0}
+{'FSDP': 0, 'DP': 94, 'SDP': 0}
+{'FSDP': 0, 'DP': 93, 'SDP': 0}
+{'FSDP': 0, 'DP': 92, 'SDP': 0}
+{'FSDP': 0, 'DP': 91, 'SDP': 0}
+{'FSDP': 0, 'DP': 90, 'SDP': 0}
+{'FSDP': 0, 'DP': 89, 'SDP': 0}
+{'FSDP': 0, 'DP': 88, 'SDP': 0}
+{'FSDP': 0, 'DP': 87, 'SDP': 0}
+{'FSDP': 0, 'DP': 86, 'SDP': 0}
+{'FSDP': 0, 'DP': 85, 'SDP': 0}
+{'FSDP': 0, 'DP': 84, 'SDP': 0}
+{'FSDP': 0, 'DP': 83, 'SDP': 0}
+{'FSDP': 0, 'DP': 82, 'SDP': 0}
+{'FSDP': 0, 'DP': 81, 'SDP': 0}
+{'FSDP': 0, 'DP': 80, 'SDP': 0}
+{'FSDP': 0, 'DP': 79, 'SDP': 0}
+{'FSDP': 0, 'DP': 78, 'SDP': 0}
+{'FSDP': 0, 'DP': 77, 'SDP': 0}
+{'FSDP': 0, 'DP': 76, 'SDP': 0}
+{'FSDP': 0, 'DP': 75, 'SDP': 0}
+{'FSDP': 0, 'DP': 74, 'SDP': 0}
+{'FSDP': 0, 'DP': 73, 'SDP': 0}
+{'FSDP': 0, 'DP': 72, 'SDP': 0}
+{'FSDP': 0, 'DP': 71, 'SDP': 0}
+{'FSDP': 0, 'DP': 70, 'SDP': 0}
+{'FSDP': 0, 'DP': 69, 'SDP': 0}
+{'FSDP': 0, 'DP': 68, 'SDP': 0}
+{'FSDP': 0, 'DP': 67, 'SDP': 0}
+{'FSDP': 0, 'DP': 66, 'SDP': 0}
+{'FSDP': 0, 'DP': 65, 'SDP': 0}
+{'FSDP': 0, 'DP': 64, 'SDP': 0}
+{'FSDP': 0, 'DP': 63, 'SDP': 0}
+{'FSDP': 0, 'DP': 62, 'SDP': 0}
+{'FSDP': 0, 'DP': 61, 'SDP': 0}
+{'FSDP': 0, 'DP': 60, 'SDP': 0}
+{'FSDP': 0, 'DP': 59, 'SDP': 0}
+{'FSDP': 0, 'DP': 58, 'SDP': 0}
+{'FSDP': 0, 'DP': 57, 'SDP': 0}
+{'FSDP': 0, 'DP': 56, 'SDP': 0}
+{'FSDP': 0, 'DP': 55, 'SDP': 0}
+{'FSDP': 0, 'DP': 54, 'SDP': 0}
+{'FSDP': 0, 'DP': 53, 'SDP': 0}
+{'FSDP': 0, 'DP': 52, 'SDP': 0}
+{'FSDP': 0, 'DP': 51, 'SDP': 0}
+{'FSDP': 0, 'DP': 50, 'SDP': 0}
+{'FSDP': 0, 'DP': 49, 'SDP': 0}
+{'FSDP': 0, 'DP': 48, 'SDP': 0}
+{'FSDP': 0, 'DP': 47, 'SDP': 0}
+{'FSDP': 0, 'DP': 46, 'SDP': 0}
+{'FSDP': 0, 'DP': 45, 'SDP': 0}
+{'FSDP': 0, 'DP': 44, 'SDP': 0}
+{'FSDP': 0, 'DP': 43, 'SDP': 0}
+{'FSDP': 0, 'DP': 42, 'SDP': 0}
+{'FSDP': 0, 'DP': 41, 'SDP': 0}
+{'FSDP': 0, 'DP': 40, 'SDP': 0}
+{'FSDP': 0, 'DP': 39, 'SDP': 0}
+{'FSDP': 0, 'DP': 38, 'SDP': 0}
+{'FSDP': 0, 'DP': 37, 'SDP': 0}
+{'FSDP': 0, 'DP': 36, 'SDP': 0}
+{'FSDP': 0, 'DP': 35, 'SDP': 0}
+{'FSDP': 0, 'DP': 34, 'SDP': 0}
+{'FSDP': 0, 'DP': 33, 'SDP': 0}
+{'FSDP': 0, 'DP': 32, 'SDP': 0}
+{'FSDP': 0, 'DP': 31, 'SDP': 0}
+{'FSDP': 0, 'DP': 30, 'SDP': 0}
+{'FSDP': 0, 'DP': 29, 'SDP': 0}
+{'FSDP': 0, 'DP': 28, 'SDP': 0}
+{'FSDP': 0, 'DP': 27, 'SDP': 0}
+{'FSDP': 0, 'DP': 26, 'SDP': 0}
+{'FSDP': 0, 'DP': 25, 'SDP': 0}
+{'FSDP': 0, 'DP': 24, 'SDP': 0}
+{'FSDP': 0, 'DP': 23, 'SDP': 0}
+{'FSDP': 0, 'DP': 22, 'SDP': 0}
+{'FSDP': 0, 'DP': 21, 'SDP': 0}
+{'FSDP': 0, 'DP': 20, 'SDP': 0}
+{'FSDP': 0, 'DP': 19, 'SDP': 0}
+{'FSDP': 0, 'DP': 18, 'SDP': 0}
+{'FSDP': 0, 'DP': 17, 'SDP': 0}
+{'FSDP': 0, 'DP': 16, 'SDP': 0}
+{'FSDP': 0, 'DP': 15, 'SDP': 0}
+{'FSDP': 0, 'DP': 14, 'SDP': 0}
+{'FSDP': 0, 'DP': 13, 'SDP': 0}
+{'FSDP': 0, 'DP': 12, 'SDP': 0}
+{'FSDP': 0, 'DP': 11, 'SDP': 0}
+{'FSDP': 0, 'DP': 10, 'SDP': 0}
+{'FSDP': 0, 'DP': 9, 'SDP': 0}
+{'FSDP': 0, 'DP': 8, 'SDP': 0}
+{'FSDP': 0, 'DP': 7, 'SDP': 0}
+{'FSDP': 0, 'DP': 6, 'SDP': 0}
+{'FSDP': 0, 'DP': 5, 'SDP': 0}
+{'FSDP': 0, 'DP': 4, 'SDP': 0}
+{'FSDP': 0, 'DP': 3, 'SDP': 0}
+{'FSDP': 0, 'DP': 2, 'SDP': 0}
+{'FSDP': 0, 'DP': 1, 'SDP': 0}
+_dp_wrapped_module._fpw_module.transformer.wte._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.wpe._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.0.ln_1._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.0.attn.c_attn._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.0.attn.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.0.ln_2._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.0.mlp.c_fc._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.0.mlp.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.1.ln_1._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.1.attn.c_attn._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.1.attn.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.1.ln_2._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.1.mlp.c_fc._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.1.mlp.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.2.ln_1._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.2.attn.c_attn._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.2.attn.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.2.ln_2._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.2.mlp.c_fc._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.2.mlp.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.3.ln_1._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.3.attn.c_attn._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.3.attn.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.3.ln_2._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.3.mlp.c_fc._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.3.mlp.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.4.ln_1._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.4.attn.c_attn._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.4.attn.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.4.ln_2._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.4.mlp.c_fc._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.4.mlp.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.5.ln_1._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.5.attn.c_attn._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.5.attn.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.5.ln_2._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.5.mlp.c_fc._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.5.mlp.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.6.ln_1._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.6.attn.c_attn._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.6.attn.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.6.ln_2._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.6.mlp.c_fc._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.6.mlp.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.7.ln_1._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.7.attn.c_attn._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.7.attn.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.7.ln_2._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.7.mlp.c_fc._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.7.mlp.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.8.ln_1._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.8.attn.c_attn._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.8.attn.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.8.ln_2._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.8.mlp.c_fc._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.8.mlp.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.9.ln_1._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.9.attn.c_attn._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.9.attn.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.9.ln_2._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.9.mlp.c_fc._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.9.mlp.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.10.ln_1._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.10.attn.c_attn._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.10.attn.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.10.ln_2._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.10.mlp.c_fc._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.10.mlp.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.11.ln_1._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.11.attn.c_attn._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.11.attn.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.11.ln_2._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.11.mlp.c_fc._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.11.mlp.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.ln_f._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.lm_head._dp_wrapped_module.flat_param_0
+end inittialization trainer
+world_size : 4
+rank : 3
+before init dataset  0.0
+      Id  ...                                               Text
+0      1  ...  I have bought several of the Vitality canned d...
+1      2  ...  Product arrived labeled as Jumbo Salted Peanut...
+2      3  ...  This is a confection that has been around a fe...
+3      4  ...  If you are looking for the secret ingredient i...
+4      5  ...  Great taffy at a great price.  There was a wid...
+..   ...  ...                                                ...
+595  596  ...  This is the second purchase of Kettle Potato C...
+596  597  ...  How to achieve potato chip nirvana? It's simpl...
+597  598  ...  I found these more than 10 years ago in a heal...
+598  599  ...  But you will enjoy ever step. I gained 5 lbs w...
+599  600  ...  These are the best spicy chips I have ever had...
+
+[600 rows x 10 columns]
+600
+after init dataset  0.0
+before init model  0.0
+after init model  487.46875
+{'FSDP': 0, 'DP': 125, 'SDP': 0}
+{'FSDP': 0, 'DP': 124, 'SDP': 0}
+{'FSDP': 0, 'DP': 123, 'SDP': 0}
+{'FSDP': 0, 'DP': 122, 'SDP': 0}
+{'FSDP': 0, 'DP': 121, 'SDP': 0}
+{'FSDP': 0, 'DP': 120, 'SDP': 0}
+{'FSDP': 0, 'DP': 119, 'SDP': 0}
+{'FSDP': 0, 'DP': 118, 'SDP': 0}
+{'FSDP': 0, 'DP': 117, 'SDP': 0}
+{'FSDP': 0, 'DP': 116, 'SDP': 0}
+{'FSDP': 0, 'DP': 115, 'SDP': 0}
+{'FSDP': 0, 'DP': 114, 'SDP': 0}
+{'FSDP': 0, 'DP': 113, 'SDP': 0}
+{'FSDP': 0, 'DP': 112, 'SDP': 0}
+{'FSDP': 0, 'DP': 111, 'SDP': 0}
+{'FSDP': 0, 'DP': 110, 'SDP': 0}
+{'FSDP': 0, 'DP': 109, 'SDP': 0}
+{'FSDP': 0, 'DP': 108, 'SDP': 0}
+{'FSDP': 0, 'DP': 107, 'SDP': 0}
+{'FSDP': 0, 'DP': 106, 'SDP': 0}
+{'FSDP': 0, 'DP': 105, 'SDP': 0}
+{'FSDP': 0, 'DP': 104, 'SDP': 0}
+{'FSDP': 0, 'DP': 103, 'SDP': 0}
+{'FSDP': 0, 'DP': 102, 'SDP': 0}
+{'FSDP': 0, 'DP': 101, 'SDP': 0}
+{'FSDP': 0, 'DP': 100, 'SDP': 0}
+{'FSDP': 0, 'DP': 99, 'SDP': 0}
+{'FSDP': 0, 'DP': 98, 'SDP': 0}
+{'FSDP': 0, 'DP': 97, 'SDP': 0}
+{'FSDP': 0, 'DP': 96, 'SDP': 0}
+{'FSDP': 0, 'DP': 95, 'SDP': 0}
+{'FSDP': 0, 'DP': 94, 'SDP': 0}
+{'FSDP': 0, 'DP': 93, 'SDP': 0}
+{'FSDP': 0, 'DP': 92, 'SDP': 0}
+{'FSDP': 0, 'DP': 91, 'SDP': 0}
+{'FSDP': 0, 'DP': 90, 'SDP': 0}
+{'FSDP': 0, 'DP': 89, 'SDP': 0}
+{'FSDP': 0, 'DP': 88, 'SDP': 0}
+{'FSDP': 0, 'DP': 87, 'SDP': 0}
+{'FSDP': 0, 'DP': 86, 'SDP': 0}
+{'FSDP': 0, 'DP': 85, 'SDP': 0}
+{'FSDP': 0, 'DP': 84, 'SDP': 0}
+{'FSDP': 0, 'DP': 83, 'SDP': 0}
+{'FSDP': 0, 'DP': 82, 'SDP': 0}
+{'FSDP': 0, 'DP': 81, 'SDP': 0}
+{'FSDP': 0, 'DP': 80, 'SDP': 0}
+{'FSDP': 0, 'DP': 79, 'SDP': 0}
+{'FSDP': 0, 'DP': 78, 'SDP': 0}
+{'FSDP': 0, 'DP': 77, 'SDP': 0}
+{'FSDP': 0, 'DP': 76, 'SDP': 0}
+{'FSDP': 0, 'DP': 75, 'SDP': 0}
+{'FSDP': 0, 'DP': 74, 'SDP': 0}
+{'FSDP': 0, 'DP': 73, 'SDP': 0}
+{'FSDP': 0, 'DP': 72, 'SDP': 0}
+{'FSDP': 0, 'DP': 71, 'SDP': 0}
+{'FSDP': 0, 'DP': 70, 'SDP': 0}
+{'FSDP': 0, 'DP': 69, 'SDP': 0}
+{'FSDP': 0, 'DP': 68, 'SDP': 0}
+{'FSDP': 0, 'DP': 67, 'SDP': 0}
+{'FSDP': 0, 'DP': 66, 'SDP': 0}
+{'FSDP': 0, 'DP': 65, 'SDP': 0}
+{'FSDP': 0, 'DP': 64, 'SDP': 0}
+{'FSDP': 0, 'DP': 63, 'SDP': 0}
+{'FSDP': 0, 'DP': 62, 'SDP': 0}
+{'FSDP': 0, 'DP': 61, 'SDP': 0}
+{'FSDP': 0, 'DP': 60, 'SDP': 0}
+{'FSDP': 0, 'DP': 59, 'SDP': 0}
+{'FSDP': 0, 'DP': 58, 'SDP': 0}
+{'FSDP': 0, 'DP': 57, 'SDP': 0}
+{'FSDP': 0, 'DP': 56, 'SDP': 0}
+{'FSDP': 0, 'DP': 55, 'SDP': 0}
+{'FSDP': 0, 'DP': 54, 'SDP': 0}
+{'FSDP': 0, 'DP': 53, 'SDP': 0}
+{'FSDP': 0, 'DP': 52, 'SDP': 0}
+{'FSDP': 0, 'DP': 51, 'SDP': 0}
+{'FSDP': 0, 'DP': 50, 'SDP': 0}
+{'FSDP': 0, 'DP': 49, 'SDP': 0}
+{'FSDP': 0, 'DP': 48, 'SDP': 0}
+{'FSDP': 0, 'DP': 47, 'SDP': 0}
+{'FSDP': 0, 'DP': 46, 'SDP': 0}
+{'FSDP': 0, 'DP': 45, 'SDP': 0}
+{'FSDP': 0, 'DP': 44, 'SDP': 0}
+{'FSDP': 0, 'DP': 43, 'SDP': 0}
+{'FSDP': 0, 'DP': 42, 'SDP': 0}
+{'FSDP': 0, 'DP': 41, 'SDP': 0}
+{'FSDP': 0, 'DP': 40, 'SDP': 0}
+{'FSDP': 0, 'DP': 39, 'SDP': 0}
+{'FSDP': 0, 'DP': 38, 'SDP': 0}
+{'FSDP': 0, 'DP': 37, 'SDP': 0}
+{'FSDP': 0, 'DP': 36, 'SDP': 0}
+{'FSDP': 0, 'DP': 35, 'SDP': 0}
+{'FSDP': 0, 'DP': 34, 'SDP': 0}
+{'FSDP': 0, 'DP': 33, 'SDP': 0}
+{'FSDP': 0, 'DP': 32, 'SDP': 0}
+{'FSDP': 0, 'DP': 31, 'SDP': 0}
+{'FSDP': 0, 'DP': 30, 'SDP': 0}
+{'FSDP': 0, 'DP': 29, 'SDP': 0}
+{'FSDP': 0, 'DP': 28, 'SDP': 0}
+{'FSDP': 0, 'DP': 27, 'SDP': 0}
+{'FSDP': 0, 'DP': 26, 'SDP': 0}
+{'FSDP': 0, 'DP': 25, 'SDP': 0}
+{'FSDP': 0, 'DP': 24, 'SDP': 0}
+{'FSDP': 0, 'DP': 23, 'SDP': 0}
+{'FSDP': 0, 'DP': 22, 'SDP': 0}
+{'FSDP': 0, 'DP': 21, 'SDP': 0}
+{'FSDP': 0, 'DP': 20, 'SDP': 0}
+{'FSDP': 0, 'DP': 19, 'SDP': 0}
+{'FSDP': 0, 'DP': 18, 'SDP': 0}
+{'FSDP': 0, 'DP': 17, 'SDP': 0}
+{'FSDP': 0, 'DP': 16, 'SDP': 0}
+{'FSDP': 0, 'DP': 15, 'SDP': 0}
+{'FSDP': 0, 'DP': 14, 'SDP': 0}
+{'FSDP': 0, 'DP': 13, 'SDP': 0}
+{'FSDP': 0, 'DP': 12, 'SDP': 0}
+{'FSDP': 0, 'DP': 11, 'SDP': 0}
+{'FSDP': 0, 'DP': 10, 'SDP': 0}
+{'FSDP': 0, 'DP': 9, 'SDP': 0}
+{'FSDP': 0, 'DP': 8, 'SDP': 0}
+{'FSDP': 0, 'DP': 7, 'SDP': 0}
+{'FSDP': 0, 'DP': 6, 'SDP': 0}
+{'FSDP': 0, 'DP': 5, 'SDP': 0}
+{'FSDP': 0, 'DP': 4, 'SDP': 0}
+{'FSDP': 0, 'DP': 3, 'SDP': 0}
+{'FSDP': 0, 'DP': 2, 'SDP': 0}
+{'FSDP': 0, 'DP': 1, 'SDP': 0}
+_dp_wrapped_module._fpw_module.transformer.wte._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.wpe._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.0.ln_1._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.0.attn.c_attn._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.0.attn.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.0.ln_2._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.0.mlp.c_fc._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.0.mlp.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.1.ln_1._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.1.attn.c_attn._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.1.attn.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.1.ln_2._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.1.mlp.c_fc._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.1.mlp.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.2.ln_1._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.2.attn.c_attn._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.2.attn.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.2.ln_2._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.2.mlp.c_fc._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.2.mlp.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.3.ln_1._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.3.attn.c_attn._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.3.attn.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.3.ln_2._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.3.mlp.c_fc._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.3.mlp.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.4.ln_1._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.4.attn.c_attn._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.4.attn.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.4.ln_2._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.4.mlp.c_fc._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.4.mlp.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.5.ln_1._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.5.attn.c_attn._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.5.attn.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.5.ln_2._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.5.mlp.c_fc._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.5.mlp.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.6.ln_1._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.6.attn.c_attn._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.6.attn.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.6.ln_2._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.6.mlp.c_fc._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.6.mlp.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.7.ln_1._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.7.attn.c_attn._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.7.attn.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.7.ln_2._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.7.mlp.c_fc._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.7.mlp.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.8.ln_1._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.8.attn.c_attn._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.8.attn.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.8.ln_2._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.8.mlp.c_fc._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.8.mlp.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.9.ln_1._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.9.attn.c_attn._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.9.attn.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.9.ln_2._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.9.mlp.c_fc._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.9.mlp.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.10.ln_1._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.10.attn.c_attn._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.10.attn.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.10.ln_2._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.10.mlp.c_fc._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.10.mlp.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.11.ln_1._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.11.attn.c_attn._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.11.attn.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.11.ln_2._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.11.mlp.c_fc._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.h.11.mlp.c_proj._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.transformer.ln_f._dp_wrapped_module.flat_param_0
+_dp_wrapped_module._fpw_module.lm_head._dp_wrapped_module.flat_param_0
+end inittialization trainer

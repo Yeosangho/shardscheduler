@@ -1,0 +1,247 @@
+[00;33m 	'cuda/11.3' does not supports the {CUDA_MPI}. [0m
+[00;34m 	{CUDA_MPI} is only supported in cuda 11.4 version. [0m
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+  0%|          | 0/38 [00:00<?, ?it/s]  3%|▎         | 1/38 [00:00<00:29,  1.26it/s]  3%|▎         | 1/38 [00:00<00:34,  1.06it/s]
+  0%|          | 0/38 [00:00<?, ?it/s]  3%|▎         | 1/38 [00:00<00:29,  1.24it/s]  3%|▎         | 1/38 [00:00<00:36,  1.03it/s]
+  0%|          | 0/38 [00:00<?, ?it/s]  3%|▎         | 1/38 [00:00<00:31,  1.19it/s]  3%|▎         | 1/38 [00:00<00:36,  1.01it/s]
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 492, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 356, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1046, in forward
+    transformer_outputs = self.transformer(
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 832, in forward
+    inputs_embeds = self.wte(input_ids)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 715, in forward
+    self.communicate_forward()
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 677, in communicate_forward
+    self.do_communication(comm)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 685, in do_communication
+    self.do_allreduce_async(partiable_param)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 704, in do_allreduce_async
+    self.bucketer.allreduce_async(grad=grad,
+  File "/scratch/hpc72a03/shardscheduler/ar_bucketer.py", line 55, in allreduce_async
+    param_size = self.comm_param_size_dict[param].get(param, None)
+KeyError: Parameter containing:
+tensor([-0.0188, -0.1974,  0.0040,  ..., -0.0047, -0.0024, -0.0058],
+       device='cuda:3', requires_grad=True)
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 492, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 356, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1046, in forward
+    transformer_outputs = self.transformer(
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 832, in forward
+    inputs_embeds = self.wte(input_ids)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 715, in forward
+    self.communicate_forward()
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 677, in communicate_forward
+    self.do_communication(comm)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 685, in do_communication
+    self.do_allreduce_async(partiable_param)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 704, in do_allreduce_async
+    self.bucketer.allreduce_async(grad=grad,
+  File "/scratch/hpc72a03/shardscheduler/ar_bucketer.py", line 55, in allreduce_async
+    param_size = self.comm_param_size_dict[param].get(param, None)
+KeyError: Parameter containing:
+tensor([-0.0188, -0.1974,  0.0040,  ..., -0.0047, -0.0024, -0.0058],
+       device='cuda:2', requires_grad=True)
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 492, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 356, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1046, in forward
+    transformer_outputs = self.transformer(
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 832, in forward
+    inputs_embeds = self.wte(input_ids)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 715, in forward
+    self.communicate_forward()
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 677, in communicate_forward
+    self.do_communication(comm)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 685, in do_communication
+    self.do_allreduce_async(partiable_param)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 704, in do_allreduce_async
+    self.bucketer.allreduce_async(grad=grad,
+  File "/scratch/hpc72a03/shardscheduler/ar_bucketer.py", line 55, in allreduce_async
+    param_size = self.comm_param_size_dict[param].get(param, None)
+KeyError: Parameter containing:
+tensor([-0.0188, -0.1974,  0.0040,  ..., -0.0047, -0.0024, -0.0058],
+       device='cuda:2', requires_grad=True)
+  0%|          | 0/38 [00:00<?, ?it/s]  3%|▎         | 1/38 [00:00<00:31,  1.18it/s]  3%|▎         | 1/38 [00:00<00:36,  1.00it/s]
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 492, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 356, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1046, in forward
+    transformer_outputs = self.transformer(
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 832, in forward
+    inputs_embeds = self.wte(input_ids)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 715, in forward
+    self.communicate_forward()
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 677, in communicate_forward
+    self.do_communication(comm)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 685, in do_communication
+    self.do_allreduce_async(partiable_param)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 704, in do_allreduce_async
+    self.bucketer.allreduce_async(grad=grad,
+  File "/scratch/hpc72a03/shardscheduler/ar_bucketer.py", line 55, in allreduce_async
+    param_size = self.comm_param_size_dict[param].get(param, None)
+KeyError: Parameter containing:
+tensor([-0.0188, -0.1974,  0.0040,  ..., -0.0047, -0.0024, -0.0058],
+       device='cuda:1', requires_grad=True)
+  0%|          | 0/38 [00:00<?, ?it/s]  3%|▎         | 1/38 [00:00<00:32,  1.15it/s]  3%|▎         | 1/38 [00:01<00:37,  1.03s/it]
+  0%|          | 0/38 [00:00<?, ?it/s]  3%|▎         | 1/38 [00:00<00:32,  1.14it/s]  3%|▎         | 1/38 [00:01<00:38,  1.03s/it]
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 492, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 356, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1046, in forward
+    transformer_outputs = self.transformer(
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 832, in forward
+    inputs_embeds = self.wte(input_ids)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 715, in forward
+    self.communicate_forward()
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 677, in communicate_forward
+    self.do_communication(comm)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 685, in do_communication
+    self.do_allreduce_async(partiable_param)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 704, in do_allreduce_async
+    self.bucketer.allreduce_async(grad=grad,
+  File "/scratch/hpc72a03/shardscheduler/ar_bucketer.py", line 55, in allreduce_async
+    param_size = self.comm_param_size_dict[param].get(param, None)
+KeyError: Parameter containing:
+tensor([-0.0188, -0.1974,  0.0040,  ..., -0.0047, -0.0024, -0.0058],
+       device='cuda:1', requires_grad=True)
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 492, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 356, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1046, in forward
+    transformer_outputs = self.transformer(
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 832, in forward
+    inputs_embeds = self.wte(input_ids)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 715, in forward
+    self.communicate_forward()
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 677, in communicate_forward
+    self.do_communication(comm)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 685, in do_communication
+    self.do_allreduce_async(partiable_param)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 704, in do_allreduce_async
+    self.bucketer.allreduce_async(grad=grad,
+  File "/scratch/hpc72a03/shardscheduler/ar_bucketer.py", line 55, in allreduce_async
+    param_size = self.comm_param_size_dict[param].get(param, None)
+KeyError: Parameter containing:
+tensor([-0.0188, -0.1974,  0.0040,  ..., -0.0047, -0.0024, -0.0058],
+       device='cuda:0', requires_grad=True)
+  0%|          | 0/38 [00:00<?, ?it/s]  3%|▎         | 1/38 [00:00<00:32,  1.13it/s]  3%|▎         | 1/38 [00:01<00:38,  1.04s/it]
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 492, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 356, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1046, in forward
+    transformer_outputs = self.transformer(
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 832, in forward
+    inputs_embeds = self.wte(input_ids)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 715, in forward
+    self.communicate_forward()
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 677, in communicate_forward
+    self.do_communication(comm)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 685, in do_communication
+    self.do_allreduce_async(partiable_param)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 704, in do_allreduce_async
+    self.bucketer.allreduce_async(grad=grad,
+  File "/scratch/hpc72a03/shardscheduler/ar_bucketer.py", line 55, in allreduce_async
+    param_size = self.comm_param_size_dict[param].get(param, None)
+KeyError: Parameter containing:
+tensor([-0.0188, -0.1974,  0.0040,  ..., -0.0047, -0.0024, -0.0058],
+       device='cuda:3', requires_grad=True)
+  0%|          | 0/38 [00:00<?, ?it/s]  3%|▎         | 1/38 [00:00<00:34,  1.07it/s]  3%|▎         | 1/38 [00:01<00:40,  1.09s/it]
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 492, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 356, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1046, in forward
+    transformer_outputs = self.transformer(
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 832, in forward
+    inputs_embeds = self.wte(input_ids)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 715, in forward
+    self.communicate_forward()
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 677, in communicate_forward
+    self.do_communication(comm)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 685, in do_communication
+    self.do_allreduce_async(partiable_param)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 704, in do_allreduce_async
+    self.bucketer.allreduce_async(grad=grad,
+  File "/scratch/hpc72a03/shardscheduler/ar_bucketer.py", line 55, in allreduce_async
+    param_size = self.comm_param_size_dict[param].get(param, None)
+KeyError: Parameter containing:
+tensor([-0.0188, -0.1974,  0.0040,  ..., -0.0047, -0.0024, -0.0058],
+       device='cuda:0', requires_grad=True)
+srun: error: gpu16: tasks 0,3: Exited with exit code 1
+srun: error: gpu17: tasks 4-5: Exited with exit code 1
+srun: error: gpu17: task 7: Exited with exit code 1
+srun: error: gpu17: task 6: Exited with exit code 1
+srun: error: gpu16: tasks 1-2: Exited with exit code 1

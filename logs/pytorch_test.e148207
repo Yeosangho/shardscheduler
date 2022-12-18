@@ -1,0 +1,54 @@
+[00;33m 	'cuda/11.3' does not supports the {CUDA_MPI}. [0m
+[00;34m 	{CUDA_MPI} is only supported in cuda 11.4 version. [0m
+Traceback (most recent call last):
+  File "profile.py", line 55, in <module>
+    sizes, times  = comm_profiler.benchmark()
+  File "/scratch/hpc72a03/shardscheduler/profiling.py", line 270, in benchmark
+    tensor_list = [torch.zeros_like(tensor).cuda() for _ in range(self.sizes)]
+AttributeError: 'CommunicationProfiler' object has no attribute 'sizes'
+Traceback (most recent call last):
+  File "profile.py", line 55, in <module>
+    sizes, times  = comm_profiler.benchmark()
+  File "/scratch/hpc72a03/shardscheduler/profiling.py", line 270, in benchmark
+    tensor_list = [torch.zeros_like(tensor).cuda() for _ in range(self.sizes)]
+AttributeError: 'CommunicationProfiler' object has no attribute 'sizes'
+Traceback (most recent call last):
+  File "profile.py", line 55, in <module>
+    sizes, times  = comm_profiler.benchmark()
+  File "/scratch/hpc72a03/shardscheduler/profiling.py", line 270, in benchmark
+    tensor_list = [torch.zeros_like(tensor).cuda() for _ in range(self.sizes)]
+AttributeError: 'CommunicationProfiler' object has no attribute 'sizes'
+Traceback (most recent call last):
+  File "profile.py", line 55, in <module>
+    sizes, times  = comm_profiler.benchmark()
+  File "/scratch/hpc72a03/shardscheduler/profiling.py", line 270, in benchmark
+    tensor_list = [torch.zeros_like(tensor).cuda() for _ in range(self.sizes)]
+AttributeError: 'CommunicationProfiler' object has no attribute 'sizes'
+srun: error: gpu23: tasks 1-3: Exited with exit code 1
+srun: error: gpu23: task 0: Exited with exit code 1
+Traceback (most recent call last):
+  File "profile.py", line 55, in <module>
+    sizes, times  = comm_profiler.benchmark()
+  File "/scratch/hpc72a03/shardscheduler/profiling.py", line 270, in benchmark
+    tensor_list = [torch.zeros_like(tensor).cuda() for _ in range(self.sizes)]
+AttributeError: 'CommunicationProfiler' object has no attribute 'sizes'
+Traceback (most recent call last):
+  File "profile.py", line 55, in <module>
+    sizes, times  = comm_profiler.benchmark()
+  File "/scratch/hpc72a03/shardscheduler/profiling.py", line 270, in benchmark
+    tensor_list = [torch.zeros_like(tensor).cuda() for _ in range(self.sizes)]
+AttributeError: 'CommunicationProfiler' object has no attribute 'sizes'
+Traceback (most recent call last):
+  File "profile.py", line 55, in <module>
+    sizes, times  = comm_profiler.benchmark()
+  File "/scratch/hpc72a03/shardscheduler/profiling.py", line 270, in benchmark
+    tensor_list = [torch.zeros_like(tensor).cuda() for _ in range(self.sizes)]
+AttributeError: 'CommunicationProfiler' object has no attribute 'sizes'
+Traceback (most recent call last):
+  File "profile.py", line 55, in <module>
+    sizes, times  = comm_profiler.benchmark()
+  File "/scratch/hpc72a03/shardscheduler/profiling.py", line 270, in benchmark
+    tensor_list = [torch.zeros_like(tensor).cuda() for _ in range(self.sizes)]
+AttributeError: 'CommunicationProfiler' object has no attribute 'sizes'
+srun: error: gpu24: tasks 5-7: Exited with exit code 1
+srun: error: gpu24: task 4: Exited with exit code 1

@@ -1,0 +1,28 @@
+[00;33m 	'cuda/11.3' does not supports the {CUDA_MPI}. [0m
+[00;34m 	{CUDA_MPI} is only supported in cuda 11.4 version. [0m
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 475, in <module>
+    trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread) 
+  File "main_gpt2_with_health_checker.py", line 184, in __init__
+    self._schedule_comm["FWTOBW"] = {}
+AttributeError: 'Trainer' object has no attribute '_schedule_comm'
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 475, in <module>
+    trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread) 
+  File "main_gpt2_with_health_checker.py", line 184, in __init__
+    self._schedule_comm["FWTOBW"] = {}
+AttributeError: 'Trainer' object has no attribute '_schedule_comm'
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 475, in <module>
+    trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread) 
+  File "main_gpt2_with_health_checker.py", line 184, in __init__
+    self._schedule_comm["FWTOBW"] = {}
+AttributeError: 'Trainer' object has no attribute '_schedule_comm'
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 475, in <module>
+    trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread) 
+  File "main_gpt2_with_health_checker.py", line 184, in __init__
+    self._schedule_comm["FWTOBW"] = {}
+AttributeError: 'Trainer' object has no attribute '_schedule_comm'
+srun: error: gpu10: tasks 0-2: Exited with exit code 1
+srun: error: gpu10: task 3: Exited with exit code 1

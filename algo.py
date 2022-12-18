@@ -47,15 +47,25 @@ class CompOp:
     def __repr__(self):
         return f"{self.name}, {self.idx}, {self.type}, {self.overlappable_time} {len(self.scheduled_comm['ag'])} {len(self.scheduled_comm['rs'])} {len(self.scheduled_comm['ar'])} {len(self.scheduled_comm['ag_fsdp'])}"
 class CommOp:
-    def __init__(self, name, idx, param_num, comm_type, time):
+    def __init__(self, name, idx, param_num, sharded_param_num, full_padded_param_num, comm_type, time):
         self.name = name
         self.idx = idx
         self.type = comm_type
         self.time = time
         self.orig_size = param_num
         self.residual_time = time 
+        
         self.param_num = param_num
-        self.overlappable_param_num = param_num
+        self.sharded_param_num = sharded_param_num
+        self.full_padded_param_num = full_padded_param_num
+
+        if(self.comm_type == 'ar'):
+            self.overlappable_param_num = param_num
+        elif self.comm_type == 'ag' or self.comm_type == 'ag_fsdp':
+            self.overlappable_param_num = sharded_param_num
+        elif self.comm_type == 'rs':
+            self.overlappable_param_num = full_padded_param_num
+
         self.schedulable_comps = []
         self.scheduled_comps = []
         self.scheduled_params = []
@@ -73,6 +83,8 @@ class CommOp:
         self.overlappable_param_num -= param_num
         self.residual_time -= time
         
+    def get_overlappable_param_num(self, comm_type):
+        return self.overlappable_param_num[comm_type]
 
     def __str__(self):
         return f"{self.name}, {self.idx}, {self.type}, {self.get_possible_schedulable_time()} {self.param_num} {self.overlappable_param_num}"
@@ -173,7 +185,7 @@ def schedule_ops(target_comm, target_comp, comp_ops, alpha, beta, max_buffered_p
         target_comm.set_scheduled_comp(target_comp, param_num, time)
         target_comp.overlappable_time -= time
 
-def read_profile_info(comp_ops, forward_ops, backward_ops, param_nums, layer_bench_file_name):
+def read_profile_info(world_size, comp_ops, forward_ops, backward_ops, param_nums, sharded_param_nums, full_padded_param_nums, layer_bench_file_name, net_bench_file_name, world_size):
 
     total_comp_times = 0
     total_backward_times = 0
@@ -196,7 +208,12 @@ def read_profile_info(comp_ops, forward_ops, backward_ops, param_nums, layer_ben
 
 
         param_nums[layer_name] = int(line[3])
-        total_param_num += int(line[3])
+
+        #torch chunk's shard method.
+        sharded_param_nums[layer_name] = math.ceil(int(line[3])/world_size)
+        full_padded_param_nums[layer_name] = sharded_param_nums[layer_name] * world_size
+
+        total_param_num += int(line[3]) = 
         forward_op = CompOp(layer_name, idx, ftime, 'forward')
         forward_ops.append(forward_op)
         backward_op = CompOp(layer_name, idx, btime, 'backward')
@@ -214,7 +231,7 @@ def read_profile_info(comp_ops, forward_ops, backward_ops, param_nums, layer_ben
     #        comp_op.idx += layer_len
 
 
-    f = open('profile_data/net_bench_cas_v100_4_node2.csv','r')
+    f = open(net_bench_file_name,'r')
     rdr = csv.reader(f)
     alpha =  None
     beta = None
@@ -223,7 +240,7 @@ def read_profile_info(comp_ops, forward_ops, backward_ops, param_nums, layer_ben
         beta = float(line[1])
     return alpha, beta, total_comp_times, total_backward_times, total_forward_times, total_param_num, total_layer_num
 
-def schedule(adaptive_sdp, max_buffered_param_num, layer_bench_file_name='layer_bench.csv'):
+def schedule(world_size, adaptive_sdp, max_buffered_param_num, layer_bench_file_name='layer_bench.csv', net_bench_file_name='profile_data/net_bench_cas_v100_4_node2.csv'):
     #schedule
 
 
@@ -235,10 +252,15 @@ def schedule(adaptive_sdp, max_buffered_param_num, layer_bench_file_name='layer_
     backward_times = {}
     all_comp_times = {}
     param_nums = {}
+
+    #configure parameter num when sharded applied
+    sharded_param_nums = {}
+    full_padded_param_nums = {}
+
     forward_ops = [] 
     backward_ops = [] 
     comp_ops = []
-    alpha, beta, total_comp_times, total_backward_times, total_forward_times, _, _ = read_profile_info(comp_ops, forward_ops, backward_ops, param_nums, layer_bench_file_name)
+    alpha, beta, total_comp_times, total_backward_times, total_forward_times, _, _ = read_profile_info(world_size, comp_ops, forward_ops, backward_ops, param_nums, sharded_param_nums, full_padded_param_nums, layer_bench_file_name, net_bench_file_name, world_size)
 
 
     #print(comp_times)
@@ -269,7 +291,7 @@ def schedule(adaptive_sdp, max_buffered_param_num, layer_bench_file_name='layer_
         if(dp_start_idx <= idx and dp_end_idx > idx):
             layer_dp_type_list.append('dp')
             time = alpha + beta * param_nums[key] *4  * 2 #32bit
-            comm_ar = CommOp(key, idx, param_nums[key], 'ar', time)
+            comm_ar = CommOp(key, idx, param_nums[key], sharded_param_nums[key], full_padded_param_nums[key], 'ar', time)
             comm_ar_list.append(comm_ar)
             print("???")
             total_comm_times += time 
@@ -280,9 +302,9 @@ def schedule(adaptive_sdp, max_buffered_param_num, layer_bench_file_name='layer_
 
             time = alpha + beta * param_nums[key] *4 #32bit
 
-            comm_ag = CommOp(key, idx, param_nums[key], 'ag', time)
+            comm_ag = CommOp(key, idx, param_nums[key], sharded_param_nums[key], full_padded_param_nums[key], 'ag', time)
             comm_ag_list.append(comm_ag)
-            comm_rs = CommOp(key, idx, param_nums[key], 'rs', time)
+            comm_rs = CommOp(key, idx, param_nums[key], sharded_param_nums[key], full_padded_param_nums[key], 'rs', time)
             comm_rs_list.append(comm_rs)
 
             total_comm_times += time * 2
@@ -293,12 +315,12 @@ def schedule(adaptive_sdp, max_buffered_param_num, layer_bench_file_name='layer_
 
             time = alpha + beta * param_nums[key] *4 #32bit
 
-            comm_ag = CommOp(key, idx, param_nums[key], 'ag', time)
+            comm_ag = CommOp(key, idx, param_nums[key], sharded_param_nums[key], full_padded_param_nums[key], 'ag', time)
             comm_ag_list.append(comm_ag)
-            comm_rs = CommOp(key, idx, param_nums[key], 'rs', time)
+            comm_rs = CommOp(key, idx, param_nums[key], sharded_param_nums[key], full_padded_param_nums[key], 'rs', time)
             comm_rs_list.append(comm_rs)
             
-            comm_ag_fsdp = CommOp(key, idx, param_nums[key], 'ag_fsdp', time)
+            comm_ag_fsdp = CommOp(key, idx, param_nums[key], sharded_param_nums[key], full_padded_param_nums[key], 'ag_fsdp', time)
             comm_ag_fsdp_list.append(comm_ag_fsdp)
 
             total_comm_times += time * 3

@@ -1,0 +1,689 @@
+==========================================
+SLURM_JOB_ID = 149601
+SLURM_NODELIST = gpu07
+==========================================
+NODELIST=gpu07
+MASTER_ADDR=gpu07
+world_size : 4
+rank : 1
+main
+wait src from 0
+main
+wait src from 0
+before init dataset  0.0
+wait src from 0
+wait src from 0
+wait src from 0
+wait src from 0
+wait src from 0
+wait src from 0
+      Id  ...                                               Text
+0      1  ...  I have bought several of the Vitality canned d...
+1      2  ...  Product arrived labeled as Jumbo Salted Peanut...
+2      3  ...  This is a confection that has been around a fe...
+3      4  ...  If you are looking for the secret ingredient i...
+4      5  ...  Great taffy at a great price.  There was a wid...
+..   ...  ...                                                ...
+595  596  ...  This is the second purchase of Kettle Potato C...
+596  597  ...  How to achieve potato chip nirvana? It's simpl...
+597  598  ...  I found these more than 10 years ago in a heal...
+598  599  ...  But you will enjoy ever step. I gained 5 lbs w...
+599  600  ...  These are the best spicy chips I have ever had...
+
+[600 rows x 10 columns]
+600
+wait src from 0
+wait src from 0
+wait src from 0
+after init dataset  0.0
+before init model  0.0
+wait src from 0
+wait src from 0
+wait src from 0
+wait src from 0
+wait src from 0
+wait src from 0
+wait src from 0
+wait src from 0
+wait src from 0
+after init model  487.46875
+{'FSDP': 0, 'DP': 0, 'SDP': 125}
+{'FSDP': 0, 'DP': 0, 'SDP': 124}
+{'FSDP': 0, 'DP': 0, 'SDP': 123}
+{'FSDP': 0, 'DP': 0, 'SDP': 122}
+{'FSDP': 0, 'DP': 0, 'SDP': 121}
+{'FSDP': 0, 'DP': 0, 'SDP': 120}
+{'FSDP': 0, 'DP': 0, 'SDP': 119}
+{'FSDP': 0, 'DP': 0, 'SDP': 118}
+{'FSDP': 0, 'DP': 0, 'SDP': 117}
+{'FSDP': 0, 'DP': 0, 'SDP': 116}
+{'FSDP': 0, 'DP': 0, 'SDP': 115}
+{'FSDP': 0, 'DP': 0, 'SDP': 114}
+{'FSDP': 0, 'DP': 0, 'SDP': 113}
+{'FSDP': 0, 'DP': 0, 'SDP': 112}
+{'FSDP': 0, 'DP': 0, 'SDP': 111}
+{'FSDP': 0, 'DP': 0, 'SDP': 110}
+{'FSDP': 0, 'DP': 0, 'SDP': 109}
+{'FSDP': 0, 'DP': 0, 'SDP': 108}
+{'FSDP': 0, 'DP': 0, 'SDP': 107}
+{'FSDP': 0, 'DP': 0, 'SDP': 106}
+{'FSDP': 0, 'DP': 0, 'SDP': 105}
+{'FSDP': 0, 'DP': 0, 'SDP': 104}
+{'FSDP': 0, 'DP': 0, 'SDP': 103}
+{'FSDP': 0, 'DP': 0, 'SDP': 102}
+{'FSDP': 0, 'DP': 0, 'SDP': 101}
+{'FSDP': 0, 'DP': 0, 'SDP': 100}
+{'FSDP': 0, 'DP': 0, 'SDP': 99}
+{'FSDP': 0, 'DP': 0, 'SDP': 98}
+{'FSDP': 0, 'DP': 0, 'SDP': 97}
+{'FSDP': 0, 'DP': 0, 'SDP': 96}
+{'FSDP': 0, 'DP': 0, 'SDP': 95}
+{'FSDP': 0, 'DP': 0, 'SDP': 94}
+{'FSDP': 0, 'DP': 0, 'SDP': 93}
+{'FSDP': 0, 'DP': 0, 'SDP': 92}
+{'FSDP': 0, 'DP': 0, 'SDP': 91}
+{'FSDP': 0, 'DP': 0, 'SDP': 90}
+{'FSDP': 0, 'DP': 0, 'SDP': 89}
+{'FSDP': 0, 'DP': 0, 'SDP': 88}
+{'FSDP': 0, 'DP': 0, 'SDP': 87}
+{'FSDP': 0, 'DP': 0, 'SDP': 86}
+{'FSDP': 0, 'DP': 0, 'SDP': 85}
+{'FSDP': 0, 'DP': 0, 'SDP': 84}
+{'FSDP': 0, 'DP': 0, 'SDP': 83}
+{'FSDP': 0, 'DP': 0, 'SDP': 82}
+{'FSDP': 0, 'DP': 0, 'SDP': 81}
+{'FSDP': 0, 'DP': 0, 'SDP': 80}
+{'FSDP': 0, 'DP': 0, 'SDP': 79}
+{'FSDP': 0, 'DP': 0, 'SDP': 78}
+{'FSDP': 0, 'DP': 0, 'SDP': 77}
+{'FSDP': 0, 'DP': 0, 'SDP': 76}
+{'FSDP': 0, 'DP': 0, 'SDP': 75}
+{'FSDP': 0, 'DP': 0, 'SDP': 74}
+{'FSDP': 0, 'DP': 0, 'SDP': 73}
+{'FSDP': 0, 'DP': 0, 'SDP': 72}
+{'FSDP': 0, 'DP': 0, 'SDP': 71}
+{'FSDP': 0, 'DP': 0, 'SDP': 70}
+{'FSDP': 0, 'DP': 0, 'SDP': 69}
+{'FSDP': 0, 'DP': 0, 'SDP': 68}
+{'FSDP': 0, 'DP': 0, 'SDP': 67}
+{'FSDP': 0, 'DP': 0, 'SDP': 66}
+{'FSDP': 0, 'DP': 0, 'SDP': 65}
+{'FSDP': 0, 'DP': 0, 'SDP': 64}
+{'FSDP': 0, 'DP': 0, 'SDP': 63}
+{'FSDP': 0, 'DP': 0, 'SDP': 62}
+{'FSDP': 0, 'DP': 0, 'SDP': 61}
+{'FSDP': 0, 'DP': 0, 'SDP': 60}
+{'FSDP': 0, 'DP': 0, 'SDP': 59}
+{'FSDP': 0, 'DP': 0, 'SDP': 58}
+{'FSDP': 0, 'DP': 0, 'SDP': 57}
+{'FSDP': 0, 'DP': 0, 'SDP': 56}
+{'FSDP': 0, 'DP': 0, 'SDP': 55}
+{'FSDP': 0, 'DP': 0, 'SDP': 54}
+{'FSDP': 0, 'DP': 0, 'SDP': 53}
+{'FSDP': 0, 'DP': 0, 'SDP': 52}
+{'FSDP': 0, 'DP': 0, 'SDP': 51}
+{'FSDP': 0, 'DP': 0, 'SDP': 50}
+{'FSDP': 0, 'DP': 0, 'SDP': 49}
+{'FSDP': 0, 'DP': 0, 'SDP': 48}
+{'FSDP': 0, 'DP': 0, 'SDP': 47}
+{'FSDP': 0, 'DP': 0, 'SDP': 46}
+{'FSDP': 0, 'DP': 0, 'SDP': 45}
+{'FSDP': 0, 'DP': 0, 'SDP': 44}
+{'FSDP': 0, 'DP': 0, 'SDP': 43}
+{'FSDP': 0, 'DP': 0, 'SDP': 42}
+{'FSDP': 0, 'DP': 0, 'SDP': 41}
+{'FSDP': 0, 'DP': 0, 'SDP': 40}
+{'FSDP': 0, 'DP': 0, 'SDP': 39}
+{'FSDP': 0, 'DP': 0, 'SDP': 38}
+{'FSDP': 0, 'DP': 0, 'SDP': 37}
+{'FSDP': 0, 'DP': 0, 'SDP': 36}
+{'FSDP': 0, 'DP': 0, 'SDP': 35}
+{'FSDP': 0, 'DP': 0, 'SDP': 34}
+{'FSDP': 0, 'DP': 0, 'SDP': 33}
+{'FSDP': 0, 'DP': 0, 'SDP': 32}
+{'FSDP': 0, 'DP': 0, 'SDP': 31}
+{'FSDP': 0, 'DP': 0, 'SDP': 30}
+{'FSDP': 0, 'DP': 0, 'SDP': 29}
+{'FSDP': 0, 'DP': 0, 'SDP': 28}
+{'FSDP': 0, 'DP': 0, 'SDP': 27}
+{'FSDP': 0, 'DP': 0, 'SDP': 26}
+{'FSDP': 0, 'DP': 0, 'SDP': 25}
+{'FSDP': 0, 'DP': 0, 'SDP': 24}
+{'FSDP': 0, 'DP': 0, 'SDP': 23}
+{'FSDP': 0, 'DP': 0, 'SDP': 22}
+{'FSDP': 0, 'DP': 0, 'SDP': 21}
+{'FSDP': 0, 'DP': 0, 'SDP': 20}
+{'FSDP': 0, 'DP': 0, 'SDP': 19}
+{'FSDP': 0, 'DP': 0, 'SDP': 18}
+{'FSDP': 0, 'DP': 0, 'SDP': 17}
+{'FSDP': 0, 'DP': 0, 'SDP': 16}
+{'FSDP': 0, 'DP': 0, 'SDP': 15}
+{'FSDP': 0, 'DP': 0, 'SDP': 14}
+{'FSDP': 0, 'DP': 0, 'SDP': 13}
+{'FSDP': 0, 'DP': 0, 'SDP': 12}
+{'FSDP': 0, 'DP': 0, 'SDP': 11}
+{'FSDP': 0, 'DP': 0, 'SDP': 10}
+{'FSDP': 0, 'DP': 0, 'SDP': 9}
+{'FSDP': 0, 'DP': 0, 'SDP': 8}
+{'FSDP': 0, 'DP': 0, 'SDP': 7}
+{'FSDP': 0, 'DP': 0, 'SDP': 6}
+{'FSDP': 0, 'DP': 0, 'SDP': 5}
+{'FSDP': 0, 'DP': 0, 'SDP': 4}
+{'FSDP': 0, 'DP': 0, 'SDP': 3}
+{'FSDP': 0, 'DP': 0, 'SDP': 2}
+{'FSDP': 0, 'DP': 0, 'SDP': 1}
+0
+##################### params_list 0
+world_size : 4
+rank : 0
+main
+wait src from 3
+main
+wait src from 3
+before init dataset  0.0
+wait src from 3
+wait src from 3
+wait src from 3
+wait src from 3
+wait src from 3
+wait src from 3
+      Id  ...                                               Text
+0      1  ...  I have bought several of the Vitality canned d...
+1      2  ...  Product arrived labeled as Jumbo Salted Peanut...
+2      3  ...  This is a confection that has been around a fe...
+3      4  ...  If you are looking for the secret ingredient i...
+4      5  ...  Great taffy at a great price.  There was a wid...
+..   ...  ...                                                ...
+595  596  ...  This is the second purchase of Kettle Potato C...
+596  597  ...  How to achieve potato chip nirvana? It's simpl...
+597  598  ...  I found these more than 10 years ago in a heal...
+598  599  ...  But you will enjoy ever step. I gained 5 lbs w...
+599  600  ...  These are the best spicy chips I have ever had...
+
+[600 rows x 10 columns]
+600
+wait src from 3
+wait src from 3
+wait src from 3
+after init dataset  0.0
+before init model  0.0
+wait src from 3
+wait src from 3
+wait src from 3
+wait src from 3
+wait src from 3
+wait src from 3
+wait src from 3
+wait src from 3
+wait src from 3
+after init model  487.46875
+{'FSDP': 0, 'DP': 0, 'SDP': 125}
+{'FSDP': 0, 'DP': 0, 'SDP': 124}
+{'FSDP': 0, 'DP': 0, 'SDP': 123}
+{'FSDP': 0, 'DP': 0, 'SDP': 122}
+{'FSDP': 0, 'DP': 0, 'SDP': 121}
+{'FSDP': 0, 'DP': 0, 'SDP': 120}
+{'FSDP': 0, 'DP': 0, 'SDP': 119}
+{'FSDP': 0, 'DP': 0, 'SDP': 118}
+{'FSDP': 0, 'DP': 0, 'SDP': 117}
+{'FSDP': 0, 'DP': 0, 'SDP': 116}
+{'FSDP': 0, 'DP': 0, 'SDP': 115}
+{'FSDP': 0, 'DP': 0, 'SDP': 114}
+{'FSDP': 0, 'DP': 0, 'SDP': 113}
+{'FSDP': 0, 'DP': 0, 'SDP': 112}
+{'FSDP': 0, 'DP': 0, 'SDP': 111}
+{'FSDP': 0, 'DP': 0, 'SDP': 110}
+{'FSDP': 0, 'DP': 0, 'SDP': 109}
+{'FSDP': 0, 'DP': 0, 'SDP': 108}
+{'FSDP': 0, 'DP': 0, 'SDP': 107}
+{'FSDP': 0, 'DP': 0, 'SDP': 106}
+{'FSDP': 0, 'DP': 0, 'SDP': 105}
+{'FSDP': 0, 'DP': 0, 'SDP': 104}
+{'FSDP': 0, 'DP': 0, 'SDP': 103}
+{'FSDP': 0, 'DP': 0, 'SDP': 102}
+{'FSDP': 0, 'DP': 0, 'SDP': 101}
+{'FSDP': 0, 'DP': 0, 'SDP': 100}
+{'FSDP': 0, 'DP': 0, 'SDP': 99}
+{'FSDP': 0, 'DP': 0, 'SDP': 98}
+{'FSDP': 0, 'DP': 0, 'SDP': 97}
+{'FSDP': 0, 'DP': 0, 'SDP': 96}
+{'FSDP': 0, 'DP': 0, 'SDP': 95}
+{'FSDP': 0, 'DP': 0, 'SDP': 94}
+{'FSDP': 0, 'DP': 0, 'SDP': 93}
+{'FSDP': 0, 'DP': 0, 'SDP': 92}
+{'FSDP': 0, 'DP': 0, 'SDP': 91}
+{'FSDP': 0, 'DP': 0, 'SDP': 90}
+{'FSDP': 0, 'DP': 0, 'SDP': 89}
+{'FSDP': 0, 'DP': 0, 'SDP': 88}
+{'FSDP': 0, 'DP': 0, 'SDP': 87}
+{'FSDP': 0, 'DP': 0, 'SDP': 86}
+{'FSDP': 0, 'DP': 0, 'SDP': 85}
+{'FSDP': 0, 'DP': 0, 'SDP': 84}
+{'FSDP': 0, 'DP': 0, 'SDP': 83}
+{'FSDP': 0, 'DP': 0, 'SDP': 82}
+wait src from 3
+{'FSDP': 0, 'DP': 0, 'SDP': 81}
+{'FSDP': 0, 'DP': 0, 'SDP': 80}
+{'FSDP': 0, 'DP': 0, 'SDP': 79}
+{'FSDP': 0, 'DP': 0, 'SDP': 78}
+{'FSDP': 0, 'DP': 0, 'SDP': 77}
+{'FSDP': 0, 'DP': 0, 'SDP': 76}
+{'FSDP': 0, 'DP': 0, 'SDP': 75}
+{'FSDP': 0, 'DP': 0, 'SDP': 74}
+{'FSDP': 0, 'DP': 0, 'SDP': 73}
+{'FSDP': 0, 'DP': 0, 'SDP': 72}
+{'FSDP': 0, 'DP': 0, 'SDP': 71}
+{'FSDP': 0, 'DP': 0, 'SDP': 70}
+{'FSDP': 0, 'DP': 0, 'SDP': 69}
+{'FSDP': 0, 'DP': 0, 'SDP': 68}
+{'FSDP': 0, 'DP': 0, 'SDP': 67}
+{'FSDP': 0, 'DP': 0, 'SDP': 66}
+{'FSDP': 0, 'DP': 0, 'SDP': 65}
+{'FSDP': 0, 'DP': 0, 'SDP': 64}
+{'FSDP': 0, 'DP': 0, 'SDP': 63}
+{'FSDP': 0, 'DP': 0, 'SDP': 62}
+{'FSDP': 0, 'DP': 0, 'SDP': 61}
+{'FSDP': 0, 'DP': 0, 'SDP': 60}
+{'FSDP': 0, 'DP': 0, 'SDP': 59}
+{'FSDP': 0, 'DP': 0, 'SDP': 58}
+{'FSDP': 0, 'DP': 0, 'SDP': 57}
+{'FSDP': 0, 'DP': 0, 'SDP': 56}
+{'FSDP': 0, 'DP': 0, 'SDP': 55}
+{'FSDP': 0, 'DP': 0, 'SDP': 54}
+{'FSDP': 0, 'DP': 0, 'SDP': 53}
+{'FSDP': 0, 'DP': 0, 'SDP': 52}
+{'FSDP': 0, 'DP': 0, 'SDP': 51}
+{'FSDP': 0, 'DP': 0, 'SDP': 50}
+{'FSDP': 0, 'DP': 0, 'SDP': 49}
+{'FSDP': 0, 'DP': 0, 'SDP': 48}
+{'FSDP': 0, 'DP': 0, 'SDP': 47}
+{'FSDP': 0, 'DP': 0, 'SDP': 46}
+{'FSDP': 0, 'DP': 0, 'SDP': 45}
+{'FSDP': 0, 'DP': 0, 'SDP': 44}
+{'FSDP': 0, 'DP': 0, 'SDP': 43}
+{'FSDP': 0, 'DP': 0, 'SDP': 42}
+{'FSDP': 0, 'DP': 0, 'SDP': 41}
+{'FSDP': 0, 'DP': 0, 'SDP': 40}
+{'FSDP': 0, 'DP': 0, 'SDP': 39}
+{'FSDP': 0, 'DP': 0, 'SDP': 38}
+{'FSDP': 0, 'DP': 0, 'SDP': 37}
+{'FSDP': 0, 'DP': 0, 'SDP': 36}
+{'FSDP': 0, 'DP': 0, 'SDP': 35}
+{'FSDP': 0, 'DP': 0, 'SDP': 34}
+{'FSDP': 0, 'DP': 0, 'SDP': 33}
+{'FSDP': 0, 'DP': 0, 'SDP': 32}
+{'FSDP': 0, 'DP': 0, 'SDP': 31}
+{'FSDP': 0, 'DP': 0, 'SDP': 30}
+{'FSDP': 0, 'DP': 0, 'SDP': 29}
+{'FSDP': 0, 'DP': 0, 'SDP': 28}
+{'FSDP': 0, 'DP': 0, 'SDP': 27}
+{'FSDP': 0, 'DP': 0, 'SDP': 26}
+{'FSDP': 0, 'DP': 0, 'SDP': 25}
+{'FSDP': 0, 'DP': 0, 'SDP': 24}
+{'FSDP': 0, 'DP': 0, 'SDP': 23}
+{'FSDP': 0, 'DP': 0, 'SDP': 22}
+{'FSDP': 0, 'DP': 0, 'SDP': 21}
+{'FSDP': 0, 'DP': 0, 'SDP': 20}
+{'FSDP': 0, 'DP': 0, 'SDP': 19}
+{'FSDP': 0, 'DP': 0, 'SDP': 18}
+{'FSDP': 0, 'DP': 0, 'SDP': 17}
+{'FSDP': 0, 'DP': 0, 'SDP': 16}
+{'FSDP': 0, 'DP': 0, 'SDP': 15}
+{'FSDP': 0, 'DP': 0, 'SDP': 14}
+{'FSDP': 0, 'DP': 0, 'SDP': 13}
+{'FSDP': 0, 'DP': 0, 'SDP': 12}
+{'FSDP': 0, 'DP': 0, 'SDP': 11}
+{'FSDP': 0, 'DP': 0, 'SDP': 10}
+{'FSDP': 0, 'DP': 0, 'SDP': 9}
+{'FSDP': 0, 'DP': 0, 'SDP': 8}
+{'FSDP': 0, 'DP': 0, 'SDP': 7}
+{'FSDP': 0, 'DP': 0, 'SDP': 6}
+{'FSDP': 0, 'DP': 0, 'SDP': 5}
+{'FSDP': 0, 'DP': 0, 'SDP': 4}
+{'FSDP': 0, 'DP': 0, 'SDP': 3}
+{'FSDP': 0, 'DP': 0, 'SDP': 2}
+{'FSDP': 0, 'DP': 0, 'SDP': 1}
+0
+##################### params_list 0
+world_size : 4
+rank : 3
+main
+wait src from 2
+main
+wait src from 2
+before init dataset  0.0
+wait src from 2
+wait src from 2
+wait src from 2
+wait src from 2
+wait src from 2
+wait src from 2
+wait src from 2
+      Id  ...                                               Text
+0      1  ...  I have bought several of the Vitality canned d...
+1      2  ...  Product arrived labeled as Jumbo Salted Peanut...
+2      3  ...  This is a confection that has been around a fe...
+3      4  ...  If you are looking for the secret ingredient i...
+4      5  ...  Great taffy at a great price.  There was a wid...
+..   ...  ...                                                ...
+595  596  ...  This is the second purchase of Kettle Potato C...
+596  597  ...  How to achieve potato chip nirvana? It's simpl...
+597  598  ...  I found these more than 10 years ago in a heal...
+598  599  ...  But you will enjoy ever step. I gained 5 lbs w...
+599  600  ...  These are the best spicy chips I have ever had...
+
+[600 rows x 10 columns]
+600
+wait src from 2
+wait src from 2
+wait src from 2
+after init dataset  0.0
+before init model  0.0
+wait src from 2
+wait src from 2
+wait src from 2
+wait src from 2
+wait src from 2
+wait src from 2
+wait src from 2
+wait src from 2
+wait src from 2
+after init model  487.46875
+{'FSDP': 0, 'DP': 0, 'SDP': 125}
+{'FSDP': 0, 'DP': 0, 'SDP': 124}
+{'FSDP': 0, 'DP': 0, 'SDP': 123}
+{'FSDP': 0, 'DP': 0, 'SDP': 122}
+{'FSDP': 0, 'DP': 0, 'SDP': 121}
+{'FSDP': 0, 'DP': 0, 'SDP': 120}
+{'FSDP': 0, 'DP': 0, 'SDP': 119}
+{'FSDP': 0, 'DP': 0, 'SDP': 118}
+{'FSDP': 0, 'DP': 0, 'SDP': 117}
+{'FSDP': 0, 'DP': 0, 'SDP': 116}
+{'FSDP': 0, 'DP': 0, 'SDP': 115}
+{'FSDP': 0, 'DP': 0, 'SDP': 114}
+{'FSDP': 0, 'DP': 0, 'SDP': 113}
+{'FSDP': 0, 'DP': 0, 'SDP': 112}
+{'FSDP': 0, 'DP': 0, 'SDP': 111}
+{'FSDP': 0, 'DP': 0, 'SDP': 110}
+{'FSDP': 0, 'DP': 0, 'SDP': 109}
+{'FSDP': 0, 'DP': 0, 'SDP': 108}
+{'FSDP': 0, 'DP': 0, 'SDP': 107}
+{'FSDP': 0, 'DP': 0, 'SDP': 106}
+{'FSDP': 0, 'DP': 0, 'SDP': 105}
+{'FSDP': 0, 'DP': 0, 'SDP': 104}
+{'FSDP': 0, 'DP': 0, 'SDP': 103}
+{'FSDP': 0, 'DP': 0, 'SDP': 102}
+{'FSDP': 0, 'DP': 0, 'SDP': 101}
+{'FSDP': 0, 'DP': 0, 'SDP': 100}
+{'FSDP': 0, 'DP': 0, 'SDP': 99}
+{'FSDP': 0, 'DP': 0, 'SDP': 98}
+{'FSDP': 0, 'DP': 0, 'SDP': 97}
+{'FSDP': 0, 'DP': 0, 'SDP': 96}
+{'FSDP': 0, 'DP': 0, 'SDP': 95}
+{'FSDP': 0, 'DP': 0, 'SDP': 94}
+{'FSDP': 0, 'DP': 0, 'SDP': 93}
+{'FSDP': 0, 'DP': 0, 'SDP': 92}
+{'FSDP': 0, 'DP': 0, 'SDP': 91}
+{'FSDP': 0, 'DP': 0, 'SDP': 90}
+{'FSDP': 0, 'DP': 0, 'SDP': 89}
+{'FSDP': 0, 'DP': 0, 'SDP': 88}
+{'FSDP': 0, 'DP': 0, 'SDP': 87}
+{'FSDP': 0, 'DP': 0, 'SDP': 86}
+{'FSDP': 0, 'DP': 0, 'SDP': 85}
+{'FSDP': 0, 'DP': 0, 'SDP': 84}
+{'FSDP': 0, 'DP': 0, 'SDP': 83}
+{'FSDP': 0, 'DP': 0, 'SDP': 82}
+{'FSDP': 0, 'DP': 0, 'SDP': 81}
+{'FSDP': 0, 'DP': 0, 'SDP': 80}
+{'FSDP': 0, 'DP': 0, 'SDP': 79}
+{'FSDP': 0, 'DP': 0, 'SDP': 78}
+{'FSDP': 0, 'DP': 0, 'SDP': 77}
+{'FSDP': 0, 'DP': 0, 'SDP': 76}
+{'FSDP': 0, 'DP': 0, 'SDP': 75}
+{'FSDP': 0, 'DP': 0, 'SDP': 74}
+{'FSDP': 0, 'DP': 0, 'SDP': 73}
+{'FSDP': 0, 'DP': 0, 'SDP': 72}
+{'FSDP': 0, 'DP': 0, 'SDP': 71}
+{'FSDP': 0, 'DP': 0, 'SDP': 70}
+{'FSDP': 0, 'DP': 0, 'SDP': 69}
+{'FSDP': 0, 'DP': 0, 'SDP': 68}
+{'FSDP': 0, 'DP': 0, 'SDP': 67}
+{'FSDP': 0, 'DP': 0, 'SDP': 66}
+{'FSDP': 0, 'DP': 0, 'SDP': 65}
+{'FSDP': 0, 'DP': 0, 'SDP': 64}
+{'FSDP': 0, 'DP': 0, 'SDP': 63}
+{'FSDP': 0, 'DP': 0, 'SDP': 62}
+{'FSDP': 0, 'DP': 0, 'SDP': 61}
+{'FSDP': 0, 'DP': 0, 'SDP': 60}
+{'FSDP': 0, 'DP': 0, 'SDP': 59}
+{'FSDP': 0, 'DP': 0, 'SDP': 58}
+{'FSDP': 0, 'DP': 0, 'SDP': 57}
+{'FSDP': 0, 'DP': 0, 'SDP': 56}
+{'FSDP': 0, 'DP': 0, 'SDP': 55}
+{'FSDP': 0, 'DP': 0, 'SDP': 54}
+{'FSDP': 0, 'DP': 0, 'SDP': 53}
+{'FSDP': 0, 'DP': 0, 'SDP': 52}
+{'FSDP': 0, 'DP': 0, 'SDP': 51}
+{'FSDP': 0, 'DP': 0, 'SDP': 50}
+{'FSDP': 0, 'DP': 0, 'SDP': 49}
+{'FSDP': 0, 'DP': 0, 'SDP': 48}
+{'FSDP': 0, 'DP': 0, 'SDP': 47}
+{'FSDP': 0, 'DP': 0, 'SDP': 46}
+{'FSDP': 0, 'DP': 0, 'SDP': 45}
+{'FSDP': 0, 'DP': 0, 'SDP': 44}
+{'FSDP': 0, 'DP': 0, 'SDP': 43}
+{'FSDP': 0, 'DP': 0, 'SDP': 42}
+{'FSDP': 0, 'DP': 0, 'SDP': 41}
+{'FSDP': 0, 'DP': 0, 'SDP': 40}
+{'FSDP': 0, 'DP': 0, 'SDP': 39}
+{'FSDP': 0, 'DP': 0, 'SDP': 38}
+{'FSDP': 0, 'DP': 0, 'SDP': 37}
+{'FSDP': 0, 'DP': 0, 'SDP': 36}
+{'FSDP': 0, 'DP': 0, 'SDP': 35}
+{'FSDP': 0, 'DP': 0, 'SDP': 34}
+{'FSDP': 0, 'DP': 0, 'SDP': 33}
+{'FSDP': 0, 'DP': 0, 'SDP': 32}
+{'FSDP': 0, 'DP': 0, 'SDP': 31}
+{'FSDP': 0, 'DP': 0, 'SDP': 30}
+{'FSDP': 0, 'DP': 0, 'SDP': 29}
+{'FSDP': 0, 'DP': 0, 'SDP': 28}
+{'FSDP': 0, 'DP': 0, 'SDP': 27}
+{'FSDP': 0, 'DP': 0, 'SDP': 26}
+{'FSDP': 0, 'DP': 0, 'SDP': 25}
+{'FSDP': 0, 'DP': 0, 'SDP': 24}
+{'FSDP': 0, 'DP': 0, 'SDP': 23}
+{'FSDP': 0, 'DP': 0, 'SDP': 22}
+{'FSDP': 0, 'DP': 0, 'SDP': 21}
+{'FSDP': 0, 'DP': 0, 'SDP': 20}
+{'FSDP': 0, 'DP': 0, 'SDP': 19}
+{'FSDP': 0, 'DP': 0, 'SDP': 18}
+{'FSDP': 0, 'DP': 0, 'SDP': 17}
+{'FSDP': 0, 'DP': 0, 'SDP': 16}
+{'FSDP': 0, 'DP': 0, 'SDP': 15}
+{'FSDP': 0, 'DP': 0, 'SDP': 14}
+{'FSDP': 0, 'DP': 0, 'SDP': 13}
+{'FSDP': 0, 'DP': 0, 'SDP': 12}
+{'FSDP': 0, 'DP': 0, 'SDP': 11}
+{'FSDP': 0, 'DP': 0, 'SDP': 10}
+{'FSDP': 0, 'DP': 0, 'SDP': 9}
+{'FSDP': 0, 'DP': 0, 'SDP': 8}
+{'FSDP': 0, 'DP': 0, 'SDP': 7}
+{'FSDP': 0, 'DP': 0, 'SDP': 6}
+{'FSDP': 0, 'DP': 0, 'SDP': 5}
+{'FSDP': 0, 'DP': 0, 'SDP': 4}
+{'FSDP': 0, 'DP': 0, 'SDP': 3}
+{'FSDP': 0, 'DP': 0, 'SDP': 2}
+{'FSDP': 0, 'DP': 0, 'SDP': 1}
+0
+##################### params_list 0
+world_size : 4
+rank : 2
+main
+wait src from 1
+main
+wait src from 1
+before init dataset  0.0
+wait src from 1
+wait src from 1
+wait src from 1
+wait src from 1
+wait src from 1
+wait src from 1
+wait src from 1
+      Id  ...                                               Text
+0      1  ...  I have bought several of the Vitality canned d...
+1      2  ...  Product arrived labeled as Jumbo Salted Peanut...
+2      3  ...  This is a confection that has been around a fe...
+3      4  ...  If you are looking for the secret ingredient i...
+4      5  ...  Great taffy at a great price.  There was a wid...
+..   ...  ...                                                ...
+595  596  ...  This is the second purchase of Kettle Potato C...
+596  597  ...  How to achieve potato chip nirvana? It's simpl...
+597  598  ...  I found these more than 10 years ago in a heal...
+598  599  ...  But you will enjoy ever step. I gained 5 lbs w...
+599  600  ...  These are the best spicy chips I have ever had...
+
+[600 rows x 10 columns]
+600
+wait src from 1
+wait src from 1
+wait src from 1
+after init dataset  0.0
+before init model  0.0
+wait src from 1
+wait src from 1
+wait src from 1
+wait src from 1
+wait src from 1
+wait src from 1
+wait src from 1
+wait src from 1
+wait src from 1
+after init model  487.46875
+{'FSDP': 0, 'DP': 0, 'SDP': 125}
+{'FSDP': 0, 'DP': 0, 'SDP': 124}
+{'FSDP': 0, 'DP': 0, 'SDP': 123}
+{'FSDP': 0, 'DP': 0, 'SDP': 122}
+{'FSDP': 0, 'DP': 0, 'SDP': 121}
+{'FSDP': 0, 'DP': 0, 'SDP': 120}
+{'FSDP': 0, 'DP': 0, 'SDP': 119}
+{'FSDP': 0, 'DP': 0, 'SDP': 118}
+{'FSDP': 0, 'DP': 0, 'SDP': 117}
+{'FSDP': 0, 'DP': 0, 'SDP': 116}
+{'FSDP': 0, 'DP': 0, 'SDP': 115}
+{'FSDP': 0, 'DP': 0, 'SDP': 114}
+{'FSDP': 0, 'DP': 0, 'SDP': 113}
+{'FSDP': 0, 'DP': 0, 'SDP': 112}
+{'FSDP': 0, 'DP': 0, 'SDP': 111}
+{'FSDP': 0, 'DP': 0, 'SDP': 110}
+{'FSDP': 0, 'DP': 0, 'SDP': 109}
+{'FSDP': 0, 'DP': 0, 'SDP': 108}
+{'FSDP': 0, 'DP': 0, 'SDP': 107}
+{'FSDP': 0, 'DP': 0, 'SDP': 106}
+{'FSDP': 0, 'DP': 0, 'SDP': 105}
+{'FSDP': 0, 'DP': 0, 'SDP': 104}
+{'FSDP': 0, 'DP': 0, 'SDP': 103}
+{'FSDP': 0, 'DP': 0, 'SDP': 102}
+{'FSDP': 0, 'DP': 0, 'SDP': 101}
+{'FSDP': 0, 'DP': 0, 'SDP': 100}
+{'FSDP': 0, 'DP': 0, 'SDP': 99}
+{'FSDP': 0, 'DP': 0, 'SDP': 98}
+{'FSDP': 0, 'DP': 0, 'SDP': 97}
+{'FSDP': 0, 'DP': 0, 'SDP': 96}
+{'FSDP': 0, 'DP': 0, 'SDP': 95}
+{'FSDP': 0, 'DP': 0, 'SDP': 94}
+{'FSDP': 0, 'DP': 0, 'SDP': 93}
+{'FSDP': 0, 'DP': 0, 'SDP': 92}
+{'FSDP': 0, 'DP': 0, 'SDP': 91}
+{'FSDP': 0, 'DP': 0, 'SDP': 90}
+{'FSDP': 0, 'DP': 0, 'SDP': 89}
+{'FSDP': 0, 'DP': 0, 'SDP': 88}
+{'FSDP': 0, 'DP': 0, 'SDP': 87}
+{'FSDP': 0, 'DP': 0, 'SDP': 86}
+{'FSDP': 0, 'DP': 0, 'SDP': 85}
+{'FSDP': 0, 'DP': 0, 'SDP': 84}
+{'FSDP': 0, 'DP': 0, 'SDP': 83}
+{'FSDP': 0, 'DP': 0, 'SDP': 82}
+{'FSDP': 0, 'DP': 0, 'SDP': 81}
+{'FSDP': 0, 'DP': 0, 'SDP': 80}
+{'FSDP': 0, 'DP': 0, 'SDP': 79}
+{'FSDP': 0, 'DP': 0, 'SDP': 78}
+{'FSDP': 0, 'DP': 0, 'SDP': 77}
+{'FSDP': 0, 'DP': 0, 'SDP': 76}
+{'FSDP': 0, 'DP': 0, 'SDP': 75}
+{'FSDP': 0, 'DP': 0, 'SDP': 74}
+{'FSDP': 0, 'DP': 0, 'SDP': 73}
+{'FSDP': 0, 'DP': 0, 'SDP': 72}
+{'FSDP': 0, 'DP': 0, 'SDP': 71}
+{'FSDP': 0, 'DP': 0, 'SDP': 70}
+{'FSDP': 0, 'DP': 0, 'SDP': 69}
+{'FSDP': 0, 'DP': 0, 'SDP': 68}
+{'FSDP': 0, 'DP': 0, 'SDP': 67}
+{'FSDP': 0, 'DP': 0, 'SDP': 66}
+{'FSDP': 0, 'DP': 0, 'SDP': 65}
+{'FSDP': 0, 'DP': 0, 'SDP': 64}
+{'FSDP': 0, 'DP': 0, 'SDP': 63}
+{'FSDP': 0, 'DP': 0, 'SDP': 62}
+{'FSDP': 0, 'DP': 0, 'SDP': 61}
+{'FSDP': 0, 'DP': 0, 'SDP': 60}
+{'FSDP': 0, 'DP': 0, 'SDP': 59}
+{'FSDP': 0, 'DP': 0, 'SDP': 58}
+{'FSDP': 0, 'DP': 0, 'SDP': 57}
+{'FSDP': 0, 'DP': 0, 'SDP': 56}
+{'FSDP': 0, 'DP': 0, 'SDP': 55}
+{'FSDP': 0, 'DP': 0, 'SDP': 54}
+{'FSDP': 0, 'DP': 0, 'SDP': 53}
+{'FSDP': 0, 'DP': 0, 'SDP': 52}
+{'FSDP': 0, 'DP': 0, 'SDP': 51}
+{'FSDP': 0, 'DP': 0, 'SDP': 50}
+{'FSDP': 0, 'DP': 0, 'SDP': 49}
+{'FSDP': 0, 'DP': 0, 'SDP': 48}
+{'FSDP': 0, 'DP': 0, 'SDP': 47}
+{'FSDP': 0, 'DP': 0, 'SDP': 46}
+{'FSDP': 0, 'DP': 0, 'SDP': 45}
+{'FSDP': 0, 'DP': 0, 'SDP': 44}
+{'FSDP': 0, 'DP': 0, 'SDP': 43}
+{'FSDP': 0, 'DP': 0, 'SDP': 42}
+{'FSDP': 0, 'DP': 0, 'SDP': 41}
+{'FSDP': 0, 'DP': 0, 'SDP': 40}
+{'FSDP': 0, 'DP': 0, 'SDP': 39}
+{'FSDP': 0, 'DP': 0, 'SDP': 38}
+{'FSDP': 0, 'DP': 0, 'SDP': 37}
+{'FSDP': 0, 'DP': 0, 'SDP': 36}
+{'FSDP': 0, 'DP': 0, 'SDP': 35}
+{'FSDP': 0, 'DP': 0, 'SDP': 34}
+{'FSDP': 0, 'DP': 0, 'SDP': 33}
+{'FSDP': 0, 'DP': 0, 'SDP': 32}
+{'FSDP': 0, 'DP': 0, 'SDP': 31}
+{'FSDP': 0, 'DP': 0, 'SDP': 30}
+{'FSDP': 0, 'DP': 0, 'SDP': 29}
+{'FSDP': 0, 'DP': 0, 'SDP': 28}
+{'FSDP': 0, 'DP': 0, 'SDP': 27}
+{'FSDP': 0, 'DP': 0, 'SDP': 26}
+{'FSDP': 0, 'DP': 0, 'SDP': 25}
+{'FSDP': 0, 'DP': 0, 'SDP': 24}
+{'FSDP': 0, 'DP': 0, 'SDP': 23}
+{'FSDP': 0, 'DP': 0, 'SDP': 22}
+{'FSDP': 0, 'DP': 0, 'SDP': 21}
+{'FSDP': 0, 'DP': 0, 'SDP': 20}
+{'FSDP': 0, 'DP': 0, 'SDP': 19}
+{'FSDP': 0, 'DP': 0, 'SDP': 18}
+{'FSDP': 0, 'DP': 0, 'SDP': 17}
+{'FSDP': 0, 'DP': 0, 'SDP': 16}
+{'FSDP': 0, 'DP': 0, 'SDP': 15}
+{'FSDP': 0, 'DP': 0, 'SDP': 14}
+{'FSDP': 0, 'DP': 0, 'SDP': 13}
+{'FSDP': 0, 'DP': 0, 'SDP': 12}
+{'FSDP': 0, 'DP': 0, 'SDP': 11}
+{'FSDP': 0, 'DP': 0, 'SDP': 10}
+{'FSDP': 0, 'DP': 0, 'SDP': 9}
+{'FSDP': 0, 'DP': 0, 'SDP': 8}
+{'FSDP': 0, 'DP': 0, 'SDP': 7}
+{'FSDP': 0, 'DP': 0, 'SDP': 6}
+{'FSDP': 0, 'DP': 0, 'SDP': 5}
+{'FSDP': 0, 'DP': 0, 'SDP': 4}
+{'FSDP': 0, 'DP': 0, 'SDP': 3}
+{'FSDP': 0, 'DP': 0, 'SDP': 2}
+{'FSDP': 0, 'DP': 0, 'SDP': 1}
+0
+##################### params_list 0

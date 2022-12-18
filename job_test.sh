@@ -32,8 +32,9 @@ export MASTER_ADDR=$master_addr
 echo "MASTER_ADDR="$MASTER_ADDR
 
 ### init virtual environment if needed
-source activate shard
+source activate lightning
 
 ### the command to run
 #srun /home01/hpc72a03/.conda/envs/shard/bin/python main.py --sdp_ratio 0.0 --fsdp_ratio 0.0 --dp_ratio 1.0 --bucket_size 10 --target_memory 0.53
-srun /home01/hpc72a03/.conda/envs/shard/bin/python run.py --python_path "/home01/hpc72a03/.conda/envs/shard/bin/python"
+srun /home01/hpc72a03/.conda/envs/lightning/bin/python main_gpt2_with_health_checker.py --sdp_ratio 0.0 --fsdp_ratio 0.0 --dp_ratio 1.0 --bucket_size 500 --target_memory 31
+#srun /home01/hpc72a03/.conda/envs/shard/bin/python run.py --python_path "/home01/hpc72a03/.conda/envs/shard/bin/python"

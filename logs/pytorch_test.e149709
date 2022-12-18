@@ -1,0 +1,62 @@
+[00;33m 	'cuda/11.3' does not supports the {CUDA_MPI}. [0m
+[00;34m 	{CUDA_MPI} is only supported in cuda 11.4 version. [0m
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 518, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 390, in benchmark_step
+    grad_clone = torch.clone(p.grad.data)
+UnboundLocalError: local variable 'p' referenced before assignment
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 518, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 390, in benchmark_step
+    grad_clone = torch.clone(p.grad.data)
+UnboundLocalError: local variable 'p' referenced before assignment
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 518, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 390, in benchmark_step
+    grad_clone = torch.clone(p.grad.data)
+UnboundLocalError: local variable 'p' referenced before assignment
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 518, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 390, in benchmark_step
+    grad_clone = torch.clone(p.grad.data)
+UnboundLocalError: local variable 'p' referenced before assignment
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 518, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 390, in benchmark_step
+    grad_clone = torch.clone(p.grad.data)
+UnboundLocalError: local variable 'p' referenced before assignment
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 518, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 390, in benchmark_step
+    grad_clone = torch.clone(p.grad.data)
+UnboundLocalError: local variable 'p' referenced before assignment
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 518, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 390, in benchmark_step
+    grad_clone = torch.clone(p.grad.data)
+UnboundLocalError: local variable 'p' referenced before assignment
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 518, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 390, in benchmark_step
+    grad_clone = torch.clone(p.grad.data)
+UnboundLocalError: local variable 'p' referenced before assignment
+srun: error: gpu11: tasks 4-5: Exited with exit code 1
+srun: error: gpu10: tasks 0,2-3: Exited with exit code 1
+srun: error: gpu10: task 1: Exited with exit code 1
+srun: error: gpu11: tasks 6-7: Exited with exit code 1

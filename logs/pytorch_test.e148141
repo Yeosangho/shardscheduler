@@ -1,0 +1,1602 @@
+[00;33m 	'cuda/11.3' does not supports the {CUDA_MPI}. [0m
+[00;34m 	{CUDA_MPI} is only supported in cuda 11.4 version. [0m
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 3
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 2
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 0
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --rank 1

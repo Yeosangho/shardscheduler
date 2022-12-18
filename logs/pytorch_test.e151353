@@ -1,0 +1,49 @@
+[00;33m 	'cuda/11.3' does not supports the {CUDA_MPI}. [0m
+[00;34m 	{CUDA_MPI} is only supported in cuda 11.4 version. [0m
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 476, in <module>
+    trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread) 
+  File "main_gpt2_with_health_checker.py", line 265, in __init__
+    self.sharded_module = auto_wrap(adaptive_sdp, self.model)
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 220, in auto_wrap
+    wrapped_module, remainder = ConfigAutoWrap.recursive_wrap(adaptive_sdp, 'front',  module, auto_wrap_policy=auto_wrap_policy, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 286, in recursive_wrap
+    assert not isinstance(child, cast(type, ConfigAutoWrap.wrapper_cls))
+TypeError: isinstance() arg 2 must be a type or tuple of types
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 476, in <module>
+    trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread) 
+  File "main_gpt2_with_health_checker.py", line 265, in __init__
+    self.sharded_module = auto_wrap(adaptive_sdp, self.model)
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 220, in auto_wrap
+    wrapped_module, remainder = ConfigAutoWrap.recursive_wrap(adaptive_sdp, 'front',  module, auto_wrap_policy=auto_wrap_policy, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 286, in recursive_wrap
+    assert not isinstance(child, cast(type, ConfigAutoWrap.wrapper_cls))
+TypeError: isinstance() arg 2 must be a type or tuple of types
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 476, in <module>
+    trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread) 
+  File "main_gpt2_with_health_checker.py", line 265, in __init__
+    self.sharded_module = auto_wrap(adaptive_sdp, self.model)
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 220, in auto_wrap
+    wrapped_module, remainder = ConfigAutoWrap.recursive_wrap(adaptive_sdp, 'front',  module, auto_wrap_policy=auto_wrap_policy, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 286, in recursive_wrap
+    assert not isinstance(child, cast(type, ConfigAutoWrap.wrapper_cls))
+TypeError: isinstance() arg 2 must be a type or tuple of types
+srun: error: gpu20: task 2: Exited with exit code 1
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 476, in <module>
+    trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread) 
+  File "main_gpt2_with_health_checker.py", line 265, in __init__
+    self.sharded_module = auto_wrap(adaptive_sdp, self.model)
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 220, in auto_wrap
+    wrapped_module, remainder = ConfigAutoWrap.recursive_wrap(adaptive_sdp, 'front',  module, auto_wrap_policy=auto_wrap_policy, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 286, in recursive_wrap
+    assert not isinstance(child, cast(type, ConfigAutoWrap.wrapper_cls))
+TypeError: isinstance() arg 2 must be a type or tuple of types
+srun: error: gpu20: tasks 0-1: Exited with exit code 1
+srun: error: gpu20: task 3: Exited with exit code 1

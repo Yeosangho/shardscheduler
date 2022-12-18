@@ -1,0 +1,127 @@
+[00;33m 	'cuda/11.3' does not supports the {CUDA_MPI}. [0m
+[00;34m 	{CUDA_MPI} is only supported in cuda 11.4 version. [0m
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Traceback (most recent call last):
+  File "test_fsdp_fairscale0.4.py", line 105, in <module>
+    sharded_module = auto_wrap(adaptive_sdp, model)
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 220, in auto_wrap
+    wrapped_module, remainder = ConfigAutoWrap.recursive_wrap(adaptive_sdp, 'front',  module, auto_wrap_policy=auto_wrap_policy, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 297, in recursive_wrap
+    wrapped_child, num_wrapped_params = ConfigAutoWrap.recursive_wrap(adaptive_sdp, name,
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 297, in recursive_wrap
+    wrapped_child, num_wrapped_params = ConfigAutoWrap.recursive_wrap(adaptive_sdp, name,
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 313, in recursive_wrap
+    return wrap(adaptive_sdp, module, **kwargs), num_params
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 174, in wrap
+    return FSDP(module, **wrap_overrides) 
+TypeError: __init__() got an unexpected keyword argument 'wrapper_cls'
+Traceback (most recent call last):
+  File "test_fsdp_fairscale0.4.py", line 105, in <module>
+    sharded_module = auto_wrap(adaptive_sdp, model)
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 220, in auto_wrap
+    wrapped_module, remainder = ConfigAutoWrap.recursive_wrap(adaptive_sdp, 'front',  module, auto_wrap_policy=auto_wrap_policy, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 297, in recursive_wrap
+    wrapped_child, num_wrapped_params = ConfigAutoWrap.recursive_wrap(adaptive_sdp, name,
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 297, in recursive_wrap
+    wrapped_child, num_wrapped_params = ConfigAutoWrap.recursive_wrap(adaptive_sdp, name,
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 313, in recursive_wrap
+    return wrap(adaptive_sdp, module, **kwargs), num_params
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 174, in wrap
+    return FSDP(module, **wrap_overrides) 
+TypeError: __init__() got an unexpected keyword argument 'wrapper_cls'
+Traceback (most recent call last):
+  File "test_fsdp_fairscale0.4.py", line 105, in <module>
+    sharded_module = auto_wrap(adaptive_sdp, model)
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 220, in auto_wrap
+    wrapped_module, remainder = ConfigAutoWrap.recursive_wrap(adaptive_sdp, 'front',  module, auto_wrap_policy=auto_wrap_policy, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 297, in recursive_wrap
+    wrapped_child, num_wrapped_params = ConfigAutoWrap.recursive_wrap(adaptive_sdp, name,
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 297, in recursive_wrap
+    wrapped_child, num_wrapped_params = ConfigAutoWrap.recursive_wrap(adaptive_sdp, name,
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 313, in recursive_wrap
+    return wrap(adaptive_sdp, module, **kwargs), num_params
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 174, in wrap
+    return FSDP(module, **wrap_overrides) 
+TypeError: __init__() got an unexpected keyword argument 'wrapper_cls'
+Traceback (most recent call last):
+  File "test_fsdp_fairscale0.4.py", line 105, in <module>
+    sharded_module = auto_wrap(adaptive_sdp, model)
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 220, in auto_wrap
+    wrapped_module, remainder = ConfigAutoWrap.recursive_wrap(adaptive_sdp, 'front',  module, auto_wrap_policy=auto_wrap_policy, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 297, in recursive_wrap
+    wrapped_child, num_wrapped_params = ConfigAutoWrap.recursive_wrap(adaptive_sdp, name,
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 297, in recursive_wrap
+    wrapped_child, num_wrapped_params = ConfigAutoWrap.recursive_wrap(adaptive_sdp, name,
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 313, in recursive_wrap
+    return wrap(adaptive_sdp, module, **kwargs), num_params
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 174, in wrap
+    return FSDP(module, **wrap_overrides) 
+TypeError: __init__() got an unexpected keyword argument 'wrapper_cls'
+srun: error: gpu13: tasks 4,6: Exited with exit code 1
+srun: error: gpu12: tasks 1-2: Exited with exit code 1
+Traceback (most recent call last):
+  File "test_fsdp_fairscale0.4.py", line 105, in <module>
+    sharded_module = auto_wrap(adaptive_sdp, model)
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 220, in auto_wrap
+    wrapped_module, remainder = ConfigAutoWrap.recursive_wrap(adaptive_sdp, 'front',  module, auto_wrap_policy=auto_wrap_policy, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 297, in recursive_wrap
+    wrapped_child, num_wrapped_params = ConfigAutoWrap.recursive_wrap(adaptive_sdp, name,
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 297, in recursive_wrap
+    wrapped_child, num_wrapped_params = ConfigAutoWrap.recursive_wrap(adaptive_sdp, name,
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 313, in recursive_wrap
+    return wrap(adaptive_sdp, module, **kwargs), num_params
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 174, in wrap
+    return FSDP(module, **wrap_overrides) 
+TypeError: __init__() got an unexpected keyword argument 'wrapper_cls'
+Traceback (most recent call last):
+  File "test_fsdp_fairscale0.4.py", line 105, in <module>
+    sharded_module = auto_wrap(adaptive_sdp, model)
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 220, in auto_wrap
+    wrapped_module, remainder = ConfigAutoWrap.recursive_wrap(adaptive_sdp, 'front',  module, auto_wrap_policy=auto_wrap_policy, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 297, in recursive_wrap
+    wrapped_child, num_wrapped_params = ConfigAutoWrap.recursive_wrap(adaptive_sdp, name,
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 297, in recursive_wrap
+    wrapped_child, num_wrapped_params = ConfigAutoWrap.recursive_wrap(adaptive_sdp, name,
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 313, in recursive_wrap
+    return wrap(adaptive_sdp, module, **kwargs), num_params
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 174, in wrap
+    return FSDP(module, **wrap_overrides) 
+TypeError: __init__() got an unexpected keyword argument 'wrapper_cls'
+Traceback (most recent call last):
+  File "test_fsdp_fairscale0.4.py", line 105, in <module>
+    sharded_module = auto_wrap(adaptive_sdp, model)
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 220, in auto_wrap
+    wrapped_module, remainder = ConfigAutoWrap.recursive_wrap(adaptive_sdp, 'front',  module, auto_wrap_policy=auto_wrap_policy, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 297, in recursive_wrap
+    wrapped_child, num_wrapped_params = ConfigAutoWrap.recursive_wrap(adaptive_sdp, name,
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 297, in recursive_wrap
+    wrapped_child, num_wrapped_params = ConfigAutoWrap.recursive_wrap(adaptive_sdp, name,
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 313, in recursive_wrap
+    return wrap(adaptive_sdp, module, **kwargs), num_params
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 174, in wrap
+    return FSDP(module, **wrap_overrides) 
+TypeError: __init__() got an unexpected keyword argument 'wrapper_cls'
+Traceback (most recent call last):
+  File "test_fsdp_fairscale0.4.py", line 105, in <module>
+    sharded_module = auto_wrap(adaptive_sdp, model)
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 220, in auto_wrap
+    wrapped_module, remainder = ConfigAutoWrap.recursive_wrap(adaptive_sdp, 'front',  module, auto_wrap_policy=auto_wrap_policy, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 297, in recursive_wrap
+    wrapped_child, num_wrapped_params = ConfigAutoWrap.recursive_wrap(adaptive_sdp, name,
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 297, in recursive_wrap
+    wrapped_child, num_wrapped_params = ConfigAutoWrap.recursive_wrap(adaptive_sdp, name,
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 313, in recursive_wrap
+    return wrap(adaptive_sdp, module, **kwargs), num_params
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 174, in wrap
+    return FSDP(module, **wrap_overrides) 
+TypeError: __init__() got an unexpected keyword argument 'wrapper_cls'
+srun: error: gpu13: task 7: Exited with exit code 1
+srun: error: gpu13: task 5: Exited with exit code 1
+srun: error: gpu12: tasks 0,3: Exited with exit code 1

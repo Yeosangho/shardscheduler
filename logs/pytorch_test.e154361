@@ -1,0 +1,31 @@
+[00;33m 	'cuda/11.3' does not supports the {CUDA_MPI}. [0m
+[00;34m 	{CUDA_MPI} is only supported in cuda 11.4 version. [0m
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 44, in <module>
+    from test_cases import make_schedule_from_json
+  File "/scratch/hpc72a03/shardscheduler/test_cases.py", line 864
+    task_dict[comp_type][comp_param]append(task)
+                                    ^
+SyntaxError: invalid syntax
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 44, in <module>
+    from test_cases import make_schedule_from_json
+  File "/scratch/hpc72a03/shardscheduler/test_cases.py", line 864
+    task_dict[comp_type][comp_param]append(task)
+                                    ^
+SyntaxError: invalid syntax
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 44, in <module>
+    from test_cases import make_schedule_from_json
+  File "/scratch/hpc72a03/shardscheduler/test_cases.py", line 864
+    task_dict[comp_type][comp_param]append(task)
+                                    ^
+SyntaxError: invalid syntax
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 44, in <module>
+    from test_cases import make_schedule_from_json
+  File "/scratch/hpc72a03/shardscheduler/test_cases.py", line 864
+    task_dict[comp_type][comp_param]append(task)
+                                    ^
+SyntaxError: invalid syntax
+srun: error: gpu10: tasks 0-3: Exited with exit code 1

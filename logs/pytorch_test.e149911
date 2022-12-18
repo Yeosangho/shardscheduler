@@ -1,0 +1,255 @@
+[00;33m 	'cuda/11.3' does not supports the {CUDA_MPI}. [0m
+[00;34m 	{CUDA_MPI} is only supported in cuda 11.4 version. [0m
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+  0%|          | 0/38 [00:00<?, ?it/s]OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.
+  0%|          | 0/38 [00:00<?, ?it/s]OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.
+  0%|          | 0/38 [00:00<?, ?it/s]OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.
+  0%|          | 0/38 [00:00<?, ?it/s]OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.
+OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.
+  0%|          | 0/38 [00:00<?, ?it/s]OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.
+  0%|          | 0/38 [00:00<?, ?it/s]OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.
+  0%|          | 0/38 [00:00<?, ?it/s]OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.
+OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.
+OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.
+/scratch/hpc72a03/shardscheduler/torch_scheduler.py:1046: UserWarning: This overload of add_ is deprecated:
+	add_(Number alpha, Tensor other)
+Consider using one of the following signatures instead:
+	add_(Tensor other, *, Number alpha) (Triggered internally at  /opt/conda/conda-bld/pytorch_1646755903507/work/torch/csrc/utils/python_arg_parser.cpp:1055.)
+  exp_avg.mul_(beta1).add_(1 - beta1, grad)
+/scratch/hpc72a03/shardscheduler/torch_scheduler.py:1046: UserWarning: This overload of add_ is deprecated:
+	add_(Number alpha, Tensor other)
+Consider using one of the following signatures instead:
+	add_(Tensor other, *, Number alpha) (Triggered internally at  /opt/conda/conda-bld/pytorch_1646755903507/work/torch/csrc/utils/python_arg_parser.cpp:1055.)
+  exp_avg.mul_(beta1).add_(1 - beta1, grad)
+/scratch/hpc72a03/shardscheduler/torch_scheduler.py:1046: UserWarning: This overload of add_ is deprecated:
+	add_(Number alpha, Tensor other)
+Consider using one of the following signatures instead:
+	add_(Tensor other, *, Number alpha) (Triggered internally at  /opt/conda/conda-bld/pytorch_1646755903507/work/torch/csrc/utils/python_arg_parser.cpp:1055.)
+  exp_avg.mul_(beta1).add_(1 - beta1, grad)
+/scratch/hpc72a03/shardscheduler/torch_scheduler.py:1046: UserWarning: This overload of add_ is deprecated:
+	add_(Number alpha, Tensor other)
+Consider using one of the following signatures instead:
+	add_(Tensor other, *, Number alpha) (Triggered internally at  /opt/conda/conda-bld/pytorch_1646755903507/work/torch/csrc/utils/python_arg_parser.cpp:1055.)
+  exp_avg.mul_(beta1).add_(1 - beta1, grad)
+  0%|          | 0/38 [00:00<?, ?it/s]/scratch/hpc72a03/shardscheduler/torch_scheduler.py:1046: UserWarning: This overload of add_ is deprecated:
+	add_(Number alpha, Tensor other)
+Consider using one of the following signatures instead:
+	add_(Tensor other, *, Number alpha) (Triggered internally at  /opt/conda/conda-bld/pytorch_1646755903507/work/torch/csrc/utils/python_arg_parser.cpp:1055.)
+  exp_avg.mul_(beta1).add_(1 - beta1, grad)
+/scratch/hpc72a03/shardscheduler/torch_scheduler.py:1046: UserWarning: This overload of add_ is deprecated:
+	add_(Number alpha, Tensor other)
+Consider using one of the following signatures instead:
+	add_(Tensor other, *, Number alpha) (Triggered internally at  /opt/conda/conda-bld/pytorch_1646755903507/work/torch/csrc/utils/python_arg_parser.cpp:1055.)
+  exp_avg.mul_(beta1).add_(1 - beta1, grad)
+/scratch/hpc72a03/shardscheduler/torch_scheduler.py:1046: UserWarning: This overload of add_ is deprecated:
+	add_(Number alpha, Tensor other)
+Consider using one of the following signatures instead:
+	add_(Tensor other, *, Number alpha) (Triggered internally at  /opt/conda/conda-bld/pytorch_1646755903507/work/torch/csrc/utils/python_arg_parser.cpp:1055.)
+  exp_avg.mul_(beta1).add_(1 - beta1, grad)
+/scratch/hpc72a03/shardscheduler/torch_scheduler.py:1046: UserWarning: This overload of add_ is deprecated:
+	add_(Number alpha, Tensor other)
+Consider using one of the following signatures instead:
+	add_(Tensor other, *, Number alpha) (Triggered internally at  /opt/conda/conda-bld/pytorch_1646755903507/work/torch/csrc/utils/python_arg_parser.cpp:1055.)
+  exp_avg.mul_(beta1).add_(1 - beta1, grad)
+  3%|▎         | 1/38 [00:01<01:10,  1.90s/it]Exception in thread Thread-2:
+Traceback (most recent call last):
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 319, in _poll_FSDP
+    self.run_schedule(self.schedules, init=False)
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 811, in run_schedule
+    self._finalize_parameters(param)
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 943, in _finalize_parameters
+    p.grad = p._saved_grad_shard
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/_tensor.py", line 1111, in grad
+    self._grad = new_grad
+RuntimeError: assigned grad has data of a different size
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 932, in _bootstrap_inner
+    self.run()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 328, in _poll_FSDP
+    self.health_check_thread.join()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 1006, in join
+    raise RuntimeError("cannot join thread before it is started")
+RuntimeError: cannot join thread before it is started
+  3%|▎         | 1/38 [00:01<01:10,  1.90s/it]Exception in thread Thread-2:
+Traceback (most recent call last):
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 319, in _poll_FSDP
+    self.run_schedule(self.schedules, init=False)
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 811, in run_schedule
+    self._finalize_parameters(param)
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 943, in _finalize_parameters
+    p.grad = p._saved_grad_shard
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/_tensor.py", line 1111, in grad
+    self._grad = new_grad
+RuntimeError: assigned grad has data of a different size
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 932, in _bootstrap_inner
+    self.run()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 328, in _poll_FSDP
+    self.health_check_thread.join()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 1006, in join
+    raise RuntimeError("cannot join thread before it is started")
+RuntimeError: cannot join thread before it is started
+  3%|▎         | 1/38 [00:01<01:06,  1.80s/it]Exception in thread Thread-2:
+Traceback (most recent call last):
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 319, in _poll_FSDP
+    self.run_schedule(self.schedules, init=False)
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 811, in run_schedule
+    self._finalize_parameters(param)
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 943, in _finalize_parameters
+    p.grad = p._saved_grad_shard
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/_tensor.py", line 1111, in grad
+    self._grad = new_grad
+RuntimeError: assigned grad has data of a different size
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 932, in _bootstrap_inner
+    self.run()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 328, in _poll_FSDP
+    self.health_check_thread.join()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 1006, in join
+    raise RuntimeError("cannot join thread before it is started")
+RuntimeError: cannot join thread before it is started
+  3%|▎         | 1/38 [00:01<01:10,  1.90s/it]Exception in thread Thread-2:
+Traceback (most recent call last):
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 319, in _poll_FSDP
+    self.run_schedule(self.schedules, init=False)
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 811, in run_schedule
+    self._finalize_parameters(param)
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 943, in _finalize_parameters
+    p.grad = p._saved_grad_shard
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/_tensor.py", line 1111, in grad
+    self._grad = new_grad
+RuntimeError: assigned grad has data of a different size
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 932, in _bootstrap_inner
+    self.run()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 328, in _poll_FSDP
+    self.health_check_thread.join()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 1006, in join
+    raise RuntimeError("cannot join thread before it is started")
+RuntimeError: cannot join thread before it is started
+  3%|▎         | 1/38 [00:01<01:10,  1.91s/it]Exception in thread Thread-2:
+Traceback (most recent call last):
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 319, in _poll_FSDP
+    self.run_schedule(self.schedules, init=False)
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 811, in run_schedule
+    self._finalize_parameters(param)
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 943, in _finalize_parameters
+    p.grad = p._saved_grad_shard
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/_tensor.py", line 1111, in grad
+    self._grad = new_grad
+RuntimeError: assigned grad has data of a different size
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 932, in _bootstrap_inner
+    self.run()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 328, in _poll_FSDP
+    self.health_check_thread.join()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 1006, in join
+    raise RuntimeError("cannot join thread before it is started")
+RuntimeError: cannot join thread before it is started
+  3%|▎         | 1/38 [00:01<01:10,  1.91s/it]Exception in thread Thread-2:
+Traceback (most recent call last):
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 319, in _poll_FSDP
+    self.run_schedule(self.schedules, init=False)
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 811, in run_schedule
+    self._finalize_parameters(param)
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 943, in _finalize_parameters
+    p.grad = p._saved_grad_shard
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/_tensor.py", line 1111, in grad
+    self._grad = new_grad
+RuntimeError: assigned grad has data of a different size
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 932, in _bootstrap_inner
+    self.run()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 328, in _poll_FSDP
+    self.health_check_thread.join()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 1006, in join
+    raise RuntimeError("cannot join thread before it is started")
+RuntimeError: cannot join thread before it is started
+  3%|▎         | 1/38 [00:01<01:07,  1.84s/it]Exception in thread Thread-2:
+Traceback (most recent call last):
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 319, in _poll_FSDP
+    self.run_schedule(self.schedules, init=False)
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 811, in run_schedule
+    self._finalize_parameters(param)
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 943, in _finalize_parameters
+    p.grad = p._saved_grad_shard
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/_tensor.py", line 1111, in grad
+    self._grad = new_grad
+RuntimeError: assigned grad has data of a different size
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 932, in _bootstrap_inner
+    self.run()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 328, in _poll_FSDP
+    self.health_check_thread.join()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 1006, in join
+    raise RuntimeError("cannot join thread before it is started")
+RuntimeError: cannot join thread before it is started
+  3%|▎         | 1/38 [00:01<01:09,  1.87s/it]Exception in thread Thread-2:
+Traceback (most recent call last):
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 319, in _poll_FSDP
+    self.run_schedule(self.schedules, init=False)
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 811, in run_schedule
+    self._finalize_parameters(param)
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 943, in _finalize_parameters
+    p.grad = p._saved_grad_shard
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/_tensor.py", line 1111, in grad
+    self._grad = new_grad
+RuntimeError: assigned grad has data of a different size
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 932, in _bootstrap_inner
+    self.run()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 328, in _poll_FSDP
+    self.health_check_thread.join()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 1006, in join
+    raise RuntimeError("cannot join thread before it is started")
+RuntimeError: cannot join thread before it is started
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** JOB 149911 ON gpu18 CANCELLED AT 2022-11-13T15:45:46 ***
+slurmstepd: error: *** STEP 149911.0 ON gpu18 CANCELLED AT 2022-11-13T15:45:46 ***

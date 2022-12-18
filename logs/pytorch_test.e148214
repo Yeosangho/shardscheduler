@@ -1,0 +1,53 @@
+[00;33m 	'cuda/11.3' does not supports the {CUDA_MPI}. [0m
+[00;34m 	{CUDA_MPI} is only supported in cuda 11.4 version. [0m
+/scratch/hpc72a03/shardscheduler/torch_scheduler.py:774: UserWarning: This overload of add_ is deprecated:
+	add_(Number alpha, Tensor other)
+Consider using one of the following signatures instead:
+	add_(Tensor other, *, Number alpha) (Triggered internally at  /opt/conda/conda-bld/pytorch_1646755903507/work/torch/csrc/utils/python_arg_parser.cpp:1055.)
+  exp_avg.mul_(beta1).add_(1 - beta1, grad)
+Exception in thread Thread-2:
+Traceback (most recent call last):
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 932, in _bootstrap_inner
+    self.run()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 316, in _poll_FSDP
+    self.run_schedule(self.schedules, init=False)
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 566, in run_schedule
+    grad = p.grad.data        
+AttributeError: 'NoneType' object has no attribute 'data'
+/scratch/hpc72a03/shardscheduler/torch_scheduler.py:774: UserWarning: This overload of add_ is deprecated:
+	add_(Number alpha, Tensor other)
+Consider using one of the following signatures instead:
+	add_(Tensor other, *, Number alpha) (Triggered internally at  /opt/conda/conda-bld/pytorch_1646755903507/work/torch/csrc/utils/python_arg_parser.cpp:1055.)
+  exp_avg.mul_(beta1).add_(1 - beta1, grad)
+Exception in thread Thread-2:
+Traceback (most recent call last):
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 932, in _bootstrap_inner
+    self.run()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 316, in _poll_FSDP
+    self.run_schedule(self.schedules, init=False)
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 566, in run_schedule
+    grad = p.grad.data        
+AttributeError: 'NoneType' object has no attribute 'data'
+/scratch/hpc72a03/shardscheduler/torch_scheduler.py:774: UserWarning: This overload of add_ is deprecated:
+	add_(Number alpha, Tensor other)
+Consider using one of the following signatures instead:
+	add_(Tensor other, *, Number alpha) (Triggered internally at  /opt/conda/conda-bld/pytorch_1646755903507/work/torch/csrc/utils/python_arg_parser.cpp:1055.)
+  exp_avg.mul_(beta1).add_(1 - beta1, grad)
+Exception in thread Thread-2:
+Traceback (most recent call last):
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 932, in _bootstrap_inner
+    self.run()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 316, in _poll_FSDP
+    self.run_schedule(self.schedules, init=False)
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 566, in run_schedule
+    grad = p.grad.data        
+AttributeError: 'NoneType' object has no attribute 'data'
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** JOB 148214 ON gpu21 CANCELLED AT 2022-11-06T19:56:20 ***
+slurmstepd: error: *** STEP 148214.0 ON gpu21 CANCELLED AT 2022-11-06T19:56:20 ***

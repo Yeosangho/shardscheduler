@@ -1,0 +1,25 @@
+[00;33m 	'cuda/11.3' does not supports the {CUDA_MPI}. [0m
+[00;34m 	{CUDA_MPI} is only supported in cuda 11.4 version. [0m
+[W socket.cpp:401] [c10d] The server socket has failed to bind to [::]:12342 (errno: 98 - Address already in use).
+[W socket.cpp:401] [c10d] The server socket has failed to bind to 0.0.0.0:12342 (errno: 98 - Address already in use).
+[E socket.cpp:435] [c10d] The server socket has failed to listen on any local network address.
+Traceback (most recent call last):
+  File "main.py", line 534, in <module>
+    dist.init_process_group(backend='nccl', world_size=world_size, rank=rank)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/distributed/distributed_c10d.py", line 595, in init_process_group
+    store, rank, world_size = next(rendezvous_iterator)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/distributed/rendezvous.py", line 232, in _env_rendezvous_handler
+    store = _create_c10d_store(master_addr, master_port, rank, world_size, timeout)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/distributed/rendezvous.py", line 160, in _create_c10d_store
+    return TCPStore(
+RuntimeError: The server socket has failed to listen on any local network address. The server socket has failed to bind to [::]:12342 (errno: 98 - Address already in use). The server socket has failed to bind to 0.0.0.0:12342 (errno: 98 - Address already in use).
+srun: error: gpu22: task 0: Exited with exit code 1
+Traceback (most recent call last):
+  File "main.py", line 534, in <module>
+    dist.init_process_group(backend='nccl', world_size=world_size, rank=rank)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/distributed/distributed_c10d.py", line 627, in init_process_group
+    _store_based_barrier(rank, store, timeout)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/distributed/distributed_c10d.py", line 242, in _store_based_barrier
+    worker_count = store.add(store_key, 0)
+RuntimeError: Connection reset by peer
+srun: error: gpu23: task 1: Exited with exit code 1

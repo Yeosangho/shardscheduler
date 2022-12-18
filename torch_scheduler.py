@@ -149,7 +149,7 @@ class ShardScheduler(torch.optim.Optimizer):
         #self._poller.excepthook = self.custom_hook
 
         self._poller.daemon = True
-        self._poller.start()   
+        #self._poller.start()   
 
 
         # Let rank 0 decide the communication order.

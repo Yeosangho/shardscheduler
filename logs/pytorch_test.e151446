@@ -1,0 +1,35 @@
+[00;33m 	'cuda/11.3' does not supports the {CUDA_MPI}. [0m
+[00;34m 	{CUDA_MPI} is only supported in cuda 11.4 version. [0m
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 42, in <module>
+    from auto_wrap_custom import enable_wrap, auto_wrap, wrap
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 12, in <module>
+    from dp_custom import DataParallel_Custom as DP
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 42, in <module>
+    from auto_wrap_custom import enable_wrap, auto_wrap, wrap
+ImportError: cannot import name 'enable_wrap' from partially initialized module 'auto_wrap_custom' (most likely due to a circular import) (/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py)
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 42, in <module>
+    from auto_wrap_custom import enable_wrap, auto_wrap, wrap
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 12, in <module>
+    from dp_custom import DataParallel_Custom as DP
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 42, in <module>
+    from auto_wrap_custom import enable_wrap, auto_wrap, wrap
+ImportError: cannot import name 'enable_wrap' from partially initialized module 'auto_wrap_custom' (most likely due to a circular import) (/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py)
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 42, in <module>
+    from auto_wrap_custom import enable_wrap, auto_wrap, wrap
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 12, in <module>
+    from dp_custom import DataParallel_Custom as DP
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 42, in <module>
+    from auto_wrap_custom import enable_wrap, auto_wrap, wrap
+ImportError: cannot import name 'enable_wrap' from partially initialized module 'auto_wrap_custom' (most likely due to a circular import) (/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py)
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 42, in <module>
+    from auto_wrap_custom import enable_wrap, auto_wrap, wrap
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 12, in <module>
+    from dp_custom import DataParallel_Custom as DP
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 42, in <module>
+    from auto_wrap_custom import enable_wrap, auto_wrap, wrap
+ImportError: cannot import name 'enable_wrap' from partially initialized module 'auto_wrap_custom' (most likely due to a circular import) (/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py)
+srun: error: gpu20: tasks 0-3: Exited with exit code 1

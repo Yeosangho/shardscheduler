@@ -14,7 +14,6 @@ import pandas as pd
 import random
 import gc
 import csv
-import matplotlib.pyplot as plt
 
 from tqdm import tqdm
 import torch 
@@ -45,8 +44,8 @@ from test_cases import make_schedule_from_json
 from algo import schedule
 from logger import write_trial
 from memory_hook import register_memory_profiling_hooks
-
-
+from dp_custom import DataParallel_Custom as DP
+from ar_bucketer import ARBucketer 
 def is_any_completed(handles):
 
     for handle in handles:
@@ -181,8 +180,16 @@ class Trainer:
 		self._lazy_init_conditions = {}
 
 		self._partition_counts = {}
-		self._scheduled_comms = []
-		self._schedule_comm_init = []
+		self._scheduled_comms = {}
+		self._scheduled_comms["FWTOBW"] = {}
+		self._scheduled_comms["FW"] = {}
+		self._scheduled_comms["BW"] = {}
+		self._scheduled_comms["BWTOFW"] = {}		
+		self._schedule_comm_init = {}
+		self._schedule_comm_init["FWTOBW"] = {}
+		self._schedule_comm_init["FW"] = {}
+		self._schedule_comm_init["BW"] = {}
+		self._schedule_comm_init["BWTOFW"] = {}
 		self._done_counts = {}
 
 		self.model_parameter_names = {}
@@ -192,7 +199,9 @@ class Trainer:
 		self.target = None
 		self.data_index = 0
 		self.profile_target_layer = []
+		self.optim_dict = {}
 
+		self.bucketer = ARBucketer(100*1024*1024 , self.world_size)
 
 		print(f"before init dataset  {torch.cuda.memory_allocated() / 1024 /1024}") 
 		
@@ -231,7 +240,13 @@ class Trainer:
 
 								memory_record=self.profiled_memory_utilization,
 								
-								model_parameter_names=self.model_parameter_names
+								model_parameter_names=self.model_parameter_names,
+								comm_stream=self.comm_stream,
+								optim_dict=self.optim_dict,
+								init_comm_schedule=self._schedule_comm_init,
+								comm_schedule =self._scheduled_comms, 
+								param_name_dict=self.model_parameter_names,
+								bucketer=self.bucketer
 								)
 		self.memory_hook_params = dict(memory_record=self.profiled_memory_utilization)
 					
@@ -263,12 +278,16 @@ class Trainer:
 		#register_memory_profiling_hooks(self.model, "")
 		with enable_wrap(**self.wrap_params):
 			self.sharded_module = auto_wrap(adaptive_sdp, self.model)
-			print(len(list(self.sharded_module.named_parameters())))
+			#self.sharded_module = DP(self.sharded_module)
+			#self.sharded_module._lazy_init()
+			
 			self.adaptive_sdp_modules = {}
 			self.adaptive_sdp_modules['FSDP'] = 0 
 			self.adaptive_sdp_modules['SDP'] = 0
 			self.adaptive_sdp_modules['DP'] = 0
-
+#
+			params_list = []
+			params_name_list = []
 			for n, p in self.sharded_module.named_parameters():
 				print(n)
 				if('_fsdp_wrapped_module' in n):
@@ -277,84 +296,44 @@ class Trainer:
 					self.adaptive_sdp_modules['SDP'] += 1
 				elif('_dp_wrapped_module' in n):
 					self.adaptive_sdp_modules['DP'] += 1
+				for scheduled_comp in ["FW", "BW"]:
+					self._schedule_comm_init[scheduled_comp][n] = None
+					self._scheduled_comms[scheduled_comp][n] = None
+				self.model_parameter_names[p] = n	
+				params_name_list.append(n)
+				params_list.append(p)
+				print(p)
+			#for scheduled_comp in ["BWTOFW", "FWTOBW"]:
+			#	self._schedule_comm_init[scheduled_comp]["None"] = []
+			#	self._scheduled_comms[scheduled_comp]["None"] = [] 
+			dist.barrier()
+#
+			max_param_num = get_param_num_by_buffer_size(self.world_size, self.bucket_size)
+			#if(self.rank == 0):
+			#	schedule(self.adaptive_sdp_modules, max_param_num, \
+			#		layer_bench_file_name='profile_data/layer_bench_gpt2_cas_v100_4_2.csv', net_bench_file_name='profile_data/net_bench_cas_v100_4_2.csv')
+			#dist.barrier()
+#	#
+			make_schedule_from_json(params_list, params_name_list, self._schedule_comm_init, self._scheduled_comms, self._locks, self.adaptive_sdp_modules)
+#	#
+#		dist.barrier()
 
-
-			for n, p in self.sharded_module.named_parameters():
-				#print(n)
-				self._partition_counts[p] = (p.numel() // self.partition_threshold) + 1
-				self._done_counts[p] = 0
-
-				self._rs_locks[p] = threading.Lock()
-				self._ag_locks[p] = threading.Lock()
-				self._ar_locks[p] = threading.Lock()
-				self._ag_fsdp_locks[p] = threading.Lock()
-
-				self._forward_locks[p] = threading.Lock()
-				self._backward_locks[p] = threading.Lock()
-
-				self._forward_locks[p].acquire()
-
-				self._backward_locks[p].acquire()
-
-				self._rs_conditions[p] = threading.Condition(threading.Lock())
-				self._ag_conditions[p] = threading.Condition(threading.Lock())
-				self._ar_conditions[p] = threading.Condition(threading.Lock())
-				self._ag_fsdp_conditions[p] = threading.Condition(threading.Lock())
-
-				self._forward_conditions[p] = threading.Condition(threading.Lock())
-				self._backward_conditions[p] = threading.Condition(threading.Lock())
-
-				self._lazy_init_locks[p] = threading.Lock()
-				self._lazy_init_conditions[p] = threading.Condition(threading.Lock())
-
-				self.model_parameter_names[p] = n
-
-			self._locks["FW"] 	    = self._forward_locks
-			self._locks["BW"]	    = self._backward_locks 
-			self._locks["AG"] 		= self._ag_locks
-			self._locks["AR"]		= self._ar_locks
-			self._locks["FWTOBW"]   = threading.Lock()
-			self._locks["BWTOFW"]   = threading.Lock()
-			self._locks["BWTOFW"].acquire()
-
-
-			self._conditions["FW"]        = self._forward_conditions    
-			self._conditions["BW"]        = self._backward_conditions    
-			self._conditions["AG"]        = self._ag_conditions  
-			self._conditions["AR"]		  = self._ar_conditions
-			self._conditions["FWTOBW"]   = threading.Condition(threading.Lock())
-			self._conditions["BWTOFW"]   = threading.Condition(threading.Lock())
-
-
-
-		params_list = list(self.sharded_module.parameters())
-		self.profile_target_layer.append(params_list[20])
-		max_param_num = get_param_num_by_buffer_size(self.world_size, self.bucket_size)
-		if(self.rank == 0):
-			schedule(self.adaptive_sdp_modules, max_param_num, \
-				layer_bench_file_name='profile_data/layer_bench_gpt2_cas_v100_4_2.csv', net_bench_file_name='profile_data/net_bench_cas_v100_4_2.csv')
-		dist.barrier()
-
-		make_schedule_from_json(params_list, self._schedule_comm_init, self._scheduled_comms, self._locks, self.adaptive_sdp_modules)
-
-		dist.barrier()
-		print(f"before init optimizer  {torch.cuda.memory_allocated() / 1024 /1024}") 
-		#self.optimizer = torch.optim.SGD(self.sharded_module.parameters() , lr=0.001, momentum=0.9, nesterov=True)
-		self.optimizer = torch.optim.Adam(self.sharded_module.parameters(), lr=0.001, betas=(0.9, 0.999), eps=1e-08, weight_decay=0, amsgrad=False)
+		self.optimizer = torch.optim.Adam(self.sharded_module.parameters(), lr=0.1, betas=(0.9, 0.999), eps=1e-08, weight_decay=0, amsgrad=False)
 		self.optimizer = ShardScheduler(self.sharded_module, self.sharded_module.named_parameters(), self.world_size, self.rank, self.optimizer,
-		                                self.partition_threshold, self._done_counts, self._partition_counts,
-										self.health_check_scheduler_thread,
-										self.health_check_thread_ready,
-										self.trial_info,
-										thread,
-										self._locks,
-
-										self._conditions,
-
-										self.profile_target_layer, 
-										self.bucket_size,
-										10**6, self.comm_stream, self._schedule_comm_init, self._scheduled_comms)
-		print(f"after init optimizer  {torch.cuda.memory_allocated() / 1024 /1024}") 
+		                            self.partition_threshold, self._done_counts, self._partition_counts,
+								self.health_check_scheduler_thread,
+								self.health_check_thread_ready,
+								self.trial_info,
+								thread,
+								self._locks,
+##
+								self._conditions,
+##
+								self.profile_target_layer, 
+								self.bucket_size,
+								10**6, self.comm_stream, self._schedule_comm_init, self._scheduled_comms)
+		self.bucketer.set_optimizer(self.optimizer)
+		self.optim_dict["optimizer"] = self.optimizer
 		
 		self.criterion = nn.CrossEntropyLoss()
 
@@ -374,31 +353,19 @@ class Trainer:
 			b_masks = batch[1].cuda()
 
 
-
-			#print(f"before forward  {torch.cuda.memory_allocated()/1024**2} {torch.cuda.memory_reserved()/1024**2} {(torch.cuda.memory_allocated() + torch.cuda.memory_reserved()) / 1024 /1024}") 	
-
-			if self._locks['BWTOFW'].locked() and self.adaptive_sdp_modules["FSDP"] + self.adaptive_sdp_modules["SDP"] > 0:   
-				self._release_lock(self._locks['BWTOFW'], self._conditions['BWTOFW'])
-			#if count > 0:
-			#	self._wait_lock(self._locks['BWTOFW'], self._conditions['BWTOFW'])
 			output = self.sharded_module( b_input_ids,
                           labels=b_labels, 
                           attention_mask = b_masks,
                           token_type_ids=None
                         )
 	
-			#if self._locks['FWTOBW'].locked():   
-			#	self._release_lock(self._locks['FWTOBW'], self._conditions['FWTOBW'])
 
 
-			#print(f"after forward {torch.cuda.memory_allocated()/1024**2} {torch.cuda.memory_reserved()/1024**2} {(torch.cuda.memory_allocated() + torch.cuda.memory_reserved()) / 1024 /1024}") 	
 			loss = output[0] 
-			print(loss)
-			#print(f"before backward {torch.cuda.memory_allocated()/1024**2} {torch.cuda.memory_reserved()/1024**2} {(torch.cuda.memory_allocated() + torch.cuda.memory_reserved()) / 1024 /1024}") 	
-	#	
+			if(rank == 0):
+				print(loss)
 			loss.backward()
-			if self._locks['BWTOFW'].locked():   
-				self._release_lock(self._locks['BWTOFW'], self._conditions['BWTOFW'])
+
 
 			#print(f"after backward  {(torch.cuda.memory_allocated() + torch.cuda.memory_reserved()) / 1024 /1024}") 
 			count += 1

@@ -1,0 +1,181 @@
+==========================================
+SLURM_JOB_ID = 149595
+SLURM_NODELIST = gpu07
+==========================================
+NODELIST=gpu07
+MASTER_ADDR=gpu07
+world_size : 4
+rank : 0
+main
+wait src from 3
+main
+wait src from 3
+before init dataset  0.0
+wait src from 3
+wait src from 3
+wait src from 3
+wait src from 3
+wait src from 3
+wait src from 3
+      Id  ...                                               Text
+0      1  ...  I have bought several of the Vitality canned d...
+1      2  ...  Product arrived labeled as Jumbo Salted Peanut...
+2      3  ...  This is a confection that has been around a fe...
+3      4  ...  If you are looking for the secret ingredient i...
+4      5  ...  Great taffy at a great price.  There was a wid...
+..   ...  ...                                                ...
+595  596  ...  This is the second purchase of Kettle Potato C...
+596  597  ...  How to achieve potato chip nirvana? It's simpl...
+597  598  ...  I found these more than 10 years ago in a heal...
+598  599  ...  But you will enjoy ever step. I gained 5 lbs w...
+599  600  ...  These are the best spicy chips I have ever had...
+
+[600 rows x 10 columns]
+600
+wait src from 3
+wait src from 3
+wait src from 3
+after init dataset  0.0
+before init model  0.0
+wait src from 3
+wait src from 3
+wait src from 3
+wait src from 3
+wait src from 3
+wait src from 3
+wait src from 3
+wait src from 3
+wait src from 3
+after init model  487.46875
+world_size : 4
+rank : 1
+main
+wait src from 0
+main
+wait src from 0
+before init dataset  0.0
+wait src from 0
+wait src from 0
+wait src from 0
+wait src from 0
+wait src from 0
+wait src from 0
+wait src from 0
+      Id  ...                                               Text
+0      1  ...  I have bought several of the Vitality canned d...
+1      2  ...  Product arrived labeled as Jumbo Salted Peanut...
+2      3  ...  This is a confection that has been around a fe...
+3      4  ...  If you are looking for the secret ingredient i...
+4      5  ...  Great taffy at a great price.  There was a wid...
+..   ...  ...                                                ...
+595  596  ...  This is the second purchase of Kettle Potato C...
+596  597  ...  How to achieve potato chip nirvana? It's simpl...
+597  598  ...  I found these more than 10 years ago in a heal...
+598  599  ...  But you will enjoy ever step. I gained 5 lbs w...
+599  600  ...  These are the best spicy chips I have ever had...
+
+[600 rows x 10 columns]
+600
+wait src from 0
+wait src from 0
+wait src from 0
+after init dataset  0.0
+before init model  0.0
+wait src from 0
+wait src from 0
+wait src from 0
+wait src from 0
+wait src from 0
+wait src from 0
+wait src from 0
+wait src from 0
+wait src from 0
+after init model  487.46875
+world_size : 4
+rank : 3
+main
+wait src from 2
+main
+wait src from 2
+wait src from 2
+before init dataset  0.0
+wait src from 2
+wait src from 2
+wait src from 2
+wait src from 2
+wait src from 2
+wait src from 2
+      Id  ...                                               Text
+0      1  ...  I have bought several of the Vitality canned d...
+1      2  ...  Product arrived labeled as Jumbo Salted Peanut...
+2      3  ...  This is a confection that has been around a fe...
+3      4  ...  If you are looking for the secret ingredient i...
+4      5  ...  Great taffy at a great price.  There was a wid...
+..   ...  ...                                                ...
+595  596  ...  This is the second purchase of Kettle Potato C...
+596  597  ...  How to achieve potato chip nirvana? It's simpl...
+597  598  ...  I found these more than 10 years ago in a heal...
+598  599  ...  But you will enjoy ever step. I gained 5 lbs w...
+599  600  ...  These are the best spicy chips I have ever had...
+
+[600 rows x 10 columns]
+600
+wait src from 2
+wait src from 2
+after init dataset  0.0
+before init model  0.0
+wait src from 2
+wait src from 2
+wait src from 2
+wait src from 2
+wait src from 2
+wait src from 2
+wait src from 2
+wait src from 2
+wait src from 2
+wait src from 2
+after init model  487.46875
+world_size : 4
+rank : 2
+main
+wait src from 1
+main
+wait src from 1
+wait src from 1
+before init dataset  0.0
+wait src from 1
+wait src from 1
+wait src from 1
+wait src from 1
+wait src from 1
+      Id  ...                                               Text
+0      1  ...  I have bought several of the Vitality canned d...
+1      2  ...  Product arrived labeled as Jumbo Salted Peanut...
+2      3  ...  This is a confection that has been around a fe...
+3      4  ...  If you are looking for the secret ingredient i...
+4      5  ...  Great taffy at a great price.  There was a wid...
+..   ...  ...                                                ...
+595  596  ...  This is the second purchase of Kettle Potato C...
+596  597  ...  How to achieve potato chip nirvana? It's simpl...
+597  598  ...  I found these more than 10 years ago in a heal...
+598  599  ...  But you will enjoy ever step. I gained 5 lbs w...
+599  600  ...  These are the best spicy chips I have ever had...
+
+[600 rows x 10 columns]
+600
+wait src from 1
+wait src from 1
+wait src from 1
+after init dataset  0.0
+before init model  0.0
+wait src from 1
+wait src from 1
+wait src from 1
+wait src from 1
+wait src from 1
+wait src from 1
+wait src from 1
+wait src from 1
+wait src from 1
+wait src from 1
+after init model  487.46875

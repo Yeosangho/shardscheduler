@@ -1,0 +1,70 @@
+[00;33m 	'cuda/11.3' does not supports the {CUDA_MPI}. [0m
+[00;34m 	{CUDA_MPI} is only supported in cuda 11.4 version. [0m
+Traceback (most recent call last):
+  File "profile.py", line 55, in <module>
+    sizes, times  = comm_profiler.benchmark()
+  File "/scratch/hpc72a03/shardscheduler/profiling.py", line 276, in benchmark
+    self.comm_op(tensor_list, tensor)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/distributed/distributed_c10d.py", line 2060, in all_gather
+    work = default_pg.allgather([tensor_list], [tensor])
+RuntimeError: Tensor list input to scatter/gather must match number of collective participants
+Traceback (most recent call last):
+  File "profile.py", line 55, in <module>
+    sizes, times  = comm_profiler.benchmark()
+  File "/scratch/hpc72a03/shardscheduler/profiling.py", line 276, in benchmark
+    self.comm_op(tensor_list, tensor)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/distributed/distributed_c10d.py", line 2060, in all_gather
+    work = default_pg.allgather([tensor_list], [tensor])
+RuntimeError: Tensor list input to scatter/gather must match number of collective participants
+Traceback (most recent call last):
+  File "profile.py", line 55, in <module>
+    sizes, times  = comm_profiler.benchmark()
+  File "/scratch/hpc72a03/shardscheduler/profiling.py", line 276, in benchmark
+    self.comm_op(tensor_list, tensor)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/distributed/distributed_c10d.py", line 2060, in all_gather
+    work = default_pg.allgather([tensor_list], [tensor])
+RuntimeError: Tensor list input to scatter/gather must match number of collective participants
+Traceback (most recent call last):
+  File "profile.py", line 55, in <module>
+    sizes, times  = comm_profiler.benchmark()
+  File "/scratch/hpc72a03/shardscheduler/profiling.py", line 276, in benchmark
+    self.comm_op(tensor_list, tensor)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/distributed/distributed_c10d.py", line 2060, in all_gather
+    work = default_pg.allgather([tensor_list], [tensor])
+RuntimeError: Tensor list input to scatter/gather must match number of collective participants
+Traceback (most recent call last):
+  File "profile.py", line 55, in <module>
+    sizes, times  = comm_profiler.benchmark()
+  File "/scratch/hpc72a03/shardscheduler/profiling.py", line 276, in benchmark
+    self.comm_op(tensor_list, tensor)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/distributed/distributed_c10d.py", line 2060, in all_gather
+    work = default_pg.allgather([tensor_list], [tensor])
+RuntimeError: Tensor list input to scatter/gather must match number of collective participants
+Traceback (most recent call last):
+  File "profile.py", line 55, in <module>
+    sizes, times  = comm_profiler.benchmark()
+  File "/scratch/hpc72a03/shardscheduler/profiling.py", line 276, in benchmark
+    self.comm_op(tensor_list, tensor)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/distributed/distributed_c10d.py", line 2060, in all_gather
+    work = default_pg.allgather([tensor_list], [tensor])
+RuntimeError: Tensor list input to scatter/gather must match number of collective participants
+Traceback (most recent call last):
+  File "profile.py", line 55, in <module>
+    sizes, times  = comm_profiler.benchmark()
+  File "/scratch/hpc72a03/shardscheduler/profiling.py", line 276, in benchmark
+    self.comm_op(tensor_list, tensor)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/distributed/distributed_c10d.py", line 2060, in all_gather
+    work = default_pg.allgather([tensor_list], [tensor])
+RuntimeError: Tensor list input to scatter/gather must match number of collective participants
+Traceback (most recent call last):
+  File "profile.py", line 55, in <module>
+    sizes, times  = comm_profiler.benchmark()
+  File "/scratch/hpc72a03/shardscheduler/profiling.py", line 276, in benchmark
+    self.comm_op(tensor_list, tensor)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/distributed/distributed_c10d.py", line 2060, in all_gather
+    work = default_pg.allgather([tensor_list], [tensor])
+RuntimeError: Tensor list input to scatter/gather must match number of collective participants
+srun: error: gpu22: tasks 1,3: Exited with exit code 1
+srun: error: gpu23: tasks 4,6-7: Exited with exit code 1
+srun: error: gpu22: tasks 0,2: Exited with exit code 1
+srun: error: gpu23: task 5: Exited with exit code 1

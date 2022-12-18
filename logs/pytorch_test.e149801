@@ -1,0 +1,318 @@
+[00;33m 	'cuda/11.3' does not supports the {CUDA_MPI}. [0m
+[00;34m 	{CUDA_MPI} is only supported in cuda 11.4 version. [0m
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+  0%|          | 0/38 [00:00<?, ?it/s]OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.
+  0%|          | 0/38 [00:00<?, ?it/s]OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.
+  0%|          | 0/38 [00:00<?, ?it/s]OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.
+  0%|          | 0/38 [00:00<?, ?it/s]OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.
+  0%|          | 0/38 [00:00<?, ?it/s]OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.
+OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.
+  0%|          | 0/38 [00:00<?, ?it/s]  3%|▎         | 1/38 [00:01<01:10,  1.90s/it]/scratch/hpc72a03/shardscheduler/torch_scheduler.py:1046: UserWarning: This overload of add_ is deprecated:
+	add_(Number alpha, Tensor other)
+Consider using one of the following signatures instead:
+	add_(Tensor other, *, Number alpha) (Triggered internally at  /opt/conda/conda-bld/pytorch_1646755903507/work/torch/csrc/utils/python_arg_parser.cpp:1055.)
+  exp_avg.mul_(beta1).add_(1 - beta1, grad)
+  0%|          | 0/38 [00:00<?, ?it/s]  3%|▎         | 1/38 [00:02<01:14,  2.00s/it]/scratch/hpc72a03/shardscheduler/torch_scheduler.py:1046: UserWarning: This overload of add_ is deprecated:
+	add_(Number alpha, Tensor other)
+Consider using one of the following signatures instead:
+	add_(Tensor other, *, Number alpha) (Triggered internally at  /opt/conda/conda-bld/pytorch_1646755903507/work/torch/csrc/utils/python_arg_parser.cpp:1055.)
+  exp_avg.mul_(beta1).add_(1 - beta1, grad)
+  3%|▎         | 1/38 [00:01<01:13,  1.98s/it]/scratch/hpc72a03/shardscheduler/torch_scheduler.py:1046: UserWarning: This overload of add_ is deprecated:
+	add_(Number alpha, Tensor other)
+Consider using one of the following signatures instead:
+	add_(Tensor other, *, Number alpha) (Triggered internally at  /opt/conda/conda-bld/pytorch_1646755903507/work/torch/csrc/utils/python_arg_parser.cpp:1055.)
+  exp_avg.mul_(beta1).add_(1 - beta1, grad)
+  3%|▎         | 1/38 [00:01<01:13,  2.00s/it]/scratch/hpc72a03/shardscheduler/torch_scheduler.py:1046: UserWarning: This overload of add_ is deprecated:
+	add_(Number alpha, Tensor other)
+Consider using one of the following signatures instead:
+	add_(Tensor other, *, Number alpha) (Triggered internally at  /opt/conda/conda-bld/pytorch_1646755903507/work/torch/csrc/utils/python_arg_parser.cpp:1055.)
+  exp_avg.mul_(beta1).add_(1 - beta1, grad)
+  3%|▎         | 1/38 [00:02<01:14,  2.02s/it]/scratch/hpc72a03/shardscheduler/torch_scheduler.py:1046: UserWarning: This overload of add_ is deprecated:
+	add_(Number alpha, Tensor other)
+Consider using one of the following signatures instead:
+	add_(Tensor other, *, Number alpha) (Triggered internally at  /opt/conda/conda-bld/pytorch_1646755903507/work/torch/csrc/utils/python_arg_parser.cpp:1055.)
+  exp_avg.mul_(beta1).add_(1 - beta1, grad)
+  3%|▎         | 1/38 [00:02<01:14,  2.01s/it]/scratch/hpc72a03/shardscheduler/torch_scheduler.py:1046: UserWarning: This overload of add_ is deprecated:
+	add_(Number alpha, Tensor other)
+Consider using one of the following signatures instead:
+	add_(Tensor other, *, Number alpha) (Triggered internally at  /opt/conda/conda-bld/pytorch_1646755903507/work/torch/csrc/utils/python_arg_parser.cpp:1055.)
+  exp_avg.mul_(beta1).add_(1 - beta1, grad)
+  3%|▎         | 1/38 [00:01<01:13,  2.00s/it]/scratch/hpc72a03/shardscheduler/torch_scheduler.py:1046: UserWarning: This overload of add_ is deprecated:
+	add_(Number alpha, Tensor other)
+Consider using one of the following signatures instead:
+	add_(Tensor other, *, Number alpha) (Triggered internally at  /opt/conda/conda-bld/pytorch_1646755903507/work/torch/csrc/utils/python_arg_parser.cpp:1055.)
+  exp_avg.mul_(beta1).add_(1 - beta1, grad)
+  0%|          | 0/38 [00:00<?, ?it/s]  3%|▎         | 1/38 [00:01<01:13,  1.98s/it]/scratch/hpc72a03/shardscheduler/torch_scheduler.py:1046: UserWarning: This overload of add_ is deprecated:
+	add_(Number alpha, Tensor other)
+Consider using one of the following signatures instead:
+	add_(Tensor other, *, Number alpha) (Triggered internally at  /opt/conda/conda-bld/pytorch_1646755903507/work/torch/csrc/utils/python_arg_parser.cpp:1055.)
+  exp_avg.mul_(beta1).add_(1 - beta1, grad)
+  3%|▎         | 1/38 [00:04<02:47,  4.53s/it]
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 521, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 382, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1068, in forward
+    lm_logits = self.lm_head(hidden_states)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 676, in forward
+    outputs = self.module(*args, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/nn/misc/flatten_params_wrapper.py", line 459, in forward
+    return self.module(*inputs, **kwinputs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/linear.py", line 103, in forward
+    return F.linear(input, self.weight, self.bias)
+RuntimeError: CUDA out of memory. Tried to allocate 296.00 MiB (GPU 0; 31.75 GiB total capacity; 29.31 GiB already allocated; 567.69 MiB free; 30.00 GiB allowed; 29.93 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 532, in <module>
+    thread.join()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 1006, in join
+    raise RuntimeError("cannot join thread before it is started")
+RuntimeError: cannot join thread before it is started
+  3%|▎         | 1/38 [00:04<02:43,  4.42s/it]
+  3%|▎         | 1/38 [00:04<02:47,  4.52s/it]
+  3%|▎         | 1/38 [00:04<02:47,  4.52s/it]
+  3%|▎         | 1/38 [00:04<02:47,  4.52s/it]
+  3%|▎         | 1/38 [00:04<02:47,  4.54s/it]
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 521, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 382, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1068, in forward
+    lm_logits = self.lm_head(hidden_states)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 676, in forward
+    outputs = self.module(*args, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/nn/misc/flatten_params_wrapper.py", line 459, in forward
+    return self.module(*inputs, **kwinputs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/linear.py", line 103, in forward
+    return F.linear(input, self.weight, self.bias)
+RuntimeError: CUDA out of memory. Tried to allocate 296.00 MiB (GPU 3; 31.75 GiB total capacity; 29.31 GiB already allocated; 567.69 MiB free; 30.00 GiB allowed; 29.93 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 532, in <module>
+    thread.join()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 1006, in join
+    raise RuntimeError("cannot join thread before it is started")
+RuntimeError: cannot join thread before it is started
+  3%|▎         | 1/38 [00:04<02:48,  4.54s/it]
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 521, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 382, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1068, in forward
+    lm_logits = self.lm_head(hidden_states)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 676, in forward
+    outputs = self.module(*args, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/nn/misc/flatten_params_wrapper.py", line 459, in forward
+    return self.module(*inputs, **kwinputs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/linear.py", line 103, in forward
+    return F.linear(input, self.weight, self.bias)
+RuntimeError: CUDA out of memory. Tried to allocate 296.00 MiB (GPU 1; 31.75 GiB total capacity; 29.31 GiB already allocated; 567.69 MiB free; 30.00 GiB allowed; 29.93 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 532, in <module>
+    thread.join()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 1006, in join
+    raise RuntimeError("cannot join thread before it is started")
+RuntimeError: cannot join thread before it is started
+  3%|▎         | 1/38 [00:04<02:47,  4.53s/it]
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 521, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 382, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1068, in forward
+    lm_logits = self.lm_head(hidden_states)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 676, in forward
+    outputs = self.module(*args, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/nn/misc/flatten_params_wrapper.py", line 459, in forward
+    return self.module(*inputs, **kwinputs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/linear.py", line 103, in forward
+    return F.linear(input, self.weight, self.bias)
+RuntimeError: CUDA out of memory. Tried to allocate 296.00 MiB (GPU 2; 31.75 GiB total capacity; 29.31 GiB already allocated; 567.69 MiB free; 30.00 GiB allowed; 29.93 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 532, in <module>
+    thread.join()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 1006, in join
+    raise RuntimeError("cannot join thread before it is started")
+RuntimeError: cannot join thread before it is started
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 521, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 382, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1068, in forward
+    lm_logits = self.lm_head(hidden_states)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 676, in forward
+    outputs = self.module(*args, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/nn/misc/flatten_params_wrapper.py", line 459, in forward
+    return self.module(*inputs, **kwinputs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/linear.py", line 103, in forward
+    return F.linear(input, self.weight, self.bias)
+RuntimeError: CUDA out of memory. Tried to allocate 296.00 MiB (GPU 2; 31.75 GiB total capacity; 29.31 GiB already allocated; 567.69 MiB free; 30.00 GiB allowed; 29.93 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 532, in <module>
+    thread.join()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 1006, in join
+    raise RuntimeError("cannot join thread before it is started")
+RuntimeError: cannot join thread before it is started
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 521, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 382, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1068, in forward
+    lm_logits = self.lm_head(hidden_states)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 676, in forward
+    outputs = self.module(*args, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/nn/misc/flatten_params_wrapper.py", line 459, in forward
+    return self.module(*inputs, **kwinputs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/linear.py", line 103, in forward
+    return F.linear(input, self.weight, self.bias)
+RuntimeError: CUDA out of memory. Tried to allocate 296.00 MiB (GPU 0; 31.75 GiB total capacity; 29.31 GiB already allocated; 567.69 MiB free; 30.00 GiB allowed; 29.93 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 532, in <module>
+    thread.join()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 1006, in join
+    raise RuntimeError("cannot join thread before it is started")
+RuntimeError: cannot join thread before it is started
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 521, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 382, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1068, in forward
+    lm_logits = self.lm_head(hidden_states)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 676, in forward
+    outputs = self.module(*args, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/nn/misc/flatten_params_wrapper.py", line 459, in forward
+    return self.module(*inputs, **kwinputs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/linear.py", line 103, in forward
+    return F.linear(input, self.weight, self.bias)
+RuntimeError: CUDA out of memory. Tried to allocate 296.00 MiB (GPU 3; 31.75 GiB total capacity; 29.31 GiB already allocated; 567.69 MiB free; 30.00 GiB allowed; 29.93 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 532, in <module>
+    thread.join()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 1006, in join
+    raise RuntimeError("cannot join thread before it is started")
+RuntimeError: cannot join thread before it is started
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 521, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 382, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1068, in forward
+    lm_logits = self.lm_head(hidden_states)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 676, in forward
+    outputs = self.module(*args, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/nn/misc/flatten_params_wrapper.py", line 459, in forward
+    return self.module(*inputs, **kwinputs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/linear.py", line 103, in forward
+    return F.linear(input, self.weight, self.bias)
+RuntimeError: CUDA out of memory. Tried to allocate 296.00 MiB (GPU 1; 31.75 GiB total capacity; 29.31 GiB already allocated; 567.69 MiB free; 30.00 GiB allowed; 29.93 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 532, in <module>
+    thread.join()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 1006, in join
+    raise RuntimeError("cannot join thread before it is started")
+RuntimeError: cannot join thread before it is started
+srun: error: gpu20: tasks 0-1: Exited with exit code 1
+srun: error: gpu21: tasks 5,7: Exited with exit code 1
+srun: error: gpu20: task 3: Exited with exit code 1
+srun: error: gpu21: task 6: Exited with exit code 1
+srun: error: gpu21: task 4: Exited with exit code 1
+srun: error: gpu20: task 2: Exited with exit code 1

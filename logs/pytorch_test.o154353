@@ -1,0 +1,14 @@
+==========================================
+SLURM_JOB_ID = 154353
+SLURM_NODELIST = gpu10
+==========================================
+NODELIST=gpu10
+MASTER_ADDR=gpu10
+world_size : 4
+rank : 0
+world_size : 4
+rank : 1
+world_size : 4
+rank : 2
+world_size : 4
+rank : 3

@@ -1,0 +1,40 @@
+[00;33m 	'cuda/11.3' does not supports the {CUDA_MPI}. [0m
+[00;34m 	{CUDA_MPI} is only supported in cuda 11.4 version. [0m
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 467, in <module>
+    trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread) 
+  File "main_gpt2_with_health_checker.py", line 295, in __init__
+    make_schedule_from_json(params_list, self._schedule_comm_init, self._scheduled_comms, self._locks, self.adaptive_sdp_modules)
+  File "/scratch/hpc72a03/shardscheduler/test_cases.py", line 895, in make_schedule_from_json
+    os._exit()
+NameError: name 'os' is not defined
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 467, in <module>
+    trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread) 
+  File "main_gpt2_with_health_checker.py", line 295, in __init__
+    make_schedule_from_json(params_list, self._schedule_comm_init, self._scheduled_comms, self._locks, self.adaptive_sdp_modules)
+  File "/scratch/hpc72a03/shardscheduler/test_cases.py", line 895, in make_schedule_from_json
+    os._exit()
+NameError: name 'os' is not defined
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 467, in <module>
+    trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread) 
+  File "main_gpt2_with_health_checker.py", line 295, in __init__
+    make_schedule_from_json(params_list, self._schedule_comm_init, self._scheduled_comms, self._locks, self.adaptive_sdp_modules)
+  File "/scratch/hpc72a03/shardscheduler/test_cases.py", line 895, in make_schedule_from_json
+    os._exit()
+NameError: name 'os' is not defined
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 467, in <module>
+    trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread) 
+  File "main_gpt2_with_health_checker.py", line 295, in __init__
+    make_schedule_from_json(params_list, self._schedule_comm_init, self._scheduled_comms, self._locks, self.adaptive_sdp_modules)
+  File "/scratch/hpc72a03/shardscheduler/test_cases.py", line 895, in make_schedule_from_json
+    os._exit()
+NameError: name 'os' is not defined
+srun: error: gpu12: tasks 0,2: Exited with exit code 1
+srun: error: gpu12: tasks 1,3: Exited with exit code 1

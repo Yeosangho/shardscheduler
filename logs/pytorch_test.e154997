@@ -1,0 +1,117 @@
+[00;33m 	'cuda/11.3' does not supports the {CUDA_MPI}. [0m
+[00;34m 	{CUDA_MPI} is only supported in cuda 11.4 version. [0m
+Traceback (most recent call last):
+  File "test_fsdp_fairscale0.4.py", line 17, in <module>
+    from fairscale.optim.oss import OSS
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/optim/__init__.py", line 13, in <module>
+    from .oss import OSS
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/optim/oss.py", line 20, in <module>
+    from fairscale.nn.misc import ParamBucket
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/nn/__init__.py", line 9, in <module>
+    from .data_parallel import FullyShardedDataParallel, ShardedDataParallel
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/nn/data_parallel/__init__.py", line 9, in <module>
+    from .sharded_ddp import ShardedDataParallel
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/nn/data_parallel/sharded_ddp.py", line 25, in <module>
+    from fairscale.optim import OSS
+Traceback (most recent call last):
+  File "test_fsdp_fairscale0.4.py", line 17, in <module>
+    from fairscale.optim.oss import OSS
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/optim/__init__.py", line 13, in <module>
+    from .oss import OSS
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/optim/oss.py", line 20, in <module>
+    from fairscale.nn.misc import ParamBucket
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/nn/__init__.py", line 9, in <module>
+    from .data_parallel import FullyShardedDataParallel, ShardedDataParallel
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/nn/data_parallel/__init__.py", line 9, in <module>
+    from .sharded_ddp import ShardedDataParallel
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/nn/data_parallel/sharded_ddp.py", line 25, in <module>
+    from fairscale.optim import OSS
+ImportError: cannot import name 'OSS' from partially initialized module 'fairscale.optim' (most likely due to a circular import) (/scratch/hpc72a03/shardscheduler/fairscale/fairscale/optim/__init__.py)
+Traceback (most recent call last):
+  File "test_fsdp_fairscale0.4.py", line 17, in <module>
+    from fairscale.optim.oss import OSS
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/optim/__init__.py", line 13, in <module>
+    from .oss import OSS
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/optim/oss.py", line 20, in <module>
+    from fairscale.nn.misc import ParamBucket
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/nn/__init__.py", line 9, in <module>
+    from .data_parallel import FullyShardedDataParallel, ShardedDataParallel
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/nn/data_parallel/__init__.py", line 9, in <module>
+    from .sharded_ddp import ShardedDataParallel
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/nn/data_parallel/sharded_ddp.py", line 25, in <module>
+    from fairscale.optim import OSS
+ImportError: cannot import name 'OSS' from partially initialized module 'fairscale.optim' (most likely due to a circular import) (/scratch/hpc72a03/shardscheduler/fairscale/fairscale/optim/__init__.py)
+Traceback (most recent call last):
+  File "test_fsdp_fairscale0.4.py", line 17, in <module>
+    from fairscale.optim.oss import OSS
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/optim/__init__.py", line 13, in <module>
+    from .oss import OSS
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/optim/oss.py", line 20, in <module>
+    from fairscale.nn.misc import ParamBucket
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/nn/__init__.py", line 9, in <module>
+    from .data_parallel import FullyShardedDataParallel, ShardedDataParallel
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/nn/data_parallel/__init__.py", line 9, in <module>
+    from .sharded_ddp import ShardedDataParallel
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/nn/data_parallel/sharded_ddp.py", line 25, in <module>
+    from fairscale.optim import OSS
+ImportError: cannot import name 'OSS' from partially initialized module 'fairscale.optim' (most likely due to a circular import) (/scratch/hpc72a03/shardscheduler/fairscale/fairscale/optim/__init__.py)
+Traceback (most recent call last):
+  File "test_fsdp_fairscale0.4.py", line 17, in <module>
+    from fairscale.optim.oss import OSS
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/optim/__init__.py", line 13, in <module>
+    from .oss import OSS
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/optim/oss.py", line 20, in <module>
+    from fairscale.nn.misc import ParamBucket
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/nn/__init__.py", line 9, in <module>
+    from .data_parallel import FullyShardedDataParallel, ShardedDataParallel
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/nn/data_parallel/__init__.py", line 9, in <module>
+    from .sharded_ddp import ShardedDataParallel
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/nn/data_parallel/sharded_ddp.py", line 25, in <module>
+    from fairscale.optim import OSS
+ImportError: cannot import name 'OSS' from partially initialized module 'fairscale.optim' (most likely due to a circular import) (/scratch/hpc72a03/shardscheduler/fairscale/fairscale/optim/__init__.py)
+ImportError: cannot import name 'OSS' from partially initialized module 'fairscale.optim' (most likely due to a circular import) (/scratch/hpc72a03/shardscheduler/fairscale/fairscale/optim/__init__.py)
+Traceback (most recent call last):
+  File "test_fsdp_fairscale0.4.py", line 17, in <module>
+    from fairscale.optim.oss import OSS
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/optim/__init__.py", line 13, in <module>
+    from .oss import OSS
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/optim/oss.py", line 20, in <module>
+    from fairscale.nn.misc import ParamBucket
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/nn/__init__.py", line 9, in <module>
+    from .data_parallel import FullyShardedDataParallel, ShardedDataParallel
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/nn/data_parallel/__init__.py", line 9, in <module>
+    from .sharded_ddp import ShardedDataParallel
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/nn/data_parallel/sharded_ddp.py", line 25, in <module>
+    from fairscale.optim import OSS
+ImportError: cannot import name 'OSS' from partially initialized module 'fairscale.optim' (most likely due to a circular import) (/scratch/hpc72a03/shardscheduler/fairscale/fairscale/optim/__init__.py)
+Traceback (most recent call last):
+  File "test_fsdp_fairscale0.4.py", line 17, in <module>
+    from fairscale.optim.oss import OSS
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/optim/__init__.py", line 13, in <module>
+    from .oss import OSS
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/optim/oss.py", line 20, in <module>
+    from fairscale.nn.misc import ParamBucket
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/nn/__init__.py", line 9, in <module>
+    from .data_parallel import FullyShardedDataParallel, ShardedDataParallel
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/nn/data_parallel/__init__.py", line 9, in <module>
+    from .sharded_ddp import ShardedDataParallel
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/nn/data_parallel/sharded_ddp.py", line 25, in <module>
+    from fairscale.optim import OSS
+ImportError: cannot import name 'OSS' from partially initialized module 'fairscale.optim' (most likely due to a circular import) (/scratch/hpc72a03/shardscheduler/fairscale/fairscale/optim/__init__.py)
+Traceback (most recent call last):
+  File "test_fsdp_fairscale0.4.py", line 17, in <module>
+    from fairscale.optim.oss import OSS
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/optim/__init__.py", line 13, in <module>
+    from .oss import OSS
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/optim/oss.py", line 20, in <module>
+    from fairscale.nn.misc import ParamBucket
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/nn/__init__.py", line 9, in <module>
+    from .data_parallel import FullyShardedDataParallel, ShardedDataParallel
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/nn/data_parallel/__init__.py", line 9, in <module>
+    from .sharded_ddp import ShardedDataParallel
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/nn/data_parallel/sharded_ddp.py", line 25, in <module>
+    from fairscale.optim import OSS
+ImportError: cannot import name 'OSS' from partially initialized module 'fairscale.optim' (most likely due to a circular import) (/scratch/hpc72a03/shardscheduler/fairscale/fairscale/optim/__init__.py)
+srun: error: gpu12: tasks 1-3: Exited with exit code 1
+srun: error: gpu13: tasks 4-7: Exited with exit code 1
+srun: error: gpu12: task 0: Exited with exit code 1

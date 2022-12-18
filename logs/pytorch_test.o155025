@@ -1,0 +1,426 @@
+==========================================
+SLURM_JOB_ID = 155025
+SLURM_NODELIST = gpu[12-13]
+==========================================
+NODELIST=gpu[12-13]
+MASTER_ADDR=gpu12
+      Id  ...                                               Text
+0      1  ...  I have bought several of the Vitality canned d...
+1      2  ...  Product arrived labeled as Jumbo Salted Peanut...
+2      3  ...  This is a confection that has been around a fe...
+3      4  ...  If you are looking for the secret ingredient i...
+4      5  ...  Great taffy at a great price.  There was a wid...
+..   ...  ...                                                ...
+595  596  ...  This is the second purchase of Kettle Potato C...
+596  597  ...  How to achieve potato chip nirvana? It's simpl...
+597  598  ...  I found these more than 10 years ago in a heal...
+598  599  ...  But you will enjoy ever step. I gained 5 lbs w...
+599  600  ...  These are the best spicy chips I have ever had...
+
+[600 rows x 10 columns]
+600
+      Id  ...                                               Text
+0      1  ...  I have bought several of the Vitality canned d...
+1      2  ...  Product arrived labeled as Jumbo Salted Peanut...
+2      3  ...  This is a confection that has been around a fe...
+3      4  ...  If you are looking for the secret ingredient i...
+4      5  ...  Great taffy at a great price.  There was a wid...
+..   ...  ...                                                ...
+595  596  ...  This is the second purchase of Kettle Potato C...
+596  597  ...  How to achieve potato chip nirvana? It's simpl...
+597  598  ...  I found these more than 10 years ago in a heal...
+598  599  ...  But you will enjoy ever step. I gained 5 lbs w...
+599  600  ...  These are the best spicy chips I have ever had...
+
+[600 rows x 10 columns]
+600
+      Id  ...                                               Text
+0      1  ...  I have bought several of the Vitality canned d...
+1      2  ...  Product arrived labeled as Jumbo Salted Peanut...
+2      3  ...  This is a confection that has been around a fe...
+3      4  ...  If you are looking for the secret ingredient i...
+4      5  ...  Great taffy at a great price.  There was a wid...
+..   ...  ...                                                ...
+595  596  ...  This is the second purchase of Kettle Potato C...
+596  597  ...  How to achieve potato chip nirvana? It's simpl...
+597  598  ...  I found these more than 10 years ago in a heal...
+598  599  ...  But you will enjoy ever step. I gained 5 lbs w...
+599  600  ...  These are the best spicy chips I have ever had...
+
+[600 rows x 10 columns]
+600
+      Id  ...                                               Text
+0      1  ...  I have bought several of the Vitality canned d...
+1      2  ...  Product arrived labeled as Jumbo Salted Peanut...
+2      3  ...  This is a confection that has been around a fe...
+3      4  ...  If you are looking for the secret ingredient i...
+4      5  ...  Great taffy at a great price.  There was a wid...
+..   ...  ...                                                ...
+595  596  ...  This is the second purchase of Kettle Potato C...
+596  597  ...  How to achieve potato chip nirvana? It's simpl...
+597  598  ...  I found these more than 10 years ago in a heal...
+598  599  ...  But you will enjoy ever step. I gained 5 lbs w...
+599  600  ...  These are the best spicy chips I have ever had...
+
+[600 rows x 10 columns]
+600
+      Id  ...                                               Text
+0      1  ...  I have bought several of the Vitality canned d...
+1      2  ...  Product arrived labeled as Jumbo Salted Peanut...
+2      3  ...  This is a confection that has been around a fe...
+3      4  ...  If you are looking for the secret ingredient i...
+4      5  ...  Great taffy at a great price.  There was a wid...
+..   ...  ...                                                ...
+595  596  ...  This is the second purchase of Kettle Potato C...
+596  597  ...  How to achieve potato chip nirvana? It's simpl...
+597  598  ...  I found these more than 10 years ago in a heal...
+598  599  ...  But you will enjoy ever step. I gained 5 lbs w...
+599  600  ...  These are the best spicy chips I have ever had...
+
+[600 rows x 10 columns]
+600
+      Id  ...                                               Text
+0      1  ...  I have bought several of the Vitality canned d...
+1      2  ...  Product arrived labeled as Jumbo Salted Peanut...
+2      3  ...  This is a confection that has been around a fe...
+3      4  ...  If you are looking for the secret ingredient i...
+4      5  ...  Great taffy at a great price.  There was a wid...
+..   ...  ...                                                ...
+595  596  ...  This is the second purchase of Kettle Potato C...
+596  597  ...  How to achieve potato chip nirvana? It's simpl...
+597  598  ...  I found these more than 10 years ago in a heal...
+598  599  ...  But you will enjoy ever step. I gained 5 lbs w...
+599  600  ...  These are the best spicy chips I have ever had...
+
+[600 rows x 10 columns]
+600
+      Id  ...                                               Text
+0      1  ...  I have bought several of the Vitality canned d...
+1      2  ...  Product arrived labeled as Jumbo Salted Peanut...
+2      3  ...  This is a confection that has been around a fe...
+3      4  ...  If you are looking for the secret ingredient i...
+4      5  ...  Great taffy at a great price.  There was a wid...
+..   ...  ...                                                ...
+595  596  ...  This is the second purchase of Kettle Potato C...
+596  597  ...  How to achieve potato chip nirvana? It's simpl...
+597  598  ...  I found these more than 10 years ago in a heal...
+598  599  ...  But you will enjoy ever step. I gained 5 lbs w...
+599  600  ...  These are the best spicy chips I have ever had...
+
+[600 rows x 10 columns]
+600
+      Id  ...                                               Text
+0      1  ...  I have bought several of the Vitality canned d...
+1      2  ...  Product arrived labeled as Jumbo Salted Peanut...
+2      3  ...  This is a confection that has been around a fe...
+3      4  ...  If you are looking for the secret ingredient i...
+4      5  ...  Great taffy at a great price.  There was a wid...
+..   ...  ...                                                ...
+595  596  ...  This is the second purchase of Kettle Potato C...
+596  597  ...  How to achieve potato chip nirvana? It's simpl...
+597  598  ...  I found these more than 10 years ago in a heal...
+598  599  ...  But you will enjoy ever step. I gained 5 lbs w...
+599  600  ...  These are the best spicy chips I have ever had...
+
+[600 rows x 10 columns]
+600
+tensor(6.8441, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(9.0268, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(2.3651, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(22.5398, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(1.7008, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(10.1433, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(3.2212, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(1.5234, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(1.6490, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(3.6362, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(1.4553, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(1.6587, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.8932, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.5108, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(1.9467, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.9234, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(2.0922, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(1.4793, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.7975, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(2.1992, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(2.4542, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.4906, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.5782, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.4439, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.4957, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.5932, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(1.7621, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.8247, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.4013, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3234, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3471, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(1.2885, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.5286, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(1.4461, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3867, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(1.2266, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(2.3209, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.2228, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.8293, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3167, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3289, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(2.9012, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.6456, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.6519, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.9863, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3227, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(1.1374, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.4487, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(1.3328, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.6574, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3418, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.4727, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.4286, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.5288, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(1.1625, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.4334, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(2.1540, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3832, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.6957, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(2.2084, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.8637, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(1.2079, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.8204, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.5205, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.4652, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.4338, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.5768, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.4334, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.5091, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.6570, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.5253, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.6932, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.8484, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(1.8830, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.4131, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.4564, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3907, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.7082, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3324, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.8374, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.2794, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.5988, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.6507, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.5692, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.4594, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.5430, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(1.3630, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.8378, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.5137, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.5496, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3938, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(1.6498, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.2192, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(2.6812, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.7012, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3945, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.8131, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.4807, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.4580, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.2648, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.6107, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(1.0447, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.5398, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.5038, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(1.6794, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(1.7886, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(1.9958, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3658, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(1.3670, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(1.2902, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(1.2441, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.4556, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.5240, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.4138, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3255, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.9349, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3563, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(1.0112, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(1.8668, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.5662, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.7420, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.2819, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.7637, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.7020, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.2570, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.7489, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.7408, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(1.3089, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.7756, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.8432, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3072, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(1.0661, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.7006, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.7196, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.4666, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.4104, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3243, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.6353, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.5155, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.4249, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3483, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(1.1685, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.5856, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(1.1211, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.6689, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.6874, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.9906, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.6314, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.5704, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.8946, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3331, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.5093, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.7643, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3839, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.6774, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.5353, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3887, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.5459, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.8811, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.2497, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.2102, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.1936, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.1727, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.5216, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(1.0689, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.2271, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.5589, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3873, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3228, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.4386, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.5622, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3267, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.5645, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3875, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3554, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3015, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.5972, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.2274, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.6546, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.5501, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.4560, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.5701, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.2691, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.4115, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.8580, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(1.6146, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.2447, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3652, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.6359, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3207, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3220, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(1.1229, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.4702, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.7360, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3607, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3030, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.1739, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.2922, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3109, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(1.0001, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3052, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.4266, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.4054, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.7484, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.4371, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.5608, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.2787, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.2958, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.8784, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.2700, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3712, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.2654, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.6706, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.4244, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.4959, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.9300, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.4446, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3358, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.4028, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.6740, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.6606, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.5759, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.1944, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.8171, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.2337, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(1.0978, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.1037, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.6634, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.2477, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.4184, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.5997, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.5510, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3547, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(2.1334, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.2948, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3644, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.4056, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.2831, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.1992, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.2596, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.2589, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.1923, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3430, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.1563, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.7644, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3388, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3513, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3924, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.7097, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3951, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.1929, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3627, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3546, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.7421, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.6998, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.4545, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.5898, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.5579, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3466, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.1399, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3968, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(1.2561, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.5414, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.5639, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(2.1151, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.6479, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.1810, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.5890, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.4180, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(2.4140, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.4369, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3917, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.4099, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.6859, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.1469, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.6833, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.8146, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.1978, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.2685, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.2832, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(1.0241, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.8754, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3852, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.7134, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.4129, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(1.2315, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.9767, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.7798, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.5974, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.1146, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.2243, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.2263, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3424, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.5377, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.5305, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.7069, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.8088, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.6002, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.3360, device='cuda:0', grad_fn=<NllLossBackward0>)
+tensor(0.5791, device='cuda:0', grad_fn=<NllLossBackward0>)

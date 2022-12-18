@@ -1,0 +1,182 @@
+[00;33m 	'cuda/11.3' does not supports the {CUDA_MPI}. [0m
+[00;34m 	{CUDA_MPI} is only supported in cuda 11.4 version. [0m
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+  0%|          | 0/38 [00:00<?, ?it/s]  0%|          | 0/38 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 492, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 356, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1046, in forward
+    transformer_outputs = self.transformer(
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 833, in forward
+    position_embeds = self.wpe(position_ids)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 713, in forward
+    self.communicate_forward()
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 676, in communicate_forward
+    for comm in task.comms : 
+AttributeError: 'str' object has no attribute 'comms'
+  0%|          | 0/38 [00:00<?, ?it/s]  0%|          | 0/38 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 492, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 356, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1046, in forward
+    transformer_outputs = self.transformer(
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 833, in forward
+    position_embeds = self.wpe(position_ids)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 713, in forward
+    self.communicate_forward()
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 676, in communicate_forward
+    for comm in task.comms : 
+AttributeError: 'str' object has no attribute 'comms'
+  0%|          | 0/38 [00:00<?, ?it/s]  0%|          | 0/38 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 492, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 356, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1046, in forward
+    transformer_outputs = self.transformer(
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 833, in forward
+    position_embeds = self.wpe(position_ids)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 713, in forward
+    self.communicate_forward()
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 676, in communicate_forward
+    for comm in task.comms : 
+AttributeError: 'str' object has no attribute 'comms'
+  0%|          | 0/38 [00:00<?, ?it/s]  0%|          | 0/38 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 492, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 356, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1046, in forward
+    transformer_outputs = self.transformer(
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 833, in forward
+    position_embeds = self.wpe(position_ids)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 713, in forward
+    self.communicate_forward()
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 676, in communicate_forward
+    for comm in task.comms : 
+AttributeError: 'str' object has no attribute 'comms'
+  0%|          | 0/38 [00:00<?, ?it/s]  0%|          | 0/38 [00:00<?, ?it/s]
+  0%|          | 0/38 [00:00<?, ?it/s]  0%|          | 0/38 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 492, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 356, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1046, in forward
+    transformer_outputs = self.transformer(
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 833, in forward
+    position_embeds = self.wpe(position_ids)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 713, in forward
+    self.communicate_forward()
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 676, in communicate_forward
+    for comm in task.comms : 
+AttributeError: 'str' object has no attribute 'comms'
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 492, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 356, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1046, in forward
+    transformer_outputs = self.transformer(
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 833, in forward
+    position_embeds = self.wpe(position_ids)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 713, in forward
+    self.communicate_forward()
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 676, in communicate_forward
+    for comm in task.comms : 
+AttributeError: 'str' object has no attribute 'comms'
+  0%|          | 0/38 [00:00<?, ?it/s]  0%|          | 0/38 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 492, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 356, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1046, in forward
+    transformer_outputs = self.transformer(
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 833, in forward
+    position_embeds = self.wpe(position_ids)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 713, in forward
+    self.communicate_forward()
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 676, in communicate_forward
+    for comm in task.comms : 
+AttributeError: 'str' object has no attribute 'comms'
+  0%|          | 0/38 [00:00<?, ?it/s]  0%|          | 0/38 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 492, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 356, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1046, in forward
+    transformer_outputs = self.transformer(
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 833, in forward
+    position_embeds = self.wpe(position_ids)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 713, in forward
+    self.communicate_forward()
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 676, in communicate_forward
+    for comm in task.comms : 
+AttributeError: 'str' object has no attribute 'comms'
+srun: error: gpu16: tasks 1-2: Exited with exit code 1
+srun: error: gpu17: tasks 4-6: Exited with exit code 1
+srun: error: gpu17: task 7: Exited with exit code 1
+srun: error: gpu16: tasks 0,3: Exited with exit code 1

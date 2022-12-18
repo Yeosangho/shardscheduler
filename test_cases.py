@@ -647,7 +647,7 @@ def make_schedule_sdp(params_list, scheduled_comms_init , scheduled_comms, locks
 
 
 
-def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms, locks, adaptive_sdp_modules, json_path='schedule.json'):
+def make_schedule_from_json(params_list, params_name_list, scheduled_comms_init , scheduled_comms, locks, adaptive_sdp_modules, json_path='schedule.json'):
 	fsdp_num = adaptive_sdp_modules['FSDP']
 	dp_num = adaptive_sdp_modules['DP']
 	sdp_num = adaptive_sdp_modules['SDP']	
@@ -695,11 +695,11 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 
 	#현재는 하나의 레이어에서 이루어지는 동일한 유형의 통신은 모두 병합하도록 정의되어있음 -> 이 부분은 버퍼사이즈에 따라 분할되도록  수정 필요 .
 	task_dict = {}
-	task_dict['INIT'] = []
-	task_dict['BWTOFW'] = []
-	task_dict['FW'] = []
-	task_dict['FWTOBW'] = []
-	task_dict['BW'] = []
+	task_dict['INIT'] = {}
+	task_dict['BWTOFW'] = {}
+	task_dict['FW'] = {}
+	task_dict['FWTOBW'] = {}
+	task_dict['BW'] = {}
 	comps_by_type['BW'] = list(reversed(comps_by_type['BW']))
 
 
@@ -741,7 +741,7 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 					comms.append(comm_merge)
 
 	task = Task(None, 'BWTOFW', comms, None)	
-	task_dict['INIT'].append(task)
+	task_dict['INIT']= task
 
 
 
@@ -757,6 +757,7 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 	for comp_type in comp_types : 
 		for comp in comps_by_type[comp_type]:
 			comp_param = params_list[int(comp['idx'])] if 'idx' in comp else None 
+			comp_param_name = params_name_list[int(comp['idx'])] if 'idx' in comp else None  
 			comms = []
 			for comm_op in comm_ops:
 				target_comm_params = []
@@ -787,8 +788,12 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 					comms.append(comm_merge)
 			if(len(comms) > 0):
 				idx = comp['idx'] if 'idx' in comp else None
-				task = Task(comp_param, comp_type, comms, idx)	
-				task_dict[comp_type].append(task)
+				task = Task(comp_param, comp_type, comms, idx)
+				if comp_param is not None :
+					task_dict[comp_type][comp_param_name] = task
+				else:
+					task_dict[comp_type] = task
+
 
 	comm_ratio = {}
 	comm_ratio['ag_fsdp'] = {}
@@ -818,8 +823,8 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 
 	for comp_type in comp_types : 
 		for comp in comps_by_type[comp_type]:
-			comp_param = params_list[int(comp['idx'])] if 'idx' in comp else None 
-#
+			comp_param = params_list[int(comp['idx'])] if 'idx' in comp else None
+			comp_param_name = params_name_list[int(comp['idx'])] if 'idx' in comp else None 
 			comms = []
 			for comm_op in comm_ops:
 				target_comm_params = []
@@ -860,51 +865,59 @@ def make_schedule_from_json(params_list, scheduled_comms_init , scheduled_comms,
 				if(exist_task != None):
 					exist_task.comms.extend(comms)
 				else:
-					task = Task(comp_param, comp_type, comms, idx)	
-					task_dict[comp_type].append(task)					
+					task = Task(comp_param, comp_type, comms, idx)
+					if comp_param is not None :
+						task_dict[comp_type][comp_param_name] = task
+					else:
+						task_dict[comp_type] = task
 
 	#Sorting scheudle BWTOFW -> FW -> FWTOBW -> BW
 	#find BWTOFW
 
-	fw_ops = sorted(task_dict['FW'], key=lambda x: x.idx)
+	fw_ops = task_dict['FW']
+	bw_ops = task_dict['BW']
+	#fw_ops = sorted(task_dict['FW'], key=lambda x: x.idx)
 
-	bw_ops = sorted(task_dict['BW'], key=lambda x: x.idx, reverse=True)
+	#bw_ops = sorted(task_dict['BW'], key=lambda x: x.idx, reverse=True)
 
 	#scheduled_comms.append(task_fwtobw)
 
-	scheduled_comms.extend(task_dict['FWTOBW'])
-	scheduled_comms.extend(bw_ops)
+	scheduled_comms['FWTOBW'] = task_dict['FWTOBW']
+	scheduled_comms['BW'] = bw_ops
 
-	scheduled_comms.extend(task_dict['BWTOFW'])
-	scheduled_comms.extend(fw_ops)
+	scheduled_comms['BWTOFW'] = task_dict['BWTOFW']
+	scheduled_comms['FW'] = fw_ops
 
 
 	if(sdp_num + fsdp_num > 0):
-		scheduled_comms_init.extend(task_dict['INIT'])
-		scheduled_comms_init.extend(fw_ops)
+		scheduled_comms_init['FWTOBW'] = task_dict['INIT']
+		scheduled_comms_init['FW'] = fw_ops
 	else:
-		scheduled_comms_init = scheduled_comms
+		scheduled_comms_init['FWTOBW'] = scheduled_comms['FWTOBW']
+		scheduled_comms_init['BW'] = scheduled_comms['BW']
+		scheduled_comms_init['FW'] = scheduled_comms['FW']
+		scheduled_comms_init['BWTOFW'] = scheduled_comms['BWTOFW']
 				
 	for key in comm_ratio['ag_fsdp']:
 		if(comm_ratio['ag_fsdp'][key] != 1.0):
 			print(comm_ratio['ag_fsdp'][key])
+
 	#os._exit()
 
-	for comm in scheduled_comms:
-		print(comm)
+
 	#print(task_init_list)
 	#print(task_dict['BWTOFW'])
 	#import os
 	#os._exit(0)
-	for task in scheduled_comms :
-		for comm in task.comms :
-			for param_wrap in comm.params : 
-				param = param_wrap.param				
-				if(comm.commType == 'AG'):
-					if(locks[comm.commType][param].locked() == False):
-						locks[comm.commType][param].acquire()			
-
-	locks['FWTOBW'].acquire()
+	#for task in scheduled_comms :
+	#	for comm in task.comms :
+	#		for param_wrap in comm.params : 
+	#			param = param_wrap.param				
+	#			if(comm.commType == 'AG'):
+	#				if(locks[comm.commType][param].locked() == False):
+	#					locks[comm.commType][param].acquire()			
+#
+	#locks['FWTOBW'].acquire()
 
 
 
@@ -1029,16 +1042,16 @@ def make_schedules_adaptive_sdp_auto(params_list, scheduled_comms_init , schedul
 			idx += 1  
 
 
-		for task in scheduled_comms :
-			for comm in task.comms :
-				for param_wrap in comm.params : 
-					param = param_wrap.param
-					if(comm.commType == 'AG'):
-						if(locks[comm.commType][param].locked() == False):
-							locks[comm.commType][param].acquire()
-		if(dp_num > 0):
-			locks['BWTOFW'].acquire()
-		locks['FWTOBW'].acquire()
+		#for task in scheduled_comms :
+		#	for comm in task.comms :
+		#		for param_wrap in comm.params : 
+		#			param = param_wrap.param
+		#			if(comm.commType == 'AG'):
+		#				if(locks[comm.commType][param].locked() == False):
+		#					locks[comm.commType][param].acquire()
+		#if(dp_num > 0):
+		#	locks['BWTOFW'].acquire()
+		#locks['FWTOBW'].acquire()
 
 
 def make_schedules_adaptive_sdp(params_list, scheduled_comms_init , scheduled_comms, locks):

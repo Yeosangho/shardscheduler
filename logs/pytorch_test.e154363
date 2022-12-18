@@ -1,0 +1,48 @@
+[00;33m 	'cuda/11.3' does not supports the {CUDA_MPI}. [0m
+[00;34m 	{CUDA_MPI} is only supported in cuda 11.4 version. [0m
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 477, in <module>
+    trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread) 
+  File "main_gpt2_with_health_checker.py", line 306, in __init__
+    make_schedule_from_json(params_list, self._schedule_comm_init, self._scheduled_comms, self._locks, self.adaptive_sdp_modules)
+  File "/scratch/hpc72a03/shardscheduler/test_cases.py", line 791, in make_schedule_from_json
+    task_dict[comp_type][comp_param].append(task)
+KeyError: Parameter containing:
+tensor([ 1.3971,  1.3750,  1.8870,  ..., -0.0101, -0.0255,  0.0345],
+       device='cuda:2', requires_grad=True)
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 477, in <module>
+    trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread) 
+  File "main_gpt2_with_health_checker.py", line 306, in __init__
+    make_schedule_from_json(params_list, self._schedule_comm_init, self._scheduled_comms, self._locks, self.adaptive_sdp_modules)
+  File "/scratch/hpc72a03/shardscheduler/test_cases.py", line 791, in make_schedule_from_json
+    task_dict[comp_type][comp_param].append(task)
+KeyError: Parameter containing:
+tensor([ 1.3971,  1.3750,  1.8870,  ..., -0.0101, -0.0255,  0.0345],
+       device='cuda:1', requires_grad=True)
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 477, in <module>
+    trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread) 
+  File "main_gpt2_with_health_checker.py", line 306, in __init__
+    make_schedule_from_json(params_list, self._schedule_comm_init, self._scheduled_comms, self._locks, self.adaptive_sdp_modules)
+  File "/scratch/hpc72a03/shardscheduler/test_cases.py", line 791, in make_schedule_from_json
+    task_dict[comp_type][comp_param].append(task)
+KeyError: Parameter containing:
+tensor([ 1.3971,  1.3750,  1.8870,  ..., -0.0101, -0.0255,  0.0345],
+       device='cuda:0', requires_grad=True)
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 477, in <module>
+    trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread) 
+  File "main_gpt2_with_health_checker.py", line 306, in __init__
+    make_schedule_from_json(params_list, self._schedule_comm_init, self._scheduled_comms, self._locks, self.adaptive_sdp_modules)
+  File "/scratch/hpc72a03/shardscheduler/test_cases.py", line 791, in make_schedule_from_json
+    task_dict[comp_type][comp_param].append(task)
+KeyError: Parameter containing:
+tensor([ 1.3971,  1.3750,  1.8870,  ..., -0.0101, -0.0255,  0.0345],
+       device='cuda:3', requires_grad=True)
+srun: error: gpu10: tasks 0-1: Exited with exit code 1
+srun: error: gpu10: tasks 2-3: Exited with exit code 1

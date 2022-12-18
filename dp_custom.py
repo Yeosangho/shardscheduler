@@ -265,10 +265,25 @@ class DataParallel_Custom(nn.Module):
 
         memory_record=None,
 
-        model_parameter_names=None
+        model_parameter_names=None,
+
+        comm_stream=None,
+        optim_dict=None,
+        init_comm_schedule=None,
+        comm_schedule=None,
+        param_name_dict=None,
+        bucketer=None
     ):
         init_start = time.time()
         super().__init__()
+        self.scheduled_task_per_param = {}
+        self.bucketer=bucketer
+        self.param_name_dict = param_name_dict
+
+        self.init_comm_schedule = init_comm_schedule
+        self.comm_schedule = comm_schedule
+        self.comm_stream = comm_stream
+        self.optimizer = optim_dict
         self.process_group = process_group or get_process_group_cached()
         self.rank = self.process_group.rank()
         self.world_size = self.process_group.size()
@@ -639,59 +654,98 @@ class DataParallel_Custom(nn.Module):
                 condition.notify_all()
 
 
+
+    def communicate_forward(self):
+        for p in self.params :
+            
+            task = self.scheduled_task_per_param.get(p, None)
+            if task is None:
+                param_name = self.param_name_dict[p]
+                task = self.search_scheduled_comm(self.init_comm_schedule, param_name, 'FW')
+                self.scheduled_task_per_param[p] = task
+
+                print("########### task is not assigned to module############")
+                print(f"scheduled task in {p} :: {self.scheduled_task_per_param[p]}")
+
+            elif task is not None:
+                print("########### task is assigned to module############")
+                if task != "No scheduled" :
+                    param_name = self.param_name_dict[task.comms[0].params[0].param]
+                    print(f"param variable tracking model? rank :: {self.rank} param name ::  {param_name} value:: {torch.sum(task.comms[0].params[0].param.data)}")
+            if(type(task) != str):
+                for comm in task.comms : 
+                    self.do_communication(comm)
+
+
+    def do_communication(self, comm):
+        if comm.commType == "AG":
+            None
+        elif comm.commType == "AR":
+            for idx, partiable_param in enumerate(comm.params): 
+                self.do_allreduce_async(partiable_param)
+            self.bucketer.flush()
+
+        elif comm.commType == "RS":
+            None 
+
+    def do_allreduce_async(self, partiable_param):
+        print("do all reduce async")
+        p = partiable_param.param
+        #print("#####################")
+        #print(p.shape)
+        #print(partiable_param.start_ratio)
+        #print(partiable_param.end_ratio)
+        if p.grad is not None:
+            grad = p.grad.data        
+            param_name = self.param_name_dict[p]
+            org_size = p._orig_size.numel()
+            start_idx = int(org_size * partiable_param.start_ratio)
+            end_idx = int(org_size * partiable_param.end_ratio)                            
+        
+            self.bucketer.allreduce_async(grad=grad,
+                                                param_name=param_name,
+                                                param=p,
+                                                start_idx=start_idx,
+                                                end_idx=end_idx,
+                                                org_size=org_size, 
+                                                shard_size=-1, 
+                                                commType='AR')
+
+
     def forward(self, *args: Any, **kwargs: Any) -> torch.Tensor:
         self._lazy_init()
-
-        # Start of a forward pass.
-        self.training_state = TrainingState.FORWARD
-        #with open("foo.txt", "a") as f:
-        #    f.write("Life is too short, you need python")
-        # For root and mixed precision, we convert the input to FP16 (no_grad is needed for
-        # the conversion).
-        if self._is_root and self.mixed_precision:
-            args, kwargs = cast_floats_to_right_precision(True, True, *args, **kwargs)
-
-        # If enabled, convert the input to FP32 if we are in full precision.
-        # no_grad is not used because the input might be for a non-root instance,
-        # which mean autograd needs to go through the conversion.
-        if self.force_input_to_fp32 and not self.mixed_precision:
-            args, kwargs = cast_floats_to_right_precision(False, False, *args, **kwargs)
-#
-        # All-gather full parameters. This will also transfer FP32 parameters to
-        # ``self.compute_dtype`` (e.g., FP16 if *mixed_precision* is ``True``).
+        self.communicate_forward()
         self._rebuild_full_params()
-        for p in self.params : 
-            #print(f"before rebuild full params {p._full_param_padded.shape}")
-            #if(p.data_ptr() == self.profile_layer[0].data_ptr()):
-            #print(f"before unlock :: forward shape : {p.shape} sum : {p.sum()}")
-            self._wait_unlock(self._locks['AR'][p], self._conditions['AR'][p])
-            self._release_lock(self._locks['FW'][p], self._conditions['FW'][p])
-            #if(p.data_ptr() == self.profile_layer[0].data_ptr()):
-            #print(f"after unlock :: forward shape : {p.shape} sum : {p.sum()}")     
-        # Register backward hooks to reshard params and reduce-scatter grads.
-        # These need to be re-registered every forward pass.
-        #self._rebuild_full_params()
-
-        self._register_post_backward_hooks()
+        #self._register_post_backward_hooks()
         outputs = self.module(*args, **kwargs)
-        #print(torch.cuda.memory_allocated() / 1024 /1024) 
-        memory_allocated = torch.cuda.memory_allocated() / 1024 /1024
-        #print(f"after backward {torch.cuda.memory_allocated() / 1024 /1024}") 
-        self._memory_record.append(memory_allocated)            
-        self._use_fp32_param_shard()
+       
+        #self._use_fp32_param_shard()
         outputs = self._register_pre_backward_hooks(outputs)
         # Done with a forward pass.
         #print("11111")
-        self.training_state = TrainingState.IDLE
-        #if self.clear_autocast_cache:
-        for p in self.params : 
-            self._acquire_lock(self._locks['AR'][p])    
+ 
 
 
         #torch.clear_autocast_cache()
         #torch.cuda.empty_cache()
         return outputs
-        
+    def search_scheduled_comm(self, schedule, param_name, comp_type: str):
+        return schedule[comp_type].get(param_name, "No scheduled")
+
+    def communicate_backward(self):
+        for p in self.params :
+            print(self.comm_schedule)
+
+            task = self.search_scheduled_comm(self.init_comm_schedule, p, 'BW')
+            if task is not None:
+                assigned_comms = task
+                print(f"BW allgather init_scheudle comm {assigned_comms}")
+
+            task = self.search_scheduled_comm(self.comm_schedule, p, 'BW')
+            if task is not None:    
+                assigned_comms = task
+                print(f"BW allgather scheudle comm {assigned_comms}")        
+
     def _register_pre_backward_hooks(self, outputs: Any) -> Any:
         """Register pre-backward hook to run before the wrapped module's
         backward. Hooks should be attached to all outputs from the forward.
@@ -711,30 +765,9 @@ class DataParallel_Custom(nn.Module):
         def _pre_backward_hook(*unused: Any) -> None:
             
 
-            # try to queue final backward callback only once for root, so
-            # that final backward callback is attached to the outer most
-            # backward graph task and called after all the backward
-            # calls are completed.
-            #print("_is_root")
-            #if self._is_root:
-                #print("_pre_backward_hook")
-                #self._queue_wait_for_post_backward()
-            for p in self.params : 
-                self._release_lock(self._locks['BW'][p], self._conditions['BW'][p])            
-            #self._use_full_params()
-
-            # Only run the ``self._prep_grads_for_backward`` once per iteration (i.e. in case
-            # it is multiple outputs or multiple forward passes).
-
-            # Transition to BACKWARD_PRE state if currently IDLE. We can transition from BACKWARD_POST
-            # to IDLE when FSDP is within activation checkpointing and called multiple times, due to the
-            # extra forward pass for re-computation.
             if not self._pre_backward_hook_has_run:
                 self._pre_backward_hook_has_run = True
-
-            if self.training_state == TrainingState.IDLE:
-                self.training_state = TrainingState.BACKWARD_PRE
-
+            #self.communicate_backward()
 
                      
 
@@ -836,6 +869,11 @@ class DataParallel_Custom(nn.Module):
         #print(torch.cuda.memory_allocated() / 1024 /1024) 
         memory_allocated = torch.cuda.memory_allocated()/ 1024 /1024
         #print(f"after backward {torch.cuda.memory_allocated() / 1024 /1024}") 
+        print("grad update test")
+        param_name = self.param_name_dict[param]
+        print(f"BEFORE grad updated rank {self.rank} param name :: {param_name} param sum : {torch.sum(param.data)}")
+        self.optimizer["optimizer"]._adam(param)
+        print(f"AFTER grad updated rank {self.rank} param name :: {param_name} param sum : {torch.sum(param.data)}")
         self._memory_record.append(memory_allocated)        
         if param.grad is None:
             return

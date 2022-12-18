@@ -1,0 +1,54 @@
+[00;33m 	'cuda/11.3' does not supports the {CUDA_MPI}. [0m
+[00;34m 	{CUDA_MPI} is only supported in cuda 11.4 version. [0m
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 490, in <module>
+    trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread) 
+  File "main_gpt2_with_health_checker.py", line 204, in __init__
+    self.bucketer = ARBucketer(100*1024*1024 , 4)
+TypeError: __init__() missing 1 required positional argument: 'optimizer'
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 490, in <module>
+    trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread) 
+  File "main_gpt2_with_health_checker.py", line 204, in __init__
+    self.bucketer = ARBucketer(100*1024*1024 , 4)
+TypeError: __init__() missing 1 required positional argument: 'optimizer'
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 490, in <module>
+    trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread) 
+  File "main_gpt2_with_health_checker.py", line 204, in __init__
+    self.bucketer = ARBucketer(100*1024*1024 , 4)
+TypeError: __init__() missing 1 required positional argument: 'optimizer'
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 490, in <module>
+    trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread) 
+  File "main_gpt2_with_health_checker.py", line 204, in __init__
+    self.bucketer = ARBucketer(100*1024*1024 , 4)
+TypeError: __init__() missing 1 required positional argument: 'optimizer'
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 490, in <module>
+    trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread) 
+  File "main_gpt2_with_health_checker.py", line 204, in __init__
+    self.bucketer = ARBucketer(100*1024*1024 , 4)
+TypeError: __init__() missing 1 required positional argument: 'optimizer'
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 490, in <module>
+    trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread) 
+  File "main_gpt2_with_health_checker.py", line 204, in __init__
+    self.bucketer = ARBucketer(100*1024*1024 , 4)
+TypeError: __init__() missing 1 required positional argument: 'optimizer'
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 490, in <module>
+    trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread) 
+  File "main_gpt2_with_health_checker.py", line 204, in __init__
+    self.bucketer = ARBucketer(100*1024*1024 , 4)
+TypeError: __init__() missing 1 required positional argument: 'optimizer'
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 490, in <module>
+    trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread) 
+  File "main_gpt2_with_health_checker.py", line 204, in __init__
+    self.bucketer = ARBucketer(100*1024*1024 , 4)
+TypeError: __init__() missing 1 required positional argument: 'optimizer'
+srun: error: gpu16: tasks 0-2: Exited with exit code 1
+srun: error: gpu17: tasks 4-6: Exited with exit code 1
+srun: error: gpu17: task 7: Exited with exit code 1
+srun: error: gpu16: task 3: Exited with exit code 1

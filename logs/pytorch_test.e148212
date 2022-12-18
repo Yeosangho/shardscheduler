@@ -1,0 +1,7 @@
+[00;33m 	'cuda/11.3' does not supports the {CUDA_MPI}. [0m
+[00;34m 	{CUDA_MPI} is only supported in cuda 11.4 version. [0m
+Traceback (most recent call last):
+  File "profile.py", line 75, in <module>
+    with open(f"net_bench_{tag_name}.csv", "w") as f:
+NameError: name 'tag_name' is not defined
+srun: error: gpu21: task 0: Exited with exit code 1

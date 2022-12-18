@@ -1,0 +1,151 @@
+[00;33m 	'cuda/11.3' does not supports the {CUDA_MPI}. [0m
+[00;34m 	{CUDA_MPI} is only supported in cuda 11.4 version. [0m
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+  0%|          | 0/300 [00:00<?, ?it/s]  0%|          | 0/300 [00:01<?, ?it/s]
+  0%|          | 0/300 [00:00<?, ?it/s]  0%|          | 0/300 [00:02<?, ?it/s]
+  0%|          | 0/300 [00:00<?, ?it/s]  0%|          | 0/300 [00:00<?, ?it/s]
+  0%|          | 0/300 [00:00<?, ?it/s]  0%|          | 0/300 [00:01<?, ?it/s]
+Traceback (most recent call last):
+  File "test_fsdp_fairscale0.4.py", line 97, in <module>
+    output = sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/fairscale/nn/data_parallel/fully_sharded_data_parallel.py", line 1141, in forward
+    outputs = self.module(*args, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/fairscale/nn/misc/flatten_params_wrapper.py", line 459, in forward
+    return self.module(*inputs, **kwinputs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1061, in forward
+    hidden_states = transformer_outputs[0]
+KeyError: 0
+Traceback (most recent call last):
+  File "test_fsdp_fairscale0.4.py", line 97, in <module>
+    output = sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/fairscale/nn/data_parallel/fully_sharded_data_parallel.py", line 1141, in forward
+    outputs = self.module(*args, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/fairscale/nn/misc/flatten_params_wrapper.py", line 459, in forward
+    return self.module(*inputs, **kwinputs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1061, in forward
+    hidden_states = transformer_outputs[0]
+KeyError: 0
+  0%|          | 0/300 [00:00<?, ?it/s]  0%|          | 0/300 [00:02<?, ?it/s]
+Traceback (most recent call last):
+  File "test_fsdp_fairscale0.4.py", line 97, in <module>
+    output = sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/fairscale/nn/data_parallel/fully_sharded_data_parallel.py", line 1141, in forward
+    outputs = self.module(*args, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/fairscale/nn/misc/flatten_params_wrapper.py", line 459, in forward
+    return self.module(*inputs, **kwinputs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1061, in forward
+    hidden_states = transformer_outputs[0]
+KeyError: 0
+  0%|          | 0/300 [00:00<?, ?it/s]  0%|          | 0/300 [00:00<?, ?it/s]
+  0%|          | 0/300 [00:00<?, ?it/s]  0%|          | 0/300 [00:01<?, ?it/s]
+  0%|          | 0/300 [00:00<?, ?it/s]  0%|          | 0/300 [00:01<?, ?it/s]
+Traceback (most recent call last):
+  File "test_fsdp_fairscale0.4.py", line 97, in <module>
+    output = sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/fairscale/nn/data_parallel/fully_sharded_data_parallel.py", line 1141, in forward
+    outputs = self.module(*args, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/fairscale/nn/misc/flatten_params_wrapper.py", line 459, in forward
+    return self.module(*inputs, **kwinputs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1061, in forward
+    hidden_states = transformer_outputs[0]
+KeyError: 0
+Traceback (most recent call last):
+  File "test_fsdp_fairscale0.4.py", line 97, in <module>
+    output = sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/fairscale/nn/data_parallel/fully_sharded_data_parallel.py", line 1141, in forward
+    outputs = self.module(*args, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/fairscale/nn/misc/flatten_params_wrapper.py", line 459, in forward
+    return self.module(*inputs, **kwinputs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1061, in forward
+    hidden_states = transformer_outputs[0]
+KeyError: 0
+Traceback (most recent call last):
+  File "test_fsdp_fairscale0.4.py", line 97, in <module>
+    output = sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/fairscale/nn/data_parallel/fully_sharded_data_parallel.py", line 1141, in forward
+    outputs = self.module(*args, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/fairscale/nn/misc/flatten_params_wrapper.py", line 459, in forward
+    return self.module(*inputs, **kwinputs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1061, in forward
+    hidden_states = transformer_outputs[0]
+KeyError: 0
+Traceback (most recent call last):
+  File "test_fsdp_fairscale0.4.py", line 97, in <module>
+    output = sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/fairscale/nn/data_parallel/fully_sharded_data_parallel.py", line 1141, in forward
+    outputs = self.module(*args, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/fairscale/nn/misc/flatten_params_wrapper.py", line 459, in forward
+    return self.module(*inputs, **kwinputs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1061, in forward
+    hidden_states = transformer_outputs[0]
+KeyError: 0
+Traceback (most recent call last):
+  File "test_fsdp_fairscale0.4.py", line 97, in <module>
+    output = sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/fairscale/nn/data_parallel/fully_sharded_data_parallel.py", line 1141, in forward
+    outputs = self.module(*args, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/fairscale/nn/misc/flatten_params_wrapper.py", line 459, in forward
+    return self.module(*inputs, **kwinputs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1061, in forward
+    hidden_states = transformer_outputs[0]
+KeyError: 0
+srun: error: gpu13: task 4: Exited with exit code 1
+srun: error: gpu12: tasks 0-1,3: Exited with exit code 1
+srun: error: gpu12: task 2: Exited with exit code 1
+srun: error: gpu13: tasks 6-7: Exited with exit code 1
+srun: error: gpu13: task 5: Exited with exit code 1

@@ -1,0 +1,36 @@
+[00;33m 	'cuda/11.3' does not supports the {CUDA_MPI}. [0m
+[00;34m 	{CUDA_MPI} is only supported in cuda 11.4 version. [0m
+  File "main_gpt2_with_health_checker.py", line 388
+    self._release_lock(self._locks['BWTOFW'], self._conditions['BWTOFW'])
+    ^
+IndentationError: unexpected indent
+  File "main_gpt2_with_health_checker.py", line 388
+    self._release_lock(self._locks['BWTOFW'], self._conditions['BWTOFW'])
+    ^
+IndentationError: unexpected indent
+  File "main_gpt2_with_health_checker.py", line 388
+    self._release_lock(self._locks['BWTOFW'], self._conditions['BWTOFW'])
+    ^
+IndentationError: unexpected indent
+  File "main_gpt2_with_health_checker.py", line 388
+    self._release_lock(self._locks['BWTOFW'], self._conditions['BWTOFW'])
+    ^
+IndentationError: unexpected indent
+  File "main_gpt2_with_health_checker.py", line 388
+    self._release_lock(self._locks['BWTOFW'], self._conditions['BWTOFW'])
+    ^
+IndentationError: unexpected indent
+  File "main_gpt2_with_health_checker.py", line 388
+    self._release_lock(self._locks['BWTOFW'], self._conditions['BWTOFW'])
+    ^
+IndentationError: unexpected indent
+  File "main_gpt2_with_health_checker.py", line 388
+    self._release_lock(self._locks['BWTOFW'], self._conditions['BWTOFW'])
+    ^
+IndentationError: unexpected indent
+  File "main_gpt2_with_health_checker.py", line 388
+    self._release_lock(self._locks['BWTOFW'], self._conditions['BWTOFW'])
+    ^
+IndentationError: unexpected indent
+srun: error: gpu10: tasks 0-3: Exited with exit code 1
+srun: error: gpu11: tasks 4-7: Exited with exit code 1

@@ -1,0 +1,132 @@
+[00;33m 	'cuda/11.3' does not supports the {CUDA_MPI}. [0m
+[00;34m 	{CUDA_MPI} is only supported in cuda 11.4 version. [0m
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+  0%|          | 0/75 [00:00<?, ?it/s]  0%|          | 0/75 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 468, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 333, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 675, in forward
+    outputs = self.module(*args, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/nn/misc/flatten_params_wrapper.py", line 459, in forward
+    return self.module(*inputs, **kwinputs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1046, in forward
+    transformer_outputs = self.transformer(
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 832, in forward
+    inputs_embeds = self.wte(input_ids)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 671, in forward
+    self.communicate_forward()
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 663, in communicate_forward
+    task = self.search_scheduled_comm(self.comm_schedule, p, 'FW')
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 690, in search_scheduled_comm
+    if(task.compType == comp_type):
+AttributeError: 'str' object has no attribute 'compType'
+  0%|          | 0/75 [00:00<?, ?it/s]  0%|          | 0/75 [00:00<?, ?it/s]
+  0%|          | 0/75 [00:00<?, ?it/s]  0%|          | 0/75 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 468, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 333, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 675, in forward
+    outputs = self.module(*args, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/nn/misc/flatten_params_wrapper.py", line 459, in forward
+    return self.module(*inputs, **kwinputs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1046, in forward
+    transformer_outputs = self.transformer(
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 832, in forward
+    inputs_embeds = self.wte(input_ids)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 671, in forward
+    self.communicate_forward()
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 663, in communicate_forward
+    task = self.search_scheduled_comm(self.comm_schedule, p, 'FW')
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 690, in search_scheduled_comm
+    if(task.compType == comp_type):
+AttributeError: 'str' object has no attribute 'compType'
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 468, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 333, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 675, in forward
+    outputs = self.module(*args, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/nn/misc/flatten_params_wrapper.py", line 459, in forward
+    return self.module(*inputs, **kwinputs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1046, in forward
+    transformer_outputs = self.transformer(
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 832, in forward
+    inputs_embeds = self.wte(input_ids)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 671, in forward
+    self.communicate_forward()
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 663, in communicate_forward
+    task = self.search_scheduled_comm(self.comm_schedule, p, 'FW')
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 690, in search_scheduled_comm
+    if(task.compType == comp_type):
+AttributeError: 'str' object has no attribute 'compType'
+  0%|          | 0/75 [00:00<?, ?it/s]  0%|          | 0/75 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 468, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 333, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 675, in forward
+    outputs = self.module(*args, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/nn/misc/flatten_params_wrapper.py", line 459, in forward
+    return self.module(*inputs, **kwinputs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1046, in forward
+    transformer_outputs = self.transformer(
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 832, in forward
+    inputs_embeds = self.wte(input_ids)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 671, in forward
+    self.communicate_forward()
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 663, in communicate_forward
+    task = self.search_scheduled_comm(self.comm_schedule, p, 'FW')
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 690, in search_scheduled_comm
+    if(task.compType == comp_type):
+AttributeError: 'str' object has no attribute 'compType'
+srun: error: gpu10: tasks 0,2-3: Exited with exit code 1
+srun: error: gpu10: task 1: Exited with exit code 1

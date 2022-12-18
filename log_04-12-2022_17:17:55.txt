@@ -1,0 +1,120 @@
+The size of tensor a (1536) must match the size of tensor b (38598912) at non-singleton dimension 0Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 468, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 333, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 675, in forward
+    outputs = self.module(*args, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/nn/misc/flatten_params_wrapper.py", line 459, in forward
+    return self.module(*inputs, **kwinputs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1046, in forward
+    transformer_outputs = self.transformer(
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 832, in forward
+    inputs_embeds = self.wte(input_ids)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 671, in forward
+    self.communicate_forward()
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 663, in communicate_forward
+    task = self.search_scheduled_comm(self.comm_schedule, p, 'FW')
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 690, in search_scheduled_comm
+    if(task.compType == 'BW' and task.comp == param):
+RuntimeError: The size of tensor a (1536) must match the size of tensor b (38598912) at non-singleton dimension 0
+The size of tensor a (1536) must match the size of tensor b (38598912) at non-singleton dimension 0Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 468, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 333, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 675, in forward
+    outputs = self.module(*args, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/nn/misc/flatten_params_wrapper.py", line 459, in forward
+    return self.module(*inputs, **kwinputs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1046, in forward
+    transformer_outputs = self.transformer(
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 832, in forward
+    inputs_embeds = self.wte(input_ids)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 671, in forward
+    self.communicate_forward()
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 663, in communicate_forward
+    task = self.search_scheduled_comm(self.comm_schedule, p, 'FW')
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 690, in search_scheduled_comm
+    if(task.compType == 'BW' and task.comp == param):
+RuntimeError: The size of tensor a (1536) must match the size of tensor b (38598912) at non-singleton dimension 0
+The size of tensor a (1536) must match the size of tensor b (38598912) at non-singleton dimension 0Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 468, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 333, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 675, in forward
+    outputs = self.module(*args, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/nn/misc/flatten_params_wrapper.py", line 459, in forward
+    return self.module(*inputs, **kwinputs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1046, in forward
+    transformer_outputs = self.transformer(
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 832, in forward
+    inputs_embeds = self.wte(input_ids)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 671, in forward
+    self.communicate_forward()
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 663, in communicate_forward
+    task = self.search_scheduled_comm(self.comm_schedule, p, 'FW')
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 690, in search_scheduled_comm
+    if(task.compType == 'BW' and task.comp == param):
+RuntimeError: The size of tensor a (1536) must match the size of tensor b (38598912) at non-singleton dimension 0
+The size of tensor a (1536) must match the size of tensor b (38598912) at non-singleton dimension 0Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 468, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 333, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 675, in forward
+    outputs = self.module(*args, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/nn/misc/flatten_params_wrapper.py", line 459, in forward
+    return self.module(*inputs, **kwinputs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1046, in forward
+    transformer_outputs = self.transformer(
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 832, in forward
+    inputs_embeds = self.wte(input_ids)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 671, in forward
+    self.communicate_forward()
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 663, in communicate_forward
+    task = self.search_scheduled_comm(self.comm_schedule, p, 'FW')
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 690, in search_scheduled_comm
+    if(task.compType == 'BW' and task.comp == param):
+RuntimeError: The size of tensor a (1536) must match the size of tensor b (38598912) at non-singleton dimension 0

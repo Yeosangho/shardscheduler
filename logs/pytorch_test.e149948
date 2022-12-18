@@ -1,0 +1,104 @@
+[00;33m 	'cuda/11.3' does not supports the {CUDA_MPI}. [0m
+[00;34m 	{CUDA_MPI} is only supported in cuda 11.4 version. [0m
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+  0%|          | 0/38 [00:00<?, ?it/s]OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.
+  0%|          | 0/38 [00:00<?, ?it/s]OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.
+  0%|          | 0/38 [00:00<?, ?it/s]OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.
+  0%|          | 0/38 [00:00<?, ?it/s]Exception in thread Thread-2:
+Traceback (most recent call last):
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 932, in _bootstrap_inner
+    self.run()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 319, in _poll_FSDP
+    self.run_schedule(self.schedules, self.comm_stream, init=False)
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 556, in run_schedule
+    p = partiable_param.param
+UnboundLocalError: local variable 'partiable_param' referenced before assignment
+  0%|          | 0/38 [00:00<?, ?it/s]Exception in thread Thread-2:
+Traceback (most recent call last):
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 932, in _bootstrap_inner
+    self.run()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 319, in _poll_FSDP
+    self.run_schedule(self.schedules, self.comm_stream, init=False)
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 556, in run_schedule
+    p = partiable_param.param
+UnboundLocalError: local variable 'partiable_param' referenced before assignment
+  0%|          | 0/38 [00:00<?, ?it/s]Exception in thread Thread-2:
+Traceback (most recent call last):
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 932, in _bootstrap_inner
+    self.run()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 319, in _poll_FSDP
+    self.run_schedule(self.schedules, self.comm_stream, init=False)
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 556, in run_schedule
+    p = partiable_param.param
+UnboundLocalError: local variable 'partiable_param' referenced before assignment
+Exception in thread Thread-2:
+Traceback (most recent call last):
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 932, in _bootstrap_inner
+    self.run()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 319, in _poll_FSDP
+    self.run_schedule(self.schedules, self.comm_stream, init=False)
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 556, in run_schedule
+    p = partiable_param.param
+UnboundLocalError: local variable 'partiable_param' referenced before assignment
+Exception in thread Thread-2:
+Traceback (most recent call last):
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 932, in _bootstrap_inner
+    self.run()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 319, in _poll_FSDP
+    self.run_schedule(self.schedules, self.comm_stream, init=False)
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 556, in run_schedule
+    p = partiable_param.param
+UnboundLocalError: local variable 'partiable_param' referenced before assignment
+  0%|          | 0/38 [00:00<?, ?it/s]Exception in thread Thread-2:
+Traceback (most recent call last):
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 932, in _bootstrap_inner
+    self.run()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 319, in _poll_FSDP
+    self.run_schedule(self.schedules, self.comm_stream, init=False)
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 556, in run_schedule
+    p = partiable_param.param
+UnboundLocalError: local variable 'partiable_param' referenced before assignment
+  0%|          | 0/38 [00:00<?, ?it/s]Exception in thread Thread-2:
+Traceback (most recent call last):
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 932, in _bootstrap_inner
+    self.run()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 319, in _poll_FSDP
+    self.run_schedule(self.schedules, self.comm_stream, init=False)
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 556, in run_schedule
+    p = partiable_param.param
+UnboundLocalError: local variable 'partiable_param' referenced before assignment
+Exception in thread Thread-2:
+Traceback (most recent call last):
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 932, in _bootstrap_inner
+    self.run()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 319, in _poll_FSDP
+    self.run_schedule(self.schedules, self.comm_stream, init=False)
+  File "/scratch/hpc72a03/shardscheduler/torch_scheduler.py", line 556, in run_schedule
+    p = partiable_param.param
+UnboundLocalError: local variable 'partiable_param' referenced before assignment
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** JOB 149948 ON gpu18 CANCELLED AT 2022-11-13T17:10:13 ***
+  3%|▎         | 1/38 [00:01<00:39,  1.06s/it]slurmstepd: error: *** STEP 149948.0 ON gpu18 CANCELLED AT 2022-11-13T17:10:13 ***

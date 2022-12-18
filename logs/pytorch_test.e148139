@@ -1,0 +1,20 @@
+[00;33m 	'cuda/11.3' does not supports the {CUDA_MPI}. [0m
+[00;34m 	{CUDA_MPI} is only supported in cuda 11.4 version. [0m
+Traceback (most recent call last):
+  File "run.py", line 91, in <module>
+    dist.init_process_group(backend='gloo', world_size=world_size, rank=args.rank)
+AttributeError: 'Namespace' object has no attribute 'rank'
+Traceback (most recent call last):
+  File "run.py", line 91, in <module>
+    dist.init_process_group(backend='gloo', world_size=world_size, rank=args.rank)
+AttributeError: 'Namespace' object has no attribute 'rank'
+Traceback (most recent call last):
+  File "run.py", line 91, in <module>
+    dist.init_process_group(backend='gloo', world_size=world_size, rank=args.rank)
+AttributeError: 'Namespace' object has no attribute 'rank'
+Traceback (most recent call last):
+  File "run.py", line 91, in <module>
+    dist.init_process_group(backend='gloo', world_size=world_size, rank=args.rank)
+AttributeError: 'Namespace' object has no attribute 'rank'
+srun: error: gpu21: tasks 2-3: Exited with exit code 1
+srun: error: gpu20: tasks 0-1: Exited with exit code 1

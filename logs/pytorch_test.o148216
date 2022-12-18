@@ -1,0 +1,3150 @@
+==========================================
+SLURM_JOB_ID = 148216
+SLURM_NODELIST = gpu[23-24]
+==========================================
+NODELIST=gpu[23-24]
+MASTER_ADDR=gpu23
+[116555, 751557, 756601, 761713, 766895, 772148, 777473, 782872, 788347, 793898, 799529, 805240, 811033, 816910, 822873, 828923, 835064, 841295, 847621, 854042, 860562, 867181, 873904, 880731, 887666, 894711, 901869, 909142, 916533, 924046, 931682, 939446, 947341, 955369, 963535, 971841, 980292, 988891, 997642, 1006550, 1015618, 1024851, 1034253, 1043829, 1053585, 1063524, 1073653, 1083977, 1094501, 1105231, 1116174, 1127336, 1138723, 1150342, 1162202, 1174308, 1186669, 1199293, 1212189, 1225365, 1238830, 1252595, 1266669, 1281063, 1295788, 1310855, 1326277, 1342066, 1358236, 1374799, 1391772, 1409169, 1427007, 1445302, 1464072, 1483336, 1496014, 1503114, 1523426, 1544295, 1565744, 1587796, 1610479, 1633820, 1657846, 1682590, 1708084, 1734362, 1761462, 1789421, 1818283, 1848091, 1878892, 1910738, 1943682, 1977781, 2013099, 2049701, 2087658, 2127048, 2167953, 2210462, 2254671, 2300684, 2348615, 2398586, 2450729, 2505190, 2562126, 2621710, 2684132, 2749598, 2818338, 2890603, 2966672, 2992027, 3046852, 3131487, 3220958, 3315692, 3416168, 3522923, 3636565, 3757784, 3887363, 4026197, 4175316, 4335905, 4509341, 4697230, 4901458, 5124251, 5368263, 5636676, 5933343, 6262973, 6631384, 7045845, 7515568, 8052394, 8671809, 9394460, 10248502, 11273352, 12525946, 14091690, 16104788, 18788919, 22546703, 28183379, 37577838, 56366757, 112733514]
+waiting proc
+process result tensor([0.])
+19878
+trial already removed!
+waiting proc
+process result tensor([0.])
+21135
+trial already removed!
+waiting proc
+process result tensor([8.])
+22385
+trial already removed!
+waiting proc
+process result tensor([8.])
+23641
+trial already removed!
+waiting proc
+process result tensor([8.])
+24894
+trial already removed!
+waiting proc
+process result tensor([8.])
+26141
+trial already removed!
+waiting proc
+process result tensor([8.])
+27387
+trial already removed!
+waiting proc
+process result tensor([8.])
+28640
+trial already removed!
+waiting proc
+process result tensor([8.])
+29888
+trial already removed!
+waiting proc
+process result tensor([8.])
+31140
+trial already removed!
+waiting proc
+process result tensor([8.])
+32392
+trial already removed!
+waiting proc
+process result tensor([8.])
+33641
+trial already removed!
+waiting proc
+process result tensor([8.])
+34891
+trial already removed!
+waiting proc
+process result tensor([0.])
+36253
+trial already removed!
+waiting proc
+process result tensor([8.])
+37507
+trial already removed!
+waiting proc
+process result tensor([8.])
+38756
+trial already removed!
+waiting proc
+process result tensor([8.])
+40006
+trial already removed!
+waiting proc
+process result tensor([8.])
+617
+trial already removed!
+waiting proc
+process result tensor([8.])
+2306
+trial already removed!
+waiting proc
+process result tensor([8.])
+3560
+trial already removed!
+waiting proc
+process result tensor([8.])
+4812
+trial already removed!
+waiting proc
+process result tensor([8.])
+6062
+trial already removed!
+waiting proc
+process result tensor([8.])
+7309
+trial already removed!
+waiting proc
+process result tensor([8.])
+8570
+trial already removed!
+waiting proc
+process result tensor([8.])
+9817
+trial already removed!
+waiting proc
+process result tensor([8.])
+11071
+trial already removed!
+waiting proc
+process result tensor([8.])
+12474
+trial already removed!
+waiting proc
+process result tensor([8.])
+13726
+trial already removed!
+waiting proc
+process result tensor([8.])
+14987
+trial already removed!
+waiting proc
+process result tensor([8.])
+16351
+trial already removed!
+waiting proc
+process result tensor([8.])
+17611
+trial already removed!
+waiting proc
+process result tensor([8.])
+18864
+trial already removed!
+waiting proc
+process result tensor([8.])
+20166
+trial already removed!
+waiting proc
+process result tensor([8.])
+21420
+trial already removed!
+waiting proc
+process result tensor([8.])
+22670
+trial already removed!
+waiting proc
+process result tensor([8.])
+23926
+trial already removed!
+waiting proc
+process result tensor([8.])
+25174
+trial already removed!
+waiting proc
+process result tensor([8.])
+26425
+trial already removed!
+waiting proc
+process result tensor([8.])
+27672
+trial already removed!
+waiting proc
+process result tensor([8.])
+28925
+trial already removed!
+waiting proc
+process result tensor([8.])
+30173
+trial already removed!
+waiting proc
+process result tensor([8.])
+31426
+trial already removed!
+waiting proc
+process result tensor([8.])
+32676
+trial already removed!
+waiting proc
+process result tensor([8.])
+33925
+trial already removed!
+waiting proc
+process result tensor([8.])
+35172
+trial already removed!
+waiting proc
+process result tensor([8.])
+36537
+trial already removed!
+waiting proc
+process result tensor([8.])
+37792
+trial already removed!
+waiting proc
+process result tensor([8.])
+39041
+trial already removed!
+waiting proc
+process result tensor([8.])
+40290
+trial already removed!
+waiting proc
+process result tensor([0.])
+944
+trial already removed!
+waiting proc
+process result tensor([8.])
+2262
+trial already removed!
+waiting proc
+process result tensor([8.])
+3524
+trial already removed!
+waiting proc
+process result tensor([8.])
+4774
+trial already removed!
+waiting proc
+process result tensor([8.])
+6024
+trial already removed!
+waiting proc
+process result tensor([8.])
+7271
+trial already removed!
+waiting proc
+process result tensor([8.])
+8531
+trial already removed!
+waiting proc
+process result tensor([8.])
+9783
+trial already removed!
+waiting proc
+process result tensor([8.])
+11035
+trial already removed!
+waiting proc
+process result tensor([8.])
+12438
+trial already removed!
+waiting proc
+process result tensor([8.])
+13688
+trial already removed!
+waiting proc
+process result tensor([8.])
+15060
+trial already removed!
+waiting proc
+process result tensor([8.])
+16313
+trial already removed!
+waiting proc
+process result tensor([8.])
+17574
+trial already removed!
+waiting proc
+process result tensor([8.])
+18824
+trial already removed!
+waiting proc
+process result tensor([8.])
+20128
+trial already removed!
+waiting proc
+process result tensor([8.])
+21379
+trial already removed!
+waiting proc
+process result tensor([8.])
+22629
+trial already removed!
+waiting proc
+process result tensor([8.])
+23887
+trial already removed!
+waiting proc
+process result tensor([8.])
+25136
+trial already removed!
+waiting proc
+process result tensor([8.])
+26383
+trial already removed!
+waiting proc
+process result tensor([8.])
+27631
+trial already removed!
+waiting proc
+process result tensor([8.])
+28885
+trial already removed!
+waiting proc
+process result tensor([8.])
+30131
+trial already removed!
+waiting proc
+process result tensor([8.])
+31385
+trial already removed!
+waiting proc
+process result tensor([8.])
+32633
+trial already removed!
+waiting proc
+process result tensor([8.])
+33996
+trial already removed!
+waiting proc
+process result tensor([8.])
+35247
+trial already removed!
+waiting proc
+process result tensor([8.])
+36495
+trial already removed!
+waiting proc
+process result tensor([8.])
+37749
+trial already removed!
+waiting proc
+process result tensor([8.])
+38999
+trial already removed!
+waiting proc
+process result tensor([0.])
+40246
+trial already removed!
+waiting proc
+process result tensor([8.])
+897
+trial already removed!
+waiting proc
+process result tensor([8.])
+2219
+trial already removed!
+waiting proc
+process result tensor([8.])
+3483
+trial already removed!
+waiting proc
+process result tensor([0.])
+4731
+trial already removed!
+waiting proc
+process result tensor([8.])
+5980
+trial already removed!
+waiting proc
+process result tensor([8.])
+7228
+trial already removed!
+waiting proc
+process result tensor([8.])
+8489
+trial already removed!
+waiting proc
+process result tensor([8.])
+9739
+trial already removed!
+waiting proc
+process result tensor([8.])
+11104
+trial already removed!
+waiting proc
+process result tensor([0.])
+12508
+trial already removed!
+waiting proc
+process result tensor([8.])
+13759
+trial already removed!
+waiting proc
+process result tensor([8.])
+15022
+trial already removed!
+waiting proc
+process result tensor([8.])
+16275
+trial already removed!
+waiting proc
+process result tensor([8.])
+17534
+trial already removed!
+waiting proc
+process result tensor([8.])
+18787
+trial already removed!
+waiting proc
+process result tensor([8.])
+20091
+trial already removed!
+waiting proc
+process result tensor([0.])
+21344
+trial already removed!
+[116555, 751557, 756601, 761713, 766895, 772148, 777473, 782872, 788347, 793898, 799529, 805240, 811033, 816910, 822873, 828923, 835064, 841295, 847621, 854042, 860562, 867181, 873904, 880731, 887666, 894711, 901869, 909142, 916533, 924046, 931682, 939446, 947341, 955369, 963535, 971841, 980292, 988891, 997642, 1006550, 1015618, 1024851, 1034253, 1043829, 1053585, 1063524, 1073653, 1083977, 1094501, 1105231, 1116174, 1127336, 1138723, 1150342, 1162202, 1174308, 1186669, 1199293, 1212189, 1225365, 1238830, 1252595, 1266669, 1281063, 1295788, 1310855, 1326277, 1342066, 1358236, 1374799, 1391772, 1409169, 1427007, 1445302, 1464072, 1483336, 1496014, 1503114, 1523426, 1544295, 1565744, 1587796, 1610479, 1633820, 1657846, 1682590, 1708084, 1734362, 1761462, 1789421, 1818283, 1848091, 1878892, 1910738, 1943682, 1977781, 2013099, 2049701, 2087658, 2127048, 2167953, 2210462, 2254671, 2300684, 2348615, 2398586, 2450729, 2505190, 2562126, 2621710, 2684132, 2749598, 2818338, 2890603, 2966672, 2992027, 3046852, 3131487, 3220958, 3315692, 3416168, 3522923, 3636565, 3757784, 3887363, 4026197, 4175316, 4335905, 4509341, 4697230, 4901458, 5124251, 5368263, 5636676, 5933343, 6262973, 6631384, 7045845, 7515568, 8052394, 8671809, 9394460, 10248502, 11273352, 12525946, 14091690, 16104788, 18788919, 22546703, 28183379, 37577838, 56366757, 112733514]
+waiting proc
+process result tensor([0.])
+19880
+trial already removed!
+waiting proc
+process result tensor([0.])
+21138
+trial already removed!
+waiting proc
+process result tensor([8.])
+22386
+trial already removed!
+waiting proc
+process result tensor([8.])
+23640
+trial already removed!
+waiting proc
+process result tensor([8.])
+24891
+trial already removed!
+waiting proc
+process result tensor([8.])
+26138
+trial already removed!
+waiting proc
+process result tensor([8.])
+27386
+trial already removed!
+waiting proc
+process result tensor([8.])
+28638
+trial already removed!
+waiting proc
+process result tensor([8.])
+29886
+trial already removed!
+waiting proc
+process result tensor([8.])
+31138
+trial already removed!
+waiting proc
+process result tensor([8.])
+32390
+trial already removed!
+waiting proc
+process result tensor([8.])
+33639
+trial already removed!
+waiting proc
+process result tensor([8.])
+34888
+trial already removed!
+waiting proc
+process result tensor([0.])
+36251
+trial already removed!
+waiting proc
+process result tensor([8.])
+37503
+trial already removed!
+waiting proc
+process result tensor([8.])
+38757
+trial already removed!
+waiting proc
+process result tensor([8.])
+40003
+trial already removed!
+waiting proc
+process result tensor([8.])
+613
+trial already removed!
+waiting proc
+process result tensor([8.])
+2303
+trial already removed!
+waiting proc
+process result tensor([8.])
+3558
+trial already removed!
+waiting proc
+process result tensor([8.])
+4810
+trial already removed!
+waiting proc
+process result tensor([8.])
+6059
+trial already removed!
+waiting proc
+process result tensor([8.])
+7307
+trial already removed!
+waiting proc
+process result tensor([8.])
+8568
+trial already removed!
+waiting proc
+process result tensor([8.])
+9816
+trial already removed!
+waiting proc
+process result tensor([8.])
+11069
+trial already removed!
+waiting proc
+process result tensor([8.])
+12472
+trial already removed!
+waiting proc
+process result tensor([8.])
+13723
+trial already removed!
+waiting proc
+process result tensor([8.])
+14985
+trial already removed!
+waiting proc
+process result tensor([8.])
+16352
+trial already removed!
+waiting proc
+process result tensor([8.])
+17608
+trial already removed!
+waiting proc
+process result tensor([8.])
+18862
+trial already removed!
+waiting proc
+process result tensor([8.])
+20165
+trial already removed!
+waiting proc
+process result tensor([8.])
+21418
+trial already removed!
+waiting proc
+process result tensor([8.])
+22668
+trial already removed!
+waiting proc
+process result tensor([8.])
+23924
+trial already removed!
+waiting proc
+process result tensor([8.])
+25173
+trial already removed!
+waiting proc
+process result tensor([8.])
+26422
+trial already removed!
+waiting proc
+process result tensor([8.])
+27670
+trial already removed!
+waiting proc
+process result tensor([8.])
+28923
+trial already removed!
+waiting proc
+process result tensor([8.])
+30171
+trial already removed!
+waiting proc
+process result tensor([8.])
+31424
+trial already removed!
+waiting proc
+process result tensor([8.])
+32674
+trial already removed!
+waiting proc
+process result tensor([8.])
+33923
+trial already removed!
+waiting proc
+process result tensor([8.])
+35171
+trial already removed!
+waiting proc
+process result tensor([8.])
+36534
+trial already removed!
+waiting proc
+process result tensor([8.])
+37790
+trial already removed!
+waiting proc
+process result tensor([8.])
+39039
+trial already removed!
+waiting proc
+process result tensor([8.])
+40288
+trial already removed!
+waiting proc
+process result tensor([0.])
+942
+trial already removed!
+waiting proc
+process result tensor([8.])
+2264
+trial already removed!
+waiting proc
+process result tensor([8.])
+3522
+trial already removed!
+waiting proc
+process result tensor([8.])
+4772
+trial already removed!
+waiting proc
+process result tensor([8.])
+6022
+trial already removed!
+waiting proc
+process result tensor([8.])
+7270
+trial already removed!
+waiting proc
+process result tensor([8.])
+8530
+trial already removed!
+waiting proc
+process result tensor([8.])
+9780
+trial already removed!
+waiting proc
+process result tensor([8.])
+11032
+trial already removed!
+waiting proc
+process result tensor([8.])
+12436
+trial already removed!
+waiting proc
+process result tensor([8.])
+13686
+trial already removed!
+waiting proc
+process result tensor([8.])
+15058
+trial already removed!
+waiting proc
+process result tensor([8.])
+16311
+trial already removed!
+waiting proc
+process result tensor([8.])
+17571
+trial already removed!
+waiting proc
+process result tensor([8.])
+18822
+trial already removed!
+waiting proc
+process result tensor([8.])
+20126
+trial already removed!
+waiting proc
+process result tensor([8.])
+21377
+trial already removed!
+waiting proc
+process result tensor([8.])
+22627
+trial already removed!
+waiting proc
+process result tensor([8.])
+23885
+trial already removed!
+waiting proc
+process result tensor([8.])
+25134
+trial already removed!
+waiting proc
+process result tensor([8.])
+26385
+trial already removed!
+waiting proc
+process result tensor([8.])
+27630
+trial already removed!
+waiting proc
+process result tensor([8.])
+28882
+trial already removed!
+waiting proc
+process result tensor([8.])
+30130
+trial already removed!
+waiting proc
+process result tensor([8.])
+31382
+trial already removed!
+waiting proc
+process result tensor([8.])
+32631
+trial already removed!
+waiting proc
+process result tensor([8.])
+33994
+trial already removed!
+waiting proc
+process result tensor([8.])
+35244
+trial already removed!
+waiting proc
+process result tensor([8.])
+36493
+trial already removed!
+waiting proc
+process result tensor([8.])
+37747
+trial already removed!
+waiting proc
+process result tensor([8.])
+38997
+trial already removed!
+waiting proc
+process result tensor([0.])
+40245
+trial already removed!
+waiting proc
+process result tensor([8.])
+894
+trial already removed!
+waiting proc
+process result tensor([8.])
+2214
+trial already removed!
+waiting proc
+process result tensor([8.])
+3480
+trial already removed!
+waiting proc
+process result tensor([0.])
+4732
+trial already removed!
+waiting proc
+process result tensor([8.])
+5977
+trial already removed!
+waiting proc
+process result tensor([8.])
+7226
+trial already removed!
+waiting proc
+process result tensor([8.])
+8488
+trial already removed!
+waiting proc
+process result tensor([8.])
+9737
+trial already removed!
+waiting proc
+process result tensor([8.])
+11103
+trial already removed!
+waiting proc
+process result tensor([0.])
+12506
+trial already removed!
+waiting proc
+process result tensor([8.])
+13758
+trial already removed!
+waiting proc
+process result tensor([8.])
+15019
+trial already removed!
+waiting proc
+process result tensor([8.])
+16273
+trial already removed!
+waiting proc
+process result tensor([8.])
+17532
+trial already removed!
+waiting proc
+process result tensor([8.])
+18785
+trial already removed!
+waiting proc
+process result tensor([8.])
+20086
+trial already removed!
+waiting proc
+process result tensor([0.])
+21341
+trial already removed!
+[116555, 751557, 756601, 761713, 766895, 772148, 777473, 782872, 788347, 793898, 799529, 805240, 811033, 816910, 822873, 828923, 835064, 841295, 847621, 854042, 860562, 867181, 873904, 880731, 887666, 894711, 901869, 909142, 916533, 924046, 931682, 939446, 947341, 955369, 963535, 971841, 980292, 988891, 997642, 1006550, 1015618, 1024851, 1034253, 1043829, 1053585, 1063524, 1073653, 1083977, 1094501, 1105231, 1116174, 1127336, 1138723, 1150342, 1162202, 1174308, 1186669, 1199293, 1212189, 1225365, 1238830, 1252595, 1266669, 1281063, 1295788, 1310855, 1326277, 1342066, 1358236, 1374799, 1391772, 1409169, 1427007, 1445302, 1464072, 1483336, 1496014, 1503114, 1523426, 1544295, 1565744, 1587796, 1610479, 1633820, 1657846, 1682590, 1708084, 1734362, 1761462, 1789421, 1818283, 1848091, 1878892, 1910738, 1943682, 1977781, 2013099, 2049701, 2087658, 2127048, 2167953, 2210462, 2254671, 2300684, 2348615, 2398586, 2450729, 2505190, 2562126, 2621710, 2684132, 2749598, 2818338, 2890603, 2966672, 2992027, 3046852, 3131487, 3220958, 3315692, 3416168, 3522923, 3636565, 3757784, 3887363, 4026197, 4175316, 4335905, 4509341, 4697230, 4901458, 5124251, 5368263, 5636676, 5933343, 6262973, 6631384, 7045845, 7515568, 8052394, 8671809, 9394460, 10248502, 11273352, 12525946, 14091690, 16104788, 18788919, 22546703, 28183379, 37577838, 56366757, 112733514]
+waiting proc
+process result tensor([0.])
+19877
+trial already removed!
+waiting proc
+process result tensor([0.])
+21136
+trial already removed!
+waiting proc
+process result tensor([8.])
+22384
+trial already removed!
+waiting proc
+process result tensor([8.])
+23642
+trial already removed!
+waiting proc
+process result tensor([8.])
+24892
+trial already removed!
+waiting proc
+process result tensor([8.])
+26139
+trial already removed!
+waiting proc
+process result tensor([8.])
+27389
+trial already removed!
+waiting proc
+process result tensor([8.])
+28639
+trial already removed!
+waiting proc
+process result tensor([8.])
+29887
+trial already removed!
+waiting proc
+process result tensor([8.])
+31137
+trial already removed!
+waiting proc
+process result tensor([8.])
+32389
+trial already removed!
+waiting proc
+process result tensor([8.])
+33640
+trial already removed!
+waiting proc
+process result tensor([8.])
+34889
+trial already removed!
+waiting proc
+process result tensor([0.])
+36250
+trial already removed!
+waiting proc
+process result tensor([8.])
+37506
+trial already removed!
+waiting proc
+process result tensor([8.])
+38754
+trial already removed!
+waiting proc
+process result tensor([8.])
+40004
+trial already removed!
+waiting proc
+process result tensor([8.])
+614
+trial already removed!
+waiting proc
+process result tensor([8.])
+2304
+trial already removed!
+waiting proc
+process result tensor([8.])
+3559
+trial already removed!
+waiting proc
+process result tensor([8.])
+4811
+trial already removed!
+waiting proc
+process result tensor([8.])
+6060
+trial already removed!
+waiting proc
+process result tensor([8.])
+7308
+trial already removed!
+waiting proc
+process result tensor([8.])
+8569
+trial already removed!
+waiting proc
+process result tensor([8.])
+9819
+trial already removed!
+waiting proc
+process result tensor([8.])
+11070
+trial already removed!
+waiting proc
+process result tensor([8.])
+12473
+trial already removed!
+waiting proc
+process result tensor([8.])
+13724
+trial already removed!
+waiting proc
+process result tensor([8.])
+14986
+trial already removed!
+waiting proc
+process result tensor([8.])
+16349
+trial already removed!
+waiting proc
+process result tensor([8.])
+17609
+trial already removed!
+waiting proc
+process result tensor([8.])
+18865
+trial already removed!
+waiting proc
+process result tensor([8.])
+20168
+trial already removed!
+waiting proc
+process result tensor([8.])
+21419
+trial already removed!
+waiting proc
+process result tensor([8.])
+22669
+trial already removed!
+waiting proc
+process result tensor([8.])
+23923
+trial already removed!
+waiting proc
+process result tensor([8.])
+25176
+trial already removed!
+waiting proc
+process result tensor([8.])
+26424
+trial already removed!
+waiting proc
+process result tensor([8.])
+27671
+trial already removed!
+waiting proc
+process result tensor([8.])
+28924
+trial already removed!
+waiting proc
+process result tensor([8.])
+30170
+trial already removed!
+waiting proc
+process result tensor([8.])
+31425
+trial already removed!
+waiting proc
+process result tensor([8.])
+32675
+trial already removed!
+waiting proc
+process result tensor([8.])
+33924
+trial already removed!
+waiting proc
+process result tensor([8.])
+35174
+trial already removed!
+waiting proc
+process result tensor([8.])
+36535
+trial already removed!
+waiting proc
+process result tensor([8.])
+37789
+trial already removed!
+waiting proc
+process result tensor([8.])
+39040
+trial already removed!
+waiting proc
+process result tensor([8.])
+40289
+trial already removed!
+waiting proc
+process result tensor([0.])
+943
+trial already removed!
+waiting proc
+process result tensor([8.])
+2263
+trial already removed!
+waiting proc
+process result tensor([8.])
+3523
+trial already removed!
+waiting proc
+process result tensor([8.])
+4773
+trial already removed!
+waiting proc
+process result tensor([8.])
+6023
+trial already removed!
+waiting proc
+process result tensor([8.])
+7273
+trial already removed!
+waiting proc
+process result tensor([8.])
+8532
+trial already removed!
+waiting proc
+process result tensor([8.])
+9781
+trial already removed!
+waiting proc
+process result tensor([8.])
+11033
+trial already removed!
+waiting proc
+process result tensor([8.])
+12435
+trial already removed!
+waiting proc
+process result tensor([8.])
+13687
+trial already removed!
+waiting proc
+process result tensor([8.])
+15059
+trial already removed!
+waiting proc
+process result tensor([8.])
+16312
+trial already removed!
+waiting proc
+process result tensor([8.])
+17572
+trial already removed!
+waiting proc
+process result tensor([8.])
+18823
+trial already removed!
+waiting proc
+process result tensor([8.])
+20127
+trial already removed!
+waiting proc
+process result tensor([8.])
+21378
+trial already removed!
+waiting proc
+process result tensor([8.])
+22628
+trial already removed!
+waiting proc
+process result tensor([8.])
+23886
+trial already removed!
+waiting proc
+process result tensor([8.])
+25135
+trial already removed!
+waiting proc
+process result tensor([8.])
+26384
+trial already removed!
+waiting proc
+process result tensor([8.])
+27633
+trial already removed!
+waiting proc
+process result tensor([8.])
+28884
+trial already removed!
+waiting proc
+process result tensor([8.])
+30133
+trial already removed!
+waiting proc
+process result tensor([8.])
+31383
+trial already removed!
+waiting proc
+process result tensor([8.])
+32632
+trial already removed!
+waiting proc
+process result tensor([8.])
+33995
+trial already removed!
+waiting proc
+process result tensor([8.])
+35245
+trial already removed!
+waiting proc
+process result tensor([8.])
+36494
+trial already removed!
+waiting proc
+process result tensor([8.])
+37748
+trial already removed!
+waiting proc
+process result tensor([8.])
+38996
+trial already removed!
+waiting proc
+process result tensor([0.])
+40247
+trial already removed!
+waiting proc
+process result tensor([8.])
+896
+trial already removed!
+waiting proc
+process result tensor([8.])
+2215
+trial already removed!
+waiting proc
+process result tensor([8.])
+3481
+trial already removed!
+waiting proc
+process result tensor([0.])
+4729
+trial already removed!
+waiting proc
+process result tensor([8.])
+5978
+trial already removed!
+waiting proc
+process result tensor([8.])
+7227
+trial already removed!
+waiting proc
+process result tensor([8.])
+8491
+trial already removed!
+waiting proc
+process result tensor([8.])
+9738
+trial already removed!
+waiting proc
+process result tensor([8.])
+11105
+trial already removed!
+waiting proc
+process result tensor([0.])
+12507
+trial already removed!
+waiting proc
+process result tensor([8.])
+13760
+trial already removed!
+waiting proc
+process result tensor([8.])
+15020
+trial already removed!
+waiting proc
+process result tensor([8.])
+16274
+trial already removed!
+waiting proc
+process result tensor([8.])
+17533
+trial already removed!
+waiting proc
+process result tensor([8.])
+18786
+trial already removed!
+waiting proc
+process result tensor([8.])
+20087
+trial already removed!
+waiting proc
+process result tensor([0.])
+21342
+trial already removed!
+[116555, 751557, 756601, 761713, 766895, 772148, 777473, 782872, 788347, 793898, 799529, 805240, 811033, 816910, 822873, 828923, 835064, 841295, 847621, 854042, 860562, 867181, 873904, 880731, 887666, 894711, 901869, 909142, 916533, 924046, 931682, 939446, 947341, 955369, 963535, 971841, 980292, 988891, 997642, 1006550, 1015618, 1024851, 1034253, 1043829, 1053585, 1063524, 1073653, 1083977, 1094501, 1105231, 1116174, 1127336, 1138723, 1150342, 1162202, 1174308, 1186669, 1199293, 1212189, 1225365, 1238830, 1252595, 1266669, 1281063, 1295788, 1310855, 1326277, 1342066, 1358236, 1374799, 1391772, 1409169, 1427007, 1445302, 1464072, 1483336, 1496014, 1503114, 1523426, 1544295, 1565744, 1587796, 1610479, 1633820, 1657846, 1682590, 1708084, 1734362, 1761462, 1789421, 1818283, 1848091, 1878892, 1910738, 1943682, 1977781, 2013099, 2049701, 2087658, 2127048, 2167953, 2210462, 2254671, 2300684, 2348615, 2398586, 2450729, 2505190, 2562126, 2621710, 2684132, 2749598, 2818338, 2890603, 2966672, 2992027, 3046852, 3131487, 3220958, 3315692, 3416168, 3522923, 3636565, 3757784, 3887363, 4026197, 4175316, 4335905, 4509341, 4697230, 4901458, 5124251, 5368263, 5636676, 5933343, 6262973, 6631384, 7045845, 7515568, 8052394, 8671809, 9394460, 10248502, 11273352, 12525946, 14091690, 16104788, 18788919, 22546703, 28183379, 37577838, 56366757, 112733514]
+waiting proc
+process result tensor([0.])
+15544
+trial already removed!
+waiting proc
+process result tensor([0.])
+16793
+trial already removed!
+waiting proc
+process result tensor([8.])
+18041
+trial already removed!
+waiting proc
+process result tensor([8.])
+19287
+trial already removed!
+waiting proc
+process result tensor([8.])
+20535
+trial already removed!
+waiting proc
+process result tensor([8.])
+21784
+trial already removed!
+waiting proc
+process result tensor([8.])
+23030
+trial already removed!
+waiting proc
+process result tensor([8.])
+24279
+trial already removed!
+waiting proc
+process result tensor([8.])
+25527
+trial already removed!
+waiting proc
+process result tensor([8.])
+26772
+trial already removed!
+waiting proc
+process result tensor([8.])
+28019
+trial already removed!
+waiting proc
+process result tensor([8.])
+29267
+trial already removed!
+waiting proc
+process result tensor([8.])
+30517
+trial already removed!
+waiting proc
+process result tensor([0.])
+31877
+trial already removed!
+waiting proc
+process result tensor([8.])
+33128
+trial already removed!
+waiting proc
+process result tensor([8.])
+34377
+trial already removed!
+waiting proc
+process result tensor([8.])
+35622
+trial already removed!
+waiting proc
+process result tensor([8.])
+36881
+trial already removed!
+waiting proc
+process result tensor([8.])
+38442
+trial already removed!
+waiting proc
+process result tensor([8.])
+39689
+trial already removed!
+waiting proc
+process result tensor([8.])
+40940
+trial already removed!
+waiting proc
+process result tensor([8.])
+1657
+trial already removed!
+waiting proc
+process result tensor([8.])
+3043
+trial already removed!
+waiting proc
+process result tensor([8.])
+4334
+trial already removed!
+waiting proc
+process result tensor([8.])
+5590
+trial already removed!
+waiting proc
+process result tensor([8.])
+6846
+trial already removed!
+waiting proc
+process result tensor([8.])
+8094
+trial already removed!
+waiting proc
+process result tensor([8.])
+9343
+trial already removed!
+waiting proc
+process result tensor([8.])
+10589
+trial already removed!
+waiting proc
+process result tensor([8.])
+11953
+trial already removed!
+waiting proc
+process result tensor([8.])
+13203
+trial already removed!
+waiting proc
+process result tensor([8.])
+14455
+trial already removed!
+waiting proc
+process result tensor([8.])
+15741
+trial already removed!
+waiting proc
+process result tensor([8.])
+16991
+trial already removed!
+waiting proc
+process result tensor([8.])
+18241
+trial already removed!
+waiting proc
+process result tensor([8.])
+19486
+trial already removed!
+waiting proc
+process result tensor([8.])
+20736
+trial already removed!
+waiting proc
+process result tensor([8.])
+21985
+trial already removed!
+waiting proc
+process result tensor([8.])
+23231
+trial already removed!
+waiting proc
+process result tensor([8.])
+24478
+trial already removed!
+waiting proc
+process result tensor([8.])
+25724
+trial already removed!
+waiting proc
+process result tensor([8.])
+26970
+trial already removed!
+waiting proc
+process result tensor([8.])
+28216
+trial already removed!
+waiting proc
+process result tensor([8.])
+29466
+trial already removed!
+waiting proc
+process result tensor([8.])
+30715
+trial already removed!
+waiting proc
+process result tensor([8.])
+32074
+trial already removed!
+waiting proc
+process result tensor([8.])
+33326
+trial already removed!
+waiting proc
+process result tensor([8.])
+34573
+trial already removed!
+waiting proc
+process result tensor([8.])
+35821
+trial already removed!
+waiting proc
+process result tensor([0.])
+37069
+trial already removed!
+waiting proc
+process result tensor([8.])
+38318
+trial already removed!
+waiting proc
+process result tensor([8.])
+39566
+trial already removed!
+waiting proc
+process result tensor([8.])
+40815
+trial already removed!
+waiting proc
+process result tensor([8.])
+1529
+trial already removed!
+waiting proc
+process result tensor([8.])
+2859
+trial already removed!
+waiting proc
+process result tensor([8.])
+4210
+trial already removed!
+waiting proc
+process result tensor([8.])
+5467
+trial already removed!
+waiting proc
+process result tensor([8.])
+6723
+trial already removed!
+waiting proc
+process result tensor([8.])
+7972
+trial already removed!
+waiting proc
+process result tensor([8.])
+9223
+trial already removed!
+waiting proc
+process result tensor([8.])
+10577
+trial already removed!
+waiting proc
+process result tensor([8.])
+11831
+trial already removed!
+waiting proc
+process result tensor([8.])
+13079
+trial already removed!
+waiting proc
+process result tensor([8.])
+14328
+trial already removed!
+waiting proc
+process result tensor([8.])
+15613
+trial already removed!
+waiting proc
+process result tensor([8.])
+16859
+trial already removed!
+waiting proc
+process result tensor([8.])
+18109
+trial already removed!
+waiting proc
+process result tensor([8.])
+19358
+trial already removed!
+waiting proc
+process result tensor([8.])
+20605
+trial already removed!
+waiting proc
+process result tensor([8.])
+21856
+trial already removed!
+waiting proc
+process result tensor([8.])
+23101
+trial already removed!
+waiting proc
+process result tensor([8.])
+24348
+trial already removed!
+waiting proc
+process result tensor([8.])
+25594
+trial already removed!
+waiting proc
+process result tensor([8.])
+26839
+trial already removed!
+waiting proc
+process result tensor([8.])
+28085
+trial already removed!
+waiting proc
+process result tensor([8.])
+29451
+trial already removed!
+waiting proc
+process result tensor([8.])
+30701
+trial already removed!
+waiting proc
+process result tensor([8.])
+31947
+trial already removed!
+waiting proc
+process result tensor([8.])
+33197
+trial already removed!
+waiting proc
+process result tensor([8.])
+34446
+trial already removed!
+waiting proc
+process result tensor([0.])
+35694
+trial already removed!
+waiting proc
+process result tensor([8.])
+36942
+trial already removed!
+waiting proc
+process result tensor([8.])
+38193
+trial already removed!
+waiting proc
+process result tensor([8.])
+39443
+trial already removed!
+waiting proc
+process result tensor([0.])
+40689
+trial already removed!
+waiting proc
+process result tensor([8.])
+1397
+trial already removed!
+waiting proc
+process result tensor([8.])
+2685
+trial already removed!
+waiting proc
+process result tensor([8.])
+4082
+trial already removed!
+waiting proc
+process result tensor([8.])
+5336
+trial already removed!
+waiting proc
+process result tensor([8.])
+6705
+trial already removed!
+waiting proc
+process result tensor([0.])
+7953
+trial already removed!
+waiting proc
+process result tensor([8.])
+9202
+trial already removed!
+waiting proc
+process result tensor([8.])
+10449
+trial already removed!
+waiting proc
+process result tensor([8.])
+11701
+trial already removed!
+waiting proc
+process result tensor([8.])
+12949
+trial already removed!
+waiting proc
+process result tensor([8.])
+14199
+trial already removed!
+waiting proc
+process result tensor([8.])
+15452
+trial already removed!
+waiting proc
+process result tensor([0.])
+16732
+trial already removed!
+[116555, 751557, 756601, 761713, 766895, 772148, 777473, 782872, 788347, 793898, 799529, 805240, 811033, 816910, 822873, 828923, 835064, 841295, 847621, 854042, 860562, 867181, 873904, 880731, 887666, 894711, 901869, 909142, 916533, 924046, 931682, 939446, 947341, 955369, 963535, 971841, 980292, 988891, 997642, 1006550, 1015618, 1024851, 1034253, 1043829, 1053585, 1063524, 1073653, 1083977, 1094501, 1105231, 1116174, 1127336, 1138723, 1150342, 1162202, 1174308, 1186669, 1199293, 1212189, 1225365, 1238830, 1252595, 1266669, 1281063, 1295788, 1310855, 1326277, 1342066, 1358236, 1374799, 1391772, 1409169, 1427007, 1445302, 1464072, 1483336, 1496014, 1503114, 1523426, 1544295, 1565744, 1587796, 1610479, 1633820, 1657846, 1682590, 1708084, 1734362, 1761462, 1789421, 1818283, 1848091, 1878892, 1910738, 1943682, 1977781, 2013099, 2049701, 2087658, 2127048, 2167953, 2210462, 2254671, 2300684, 2348615, 2398586, 2450729, 2505190, 2562126, 2621710, 2684132, 2749598, 2818338, 2890603, 2966672, 2992027, 3046852, 3131487, 3220958, 3315692, 3416168, 3522923, 3636565, 3757784, 3887363, 4026197, 4175316, 4335905, 4509341, 4697230, 4901458, 5124251, 5368263, 5636676, 5933343, 6262973, 6631384, 7045845, 7515568, 8052394, 8671809, 9394460, 10248502, 11273352, 12525946, 14091690, 16104788, 18788919, 22546703, 28183379, 37577838, 56366757, 112733514]
+waiting proc
+process result tensor([0.])
+19879
+trial already removed!
+waiting proc
+process result tensor([0.])
+21137
+trial already removed!
+waiting proc
+process result tensor([8.])
+22387
+trial already removed!
+waiting proc
+process result tensor([8.])
+23643
+trial already removed!
+waiting proc
+process result tensor([8.])
+24893
+trial already removed!
+waiting proc
+process result tensor([8.])
+26140
+trial already removed!
+waiting proc
+process result tensor([8.])
+27388
+trial already removed!
+waiting proc
+process result tensor([8.])
+28641
+trial already removed!
+waiting proc
+process result tensor([8.])
+29889
+trial already removed!
+waiting proc
+process result tensor([8.])
+31139
+trial already removed!
+waiting proc
+process result tensor([8.])
+32391
+trial already removed!
+waiting proc
+process result tensor([8.])
+33642
+trial already removed!
+waiting proc
+process result tensor([8.])
+34890
+trial already removed!
+waiting proc
+process result tensor([0.])
+36252
+trial already removed!
+waiting proc
+process result tensor([8.])
+37508
+trial already removed!
+waiting proc
+process result tensor([8.])
+38755
+trial already removed!
+waiting proc
+process result tensor([8.])
+40005
+trial already removed!
+waiting proc
+process result tensor([8.])
+616
+trial already removed!
+waiting proc
+process result tensor([8.])
+2305
+trial already removed!
+waiting proc
+process result tensor([8.])
+3561
+trial already removed!
+waiting proc
+process result tensor([8.])
+4813
+trial already removed!
+waiting proc
+process result tensor([8.])
+6061
+trial already removed!
+waiting proc
+process result tensor([8.])
+7310
+trial already removed!
+waiting proc
+process result tensor([8.])
+8571
+trial already removed!
+waiting proc
+process result tensor([8.])
+9818
+trial already removed!
+waiting proc
+process result tensor([8.])
+11072
+trial already removed!
+waiting proc
+process result tensor([8.])
+12475
+trial already removed!
+waiting proc
+process result tensor([8.])
+13725
+trial already removed!
+waiting proc
+process result tensor([8.])
+14988
+trial already removed!
+waiting proc
+process result tensor([8.])
+16350
+trial already removed!
+waiting proc
+process result tensor([8.])
+17610
+trial already removed!
+waiting proc
+process result tensor([8.])
+18863
+trial already removed!
+waiting proc
+process result tensor([8.])
+20167
+trial already removed!
+waiting proc
+process result tensor([8.])
+21421
+trial already removed!
+waiting proc
+process result tensor([8.])
+22671
+trial already removed!
+waiting proc
+process result tensor([8.])
+23925
+trial already removed!
+waiting proc
+process result tensor([8.])
+25175
+trial already removed!
+waiting proc
+process result tensor([8.])
+26423
+trial already removed!
+waiting proc
+process result tensor([8.])
+27673
+trial already removed!
+waiting proc
+process result tensor([8.])
+28926
+trial already removed!
+waiting proc
+process result tensor([8.])
+30172
+trial already removed!
+waiting proc
+process result tensor([8.])
+31427
+trial already removed!
+waiting proc
+process result tensor([8.])
+32677
+trial already removed!
+waiting proc
+process result tensor([8.])
+33926
+trial already removed!
+waiting proc
+process result tensor([8.])
+35173
+trial already removed!
+waiting proc
+process result tensor([8.])
+36536
+trial already removed!
+waiting proc
+process result tensor([8.])
+37791
+trial already removed!
+waiting proc
+process result tensor([8.])
+39042
+trial already removed!
+waiting proc
+process result tensor([8.])
+40291
+trial already removed!
+waiting proc
+process result tensor([0.])
+945
+trial already removed!
+waiting proc
+process result tensor([8.])
+2265
+trial already removed!
+waiting proc
+process result tensor([8.])
+3525
+trial already removed!
+waiting proc
+process result tensor([8.])
+4775
+trial already removed!
+waiting proc
+process result tensor([8.])
+6025
+trial already removed!
+waiting proc
+process result tensor([8.])
+7272
+trial already removed!
+waiting proc
+process result tensor([8.])
+8533
+trial already removed!
+waiting proc
+process result tensor([8.])
+9782
+trial already removed!
+waiting proc
+process result tensor([8.])
+11034
+trial already removed!
+waiting proc
+process result tensor([8.])
+12437
+trial already removed!
+waiting proc
+process result tensor([8.])
+13689
+trial already removed!
+waiting proc
+process result tensor([8.])
+15061
+trial already removed!
+waiting proc
+process result tensor([8.])
+16314
+trial already removed!
+waiting proc
+process result tensor([8.])
+17573
+trial already removed!
+waiting proc
+process result tensor([8.])
+18825
+trial already removed!
+waiting proc
+process result tensor([8.])
+20129
+trial already removed!
+waiting proc
+process result tensor([8.])
+21380
+trial already removed!
+waiting proc
+process result tensor([8.])
+22630
+trial already removed!
+waiting proc
+process result tensor([8.])
+23888
+trial already removed!
+waiting proc
+process result tensor([8.])
+25137
+trial already removed!
+waiting proc
+process result tensor([8.])
+26382
+trial already removed!
+waiting proc
+process result tensor([8.])
+27632
+trial already removed!
+waiting proc
+process result tensor([8.])
+28883
+trial already removed!
+waiting proc
+process result tensor([8.])
+30132
+trial already removed!
+waiting proc
+process result tensor([8.])
+31384
+trial already removed!
+waiting proc
+process result tensor([8.])
+32634
+trial already removed!
+waiting proc
+process result tensor([8.])
+33997
+trial already removed!
+waiting proc
+process result tensor([8.])
+35246
+trial already removed!
+waiting proc
+process result tensor([8.])
+36496
+trial already removed!
+waiting proc
+process result tensor([8.])
+37750
+trial already removed!
+waiting proc
+process result tensor([8.])
+38998
+trial already removed!
+waiting proc
+process result tensor([0.])
+40248
+trial already removed!
+waiting proc
+process result tensor([8.])
+898
+trial already removed!
+waiting proc
+process result tensor([8.])
+2218
+trial already removed!
+waiting proc
+process result tensor([8.])
+3482
+trial already removed!
+waiting proc
+process result tensor([0.])
+4730
+trial already removed!
+waiting proc
+process result tensor([8.])
+5979
+trial already removed!
+waiting proc
+process result tensor([8.])
+7229
+trial already removed!
+waiting proc
+process result tensor([8.])
+8490
+trial already removed!
+waiting proc
+process result tensor([8.])
+9740
+trial already removed!
+waiting proc
+process result tensor([8.])
+11106
+trial already removed!
+waiting proc
+process result tensor([0.])
+12509
+trial already removed!
+waiting proc
+process result tensor([8.])
+13761
+trial already removed!
+waiting proc
+process result tensor([8.])
+15021
+trial already removed!
+waiting proc
+process result tensor([8.])
+16276
+trial already removed!
+waiting proc
+process result tensor([8.])
+17535
+trial already removed!
+waiting proc
+process result tensor([8.])
+18788
+trial already removed!
+waiting proc
+process result tensor([8.])
+20092
+trial already removed!
+waiting proc
+process result tensor([0.])
+21343
+trial already removed!
+[116555, 751557, 756601, 761713, 766895, 772148, 777473, 782872, 788347, 793898, 799529, 805240, 811033, 816910, 822873, 828923, 835064, 841295, 847621, 854042, 860562, 867181, 873904, 880731, 887666, 894711, 901869, 909142, 916533, 924046, 931682, 939446, 947341, 955369, 963535, 971841, 980292, 988891, 997642, 1006550, 1015618, 1024851, 1034253, 1043829, 1053585, 1063524, 1073653, 1083977, 1094501, 1105231, 1116174, 1127336, 1138723, 1150342, 1162202, 1174308, 1186669, 1199293, 1212189, 1225365, 1238830, 1252595, 1266669, 1281063, 1295788, 1310855, 1326277, 1342066, 1358236, 1374799, 1391772, 1409169, 1427007, 1445302, 1464072, 1483336, 1496014, 1503114, 1523426, 1544295, 1565744, 1587796, 1610479, 1633820, 1657846, 1682590, 1708084, 1734362, 1761462, 1789421, 1818283, 1848091, 1878892, 1910738, 1943682, 1977781, 2013099, 2049701, 2087658, 2127048, 2167953, 2210462, 2254671, 2300684, 2348615, 2398586, 2450729, 2505190, 2562126, 2621710, 2684132, 2749598, 2818338, 2890603, 2966672, 2992027, 3046852, 3131487, 3220958, 3315692, 3416168, 3522923, 3636565, 3757784, 3887363, 4026197, 4175316, 4335905, 4509341, 4697230, 4901458, 5124251, 5368263, 5636676, 5933343, 6262973, 6631384, 7045845, 7515568, 8052394, 8671809, 9394460, 10248502, 11273352, 12525946, 14091690, 16104788, 18788919, 22546703, 28183379, 37577838, 56366757, 112733514]
+waiting proc
+process result tensor([0.])
+15546
+trial already removed!
+waiting proc
+process result tensor([0.])
+16792
+trial already removed!
+waiting proc
+process result tensor([8.])
+18042
+trial already removed!
+waiting proc
+process result tensor([8.])
+19289
+trial already removed!
+waiting proc
+process result tensor([8.])
+20538
+trial already removed!
+waiting proc
+process result tensor([8.])
+21786
+trial already removed!
+waiting proc
+process result tensor([8.])
+23033
+trial already removed!
+waiting proc
+process result tensor([8.])
+24281
+trial already removed!
+waiting proc
+process result tensor([8.])
+25529
+trial already removed!
+waiting proc
+process result tensor([8.])
+26775
+trial already removed!
+waiting proc
+process result tensor([8.])
+28018
+trial already removed!
+waiting proc
+process result tensor([8.])
+29270
+trial already removed!
+waiting proc
+process result tensor([8.])
+30519
+trial already removed!
+waiting proc
+process result tensor([0.])
+31880
+trial already removed!
+waiting proc
+process result tensor([8.])
+33127
+trial already removed!
+waiting proc
+process result tensor([8.])
+34376
+trial already removed!
+waiting proc
+process result tensor([8.])
+35625
+trial already removed!
+waiting proc
+process result tensor([8.])
+36882
+trial already removed!
+waiting proc
+process result tensor([8.])
+38444
+trial already removed!
+waiting proc
+process result tensor([8.])
+39690
+trial already removed!
+waiting proc
+process result tensor([8.])
+40943
+trial already removed!
+waiting proc
+process result tensor([8.])
+1660
+trial already removed!
+waiting proc
+process result tensor([8.])
+3046
+trial already removed!
+waiting proc
+process result tensor([8.])
+4337
+trial already removed!
+waiting proc
+process result tensor([8.])
+5589
+trial already removed!
+waiting proc
+process result tensor([8.])
+6849
+trial already removed!
+waiting proc
+process result tensor([8.])
+8097
+trial already removed!
+waiting proc
+process result tensor([8.])
+9346
+trial already removed!
+waiting proc
+process result tensor([8.])
+10590
+trial already removed!
+waiting proc
+process result tensor([8.])
+11952
+trial already removed!
+waiting proc
+process result tensor([8.])
+13206
+trial already removed!
+waiting proc
+process result tensor([8.])
+14458
+trial already removed!
+waiting proc
+process result tensor([8.])
+15744
+trial already removed!
+waiting proc
+process result tensor([8.])
+16990
+trial already removed!
+waiting proc
+process result tensor([8.])
+18242
+trial already removed!
+waiting proc
+process result tensor([8.])
+19487
+trial already removed!
+waiting proc
+process result tensor([8.])
+20739
+trial already removed!
+waiting proc
+process result tensor([8.])
+21987
+trial already removed!
+waiting proc
+process result tensor([8.])
+23232
+trial already removed!
+waiting proc
+process result tensor([8.])
+24480
+trial already removed!
+waiting proc
+process result tensor([8.])
+25726
+trial already removed!
+waiting proc
+process result tensor([8.])
+26971
+trial already removed!
+waiting proc
+process result tensor([8.])
+28217
+trial already removed!
+waiting proc
+process result tensor([8.])
+29469
+trial already removed!
+waiting proc
+process result tensor([8.])
+30718
+trial already removed!
+waiting proc
+process result tensor([8.])
+32077
+trial already removed!
+waiting proc
+process result tensor([8.])
+33327
+trial already removed!
+waiting proc
+process result tensor([8.])
+34576
+trial already removed!
+waiting proc
+process result tensor([8.])
+35823
+trial already removed!
+waiting proc
+process result tensor([0.])
+37072
+trial already removed!
+waiting proc
+process result tensor([8.])
+38319
+trial already removed!
+waiting proc
+process result tensor([8.])
+39569
+trial already removed!
+waiting proc
+process result tensor([8.])
+40818
+trial already removed!
+waiting proc
+process result tensor([8.])
+1532
+trial already removed!
+waiting proc
+process result tensor([8.])
+2860
+trial already removed!
+waiting proc
+process result tensor([8.])
+4212
+trial already removed!
+waiting proc
+process result tensor([8.])
+5468
+trial already removed!
+waiting proc
+process result tensor([8.])
+6726
+trial already removed!
+waiting proc
+process result tensor([8.])
+7971
+trial already removed!
+waiting proc
+process result tensor([8.])
+9222
+trial already removed!
+waiting proc
+process result tensor([8.])
+10580
+trial already removed!
+waiting proc
+process result tensor([8.])
+11832
+trial already removed!
+waiting proc
+process result tensor([8.])
+13082
+trial already removed!
+waiting proc
+process result tensor([8.])
+14330
+trial already removed!
+waiting proc
+process result tensor([8.])
+15616
+trial already removed!
+waiting proc
+process result tensor([8.])
+16862
+trial already removed!
+waiting proc
+process result tensor([8.])
+18112
+trial already removed!
+waiting proc
+process result tensor([8.])
+19361
+trial already removed!
+waiting proc
+process result tensor([8.])
+20607
+trial already removed!
+waiting proc
+process result tensor([8.])
+21855
+trial already removed!
+waiting proc
+process result tensor([8.])
+23104
+trial already removed!
+waiting proc
+process result tensor([8.])
+24350
+trial already removed!
+waiting proc
+process result tensor([8.])
+25597
+trial already removed!
+waiting proc
+process result tensor([8.])
+26842
+trial already removed!
+waiting proc
+process result tensor([8.])
+28087
+trial already removed!
+waiting proc
+process result tensor([8.])
+29454
+trial already removed!
+waiting proc
+process result tensor([8.])
+30703
+trial already removed!
+waiting proc
+process result tensor([8.])
+31948
+trial already removed!
+waiting proc
+process result tensor([8.])
+33198
+trial already removed!
+waiting proc
+process result tensor([8.])
+34448
+trial already removed!
+waiting proc
+process result tensor([0.])
+35696
+trial already removed!
+waiting proc
+process result tensor([8.])
+36945
+trial already removed!
+waiting proc
+process result tensor([8.])
+38196
+trial already removed!
+waiting proc
+process result tensor([8.])
+39440
+trial already removed!
+waiting proc
+process result tensor([0.])
+40692
+trial already removed!
+waiting proc
+process result tensor([8.])
+1400
+trial already removed!
+waiting proc
+process result tensor([8.])
+2688
+trial already removed!
+waiting proc
+process result tensor([8.])
+4085
+trial already removed!
+waiting proc
+process result tensor([8.])
+5339
+trial already removed!
+waiting proc
+process result tensor([8.])
+6708
+trial already removed!
+waiting proc
+process result tensor([0.])
+7955
+trial already removed!
+waiting proc
+process result tensor([8.])
+9205
+trial already removed!
+waiting proc
+process result tensor([8.])
+10451
+trial already removed!
+waiting proc
+process result tensor([8.])
+11704
+trial already removed!
+waiting proc
+process result tensor([8.])
+12951
+trial already removed!
+waiting proc
+process result tensor([8.])
+14203
+trial already removed!
+waiting proc
+process result tensor([8.])
+15454
+trial already removed!
+waiting proc
+process result tensor([0.])
+16734
+[116555, 751557, 756601, 761713, 766895, 772148, 777473, 782872, 788347, 793898, 799529, 805240, 811033, 816910, 822873, 828923, 835064, 841295, 847621, 854042, 860562, 867181, 873904, 880731, 887666, 894711, 901869, 909142, 916533, 924046, 931682, 939446, 947341, 955369, 963535, 971841, 980292, 988891, 997642, 1006550, 1015618, 1024851, 1034253, 1043829, 1053585, 1063524, 1073653, 1083977, 1094501, 1105231, 1116174, 1127336, 1138723, 1150342, 1162202, 1174308, 1186669, 1199293, 1212189, 1225365, 1238830, 1252595, 1266669, 1281063, 1295788, 1310855, 1326277, 1342066, 1358236, 1374799, 1391772, 1409169, 1427007, 1445302, 1464072, 1483336, 1496014, 1503114, 1523426, 1544295, 1565744, 1587796, 1610479, 1633820, 1657846, 1682590, 1708084, 1734362, 1761462, 1789421, 1818283, 1848091, 1878892, 1910738, 1943682, 1977781, 2013099, 2049701, 2087658, 2127048, 2167953, 2210462, 2254671, 2300684, 2348615, 2398586, 2450729, 2505190, 2562126, 2621710, 2684132, 2749598, 2818338, 2890603, 2966672, 2992027, 3046852, 3131487, 3220958, 3315692, 3416168, 3522923, 3636565, 3757784, 3887363, 4026197, 4175316, 4335905, 4509341, 4697230, 4901458, 5124251, 5368263, 5636676, 5933343, 6262973, 6631384, 7045845, 7515568, 8052394, 8671809, 9394460, 10248502, 11273352, 12525946, 14091690, 16104788, 18788919, 22546703, 28183379, 37577838, 56366757, 112733514]
+waiting proc
+process result tensor([0.])
+15543
+trial already removed!
+waiting proc
+process result tensor([0.])
+16794
+trial already removed!
+waiting proc
+process result tensor([8.])
+18043
+trial already removed!
+waiting proc
+process result tensor([8.])
+19290
+trial already removed!
+waiting proc
+process result tensor([8.])
+20537
+trial already removed!
+waiting proc
+process result tensor([8.])
+21787
+trial already removed!
+waiting proc
+process result tensor([8.])
+23032
+trial already removed!
+waiting proc
+process result tensor([8.])
+24282
+trial already removed!
+waiting proc
+process result tensor([8.])
+25530
+trial already removed!
+waiting proc
+process result tensor([8.])
+26773
+trial already removed!
+waiting proc
+process result tensor([8.])
+28021
+trial already removed!
+waiting proc
+process result tensor([8.])
+29269
+trial already removed!
+waiting proc
+process result tensor([8.])
+30520
+trial already removed!
+waiting proc
+process result tensor([0.])
+31879
+trial already removed!
+waiting proc
+process result tensor([8.])
+33130
+trial already removed!
+waiting proc
+process result tensor([8.])
+34379
+trial already removed!
+waiting proc
+process result tensor([8.])
+35624
+trial already removed!
+waiting proc
+process result tensor([8.])
+36884
+trial already removed!
+waiting proc
+process result tensor([8.])
+38445
+trial already removed!
+waiting proc
+process result tensor([8.])
+39692
+trial already removed!
+waiting proc
+process result tensor([8.])
+40942
+trial already removed!
+waiting proc
+process result tensor([8.])
+1658
+trial already removed!
+waiting proc
+process result tensor([8.])
+3045
+trial already removed!
+waiting proc
+process result tensor([8.])
+4336
+trial already removed!
+waiting proc
+process result tensor([8.])
+5592
+trial already removed!
+waiting proc
+process result tensor([8.])
+6848
+trial already removed!
+waiting proc
+process result tensor([8.])
+8096
+trial already removed!
+waiting proc
+process result tensor([8.])
+9345
+trial already removed!
+waiting proc
+process result tensor([8.])
+10592
+trial already removed!
+waiting proc
+process result tensor([8.])
+11950
+trial already removed!
+waiting proc
+process result tensor([8.])
+13205
+trial already removed!
+waiting proc
+process result tensor([8.])
+14457
+trial already removed!
+waiting proc
+process result tensor([8.])
+15743
+trial already removed!
+waiting proc
+process result tensor([8.])
+16992
+trial already removed!
+waiting proc
+process result tensor([8.])
+18244
+trial already removed!
+waiting proc
+process result tensor([8.])
+19489
+trial already removed!
+waiting proc
+process result tensor([8.])
+20738
+trial already removed!
+waiting proc
+process result tensor([8.])
+21988
+trial already removed!
+waiting proc
+process result tensor([8.])
+23233
+trial already removed!
+waiting proc
+trial already removed!
+process result tensor([8.])
+24481
+trial already removed!
+waiting proc
+process result tensor([8.])
+25727
+trial already removed!
+waiting proc
+process result tensor([8.])
+26973
+trial already removed!
+waiting proc
+process result tensor([8.])
+28219
+trial already removed!
+waiting proc
+process result tensor([8.])
+29468
+trial already removed!
+waiting proc
+process result tensor([8.])
+30717
+trial already removed!
+waiting proc
+process result tensor([8.])
+32075
+trial already removed!
+waiting proc
+process result tensor([8.])
+33328
+trial already removed!
+waiting proc
+process result tensor([8.])
+34574
+trial already removed!
+waiting proc
+process result tensor([8.])
+35824
+trial already removed!
+waiting proc
+process result tensor([0.])
+37071
+trial already removed!
+waiting proc
+process result tensor([8.])
+38321
+trial already removed!
+waiting proc
+process result tensor([8.])
+39568
+trial already removed!
+waiting proc
+process result tensor([8.])
+40816
+trial already removed!
+waiting proc
+process result tensor([8.])
+1531
+trial already removed!
+waiting proc
+process result tensor([8.])
+2862
+trial already removed!
+waiting proc
+process result tensor([8.])
+4213
+trial already removed!
+waiting proc
+process result tensor([8.])
+5470
+trial already removed!
+waiting proc
+process result tensor([8.])
+6725
+trial already removed!
+waiting proc
+process result tensor([8.])
+7974
+trial already removed!
+waiting proc
+process result tensor([8.])
+9225
+trial already removed!
+waiting proc
+process result tensor([8.])
+10578
+trial already removed!
+waiting proc
+process result tensor([8.])
+11830
+trial already removed!
+waiting proc
+process result tensor([8.])
+13081
+trial already removed!
+waiting proc
+process result tensor([8.])
+14331
+trial already removed!
+waiting proc
+process result tensor([8.])
+15615
+trial already removed!
+waiting proc
+process result tensor([8.])
+16861
+trial already removed!
+waiting proc
+process result tensor([8.])
+18110
+trial already removed!
+waiting proc
+process result tensor([8.])
+19360
+trial already removed!
+waiting proc
+process result tensor([8.])
+20606
+trial already removed!
+waiting proc
+process result tensor([8.])
+21857
+trial already removed!
+waiting proc
+process result tensor([8.])
+23103
+trial already removed!
+waiting proc
+process result tensor([8.])
+24351
+trial already removed!
+waiting proc
+process result tensor([8.])
+25595
+trial already removed!
+waiting proc
+process result tensor([8.])
+26840
+trial already removed!
+waiting proc
+process result tensor([8.])
+28086
+trial already removed!
+waiting proc
+process result tensor([8.])
+29452
+trial already removed!
+waiting proc
+process result tensor([8.])
+30704
+trial already removed!
+waiting proc
+process result tensor([8.])
+31949
+trial already removed!
+waiting proc
+process result tensor([8.])
+33200
+trial already removed!
+waiting proc
+process result tensor([8.])
+34449
+trial already removed!
+waiting proc
+process result tensor([0.])
+35697
+trial already removed!
+waiting proc
+process result tensor([8.])
+36943
+trial already removed!
+waiting proc
+process result tensor([8.])
+38195
+trial already removed!
+waiting proc
+process result tensor([8.])
+39442
+trial already removed!
+waiting proc
+process result tensor([0.])
+40691
+trial already removed!
+waiting proc
+process result tensor([8.])
+1399
+trial already removed!
+waiting proc
+process result tensor([8.])
+2687
+trial already removed!
+waiting proc
+process result tensor([8.])
+4084
+trial already removed!
+waiting proc
+process result tensor([8.])
+5338
+trial already removed!
+waiting proc
+process result tensor([8.])
+6707
+trial already removed!
+waiting proc
+process result tensor([0.])
+7956
+trial already removed!
+waiting proc
+process result tensor([8.])
+9204
+trial already removed!
+waiting proc
+process result tensor([8.])
+10452
+trial already removed!
+waiting proc
+process result tensor([8.])
+11703
+trial already removed!
+waiting proc
+process result tensor([8.])
+12952
+trial already removed!
+waiting proc
+process result tensor([8.])
+14201
+trial already removed!
+waiting proc
+process result tensor([8.])
+15451
+trial already removed!
+waiting proc
+process result tensor([0.])
+16735
+trial already removed!
+[116555, 751557, 756601, 761713, 766895, 772148, 777473, 782872, 788347, 793898, 799529, 805240, 811033, 816910, 822873, 828923, 835064, 841295, 847621, 854042, 860562, 867181, 873904, 880731, 887666, 894711, 901869, 909142, 916533, 924046, 931682, 939446, 947341, 955369, 963535, 971841, 980292, 988891, 997642, 1006550, 1015618, 1024851, 1034253, 1043829, 1053585, 1063524, 1073653, 1083977, 1094501, 1105231, 1116174, 1127336, 1138723, 1150342, 1162202, 1174308, 1186669, 1199293, 1212189, 1225365, 1238830, 1252595, 1266669, 1281063, 1295788, 1310855, 1326277, 1342066, 1358236, 1374799, 1391772, 1409169, 1427007, 1445302, 1464072, 1483336, 1496014, 1503114, 1523426, 1544295, 1565744, 1587796, 1610479, 1633820, 1657846, 1682590, 1708084, 1734362, 1761462, 1789421, 1818283, 1848091, 1878892, 1910738, 1943682, 1977781, 2013099, 2049701, 2087658, 2127048, 2167953, 2210462, 2254671, 2300684, 2348615, 2398586, 2450729, 2505190, 2562126, 2621710, 2684132, 2749598, 2818338, 2890603, 2966672, 2992027, 3046852, 3131487, 3220958, 3315692, 3416168, 3522923, 3636565, 3757784, 3887363, 4026197, 4175316, 4335905, 4509341, 4697230, 4901458, 5124251, 5368263, 5636676, 5933343, 6262973, 6631384, 7045845, 7515568, 8052394, 8671809, 9394460, 10248502, 11273352, 12525946, 14091690, 16104788, 18788919, 22546703, 28183379, 37577838, 56366757, 112733514]
+waiting proc
+process result tensor([0.])
+15545
+trial already removed!
+waiting proc
+process result tensor([0.])
+16795
+trial already removed!
+waiting proc
+process result tensor([8.])
+18040
+trial already removed!
+waiting proc
+process result tensor([8.])
+19288
+trial already removed!
+waiting proc
+process result tensor([8.])
+20536
+trial already removed!
+waiting proc
+process result tensor([8.])
+21785
+trial already removed!
+waiting proc
+process result tensor([8.])
+23031
+trial already removed!
+waiting proc
+process result tensor([8.])
+24280
+trial already removed!
+waiting proc
+process result tensor([8.])
+25528
+trial already removed!
+waiting proc
+process result tensor([8.])
+26774
+trial already removed!
+waiting proc
+process result tensor([8.])
+28020
+trial already removed!
+waiting proc
+process result tensor([8.])
+29268
+trial already removed!
+waiting proc
+process result tensor([8.])
+30518
+trial already removed!
+waiting proc
+process result tensor([0.])
+31878
+trial already removed!
+waiting proc
+process result tensor([8.])
+33129
+trial already removed!
+waiting proc
+process result tensor([8.])
+34378
+trial already removed!
+waiting proc
+process result tensor([8.])
+35623
+trial already removed!
+waiting proc
+process result tensor([8.])
+36883
+trial already removed!
+waiting proc
+process result tensor([8.])
+38443
+trial already removed!
+waiting proc
+process result tensor([8.])
+39691
+trial already removed!
+waiting proc
+process result tensor([8.])
+40941
+trial already removed!
+waiting proc
+process result tensor([8.])
+1659
+trial already removed!
+waiting proc
+process result tensor([8.])
+3044
+trial already removed!
+waiting proc
+process result tensor([8.])
+4335
+trial already removed!
+waiting proc
+process result tensor([8.])
+5591
+trial already removed!
+waiting proc
+process result tensor([8.])
+6847
+trial already removed!
+waiting proc
+process result tensor([8.])
+8095
+trial already removed!
+waiting proc
+process result tensor([8.])
+9344
+trial already removed!
+waiting proc
+process result tensor([8.])
+10591
+trial already removed!
+waiting proc
+process result tensor([8.])
+11951
+trial already removed!
+waiting proc
+process result tensor([8.])
+13204
+trial already removed!
+waiting proc
+process result tensor([8.])
+14456
+trial already removed!
+waiting proc
+process result tensor([8.])
+15742
+trial already removed!
+waiting proc
+process result tensor([8.])
+16993
+trial already removed!
+waiting proc
+process result tensor([8.])
+18243
+trial already removed!
+waiting proc
+process result tensor([8.])
+19488
+trial already removed!
+waiting proc
+process result tensor([8.])
+20737
+trial already removed!
+waiting proc
+process result tensor([8.])
+21986
+trial already removed!
+waiting proc
+process result tensor([8.])
+23234
+trial already removed!
+waiting proc
+process result tensor([8.])
+24479
+trial already removed!
+waiting proc
+process result tensor([8.])
+25725
+trial already removed!
+waiting proc
+process result tensor([8.])
+26972
+trial already removed!
+waiting proc
+process result tensor([8.])
+28218
+trial already removed!
+waiting proc
+process result tensor([8.])
+29467
+trial already removed!
+waiting proc
+process result tensor([8.])
+30716
+trial already removed!
+waiting proc
+process result tensor([8.])
+32076
+trial already removed!
+waiting proc
+process result tensor([8.])
+33325
+trial already removed!
+waiting proc
+process result tensor([8.])
+34575
+trial already removed!
+waiting proc
+process result tensor([8.])
+35822
+trial already removed!
+waiting proc
+process result tensor([0.])
+37070
+trial already removed!
+waiting proc
+process result tensor([8.])
+38317
+trial already removed!
+waiting proc
+process result tensor([8.])
+39567
+trial already removed!
+waiting proc
+process result tensor([8.])
+40817
+trial already removed!
+waiting proc
+process result tensor([8.])
+1530
+trial already removed!
+waiting proc
+process result tensor([8.])
+2861
+trial already removed!
+waiting proc
+process result tensor([8.])
+4211
+trial already removed!
+waiting proc
+process result tensor([8.])
+5469
+trial already removed!
+waiting proc
+process result tensor([8.])
+6724
+trial already removed!
+waiting proc
+process result tensor([8.])
+7973
+trial already removed!
+waiting proc
+process result tensor([8.])
+9224
+trial already removed!
+waiting proc
+process result tensor([8.])
+10579
+trial already removed!
+waiting proc
+process result tensor([8.])
+11829
+trial already removed!
+waiting proc
+process result tensor([8.])
+13080
+trial already removed!
+waiting proc
+process result tensor([8.])
+14329
+trial already removed!
+waiting proc
+process result tensor([8.])
+15614
+trial already removed!
+waiting proc
+process result tensor([8.])
+16860
+trial already removed!
+waiting proc
+process result tensor([8.])
+18111
+trial already removed!
+waiting proc
+process result tensor([8.])
+19359
+trial already removed!
+waiting proc
+process result tensor([8.])
+20608
+trial already removed!
+waiting proc
+process result tensor([8.])
+21858
+trial already removed!
+waiting proc
+process result tensor([8.])
+23102
+trial already removed!
+waiting proc
+process result tensor([8.])
+24349
+trial already removed!
+waiting proc
+process result tensor([8.])
+25596
+trial already removed!
+waiting proc
+process result tensor([8.])
+26841
+trial already removed!
+waiting proc
+process result tensor([8.])
+28088
+trial already removed!
+waiting proc
+process result tensor([8.])
+29453
+trial already removed!
+waiting proc
+process result tensor([8.])
+30702
+trial already removed!
+waiting proc
+process result tensor([8.])
+31950
+trial already removed!
+waiting proc
+process result tensor([8.])
+33199
+trial already removed!
+waiting proc
+process result tensor([8.])
+34447
+trial already removed!
+waiting proc
+process result tensor([0.])
+35695
+trial already removed!
+waiting proc
+process result tensor([8.])
+36944
+trial already removed!
+waiting proc
+process result tensor([8.])
+38194
+trial already removed!
+waiting proc
+process result tensor([8.])
+39441
+trial already removed!
+waiting proc
+process result tensor([0.])
+40690
+trial already removed!
+waiting proc
+process result tensor([8.])
+1398
+trial already removed!
+waiting proc
+process result tensor([8.])
+2686
+trial already removed!
+waiting proc
+process result tensor([8.])
+4083
+trial already removed!
+waiting proc
+process result tensor([8.])
+5337
+trial already removed!
+waiting proc
+process result tensor([8.])
+6706
+trial already removed!
+waiting proc
+process result tensor([0.])
+7954
+trial already removed!
+waiting proc
+process result tensor([8.])
+9203
+trial already removed!
+waiting proc
+process result tensor([8.])
+10450
+trial already removed!
+waiting proc
+process result tensor([8.])
+11702
+trial already removed!
+waiting proc
+process result tensor([8.])
+12950
+trial already removed!
+waiting proc
+process result tensor([8.])
+14200
+trial already removed!
+waiting proc
+process result tensor([8.])
+15453
+trial already removed!
+waiting proc
+process result tensor([0.])
+16733
+trial already removed!

@@ -1,0 +1,5 @@
+[00;33m 	'cuda/11.3' does not supports the {CUDA_MPI}. [0m
+[00;34m 	{CUDA_MPI} is only supported in cuda 11.4 version. [0m
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** JOB 149729 ON gpu20 CANCELLED AT 2022-11-12T21:45:39 ***
+slurmstepd: error: *** STEP 149729.0 ON gpu20 CANCELLED AT 2022-11-12T21:45:39 ***

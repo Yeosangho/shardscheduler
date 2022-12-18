@@ -1,0 +1,63 @@
+[00;33m 	'cuda/11.3' does not supports the {CUDA_MPI}. [0m
+[00;34m 	{CUDA_MPI} is only supported in cuda 11.4 version. [0m
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 466, in <module>
+    trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread) 
+  File "main_gpt2_with_health_checker.py", line 200, in __init__
+    self.tokenizer = GPT2Tokenizer.from_pretrained('gpt2', bos_token='<|startoftext|>', eos_token='<|endoftext|>', pad_token='<|pad|>')
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/transformers/tokenization_utils_base.py", line 1736, in from_pretrained
+    resolved_vocab_files[file_id] = cached_file(
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/transformers/utils/hub.py", line 409, in cached_file
+    resolved_file = hf_hub_download(
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/huggingface_hub-0.10.1-py3.8.egg/huggingface_hub/file_download.py", line 1182, in hf_hub_download
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/huggingface_hub-0.10.1-py3.8.egg/huggingface_hub/file_download.py", line 808, in _create_relative_symlink
+FileExistsError: [Errno 17] File exists: '../../blobs/1f1d9aaca301414e7f6c9396df506798ff4eb9a6' -> '/home01/hpc72a03/.cache/huggingface/hub/models--gpt2/snapshots/f27b190eeac4c2302d24068eabf5e9d6044389ae/vocab.json'
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 466, in <module>
+    trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread) 
+  File "main_gpt2_with_health_checker.py", line 200, in __init__
+    self.tokenizer = GPT2Tokenizer.from_pretrained('gpt2', bos_token='<|startoftext|>', eos_token='<|endoftext|>', pad_token='<|pad|>')
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/transformers/tokenization_utils_base.py", line 1736, in from_pretrained
+    resolved_vocab_files[file_id] = cached_file(
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/transformers/utils/hub.py", line 409, in cached_file
+    resolved_file = hf_hub_download(
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/huggingface_hub-0.10.1-py3.8.egg/huggingface_hub/file_download.py", line 1182, in hf_hub_download
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/huggingface_hub-0.10.1-py3.8.egg/huggingface_hub/file_download.py", line 808, in _create_relative_symlink
+FileExistsError: [Errno 17] File exists: '../../blobs/226b0752cac7789c48f0cb3ec53eda48b7be36cc' -> '/home01/hpc72a03/.cache/huggingface/hub/models--gpt2/snapshots/f27b190eeac4c2302d24068eabf5e9d6044389ae/merges.txt'
+srun: error: gpu10: task 1: Exited with exit code 1
+srun: error: gpu10: task 3: Exited with exit code 1
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 466, in <module>
+    trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread) 
+  File "main_gpt2_with_health_checker.py", line 269, in __init__
+    self.sharded_module = auto_wrap(adaptive_sdp, self.model)
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 220, in auto_wrap
+    wrapped_module, remainder = ConfigAutoWrap.recursive_wrap(adaptive_sdp, 'front',  module, auto_wrap_policy=auto_wrap_policy, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 297, in recursive_wrap
+    wrapped_child, num_wrapped_params = ConfigAutoWrap.recursive_wrap(adaptive_sdp, name,
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 297, in recursive_wrap
+    wrapped_child, num_wrapped_params = ConfigAutoWrap.recursive_wrap(adaptive_sdp, name,
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 313, in recursive_wrap
+    return wrap(adaptive_sdp, module, **kwargs), num_params
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 177, in wrap
+    return DP(module, **wrap_overrides) 
+TypeError: __init__() got an unexpected keyword argument 'init_comm_schedule'
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 466, in <module>
+    trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread) 
+  File "main_gpt2_with_health_checker.py", line 269, in __init__
+    self.sharded_module = auto_wrap(adaptive_sdp, self.model)
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 220, in auto_wrap
+    wrapped_module, remainder = ConfigAutoWrap.recursive_wrap(adaptive_sdp, 'front',  module, auto_wrap_policy=auto_wrap_policy, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 297, in recursive_wrap
+    wrapped_child, num_wrapped_params = ConfigAutoWrap.recursive_wrap(adaptive_sdp, name,
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 297, in recursive_wrap
+    wrapped_child, num_wrapped_params = ConfigAutoWrap.recursive_wrap(adaptive_sdp, name,
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 313, in recursive_wrap
+    return wrap(adaptive_sdp, module, **kwargs), num_params
+  File "/scratch/hpc72a03/shardscheduler/auto_wrap_custom.py", line 177, in wrap
+    return DP(module, **wrap_overrides) 
+TypeError: __init__() got an unexpected keyword argument 'init_comm_schedule'
+srun: error: gpu10: tasks 0,2: Exited with exit code 1

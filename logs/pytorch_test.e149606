@@ -1,0 +1,114 @@
+[00;33m 	'cuda/11.3' does not supports the {CUDA_MPI}. [0m
+[00;34m 	{CUDA_MPI} is only supported in cuda 11.4 version. [0m
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.
+OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 523, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 382, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1046, in forward
+    transformer_outputs = self.transformer(
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 832, in forward
+    inputs_embeds = self.wte(input_ids)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/sdp_custom.py", line 1185, in forward
+    outputs = self.module(*args, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/nn/misc/flatten_params_wrapper.py", line 459, in forward
+    return self.module(*inputs, **kwinputs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1131, in _call_impl
+    hook_result = hook(self, input, result)
+  File "/scratch/hpc72a03/shardscheduler/memory_hook.py", line 29, in hook
+    print({torch.cuda.memory_allocated()/1024**2})
+NameError: name 'torch' is not defined
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 523, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 382, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1046, in forward
+    transformer_outputs = self.transformer(
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 832, in forward
+    inputs_embeds = self.wte(input_ids)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/sdp_custom.py", line 1185, in forward
+    outputs = self.module(*args, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/nn/misc/flatten_params_wrapper.py", line 459, in forward
+    return self.module(*inputs, **kwinputs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1131, in _call_impl
+    hook_result = hook(self, input, result)
+  File "/scratch/hpc72a03/shardscheduler/memory_hook.py", line 29, in hook
+    print({torch.cuda.memory_allocated()/1024**2})
+NameError: name 'torch' is not defined
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 523, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 382, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1046, in forward
+    transformer_outputs = self.transformer(
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 832, in forward
+    inputs_embeds = self.wte(input_ids)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/sdp_custom.py", line 1185, in forward
+    outputs = self.module(*args, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/nn/misc/flatten_params_wrapper.py", line 459, in forward
+    return self.module(*inputs, **kwinputs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1131, in _call_impl
+    hook_result = hook(self, input, result)
+  File "/scratch/hpc72a03/shardscheduler/memory_hook.py", line 29, in hook
+    print({torch.cuda.memory_allocated()/1024**2})
+NameError: name 'torch' is not defined
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 523, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 382, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1046, in forward
+    transformer_outputs = self.transformer(
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 832, in forward
+    inputs_embeds = self.wte(input_ids)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/sdp_custom.py", line 1185, in forward
+    outputs = self.module(*args, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/fairscale/fairscale/nn/misc/flatten_params_wrapper.py", line 459, in forward
+    return self.module(*inputs, **kwinputs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1131, in _call_impl
+    hook_result = hook(self, input, result)
+  File "/scratch/hpc72a03/shardscheduler/memory_hook.py", line 29, in hook
+    print({torch.cuda.memory_allocated()/1024**2})
+NameError: name 'torch' is not defined
+srun: error: gpu07: tasks 0-2: Exited with exit code 1
+srun: error: gpu07: task 3: Aborted (core dumped)

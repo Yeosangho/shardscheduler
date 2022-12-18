@@ -1,0 +1,390 @@
+[00;33m 	'cuda/11.3' does not supports the {CUDA_MPI}. [0m
+[00;34m 	{CUDA_MPI} is only supported in cuda 11.4 version. [0m
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+  0%|          | 0/38 [00:00<?, ?it/s]  0%|          | 0/38 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 1002, in __getattr__
+    return super().__getattr__(name)  # defer to nn.Module's logic
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1185, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'DataParallel_Custom' object has no attribute 'do_allreduce_async'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/fairscale/nn/misc/flatten_params_wrapper.py", line 410, in __getattr__
+    return super().__getattr__(name)  # defer to nn.Module's logic
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1185, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'FlattenParamsWrapper' object has no attribute 'do_allreduce_async'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 492, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 356, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1046, in forward
+    transformer_outputs = self.transformer(
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 832, in forward
+    inputs_embeds = self.wte(input_ids)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 711, in forward
+    self.communicate_forward()
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 676, in communicate_forward
+    self.do_communication(comm)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 684, in do_communication
+    self.do_allreduce_async(partial_param)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 1004, in __getattr__
+    return getattr(self.module, name)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/fairscale/nn/misc/flatten_params_wrapper.py", line 412, in __getattr__
+    return getattr(self.module, name)  # fallback to wrapped module
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1185, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'Embedding' object has no attribute 'do_allreduce_async'
+  0%|          | 0/38 [00:00<?, ?it/s]  0%|          | 0/38 [00:00<?, ?it/s]
+  0%|          | 0/38 [00:00<?, ?it/s]  0%|          | 0/38 [00:00<?, ?it/s]
+  0%|          | 0/38 [00:00<?, ?it/s]  0%|          | 0/38 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 1002, in __getattr__
+    return super().__getattr__(name)  # defer to nn.Module's logic
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1185, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'DataParallel_Custom' object has no attribute 'do_allreduce_async'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/fairscale/nn/misc/flatten_params_wrapper.py", line 410, in __getattr__
+    return super().__getattr__(name)  # defer to nn.Module's logic
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1185, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'FlattenParamsWrapper' object has no attribute 'do_allreduce_async'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 492, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 356, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1046, in forward
+    transformer_outputs = self.transformer(
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 832, in forward
+    inputs_embeds = self.wte(input_ids)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 711, in forward
+    self.communicate_forward()
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 676, in communicate_forward
+    self.do_communication(comm)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 684, in do_communication
+    self.do_allreduce_async(partial_param)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 1004, in __getattr__
+    return getattr(self.module, name)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/fairscale/nn/misc/flatten_params_wrapper.py", line 412, in __getattr__
+    return getattr(self.module, name)  # fallback to wrapped module
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1185, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'Embedding' object has no attribute 'do_allreduce_async'
+  0%|          | 0/38 [00:00<?, ?it/s]  0%|          | 0/38 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 1002, in __getattr__
+    return super().__getattr__(name)  # defer to nn.Module's logic
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1185, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'DataParallel_Custom' object has no attribute 'do_allreduce_async'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/fairscale/nn/misc/flatten_params_wrapper.py", line 410, in __getattr__
+    return super().__getattr__(name)  # defer to nn.Module's logic
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1185, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'FlattenParamsWrapper' object has no attribute 'do_allreduce_async'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 492, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 356, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1046, in forward
+    transformer_outputs = self.transformer(
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 832, in forward
+    inputs_embeds = self.wte(input_ids)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 711, in forward
+    self.communicate_forward()
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 676, in communicate_forward
+    self.do_communication(comm)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 684, in do_communication
+    self.do_allreduce_async(partial_param)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 1004, in __getattr__
+    return getattr(self.module, name)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/fairscale/nn/misc/flatten_params_wrapper.py", line 412, in __getattr__
+    return getattr(self.module, name)  # fallback to wrapped module
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1185, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'Embedding' object has no attribute 'do_allreduce_async'
+  0%|          | 0/38 [00:00<?, ?it/s]  0%|          | 0/38 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 1002, in __getattr__
+    return super().__getattr__(name)  # defer to nn.Module's logic
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1185, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'DataParallel_Custom' object has no attribute 'do_allreduce_async'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/fairscale/nn/misc/flatten_params_wrapper.py", line 410, in __getattr__
+    return super().__getattr__(name)  # defer to nn.Module's logic
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1185, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'FlattenParamsWrapper' object has no attribute 'do_allreduce_async'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 492, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 356, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1046, in forward
+    transformer_outputs = self.transformer(
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 832, in forward
+    inputs_embeds = self.wte(input_ids)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 711, in forward
+    self.communicate_forward()
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 676, in communicate_forward
+    self.do_communication(comm)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 684, in do_communication
+    self.do_allreduce_async(partial_param)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 1004, in __getattr__
+    return getattr(self.module, name)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/fairscale/nn/misc/flatten_params_wrapper.py", line 412, in __getattr__
+    return getattr(self.module, name)  # fallback to wrapped module
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1185, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'Embedding' object has no attribute 'do_allreduce_async'
+Traceback (most recent call last):
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 1002, in __getattr__
+    return super().__getattr__(name)  # defer to nn.Module's logic
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1185, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'DataParallel_Custom' object has no attribute 'do_allreduce_async'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/fairscale/nn/misc/flatten_params_wrapper.py", line 410, in __getattr__
+    return super().__getattr__(name)  # defer to nn.Module's logic
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1185, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'FlattenParamsWrapper' object has no attribute 'do_allreduce_async'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 492, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 356, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1046, in forward
+    transformer_outputs = self.transformer(
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 832, in forward
+    inputs_embeds = self.wte(input_ids)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 711, in forward
+    self.communicate_forward()
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 676, in communicate_forward
+    self.do_communication(comm)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 684, in do_communication
+    self.do_allreduce_async(partial_param)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 1004, in __getattr__
+    return getattr(self.module, name)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/fairscale/nn/misc/flatten_params_wrapper.py", line 412, in __getattr__
+    return getattr(self.module, name)  # fallback to wrapped module
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1185, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'Embedding' object has no attribute 'do_allreduce_async'
+Traceback (most recent call last):
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 1002, in __getattr__
+    return super().__getattr__(name)  # defer to nn.Module's logic
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1185, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'DataParallel_Custom' object has no attribute 'do_allreduce_async'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/fairscale/nn/misc/flatten_params_wrapper.py", line 410, in __getattr__
+    return super().__getattr__(name)  # defer to nn.Module's logic
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1185, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'FlattenParamsWrapper' object has no attribute 'do_allreduce_async'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 492, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 356, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1046, in forward
+    transformer_outputs = self.transformer(
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 832, in forward
+    inputs_embeds = self.wte(input_ids)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 711, in forward
+    self.communicate_forward()
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 676, in communicate_forward
+    self.do_communication(comm)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 684, in do_communication
+    self.do_allreduce_async(partial_param)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 1004, in __getattr__
+    return getattr(self.module, name)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/fairscale/nn/misc/flatten_params_wrapper.py", line 412, in __getattr__
+    return getattr(self.module, name)  # fallback to wrapped module
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1185, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'Embedding' object has no attribute 'do_allreduce_async'
+  0%|          | 0/38 [00:00<?, ?it/s]  0%|          | 0/38 [00:00<?, ?it/s]
+  0%|          | 0/38 [00:00<?, ?it/s]  0%|          | 0/38 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 1002, in __getattr__
+    return super().__getattr__(name)  # defer to nn.Module's logic
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1185, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'DataParallel_Custom' object has no attribute 'do_allreduce_async'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/fairscale/nn/misc/flatten_params_wrapper.py", line 410, in __getattr__
+    return super().__getattr__(name)  # defer to nn.Module's logic
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1185, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'FlattenParamsWrapper' object has no attribute 'do_allreduce_async'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 492, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 356, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1046, in forward
+    transformer_outputs = self.transformer(
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 832, in forward
+    inputs_embeds = self.wte(input_ids)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 711, in forward
+    self.communicate_forward()
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 676, in communicate_forward
+    self.do_communication(comm)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 684, in do_communication
+    self.do_allreduce_async(partial_param)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 1004, in __getattr__
+    return getattr(self.module, name)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/fairscale/nn/misc/flatten_params_wrapper.py", line 412, in __getattr__
+    return getattr(self.module, name)  # fallback to wrapped module
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1185, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'Embedding' object has no attribute 'do_allreduce_async'
+Traceback (most recent call last):
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 1002, in __getattr__
+    return super().__getattr__(name)  # defer to nn.Module's logic
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1185, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'DataParallel_Custom' object has no attribute 'do_allreduce_async'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/fairscale/nn/misc/flatten_params_wrapper.py", line 410, in __getattr__
+    return super().__getattr__(name)  # defer to nn.Module's logic
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1185, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'FlattenParamsWrapper' object has no attribute 'do_allreduce_async'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 492, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 356, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1046, in forward
+    transformer_outputs = self.transformer(
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 832, in forward
+    inputs_embeds = self.wte(input_ids)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 711, in forward
+    self.communicate_forward()
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 676, in communicate_forward
+    self.do_communication(comm)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 684, in do_communication
+    self.do_allreduce_async(partial_param)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 1004, in __getattr__
+    return getattr(self.module, name)
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/fairscale/nn/misc/flatten_params_wrapper.py", line 412, in __getattr__
+    return getattr(self.module, name)  # fallback to wrapped module
+  File "/home01/hpc72a03/.conda/envs/lightning/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1185, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'Embedding' object has no attribute 'do_allreduce_async'
+srun: error: gpu17: task 4: Exited with exit code 1
+srun: error: gpu16: task 3: Exited with exit code 1
+srun: error: gpu17: tasks 5-7: Exited with exit code 1
+srun: error: gpu16: tasks 0-2: Exited with exit code 1

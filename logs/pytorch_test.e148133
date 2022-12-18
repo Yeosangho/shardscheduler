@@ -1,0 +1,20 @@
+[00;33m 	'cuda/11.3' does not supports the {CUDA_MPI}. [0m
+[00;34m 	{CUDA_MPI} is only supported in cuda 11.4 version. [0m
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --python_path /home01/hpc72a03/.conda/envs/shard/bin/python
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --python_path /home01/hpc72a03/.conda/envs/shard/bin/python
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --python_path /home01/hpc72a03/.conda/envs/shard/bin/python
+usage: main.py [-h] [--target_memory TARGET_MEMORY] [--sdp_ratio SDP_RATIO]
+               [--fsdp_ratio FSDP_RATIO] [--dp_ratio DP_RATIO]
+               [--bucket_size BUCKET_SIZE] [--exp_tag EXP_TAG]
+main.py: error: unrecognized arguments: --python_path /home01/hpc72a03/.conda/envs/shard/bin/python
+srun: error: gpu14: tasks 0-1: Exited with exit code 2
+srun: error: gpu15: tasks 2-3: Exited with exit code 2

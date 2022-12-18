@@ -1,0 +1,24 @@
+[1] is setting up NCCL communicator and retreiving ncclUniqueId from [0] via c10d key-value store by key '0', but store->get('0') got error: Connection reset by peerTraceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 478, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 350, in benchmark_step
+    dist.all_reduce(grad_clone, async_op=False)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/distributed/distributed_c10d.py", line 1314, in all_reduce
+    work = default_pg.allreduce([tensor], opts)
+RuntimeError: [1] is setting up NCCL communicator and retreiving ncclUniqueId from [0] via c10d key-value store by key '0', but store->get('0') got error: Connection reset by peer
+[2] is setting up NCCL communicator and retreiving ncclUniqueId from [0] via c10d key-value store by key '0', but store->get('0') got error: Connection reset by peerTraceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 478, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 350, in benchmark_step
+    dist.all_reduce(grad_clone, async_op=False)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/distributed/distributed_c10d.py", line 1314, in all_reduce
+    work = default_pg.allreduce([tensor], opts)
+RuntimeError: [2] is setting up NCCL communicator and retreiving ncclUniqueId from [0] via c10d key-value store by key '0', but store->get('0') got error: Connection reset by peer
+[3] is setting up NCCL communicator and retreiving ncclUniqueId from [0] via c10d key-value store by key '0', but store->get('0') got error: Connection reset by peerTraceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 478, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 350, in benchmark_step
+    dist.all_reduce(grad_clone, async_op=False)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/distributed/distributed_c10d.py", line 1314, in all_reduce
+    work = default_pg.allreduce([tensor], opts)
+RuntimeError: [3] is setting up NCCL communicator and retreiving ncclUniqueId from [0] via c10d key-value store by key '0', but store->get('0') got error: Connection reset by peer

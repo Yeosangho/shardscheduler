@@ -1,0 +1,133 @@
+[00;33m 	'cuda/11.3' does not supports the {CUDA_MPI}. [0m
+[00;34m 	{CUDA_MPI} is only supported in cuda 11.4 version. [0m
+Traceback (most recent call last):
+  File "main.py", line 571, in <module>
+    trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread) 
+  File "main.py", line 356, in __init__
+    make_schedule_from_json(params_list, self._schedule_comm_init, self._scheduled_comms, self._locks, self.adaptive_sdp_modules)
+  File "/scratch/hpc72a03/shardscheduler/test_cases.py", line 656, in make_schedule_from_json
+    schedule_json = json.load(schedule_json)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/json/__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "main.py", line 571, in <module>
+    trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread) 
+  File "main.py", line 356, in __init__
+    make_schedule_from_json(params_list, self._schedule_comm_init, self._scheduled_comms, self._locks, self.adaptive_sdp_modules)
+  File "/scratch/hpc72a03/shardscheduler/test_cases.py", line 656, in make_schedule_from_json
+    schedule_json = json.load(schedule_json)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/json/__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+Traceback (most recent call last):
+  File "main.py", line 571, in <module>
+    trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread) 
+  File "main.py", line 356, in __init__
+    make_schedule_from_json(params_list, self._schedule_comm_init, self._scheduled_comms, self._locks, self.adaptive_sdp_modules)
+  File "/scratch/hpc72a03/shardscheduler/test_cases.py", line 656, in make_schedule_from_json
+    schedule_json = json.load(schedule_json)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/json/__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "main.py", line 571, in <module>
+    trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread) 
+  File "main.py", line 356, in __init__
+    make_schedule_from_json(params_list, self._schedule_comm_init, self._scheduled_comms, self._locks, self.adaptive_sdp_modules)
+  File "/scratch/hpc72a03/shardscheduler/test_cases.py", line 656, in make_schedule_from_json
+    schedule_json = json.load(schedule_json)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/json/__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+Traceback (most recent call last):
+  File "main.py", line 571, in <module>
+    trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread) 
+  File "main.py", line 356, in __init__
+    make_schedule_from_json(params_list, self._schedule_comm_init, self._scheduled_comms, self._locks, self.adaptive_sdp_modules)
+  File "/scratch/hpc72a03/shardscheduler/test_cases.py", line 656, in make_schedule_from_json
+    schedule_json = json.load(schedule_json)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/json/__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "main.py", line 571, in <module>
+    trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread) 
+  File "main.py", line 356, in __init__
+    make_schedule_from_json(params_list, self._schedule_comm_init, self._scheduled_comms, self._locks, self.adaptive_sdp_modules)
+  File "/scratch/hpc72a03/shardscheduler/test_cases.py", line 656, in make_schedule_from_json
+    schedule_json = json.load(schedule_json)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/json/__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+Traceback (most recent call last):
+  File "main.py", line 571, in <module>
+    trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread) 
+  File "main.py", line 356, in __init__
+    make_schedule_from_json(params_list, self._schedule_comm_init, self._scheduled_comms, self._locks, self.adaptive_sdp_modules)
+  File "/scratch/hpc72a03/shardscheduler/test_cases.py", line 656, in make_schedule_from_json
+    schedule_json = json.load(schedule_json)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/json/__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "main.py", line 571, in <module>
+    trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread) 
+  File "main.py", line 356, in __init__
+    make_schedule_from_json(params_list, self._schedule_comm_init, self._scheduled_comms, self._locks, self.adaptive_sdp_modules)
+  File "/scratch/hpc72a03/shardscheduler/test_cases.py", line 656, in make_schedule_from_json
+    schedule_json = json.load(schedule_json)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/json/__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+srun: error: gpu22: tasks 1-3: Exited with exit code 1
+srun: error: gpu22: task 0: Exited with exit code 1
+srun: error: gpu23: tasks 4-7: Exited with exit code 1

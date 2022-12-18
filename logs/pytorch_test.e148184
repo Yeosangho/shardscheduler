@@ -1,0 +1,36 @@
+[00;33m 	'cuda/11.3' does not supports the {CUDA_MPI}. [0m
+[00;34m 	{CUDA_MPI} is only supported in cuda 11.4 version. [0m
+Traceback (most recent call last):
+  File "profile.py", line 7, in <module>
+    from sklearn.linear_model import LinearRegression
+ModuleNotFoundError: No module named 'sklearn'
+Traceback (most recent call last):
+  File "profile.py", line 7, in <module>
+    from sklearn.linear_model import LinearRegression
+ModuleNotFoundError: No module named 'sklearn'
+Traceback (most recent call last):
+  File "profile.py", line 7, in <module>
+    from sklearn.linear_model import LinearRegression
+ModuleNotFoundError: No module named 'sklearn'
+Traceback (most recent call last):
+  File "profile.py", line 7, in <module>
+    from sklearn.linear_model import LinearRegression
+ModuleNotFoundError: No module named 'sklearn'
+Traceback (most recent call last):
+  File "profile.py", line 7, in <module>
+    from sklearn.linear_model import LinearRegression
+ModuleNotFoundError: No module named 'sklearn'
+Traceback (most recent call last):
+  File "profile.py", line 7, in <module>
+    from sklearn.linear_model import LinearRegression
+ModuleNotFoundError: No module named 'sklearn'
+Traceback (most recent call last):
+  File "profile.py", line 7, in <module>
+    from sklearn.linear_model import LinearRegression
+ModuleNotFoundError: No module named 'sklearn'
+Traceback (most recent call last):
+  File "profile.py", line 7, in <module>
+    from sklearn.linear_model import LinearRegression
+ModuleNotFoundError: No module named 'sklearn'
+srun: error: gpu22: tasks 0-3: Exited with exit code 1
+srun: error: gpu23: tasks 4-7: Exited with exit code 1

@@ -1,0 +1,70 @@
+[00;33m 	'cuda/11.3' does not supports the {CUDA_MPI}. [0m
+[00;34m 	{CUDA_MPI} is only supported in cuda 11.4 version. [0m
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+  0%|          | 0/75 [00:00<?, ?it/s]  0%|          | 0/75 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 453, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 328, in benchmark_step
+    loss.backward()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/_tensor.py", line 363, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph, inputs=inputs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/autograd/__init__.py", line 173, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/autograd/grad_mode.py", line 27, in decorate_context
+    return func(*args, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 790, in _post_backward_hook
+    self.optimizer["optimizer"]._adam(param)
+AttributeError: 'Adam' object has no attribute '_adam'
+  0%|          | 0/75 [00:00<?, ?it/s]  0%|          | 0/75 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 453, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 328, in benchmark_step
+    loss.backward()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/_tensor.py", line 363, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph, inputs=inputs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/autograd/__init__.py", line 173, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/autograd/grad_mode.py", line 27, in decorate_context
+    return func(*args, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 790, in _post_backward_hook
+    self.optimizer["optimizer"]._adam(param)
+AttributeError: 'Adam' object has no attribute '_adam'
+  0%|          | 0/75 [00:00<?, ?it/s]  0%|          | 0/75 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 453, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 328, in benchmark_step
+    loss.backward()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/_tensor.py", line 363, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph, inputs=inputs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/autograd/__init__.py", line 173, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/autograd/grad_mode.py", line 27, in decorate_context
+    return func(*args, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 790, in _post_backward_hook
+    self.optimizer["optimizer"]._adam(param)
+AttributeError: 'Adam' object has no attribute '_adam'
+srun: error: gpu20: task 2: Exited with exit code 1
+srun: error: gpu20: task 1: Exited with exit code 1
+  0%|          | 0/75 [00:00<?, ?it/s]  0%|          | 0/75 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 453, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 328, in benchmark_step
+    loss.backward()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/_tensor.py", line 363, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph, inputs=inputs)
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/autograd/__init__.py", line 173, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/autograd/grad_mode.py", line 27, in decorate_context
+    return func(*args, **kwargs)
+  File "/scratch/hpc72a03/shardscheduler/dp_custom.py", line 790, in _post_backward_hook
+    self.optimizer["optimizer"]._adam(param)
+AttributeError: 'Adam' object has no attribute '_adam'
+srun: error: gpu20: task 3: Exited with exit code 1
+srun: error: gpu20: task 0: Exited with exit code 1

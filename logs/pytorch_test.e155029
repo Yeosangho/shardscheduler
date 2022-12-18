@@ -1,0 +1,49 @@
+[00;33m 	'cuda/11.3' does not supports the {CUDA_MPI}. [0m
+[00;34m 	{CUDA_MPI} is only supported in cuda 11.4 version. [0m
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Traceback (most recent call last):
+  File "test_fsdp_fairscale0.4.py", line 82, in <module>
+    sharded_module = auto_wrap(model)
+TypeError: auto_wrap() missing 1 required positional argument: 'module'
+Traceback (most recent call last):
+  File "test_fsdp_fairscale0.4.py", line 82, in <module>
+    sharded_module = auto_wrap(model)
+TypeError: auto_wrap() missing 1 required positional argument: 'module'
+Traceback (most recent call last):
+  File "test_fsdp_fairscale0.4.py", line 82, in <module>
+    sharded_module = auto_wrap(model)
+TypeError: auto_wrap() missing 1 required positional argument: 'module'
+Traceback (most recent call last):
+  File "test_fsdp_fairscale0.4.py", line 82, in <module>
+    sharded_module = auto_wrap(model)
+TypeError: auto_wrap() missing 1 required positional argument: 'module'
+Traceback (most recent call last):
+  File "test_fsdp_fairscale0.4.py", line 82, in <module>
+    sharded_module = auto_wrap(model)
+TypeError: auto_wrap() missing 1 required positional argument: 'module'
+srun: error: gpu13: tasks 5,7: Exited with exit code 1
+srun: error: gpu13: task 4: Exited with exit code 1
+Traceback (most recent call last):
+  File "test_fsdp_fairscale0.4.py", line 82, in <module>
+    sharded_module = auto_wrap(model)
+TypeError: auto_wrap() missing 1 required positional argument: 'module'
+srun: error: gpu13: task 6: Exited with exit code 1
+srun: error: gpu12: task 1: Exited with exit code 1
+Traceback (most recent call last):
+  File "test_fsdp_fairscale0.4.py", line 82, in <module>
+    sharded_module = auto_wrap(model)
+TypeError: auto_wrap() missing 1 required positional argument: 'module'
+srun: error: gpu12: task 2: Exited with exit code 1
+Traceback (most recent call last):
+  File "test_fsdp_fairscale0.4.py", line 82, in <module>
+    sharded_module = auto_wrap(model)
+TypeError: auto_wrap() missing 1 required positional argument: 'module'
+srun: error: gpu12: task 3: Exited with exit code 1
+srun: error: gpu12: task 0: Exited with exit code 1

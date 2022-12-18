@@ -1,0 +1,66 @@
+[00;33m 	'cuda/11.3' does not supports the {CUDA_MPI}. [0m
+[00;34m 	{CUDA_MPI} is only supported in cuda 11.4 version. [0m
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 468, in <module>
+    trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread) 
+  File "main_gpt2_with_health_checker.py", line 291, in __init__
+    schedule(self.adaptive_sdp_modules, max_param_num, \
+TypeError: schedule() got an unexpected keyword argument 'net_bench_file_name'
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 468, in <module>
+    trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread) 
+  File "main_gpt2_with_health_checker.py", line 293, in __init__
+    dist.barrier()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/distributed/distributed_c10d.py", line 2776, in barrier
+    work = default_pg.barrier(opts=opts)
+RuntimeError: [2] is setting up NCCL communicator and retreiving ncclUniqueId from [0] via c10d key-value store by key '0', but store->get('0') got error: Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 481, in <module>
+    thread.join()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 1006, in join
+    raise RuntimeError("cannot join thread before it is started")
+RuntimeError: cannot join thread before it is started
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 468, in <module>
+    trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread) 
+  File "main_gpt2_with_health_checker.py", line 293, in __init__
+    dist.barrier()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/distributed/distributed_c10d.py", line 2776, in barrier
+    work = default_pg.barrier(opts=opts)
+RuntimeError: [3] is setting up NCCL communicator and retreiving ncclUniqueId from [0] via c10d key-value store by key '0', but store->get('0') got error: Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 481, in <module>
+    thread.join()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 1006, in join
+    raise RuntimeError("cannot join thread before it is started")
+RuntimeError: cannot join thread before it is started
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 468, in <module>
+    trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread) 
+  File "main_gpt2_with_health_checker.py", line 293, in __init__
+    dist.barrier()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/distributed/distributed_c10d.py", line 2776, in barrier
+    work = default_pg.barrier(opts=opts)
+RuntimeError: [1] is setting up NCCL communicator and retreiving ncclUniqueId from [0] via c10d key-value store by key '0', but store->get('0') got error: Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 481, in <module>
+    thread.join()
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/threading.py", line 1006, in join
+    raise RuntimeError("cannot join thread before it is started")
+RuntimeError: cannot join thread before it is started
+srun: error: gpu10: task 0: Exited with exit code 1
+srun: error: gpu10: tasks 1,3: Exited with exit code 1
+srun: error: gpu10: task 2: Exited with exit code 1

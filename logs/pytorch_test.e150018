@@ -1,0 +1,49 @@
+[00;33m 	'cuda/11.3' does not supports the {CUDA_MPI}. [0m
+[00;34m 	{CUDA_MPI} is only supported in cuda 11.4 version. [0m
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+  0%|          | 0/75 [00:00<?, ?it/s]OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.
+  0%|          | 0/75 [00:00<?, ?it/s]OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.
+  0%|          | 0/75 [00:00<?, ?it/s]OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.
+  0%|          | 0/75 [00:00<?, ?it/s]OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.
+  0%|          | 0/75 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 532, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 385, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+TypeError: forward() got an unexpected keyword argument 'first_iter'
+  0%|          | 0/75 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 532, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 385, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+TypeError: forward() got an unexpected keyword argument 'first_iter'
+  0%|          | 0/75 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 532, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 385, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+TypeError: forward() got an unexpected keyword argument 'first_iter'
+  0%|          | 0/75 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 532, in <module>
+    trainer.benchmark_step()
+  File "main_gpt2_with_health_checker.py", line 385, in benchmark_step
+    output = self.sharded_module( b_input_ids,
+  File "/home01/hpc72a03/.conda/envs/shard/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+TypeError: forward() got an unexpected keyword argument 'first_iter'
+srun: error: gpu45: tasks 0,2: Exited with exit code 1
+srun: error: gpu45: task 1: Exited with exit code 1
+srun: error: gpu45: task 3: Exited with exit code 1

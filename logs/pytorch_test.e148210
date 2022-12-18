@@ -1,0 +1,70 @@
+[00;33m 	'cuda/11.3' does not supports the {CUDA_MPI}. [0m
+[00;34m 	{CUDA_MPI} is only supported in cuda 11.4 version. [0m
+Traceback (most recent call last):
+  File "profile.py", line 59, in <module>
+    sizes, times  = comm_profiler.benchmark()
+  File "/scratch/hpc72a03/shardscheduler/profiling.py", line 267, in benchmark
+    all_gather_sizes = [e*self.world_size for e in sizes]
+  File "/scratch/hpc72a03/shardscheduler/profiling.py", line 267, in <listcomp>
+    all_gather_sizes = [e*self.world_size for e in sizes]
+TypeError: unsupported operand type(s) for *: 'int' and 'NoneType'
+Traceback (most recent call last):
+  File "profile.py", line 59, in <module>
+    sizes, times  = comm_profiler.benchmark()
+  File "/scratch/hpc72a03/shardscheduler/profiling.py", line 267, in benchmark
+    all_gather_sizes = [e*self.world_size for e in sizes]
+  File "/scratch/hpc72a03/shardscheduler/profiling.py", line 267, in <listcomp>
+    all_gather_sizes = [e*self.world_size for e in sizes]
+TypeError: unsupported operand type(s) for *: 'int' and 'NoneType'
+Traceback (most recent call last):
+  File "profile.py", line 59, in <module>
+    sizes, times  = comm_profiler.benchmark()
+  File "/scratch/hpc72a03/shardscheduler/profiling.py", line 267, in benchmark
+    all_gather_sizes = [e*self.world_size for e in sizes]
+  File "/scratch/hpc72a03/shardscheduler/profiling.py", line 267, in <listcomp>
+    all_gather_sizes = [e*self.world_size for e in sizes]
+TypeError: unsupported operand type(s) for *: 'int' and 'NoneType'
+Traceback (most recent call last):
+  File "profile.py", line 59, in <module>
+    sizes, times  = comm_profiler.benchmark()
+  File "/scratch/hpc72a03/shardscheduler/profiling.py", line 267, in benchmark
+    all_gather_sizes = [e*self.world_size for e in sizes]
+  File "/scratch/hpc72a03/shardscheduler/profiling.py", line 267, in <listcomp>
+    all_gather_sizes = [e*self.world_size for e in sizes]
+TypeError: unsupported operand type(s) for *: 'int' and 'NoneType'
+Traceback (most recent call last):
+  File "profile.py", line 59, in <module>
+    sizes, times  = comm_profiler.benchmark()
+  File "/scratch/hpc72a03/shardscheduler/profiling.py", line 267, in benchmark
+    all_gather_sizes = [e*self.world_size for e in sizes]
+  File "/scratch/hpc72a03/shardscheduler/profiling.py", line 267, in <listcomp>
+    all_gather_sizes = [e*self.world_size for e in sizes]
+TypeError: unsupported operand type(s) for *: 'int' and 'NoneType'
+Traceback (most recent call last):
+  File "profile.py", line 59, in <module>
+    sizes, times  = comm_profiler.benchmark()
+  File "/scratch/hpc72a03/shardscheduler/profiling.py", line 267, in benchmark
+    all_gather_sizes = [e*self.world_size for e in sizes]
+  File "/scratch/hpc72a03/shardscheduler/profiling.py", line 267, in <listcomp>
+    all_gather_sizes = [e*self.world_size for e in sizes]
+TypeError: unsupported operand type(s) for *: 'int' and 'NoneType'
+Traceback (most recent call last):
+  File "profile.py", line 59, in <module>
+    sizes, times  = comm_profiler.benchmark()
+  File "/scratch/hpc72a03/shardscheduler/profiling.py", line 267, in benchmark
+    all_gather_sizes = [e*self.world_size for e in sizes]
+  File "/scratch/hpc72a03/shardscheduler/profiling.py", line 267, in <listcomp>
+    all_gather_sizes = [e*self.world_size for e in sizes]
+TypeError: unsupported operand type(s) for *: 'int' and 'NoneType'
+Traceback (most recent call last):
+  File "profile.py", line 59, in <module>
+    sizes, times  = comm_profiler.benchmark()
+  File "/scratch/hpc72a03/shardscheduler/profiling.py", line 267, in benchmark
+    all_gather_sizes = [e*self.world_size for e in sizes]
+  File "/scratch/hpc72a03/shardscheduler/profiling.py", line 267, in <listcomp>
+    all_gather_sizes = [e*self.world_size for e in sizes]
+TypeError: unsupported operand type(s) for *: 'int' and 'NoneType'
+srun: error: gpu21: tasks 0-2: Exited with exit code 1
+srun: error: gpu22: tasks 4-5,7: Exited with exit code 1
+srun: error: gpu22: task 6: Exited with exit code 1
+srun: error: gpu21: task 3: Exited with exit code 1

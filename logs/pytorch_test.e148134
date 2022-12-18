@@ -1,0 +1,28 @@
+[00;33m 	'cuda/11.3' does not supports the {CUDA_MPI}. [0m
+[00;34m 	{CUDA_MPI} is only supported in cuda 11.4 version. [0m
+Traceback (most recent call last):
+  File "run.py", line 82, in <module>
+    alpha, beta, total_comp_times, total_backward_times, total_forward_times, total_param_num, total_layer_num = read_profile_info(comp_ops, forward_ops, backward_ops, param_nums, layer_bench_file_name)
+  File "/scratch/hpc72a03/shardscheduler/algo.py", line 183, in read_profile_info
+    f = open(layer_bench_file_name,'r')
+FileNotFoundError: [Errno 2] No such file or directory: 'layer_bench.csv'
+Traceback (most recent call last):
+  File "run.py", line 82, in <module>
+    alpha, beta, total_comp_times, total_backward_times, total_forward_times, total_param_num, total_layer_num = read_profile_info(comp_ops, forward_ops, backward_ops, param_nums, layer_bench_file_name)
+  File "/scratch/hpc72a03/shardscheduler/algo.py", line 183, in read_profile_info
+    f = open(layer_bench_file_name,'r')
+FileNotFoundError: [Errno 2] No such file or directory: 'layer_bench.csv'
+Traceback (most recent call last):
+  File "run.py", line 82, in <module>
+    alpha, beta, total_comp_times, total_backward_times, total_forward_times, total_param_num, total_layer_num = read_profile_info(comp_ops, forward_ops, backward_ops, param_nums, layer_bench_file_name)
+  File "/scratch/hpc72a03/shardscheduler/algo.py", line 183, in read_profile_info
+    f = open(layer_bench_file_name,'r')
+FileNotFoundError: [Errno 2] No such file or directory: 'layer_bench.csv'
+Traceback (most recent call last):
+  File "run.py", line 82, in <module>
+    alpha, beta, total_comp_times, total_backward_times, total_forward_times, total_param_num, total_layer_num = read_profile_info(comp_ops, forward_ops, backward_ops, param_nums, layer_bench_file_name)
+  File "/scratch/hpc72a03/shardscheduler/algo.py", line 183, in read_profile_info
+    f = open(layer_bench_file_name,'r')
+FileNotFoundError: [Errno 2] No such file or directory: 'layer_bench.csv'
+srun: error: gpu15: tasks 2-3: Exited with exit code 1
+srun: error: gpu14: tasks 0-1: Exited with exit code 1

@@ -1,0 +1,6 @@
+[00;33m 	'cuda/11.3' does not supports the {CUDA_MPI}. [0m
+[00;34m 	{CUDA_MPI} is only supported in cuda 11.4 version. [0m
+srun: error: gpu12: tasks 0,3: Exited with exit code 1
+srun: error: gpu17: task 4: Exited with exit code 1
+srun: error: gpu12: tasks 1-2: Exited with exit code 1
+srun: error: gpu17: tasks 5-7: Exited with exit code 1
