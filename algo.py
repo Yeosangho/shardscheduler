@@ -102,9 +102,6 @@ def get_layer_len(comp_ops):
     return list_len
 
 def find_latency_penalty(partition_num, residual_param_num, overlappable_param_num, overlappable_time, alpha, beta, ar_factor, max_buffered_param_num):
-    if overlappable_param_num > max_buffered_param_num :
-        return 1
-
     if(residual_param_num == 0):
         latency_penalty = 1 
     else:
@@ -143,11 +140,8 @@ def schedule_ops(target_comm, target_comp, comp_ops, alpha, beta, max_buffered_p
 
 
     #파라미터의 크기 및 텐서 퓨전 버퍼 크기를 반영하여 추가되는 Latency에 대한 패널티 부과 
-    #if(target_comm.overlappable_param_num > max_buffered_param_num):
-    #    partition_num = 1
-    #else:
-    #    partition_num = int(target_comm.overlappable_param_num / max_buffered_param_num) + 1
-    partition_num = 1
+    partition_num = int(target_comm.overlappable_param_num / max_buffered_param_num) + 1
+    #partition_num = 1
 
     time = partition_num * alpha + beta * target_comm.overlappable_param_num * 4 * ar_factor
     param_num = target_comm.overlappable_param_num
@@ -160,18 +154,19 @@ def schedule_ops(target_comm, target_comp, comp_ops, alpha, beta, max_buffered_p
 
         #print("fusion")
     #time = time - alpha
-    latency_penalty = 1
+    #latency_penalty = 1
+    latency_penalty = find_latency_penalty( partition_num,
+                                            residual_param_num, 
+                                            target_comm.overlappable_param_num, 
+                                            target_comp.overlappable_time,
+                                            alpha,
+                                            beta,
+                                            ar_factor,
+                                            max_buffered_param_num,
+                                            )    
     if(time > target_comp.overlappable_time):
 
-        latency_penalty = find_latency_penalty( partition_num,
-                                                residual_param_num, 
-                                                target_comm.overlappable_param_num, 
-                                                target_comp.overlappable_time,
-                                                alpha,
-                                                beta,
-                                                ar_factor,
-                                                max_buffered_param_num,
-                                                )
+
 
         if(target_comp.overlappable_time > latency_penalty * alpha):
             overlapped_param_num = math.ceil((target_comp.overlappable_time - latency_penalty*alpha) / (beta*4 * ar_factor))
@@ -253,7 +248,7 @@ def read_profile_info(world_size, comp_ops, forward_ops, backward_ops, param_num
         backward_ops.append(backward_op)
 
         comp_ops.append(forward_op)
-        #comp_ops.append(backward_op)
+        comp_ops.append(backward_op)
 
         idx += 1
     total_layer_num = idx

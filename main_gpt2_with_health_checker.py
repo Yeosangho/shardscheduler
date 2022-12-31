@@ -234,6 +234,7 @@ class Trainer(CommMixin):
 
 		device_id = rank%ngpus_per_node		
 		self.comm_stream = torch.cuda.Stream(device_id)
+		self.post_ar_stream = torch.cuda.Stream(device_id)
 
 		self.wrap_params = dict( mixed_precision=False, flatten_parameters=True, 
 
@@ -351,7 +352,7 @@ class Trainer(CommMixin):
 		
 	def set_comm_mixin(self):
 		self.set_group(self.group)
-		self.set_comm_stream(self.comm_stream)
+		self.set_streams(self.comm_stream, self.post_ar_stream)
 		self.set_rank(self.rank)
 		self.set_bucketer(self.bucketer)
 		self.set_param_name_dict(self.model_parameter_names)
@@ -395,8 +396,8 @@ class Trainer(CommMixin):
 
 			#print(f"after backward  {(torch.cuda.memory_allocated() + torch.cuda.memory_reserved()) / 1024 /1024}") 
 			count += 1
-			if(not self.train_continue or count ==5):
-			#if(not self.train_continue):
+			#if(not self.train_continue or count ==5):
+			if(not self.train_continue):
 				break
 
 		execution_time = time.time() -start
@@ -515,12 +516,12 @@ if __name__ == '__main__':
 		#thread.start()	
 
 		trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread) 
-		with profile(activities=[ProfilerActivity.CPU, ProfilerActivity.CUDA]) as prof:	
-			with record_function("test_model"):
-				trainer.benchmark_step()
-		if(rank == 0):		
-			prof.export_chrome_trace("trace.json")
-		#trainer.benchmark_step()
+		#with profile(activities=[ProfilerActivity.CPU, ProfilerActivity.CUDA]) as prof:	
+		#	with record_function("test_model"):
+		#		trainer.benchmark_step()
+		#if(rank == 0):		
+		#	prof.export_chrome_trace("trace.json")
+		trainer.benchmark_step()
 
 	except RuntimeError as error :
 		print("line 550 in main.py")

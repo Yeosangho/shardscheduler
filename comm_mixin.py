@@ -1,6 +1,8 @@
 
 import torch
 import torch.nn as nn
+import functools
+
 from custom_logger import customlogging
 class CommMixin:
     def set_group(self, group):
@@ -10,8 +12,12 @@ class CommMixin:
         self.rank = rank
         if self.bucketer.rank is None:
             self.bucketer.rank = rank 
-    def set_comm_stream(self, comm_stream):
+    def set_streams(self, comm_stream, post_ar_stream):
         self.comm_stream = comm_stream
+        
+        if self.bucketer.comm_stream is None:
+            self.bucketer.comm_stream = comm_stream
+            self.bucketer.post_ar_stream = post_ar_stream
     def set_bucketer(self, ar_bucketer):
         self.bucketer = ar_bucketer 
     def set_param_name_dict(self, param_name_dict):
@@ -24,19 +30,20 @@ class CommMixin:
     def flush(self):
         self.bucketer.flush()
 
-    def do_communication(self, comm, tag_name: str=None):
-        with torch.cuda.stream(self.comm_stream):
-            if(tag_name is not None):
-                customlogging.debug(self.rank, f"communication is scheduled in {tag_name}")
-            if comm.commType == "AG":
-                None
-            elif comm.commType == "AR":
-                for idx, partiable_param in enumerate(comm.params): 
-                    self.do_allreduce_async(partiable_param)
-                self.bucketer.flush()
+        
 
-            elif comm.commType == "RS":
-                None 
+    def do_communication(self, comm, tag_name: str=None):
+        
+        if(tag_name is not None):
+            customlogging.debug(self.rank, f"communication is scheduled in {tag_name}")
+        if comm.commType == "AG":
+            None
+        elif comm.commType == "AR":
+            for idx, partiable_param in enumerate(comm.params): 
+                self.do_allreduce_async(partiable_param)
+            self.bucketer.flush()
+        elif comm.commType == "RS":
+            None 
 
     def do_allreduce_async(self, partiable_param):
         
@@ -52,6 +59,7 @@ class CommMixin:
             start_idx = partiable_param.start_idx
             end_idx = partiable_param.end_idx  
             customlogging.debug(self.rank, "do all reduce async")
+            callback_fn = functools.partial(self.bucketer.optimize_param, p)
             self.bucketer.allreduce_async(grad=grad,
                                                 param_name=param_name,
                                                 param=p,
@@ -59,4 +67,4 @@ class CommMixin:
                                                 end_idx=end_idx,
                                                 org_size=org_size, 
                                                 shard_size=-1, 
-                                                commType='AR')
+                                                commType='AR', callback_fn=callback_fn)
