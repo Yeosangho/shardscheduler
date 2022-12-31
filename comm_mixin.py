@@ -21,6 +21,8 @@ class CommMixin:
         self.synced_param_num_dict = synced_param_num_dict
         if self.bucketer.synced_param_num_dict is None:
             self.bucketer.set_synced_param_num_dict(synced_param_num_dict)
+    def flush(self):
+        self.bucketer.flush()
 
     def do_communication(self, comm, tag_name: str=None):
         with torch.cuda.stream(self.comm_stream):

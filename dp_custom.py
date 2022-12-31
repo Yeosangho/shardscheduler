@@ -660,31 +660,37 @@ class DataParallel_Custom(nn.Module, CommMixin):
 
 
     def communicate_forward(self):
-        #torch.cuda.current_stream().wait_stream(self.comm_stream)
+        
         for p in self.params :
 
+            #param_name = self.param_name_dict[p]
+            #customlogging.debug(self.rank, f"param {param_name} sum :: {torch.sum(p)}")            
+            #if self.synced_param_num_dict[p] == p._orig_size.numel() :
+            #    customlogging.debug(self.rank, f"param {param_name} is fully commnicated")
+            #else:
+            #    #self.flush()
+            #    #torch.cuda.current_stream().wait_stream(self.comm_stream)
+            #    customlogging.debug(self.rank, f"param {param_name} is not fully commnicated!!! communicated parameter : {self.synced_param_num_dict[p]} orig size : {p._orig_size.numel()}")
+            #self.synced_param_num_dict[p] = 0    
+            #task = self.scheduled_task_per_param.get(p, None)
+            #customlogging.debug(self.rank, f"param_name :: {param_name} communicated param num : {self.synced_param_num_dict[p]}")
+            #if task is None:
+            #    param_name = self.param_name_dict[p]
+            #    task = self.search_scheduled_comm(self.comm_schedule, param_name, 'FW')
+            #    self.scheduled_task_per_param[p] = task
+#
+            #    customlogging.debug(self.rank, "########### task is not assigned to module############")
+            #    customlogging.debug(self.rank, f"scheduled task in {param_name} :: {self.scheduled_task_per_param[p]}")
+#
+            #elif task is not None:
+            #    customlogging.debug(self.rank, "########### task is assigned to module############")
+            #    if task != "No scheduled" :
+            #        param_name = self.param_name_dict[task.comms[0].params[0].param]
+            #        customlogging.debug(self.rank, f"param variable tracking model? rank :: {self.rank} param name ::  {param_name} value:: {torch.sum(task.comms[0].params[0].param.data)}")
             param_name = self.param_name_dict[p]
-            customlogging.debug(self.rank, f"param {param_name} sum :: {torch.sum(p)}")            
-            if self.synced_param_num_dict[p] == p._orig_size.numel() :
-                customlogging.debug(self.rank, f"param {param_name} is fully commnicated")
-            else:
-                customlogging.debug(self.rank, f"param {param_name} is not fully commnicated!!! communicated parameter : {self.synced_param_num_dict[p]} orig size : {p._orig_size.numel()}")
-            self.synced_param_num_dict[p] = 0    
-            task = self.scheduled_task_per_param.get(p, None)
-            customlogging.debug(self.rank, f"param_name :: {param_name} communicated param num : {self.synced_param_num_dict[p]}")
-            if task is None:
-                param_name = self.param_name_dict[p]
-                task = self.search_scheduled_comm(self.comm_schedule, param_name, 'FW')
-                self.scheduled_task_per_param[p] = task
-
-                customlogging.debug(self.rank, "########### task is not assigned to module############")
-                customlogging.debug(self.rank, f"scheduled task in {param_name} :: {self.scheduled_task_per_param[p]}")
-
-            elif task is not None:
-                customlogging.debug(self.rank, "########### task is assigned to module############")
-                if task != "No scheduled" :
-                    param_name = self.param_name_dict[task.comms[0].params[0].param]
-                    customlogging.debug(self.rank, f"param variable tracking model? rank :: {self.rank} param name ::  {param_name} value:: {torch.sum(task.comms[0].params[0].param.data)}")
+            task = self.search_scheduled_comm(self.comm_schedule, param_name, 'FW')
+            if task is not None:
+                assigned_comms = task
             if(type(task) != str):
                 for comm in task.comms : 
                     self.do_communication(comm)
@@ -694,7 +700,7 @@ class DataParallel_Custom(nn.Module, CommMixin):
         self._lazy_init()
         
         self.communicate_forward()
-        self._rebuild_full_params()
+        #self._rebuild_full_params()
         #self._register_post_backward_hooks()
         outputs = self.module(*args, **kwargs)
        
@@ -713,11 +719,14 @@ class DataParallel_Custom(nn.Module, CommMixin):
 
     def communicate_backward(self):
         for p in self.params :
+            #torch.cuda.current_stream().wait_stream(self.comm_stream)
             param_name = self.param_name_dict[p]
             task = self.search_scheduled_comm(self.comm_schedule, param_name, 'BW')
-            if task is not None:    
+            if task is not None:
+                    
                 assigned_comms = task
             if(type(task) != str):
+                
                 for comm in task.comms : 
                     self.do_communication(comm)     
 #

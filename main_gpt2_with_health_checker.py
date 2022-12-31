@@ -206,7 +206,8 @@ class Trainer(CommMixin):
 		self.optim_dict = {}
 		ranks = [0,1,2,3,4,5,6,7]
 		self.group = dist.new_group(ranks=ranks)
-		self.bucketer = ARBucketer(1000*1024*1024 , self.world_size)
+		max_param_num = get_param_num_by_buffer_size(self.world_size, self.bucket_size)
+		self.bucketer = ARBucketer(max_param_num, self.world_size)
 
 		print(f"before init dataset  {torch.cuda.memory_allocated() / 1024 /1024}") 
 		
@@ -315,7 +316,7 @@ class Trainer(CommMixin):
 			#	self._scheduled_comms[scheduled_comp]["None"] = [] 
 			dist.barrier()
 #
-			max_param_num = get_param_num_by_buffer_size(self.world_size, self.bucket_size)
+			
 			if(self.rank == 0):
 				schedule(self.world_size, self.adaptive_sdp_modules, max_param_num, \
 					layer_bench_file_name='profile_data/layer_bench_gpt2_cas_v100_4_2.csv', net_bench_file_name='profile_data/net_bench_cas_v100_4_2.csv')
@@ -379,7 +380,7 @@ class Trainer(CommMixin):
 			b_labels = batch[0].cuda()
 			b_masks = batch[1].cuda()
 
-			#self.communicate_nonoverlap("BWTOFW")
+			self.communicate_nonoverlap("BWTOFW")
 			output = self.sharded_module( b_input_ids,
                           labels=b_labels, 
                           attention_mask = b_masks,
@@ -395,6 +396,7 @@ class Trainer(CommMixin):
 			#print(f"after backward  {(torch.cuda.memory_allocated() + torch.cuda.memory_reserved()) / 1024 /1024}") 
 			count += 1
 			if(not self.train_continue or count ==5):
+			#if(not self.train_continue):
 				break
 
 		execution_time = time.time() -start
@@ -518,6 +520,7 @@ if __name__ == '__main__':
 				trainer.benchmark_step()
 		if(rank == 0):		
 			prof.export_chrome_trace("trace.json")
+		#trainer.benchmark_step()
 
 	except RuntimeError as error :
 		print("line 550 in main.py")
