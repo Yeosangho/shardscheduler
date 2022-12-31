@@ -1,4 +1,5 @@
 
+from custom_logger import customlogging
 import os, sys
 import time, datetime
 from multiprocessing import Process, log_to_stderr
@@ -18,6 +19,7 @@ import csv
 from tqdm import tqdm
 import torch 
 import torch.distributed as dist
+from torch.profiler import profile, record_function, ProfilerActivity
 
 import torch.nn as nn
 from torch.cuda.amp import autocast
@@ -202,8 +204,9 @@ class Trainer(CommMixin):
 		self.data_index = 0
 		self.profile_target_layer = []
 		self.optim_dict = {}
-
-		self.bucketer = ARBucketer(100*1024*1024 , self.world_size)
+		ranks = [0,1,2,3,4,5,6,7]
+		self.group = dist.new_group(ranks=ranks)
+		self.bucketer = ARBucketer(1000*1024*1024 , self.world_size)
 
 		print(f"before init dataset  {torch.cuda.memory_allocated() / 1024 /1024}") 
 		
@@ -346,6 +349,9 @@ class Trainer(CommMixin):
 		
 		
 	def set_comm_mixin(self):
+		self.set_group(self.group)
+		self.set_comm_stream(self.comm_stream)
+		self.set_rank(self.rank)
 		self.set_bucketer(self.bucketer)
 		self.set_param_name_dict(self.model_parameter_names)
 		self.set_synced_param_num_dict(self.synced_param_num_dict)
@@ -373,7 +379,7 @@ class Trainer(CommMixin):
 			b_labels = batch[0].cuda()
 			b_masks = batch[1].cuda()
 
-			self.communicate_nonoverlap("BWTOFW")
+			#self.communicate_nonoverlap("BWTOFW")
 			output = self.sharded_module( b_input_ids,
                           labels=b_labels, 
                           attention_mask = b_masks,
@@ -382,20 +388,19 @@ class Trainer(CommMixin):
 			self.communicate_nonoverlap("FWTOBW")
 
 			loss = output[0] 
-			if(rank == 0):
-				print(loss)
+			customlogging.debug(self.rank, loss)
 			loss.backward()
 
 
 			#print(f"after backward  {(torch.cuda.memory_allocated() + torch.cuda.memory_reserved()) / 1024 /1024}") 
 			count += 1
-			if(not self.train_continue):
+			if(not self.train_continue or count ==5):
 				break
 
 		execution_time = time.time() -start
 		trial_info["time"] = time.time() - start
 		write_trial(trial_info)			
-		os._exit(0)
+		#os._exit(0)
 
 
 	def release_all_lock(self):
@@ -508,8 +513,11 @@ if __name__ == '__main__':
 		#thread.start()	
 
 		trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread) 
-			
-		trainer.benchmark_step()
+		with profile(activities=[ProfilerActivity.CPU, ProfilerActivity.CUDA]) as prof:	
+			with record_function("test_model"):
+				trainer.benchmark_step()
+		if(rank == 0):		
+			prof.export_chrome_trace("trace.json")
 
 	except RuntimeError as error :
 		print("line 550 in main.py")

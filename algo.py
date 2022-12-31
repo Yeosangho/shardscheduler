@@ -11,7 +11,7 @@ class CompOp:
     def __init__(self, name, idx, comptime, comp_type):
         self.name = name
         self.idx = idx
-        self.total_comptime = comptime
+        self.total_comptime = comptime 
         self.overlappable_time = comptime
         self.type = comp_type
         self.schedulable_comms = []
@@ -141,7 +141,7 @@ def schedule_ops(target_comm, target_comp, comp_ops, alpha, beta, max_buffered_p
 
     #파라미터의 크기 및 텐서 퓨전 버퍼 크기를 반영하여 추가되는 Latency에 대한 패널티 부과 
     partition_num = int(target_comm.overlappable_param_num / max_buffered_param_num) + 1
-
+    partition_num = 1
     time = partition_num * alpha + beta * target_comm.overlappable_param_num * 4 * ar_factor
     param_num = target_comm.overlappable_param_num
 
@@ -153,37 +153,48 @@ def schedule_ops(target_comm, target_comp, comp_ops, alpha, beta, max_buffered_p
 
         #print("fusion")
     #time = time - alpha
-    if(time > target_comp.overlappable_time ):
+    latency_penalty = 2
+    if(time > target_comp.overlappable_time):
 
-        latency_penalty = find_latency_penalty( partition_num,
-                                                residual_param_num, 
-                                                target_comm.overlappable_param_num, 
-                                                target_comp.overlappable_time,
-                                                alpha,
-                                                beta,
-                                                ar_factor,
-                                                max_buffered_param_num,
-                                                )
+        #latency_penalty = find_latency_penalty( partition_num,
+        #                                        residual_param_num, 
+        #                                        target_comm.overlappable_param_num, 
+        #                                        target_comp.overlappable_time,
+        #                                        alpha,
+        #                                        beta,
+        #                                        ar_factor,
+        #                                        max_buffered_param_num,
+        #                                        )
+
         if(target_comp.overlappable_time > latency_penalty * alpha):
             overlapped_param_num = math.ceil((target_comp.overlappable_time - latency_penalty*alpha) / (beta*4 * ar_factor))
-
+            #limit_param_num = 100000000000
+            #if(overlapped_param_num < limit_param_num):
+            #    overlapped_param_num = min(limit_param_num, param_num)
+            
             target_comp.overlappable_time = 0 
             comp_ops.remove(target_comp)
             target_comp.scheduled_comm[comm_type].append(target_comm)
             target_comp.scheduled_params[comm_type].append(overlapped_param_num)
+            #target_comp.scheduled_params[comm_type].append(param_num)
             print(f"target comp overlapped_param_num {overlapped_param_num}")
-            target_comm.set_scheduled_comp(target_comp, overlapped_param_num, target_comp.overlappable_time)  
+            target_comm.set_scheduled_comp(target_comp, overlapped_param_num, target_comp.overlappable_time)
+              
+            #target_comm.set_scheduled_comp(target_comp, param_num, time)  
         else:
             #print("111")
             target_comp.schedulable_comms.remove(target_comm)
 
 
     elif(time <= target_comp.overlappable_time) :
-        target_comp.scheduled_comm[comm_type].append(target_comm)
-        target_comp.scheduled_params[comm_type].append(param_num)
-        print(f"line 184 :: target comp overlapped_param_num {param_num}")
-        target_comm.set_scheduled_comp(target_comp, param_num, time)
-        target_comp.overlappable_time -= time
+        if(target_comp.overlappable_time > latency_penalty * alpha):
+            target_comp.scheduled_comm[comm_type].append(target_comm)
+            target_comp.scheduled_params[comm_type].append(param_num)
+            print(f"line 184 :: target comp overlapped_param_num {param_num}")
+            target_comm.set_scheduled_comp(target_comp, param_num, time)
+            target_comp.overlappable_time -= time
+        else:
+            target_comp.schedulable_comms.remove(target_comm) 
 
 def read_profile_info(world_size, comp_ops, forward_ops, backward_ops, param_nums, sharded_param_nums, full_padded_param_nums, layer_bench_file_name, net_bench_file_name):
 

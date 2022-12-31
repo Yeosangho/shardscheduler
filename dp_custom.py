@@ -8,7 +8,7 @@ import contextlib
 import copy
 from enum import Enum, auto
 import functools
-import logging
+from custom_logger import customlogging
 from math import inf
 import os
 import time
@@ -660,28 +660,31 @@ class DataParallel_Custom(nn.Module, CommMixin):
 
 
     def communicate_forward(self):
+        #torch.cuda.current_stream().wait_stream(self.comm_stream)
         for p in self.params :
+
             param_name = self.param_name_dict[p]
+            customlogging.debug(self.rank, f"param {param_name} sum :: {torch.sum(p)}")            
             if self.synced_param_num_dict[p] == p._orig_size.numel() :
-                print(f"param {param_name} is fully commnicated")
+                customlogging.debug(self.rank, f"param {param_name} is fully commnicated")
             else:
-                print(f"param {param_name} is not fully commnicated!!! communicated parameter : {self.synced_param_num_dict[p]} orig size : {p._orig_size.numel()}")
+                customlogging.debug(self.rank, f"param {param_name} is not fully commnicated!!! communicated parameter : {self.synced_param_num_dict[p]} orig size : {p._orig_size.numel()}")
             self.synced_param_num_dict[p] = 0    
             task = self.scheduled_task_per_param.get(p, None)
-            print(f"param_name :: {param_name} communicated param num : {self.synced_param_num_dict[p]}")
+            customlogging.debug(self.rank, f"param_name :: {param_name} communicated param num : {self.synced_param_num_dict[p]}")
             if task is None:
                 param_name = self.param_name_dict[p]
                 task = self.search_scheduled_comm(self.comm_schedule, param_name, 'FW')
                 self.scheduled_task_per_param[p] = task
 
-                print("########### task is not assigned to module############")
-                print(f"scheduled task in {param_name} :: {self.scheduled_task_per_param[p]}")
+                customlogging.debug(self.rank, "########### task is not assigned to module############")
+                customlogging.debug(self.rank, f"scheduled task in {param_name} :: {self.scheduled_task_per_param[p]}")
 
             elif task is not None:
-                print("########### task is assigned to module############")
+                customlogging.debug(self.rank, "########### task is assigned to module############")
                 if task != "No scheduled" :
                     param_name = self.param_name_dict[task.comms[0].params[0].param]
-                    print(f"param variable tracking model? rank :: {self.rank} param name ::  {param_name} value:: {torch.sum(task.comms[0].params[0].param.data)}")
+                    customlogging.debug(self.rank, f"param variable tracking model? rank :: {self.rank} param name ::  {param_name} value:: {torch.sum(task.comms[0].params[0].param.data)}")
             if(type(task) != str):
                 for comm in task.comms : 
                     self.do_communication(comm)
@@ -689,6 +692,7 @@ class DataParallel_Custom(nn.Module, CommMixin):
 
     def forward(self, *args: Any, **kwargs: Any) -> torch.Tensor:
         self._lazy_init()
+        
         self.communicate_forward()
         self._rebuild_full_params()
         #self._register_post_backward_hooks()
@@ -716,7 +720,7 @@ class DataParallel_Custom(nn.Module, CommMixin):
             if(type(task) != str):
                 for comm in task.comms : 
                     self.do_communication(comm)     
-
+#
     def _register_pre_backward_hooks(self, outputs: Any) -> Any:
         """Register pre-backward hook to run before the wrapped module's
         backward. Hooks should be attached to all outputs from the forward.
@@ -840,12 +844,12 @@ class DataParallel_Custom(nn.Module, CommMixin):
         #print(torch.cuda.memory_allocated() / 1024 /1024) 
         memory_allocated = torch.cuda.memory_allocated()/ 1024 /1024
         #print(f"after backward {torch.cuda.memory_allocated() / 1024 /1024}") 
-        print("grad update test")
-        param_name = self.param_name_dict[param]
-        print(f"BEFORE grad updated rank {self.rank} param name :: {param_name} param sum : {torch.sum(param.data)}")
-        self.optimizer["optimizer"]._adam(param)
-        print(f"AFTER grad updated rank {self.rank} param name :: {param_name} param sum : {torch.sum(param.data)}")
-        self._memory_record.append(memory_allocated)        
+        #print("grad update test")
+        #param_name = self.param_name_dict[param]
+        #print(f"BEFORE grad updated rank {self.rank} param name :: {param_name} param sum : {torch.sum(param.data)}")
+        #self.optimizer["optimizer"]._adam(param)
+        #print(f"AFTER grad updated rank {self.rank} param name :: {param_name} param sum : {torch.sum(param.data)}")
+        #self._memory_record.append(memory_allocated)        
         if param.grad is None:
             return
 
