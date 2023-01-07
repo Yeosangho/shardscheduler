@@ -305,7 +305,7 @@ class Trainer(CommMixin):
                     self._schedule_comm_init[scheduled_comp][n] = None
                     self._scheduled_comms[scheduled_comp][n] = None
                 self.model_parameter_names[p] = n
-                self.synced_param_num_dict[p] = 0	
+                self.synced_param_num_dict[p] = torch.zeros(1).cuda()	
                 params_name_list.append(n)
                 params_list.append(p)
                 print(p)
@@ -382,8 +382,8 @@ class Trainer(CommMixin):
             
             #print(f"after backward  {(torch.cuda.memory_allocated() + torch.cuda.memory_reserved()) / 1024 /1024}") 
             count += 1
-            if(not self.train_continue or count ==5):
-            #if(not self.train_continue):
+            #if(not self.train_continue or count ==5):
+            if(not self.train_continue):
                 break
 
         trial_info["time"] = time.time() - start
