@@ -119,11 +119,11 @@ class ARBucketer:
         #customlogging.debug(self.rank, f"after allreduce {param_name} :: {torch.sum(param.grad.data)}")
         #customlogging.debug(self.rank, f"scheduled params is fully communicated  param {param_name}, start_idx {start_idx}, end_idx {end_idx}, org_size {org_size}")
         param.grad.data[start_idx:end_idx].copy_(self.fusion_buffer[pre_offset:offset])
-        
-        if param_count + end_idx - start_idx == param._orig_size.numel():            
+        self.synced_param_num_dict[param] += end_idx - start_idx
+        if self.synced_param_num_dict[param]  == param._orig_size.numel():            
             self.optimizer._adam(param)
             self.optimizer._zero_one_grad(param)
-        param_count += end_idx - start_idx
+            self.synced_param_num_dict[param]  = 0
 
     def iterative_push(self, param, grad, param_name, start_idx, end_idx, org_size, shard_size, commType, callback_fn):
         remains, start_idx = self.push( param, grad, param_name, start_idx, end_idx, org_size, shard_size, commType)
@@ -151,8 +151,8 @@ class ARBucketer:
         self.fusion_buffer[self.offset : self.offset + param_num-remains].copy_(grad[start_idx : end_idx-remains]) 
         self.pre_offset = self.offset
         self.offset += param_num - remains
-        param_count = self.synced_param_num_dict[param]
-        p = Param(param, start_idx, end_idx-remains, org_size, shard_size, grad=grad,  param_name=param_name, pre_offset=self.pre_offset, offset=self.offset, param_count=param_count)
+
+        p = Param(param, start_idx, end_idx-remains, org_size, shard_size, grad=grad,  param_name=param_name, pre_offset=self.pre_offset, offset=self.offset)
         callback_fn = functools.partial(self.post_allreduce, p)
         self.params.add(p, callback_fn)
 
