@@ -72,7 +72,7 @@ class ARBucketer:
 
         #customlogging.debug(self.rank, f"before allreduce {param_name} :: {torch.sum(grad.data)}")
         #self.direct_comm(param, grad, param_name, start_idx, end_idx, org_size, shard_size, callback_fn)
-        customlogging.debug(self.rank, f"before allreduce param grad sum {param_name}  :: {torch.sum(grad)}")  
+        customlogging.debug(self.rank, f"before allreduce param grad sum {param_name}  :: {torch.sum(grad)} start_id :: {start_idx} end_idx :: {end_idx}")  
         self.iterative_push(param, grad, param_name, start_idx, end_idx, org_size, shard_size, commType, callback_fn)
         #if(param_num > self.parameter_num):
         #    #dist.all_reduce(grad, async_op=False)
