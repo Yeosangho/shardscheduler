@@ -471,7 +471,7 @@ if __name__ == '__main__':
     parser.add_argument("--master_addr", type=str, default="210.107.197.218")
     parser.add_argument("--master_port", type=str, default="30002")
     parser.add_argument("--profile", type=str, default="false")
-    parser.add_arugment("--max_iter", type=int, default="-1")
+    parser.add_argument("--max_iter", type=int, default="-1")
     args = parser.parse_args()
 
     world_size = int(get_args_or_env("WORLD_SIZE", "world_size", args))
