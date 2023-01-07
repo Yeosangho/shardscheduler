@@ -381,8 +381,8 @@ class Trainer(CommMixin):
             loss.backward()         
             #print(f"after backward  {(torch.cuda.memory_allocated() + torch.cuda.memory_reserved()) / 1024 /1024}") 
             count += 1
-            if(not self.train_continue or count ==5):
-            #if(not self.train_continue):
+            #if(not self.train_continue or count ==5):
+            if(not self.train_continue):
                 break
 
         trial_info["time"] = time.time() - start
