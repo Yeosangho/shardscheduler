@@ -669,7 +669,7 @@ class DataParallel_Custom(nn.Module, CommMixin):
             param_name = self.param_name_dict[p]
                      
 
-            #torch.cuda.current_stream().wait_stream(self.comm_stream)
+            torch.cuda.current_stream().wait_stream(self.comm_stream)
 
             task = self.scheduled_task_per_param.get(p, None)
             customlogging.debug(self.rank, f"param_name :: {param_name} communicated param num : {self.synced_param_num_dict[p]}")
