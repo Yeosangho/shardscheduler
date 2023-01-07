@@ -691,7 +691,7 @@ class DataParallel_Custom(nn.Module, CommMixin):
             #    if task != "No scheduled" :
             #        param_name = self.param_name_dict[task.comms[0].params[0].param]
             #        customlogging.debug(self.rank, f"param variable tracking model? rank :: {self.rank} param name ::  {param_name} value:: {torch.sum(task.comms[0].params[0].param.data)}")
-            torch.cuda.current_stream().wait_stream(self.comm_stream)
+            
             if(type(task) != str):                    
                 for comm in task.comms : 
                     self.do_communication(comm, comm_loc="forward")
