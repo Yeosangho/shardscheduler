@@ -268,7 +268,7 @@ def read_profile_info(world_size, comp_ops, forward_ops, backward_ops, param_num
         beta = float(line[1])
     return alpha, beta, total_comp_times, total_backward_times, total_forward_times, total_param_num, total_layer_num
 
-def schedule(world_size, adaptive_sdp, max_buffered_param_num, layer_bench_file_name='layer_bench.csv', net_bench_file_name='profile_data/net_bench_cas_v100_4_node2.csv'):
+def schedule(rank, world_size, adaptive_sdp, max_buffered_param_num, layer_bench_file_name='layer_bench.csv', net_bench_file_name='profile_data/net_bench_cas_v100_4_node2.csv'):
     #schedule
 
 
@@ -582,6 +582,6 @@ def schedule(world_size, adaptive_sdp, max_buffered_param_num, layer_bench_file_
     schedule_dict['schedule'] = schedule_list
     #print(schedule_list)
     import json 
-    with open("schedule.json", "w") as json_file:
+    with open(f"schedule_{rank}.json", "w") as json_file:
         json.dump(schedule_dict, json_file)
     overlappable_times += comp.overlappable_time

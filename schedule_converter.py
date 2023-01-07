@@ -101,12 +101,12 @@ def make_task(stage, task_dict, comm_ratio, comms, comm_ops, comp_types, params_
 		task = Task(None, 'BWTOFW', comms, None)	
 		task_dict['INIT']= task
 
-def make_schedule_from_json(params_list, params_name_list, scheduled_comms_init , scheduled_comms, locks, adaptive_sdp_modules, json_path='schedule.json'):
+def make_schedule_from_json(rank, params_list, params_name_list, scheduled_comms_init , scheduled_comms, locks, adaptive_sdp_modules, json_path='schedule.json'):
 	fsdp_num = adaptive_sdp_modules['FSDP']
 	dp_num = adaptive_sdp_modules['DP']
 	sdp_num = adaptive_sdp_modules['SDP']	
 	import json
-	with open("schedule.json", "r") as schedule_json:
+	with open(f"schedule_{rank}.json", "r") as schedule_json:
 		schedule_json = json.load(schedule_json)
 	
 	layer_dp_list = schedule_json['dp_type']
