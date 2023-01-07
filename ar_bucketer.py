@@ -158,8 +158,8 @@ class ARBucketer:
         customlogging.debug(self.rank, f"before allreduce fusion buffer :: {torch.sum(self.fusion_buffer[:self.offset])}")
         with torch.cuda.stream(self.comm_stream):
             dist.all_reduce(self.fusion_buffer[:self.offset], group=self.group)
-            for param_wrap, callback_fn in zip(self.params.params, self.params.callbacks):
-                callback_fn()  
+            #for param_wrap, callback_fn in zip(self.params.params, self.params.callbacks):
+            #    callback_fn()  
             
         #handle = dist.all_reduce(self.fusion_buffer[:self.offset], async_op=True)
         #handle.wait()
