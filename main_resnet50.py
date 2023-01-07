@@ -131,7 +131,7 @@ class GPT2Dataset(Dataset):
     return self.input_ids[idx], self.attn_masks[idx] 
 
 class Trainer(CommMixin):
-    def __init__(self, world_size, rank,  bucket_size, count, adaptive_shard_ratio,  health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread, max_iter):
+    def __init__(self, world_size, rank,  bucket_size, count, adaptive_shard_ratio,  health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread, max_iter, batch_size):
 
         self.health_check_scheduler_thread = health_check_scheduler_thread
         self.health_check_main_proc = health_check_main_proc

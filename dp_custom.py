@@ -693,7 +693,7 @@ class DataParallel_Custom(nn.Module, CommMixin):
             #        customlogging.debug(self.rank, f"param variable tracking model? rank :: {self.rank} param name ::  {param_name} value:: {torch.sum(task.comms[0].params[0].param.data)}")
             if(type(task) != str):
                 for comm in task.comms : 
-                    self.do_communication(comm)
+                    self.do_communication(comm, comm_loc="forward")
 
 
     def forward(self, *args: Any, **kwargs: Any) -> torch.Tensor:

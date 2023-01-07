@@ -32,8 +32,9 @@ class CommMixin:
 
         
 
-    def do_communication(self, comm, tag_name: str=None):
-        torch.cuda.current_stream().wait_stream(self.comm_stream)
+    def do_communication(self, comm, tag_name: str=None, comm_loc: str=None):
+        if comm_loc == "forward":
+            torch.cuda.current_stream().wait_stream(self.comm_stream)
         if(tag_name is not None):
             customlogging.debug(self.rank, f"communication is scheduled in {tag_name}")
         if comm.commType == "AG":
