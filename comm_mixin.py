@@ -33,7 +33,7 @@ class CommMixin:
         
 
     def do_communication(self, comm, tag_name: str=None):
-        
+        torch.cuda.current_stream().wait_stream(self.comm_stream)
         if(tag_name is not None):
             customlogging.debug(self.rank, f"communication is scheduled in {tag_name}")
         if comm.commType == "AG":
@@ -41,7 +41,7 @@ class CommMixin:
         elif comm.commType == "AR":
             for idx, partiable_param in enumerate(comm.params): 
                 self.do_allreduce_async(partiable_param)
-            #self.bucketer.flush()
+            self.bucketer.flush()
         elif comm.commType == "RS":
             None 
 
