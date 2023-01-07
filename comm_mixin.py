@@ -41,7 +41,7 @@ class CommMixin:
         elif comm.commType == "AR":
             for idx, partiable_param in enumerate(comm.params): 
                 self.do_allreduce_async(partiable_param)
-            self.bucketer.flush()
+            #self.bucketer.flush()
         elif comm.commType == "RS":
             None 
 
