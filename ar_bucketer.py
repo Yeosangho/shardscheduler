@@ -136,10 +136,7 @@ class ARBucketer:
         #print(start_idx)
         #remains = 0 
         #if(self.fusion_buffer[self.offset : self.offset + param_num ].size() != param[start_idx : end_idx ].size()[0]):
-        print(end_idx)
-        print(start_idx)
-        print(self.offset)
-        print(param_num)
+
         remains = param_num - self.fusion_buffer[self.offset : self.offset + param_num ].size()[0]            
         #print(f"{self.rank} remains : {remains}")
         #print(f"{self.rank} buffer size : {self.fusion_buffer[self.offset : self.offset + param_num ].size()}")

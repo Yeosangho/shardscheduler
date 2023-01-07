@@ -154,7 +154,7 @@ class Trainer(CommMixin):
             print("main")
             time.sleep(0.5)
 
-        self.batch_size = 2
+        self.batch_size = 32
         #self.model = models.resnet101()
 
 
@@ -215,7 +215,7 @@ class Trainer(CommMixin):
             root='cifar10-data', train=True, download=False, transform=transforms.ToTensor())
         train_sampler = DistributedSampler(dataset=self.train_dataset, shuffle=False)
         self.train_loader = torch.utils.data.DataLoader(
-            self.train_dataset , batch_size=32, sampler=train_sampler, shuffle=False, num_workers=2)
+            self.train_dataset , batch_size=self.batch_size, sampler=train_sampler, shuffle=False, num_workers=2)
         print(f"after init dataset  {torch.cuda.memory_allocated() / 1024 /1024}") 
 
         print(f"before init model  {torch.cuda.memory_allocated() / 1024 /1024}") 
