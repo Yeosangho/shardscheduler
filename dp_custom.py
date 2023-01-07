@@ -669,7 +669,7 @@ class DataParallel_Custom(nn.Module, CommMixin):
             param_name = self.param_name_dict[p]
                      
 
-            torch.cuda.current_stream().wait_stream(self.comm_stream)
+            #torch.cuda.current_stream().wait_stream(self.comm_stream)
             #if p.grad is not None:
             #    p.grad.detach_()
             #    customlogging.debug(self.rank, f"after allreduce param grad sum {param_name}  :: {torch.sum(p.grad)} :: param sum {torch.sum(p)}")  
@@ -755,7 +755,7 @@ class DataParallel_Custom(nn.Module, CommMixin):
 
             if not self._pre_backward_hook_has_run:
                 self._pre_backward_hook_has_run = True
-            #self.communicate_backward()
+            self.communicate_backward()
 
                      
 
