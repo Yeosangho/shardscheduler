@@ -177,14 +177,14 @@ def schedule_ops(target_comm, target_comp, comp_ops, alpha, beta, max_buffered_p
             target_comp.overlappable_time = 0 
             comp_ops.remove(target_comp)
             target_comp.scheduled_comm[comm_type].append(target_comm)
-            
+
             #enable tensor partitioning
-            target_comp.scheduled_params[comm_type].append(overlapped_param_num)
-            target_comm.set_scheduled_comp(target_comp, overlapped_param_num, target_comp.overlappable_time)
+            #target_comp.scheduled_params[comm_type].append(overlapped_param_num)
+            #target_comm.set_scheduled_comp(target_comp, overlapped_param_num, target_comp.overlappable_time)
 
             #disable tensor partitioning
-            #target_comp.scheduled_params[comm_type].append(param_num)
-            #target_comm.set_scheduled_comp(target_comp, param_num, time)  
+            target_comp.scheduled_params[comm_type].append(param_num)
+            target_comm.set_scheduled_comp(target_comp, param_num, time)  
             print(f"target comp overlapped_param_num {overlapped_param_num}")
 
         else:
