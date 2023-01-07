@@ -727,7 +727,7 @@ class DataParallel_Custom(nn.Module, CommMixin):
                 self.scheduled_task_per_param_backward[p] = task
 #
                 customlogging.debug(self.rank, "########### task is not assigned to module############")
-                customlogging.debug(self.rank, f"scheduled task in {param_name} :: {self.scheduled_task_per_param[p]}")
+                customlogging.debug(self.rank, f"scheduled task in {param_name} :: {self.scheduled_task_per_param_backward[p]}")
 
             if(type(task) != str):
                 
