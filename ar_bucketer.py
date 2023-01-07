@@ -60,7 +60,7 @@ class ARBucketer:
         self.synced_param_num_dict = synced_param_num_dict
     def set_optimizer(self, optimizer):
         self.optimizer = optimizer 
-    def allreduce_async(self,param=None, grad=None, param_name=None, start_idx=None, end_idx=None, org_size=None, shard_size=None, commType=None, callback_fn=None):
+    def allreduce_async(self,param=None, grad=None, param_name=None, start_idx=None, end_idx=None, org_size=None, shard_size=None, commType=None):
         param_num = end_idx - start_idx
         param_size = self.comm_param_size_dict.get(param_name, None)
         if param_size is None:
@@ -72,7 +72,7 @@ class ARBucketer:
 
         #customlogging.debug(self.rank, f"before allreduce {param_name} :: {torch.sum(grad.data)}")
         #self.direct_comm(param, grad, param_name, start_idx, end_idx, org_size, shard_size, callback_fn)
-        self.iterative_push(param, grad, param_name, start_idx, end_idx, org_size, shard_size, commType, callback_fn)
+        self.iterative_push(param, grad, param_name, start_idx, end_idx, org_size, shard_size, commType)
         #if(param_num > self.parameter_num):
         #    #dist.all_reduce(grad, async_op=False)
         #    self.direct_comm(param, grad, param_name, start_idx, end_idx, org_size, shard_size, callback_fn)
@@ -120,7 +120,7 @@ class ARBucketer:
         self.synced_param_num_dict[param] += end_idx - start_idx                         
 
 
-    def iterative_push(self, param, grad, param_name, start_idx, end_idx, org_size, shard_size, commType, callback_fn):
+    def iterative_push(self, param, grad, param_name, start_idx, end_idx, org_size, shard_size, commType):
         remains, start_idx = self.push( param, grad, param_name, start_idx, end_idx, org_size, shard_size, commType)
         while remains > 0:
             

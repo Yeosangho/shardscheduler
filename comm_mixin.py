@@ -59,7 +59,6 @@ class CommMixin:
             start_idx = partiable_param.start_idx
             end_idx = partiable_param.end_idx  
             customlogging.debug(self.rank, "do all reduce async")
-            callback_fn = functools.partial(self.bucketer.optimize_param, p)
             self.bucketer.allreduce_async(grad=grad,
                                                 param_name=param_name,
                                                 param=p,
@@ -67,4 +66,4 @@ class CommMixin:
                                                 end_idx=end_idx,
                                                 org_size=org_size, 
                                                 shard_size=-1, 
-                                                commType='AR', callback_fn=callback_fn)
+                                                commType='AR')
