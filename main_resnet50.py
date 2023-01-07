@@ -465,7 +465,7 @@ if __name__ == '__main__':
     parser.add_argument("--rank", type=int, default=0)
     parser.add_argument("--master_addr", type=str, default="210.107.197.218")
     parser.add_argument("--master_port", type=str, default="30002")
-
+    parser.add_argument("--profile", type=str, default="false")
     args = parser.parse_args()
 
     world_size = int(get_args_or_env("WORLD_SIZE", "world_size", args))
@@ -531,13 +531,15 @@ if __name__ == '__main__':
         thread.daemon = True
         #thread.start()	
 
-        trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread) 
-        with profile(activities=[ProfilerActivity.CPU, ProfilerActivity.CUDA]) as prof:	
-        	with record_function("test_model"):
-        		trainer.benchmark_step()
-        if(rank == 0):		
-        	prof.export_chrome_trace("trace.json")
-        #trainer.benchmark_step()
+        trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread)
+        if args.profile == "true" :
+            with profile(activities=[ProfilerActivity.CPU, ProfilerActivity.CUDA]) as prof:	
+            	with record_function("test_model"):
+            		trainer.benchmark_step()
+            if(rank == 0):		
+            	prof.export_chrome_trace("trace.json")
+        else:
+            trainer.benchmark_step()
 
     except RuntimeError as error :
         print("line 550 in main.py")

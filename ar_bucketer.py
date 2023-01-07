@@ -120,7 +120,7 @@ class ARBucketer:
         self.synced_param_num_dict[param] += end_idx - start_idx
         if self.synced_param_num_dict[param] == param._orig_size.numel():            
             self.optimizer._adam(param)
-            #self.optimizer._zero_one_grad(param)
+            self.optimizer._zero_one_grad(param)
             self.synced_param_num_dict[param] = 0 
 
     def iterative_push(self, param, grad, param_name, start_idx, end_idx, org_size, shard_size, commType, callback_fn):
