@@ -698,7 +698,7 @@ class DataParallel_Custom(nn.Module, CommMixin):
 
     def forward(self, *args: Any, **kwargs: Any) -> torch.Tensor:
         self._lazy_init()
-        #self.communicate_forward()
+        self.communicate_forward()
 
         self._rebuild_full_params()
         self._register_post_backward_hooks()
