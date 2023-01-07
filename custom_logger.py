@@ -5,7 +5,7 @@ from time import gmtime, strftime
 logging_rank_list = [0]
 class customlogging:
     __logger = logging.getLogger('SnowLog')
-    __logger.setLevel(logging.DEBUG)
+    __logger.setLevel(logging.INFO)
 
     formatter = logging.Formatter('%(asctime)s > [%(levelname)s] %(message)s')
     slurm_job_id = os.environ.get("SLURM_JOB_ID", strftime("%Y-%m-%d-%H:%M:%S", gmtime()))
