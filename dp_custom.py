@@ -677,14 +677,14 @@ class DataParallel_Custom(nn.Module, CommMixin):
             #    customlogging.debug(self.rank, f"after allreduce param grad sum {param_name}  :: {torch.sum(p.grad)} :: param sum {torch.sum(p)}")  
             #    p.grad.zero_()
             task = self.scheduled_task_per_param.get(p, None)
-            customlogging.debug(self.rank, f"param_name :: {param_name} communicated param num : {self.synced_param_num_dict[p]}")
+            customlogging.debug(self.rank, f"param_name :: {param_name}")
             if task is None:
                 param_name = self.param_name_dict[p]
                 task = self.search_scheduled_comm(self.comm_schedule, param_name, 'FW')
                 self.scheduled_task_per_param[p] = task
 #
                 customlogging.debug(self.rank, "########### task is not assigned to module############")
-                customlogging.debug(self.rank, f"scheduled task in {param_name} :: {self.scheduled_task_per_param[p]}")
+                customlogging.debug(self.rank, f"scheduled task in {param_name}")
 #
             #elif task is not None:
             #    customlogging.debug(self.rank, "########### task is assigned to module############")
@@ -722,14 +722,14 @@ class DataParallel_Custom(nn.Module, CommMixin):
             #torch.cuda.current_stream().wait_stream(self.comm_stream)
             param_name = self.param_name_dict[p]
             task = self.scheduled_task_per_param_backward.get(p, None)
-            customlogging.debug(self.rank, f"param_name :: {param_name} communicated param num : {self.synced_param_num_dict[p]}")
+            customlogging.debug(self.rank, f"param_name :: {param_name} ")
             if task is None:
                 param_name = self.param_name_dict[p]
                 task = self.search_scheduled_comm(self.comm_schedule, param_name, 'BW')
                 self.scheduled_task_per_param_backward[p] = task
 #
                 customlogging.debug(self.rank, "########### task is not assigned to module############")
-                customlogging.debug(self.rank, f"scheduled task in {param_name} :: {self.scheduled_task_per_param_backward[p]}")
+                customlogging.debug(self.rank, f"scheduled task in {param_name} ")
 
             if(type(task) != str):
                 
