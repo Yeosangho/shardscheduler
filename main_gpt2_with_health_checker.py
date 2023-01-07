@@ -443,11 +443,32 @@ class Trainer(CommMixin):
 	
 
 
-	
+def get_args_or_env(env_key_name, args_key_name, args):
+	value = os.environ.get(env_key_name, None)
+	if value is None :
+		value = vars(args).get(args_key_name, None)
+	return value 
+
+
+def set_env(target_env_key_name, args, source_env_key_name=None, source_args_key_name=None):
+
+	if os.environ.get(target_env_key_name, None) is None :
+		if source_env_key_name is not None :
+			env_val = os.environ.get(source_env_key_name, None)
+			if env_val is not None:
+				print(target_env_key_name)
+				print(env_val)				
+				os.environ[target_env_key_name] = env_val
+		if source_args_key_name is not None:
+			args_val = vars(args).get(source_args_key_name, None)
+			if args_val is not None:
+				print(target_env_key_name)
+				print(args_val)
+				os.environ[target_env_key_name] = args_val
+
+
 if __name__ == '__main__':
-	world_size = int(os.environ["WORLD_SIZE"])
-	rank = int(os.environ["SLURM_PROCID"])
-	os.environ['MASTER_PORT'] = os.environ['TRAINER_PORT']
+
 	
 	parser = argparse.ArgumentParser()
 	parser.add_argument('--target_memory', default=7.0, type=float)
@@ -456,9 +477,20 @@ if __name__ == '__main__':
 	parser.add_argument('--dp_ratio', default=0, type=float)
 	parser.add_argument('--bucket_size', default=20, type=float)
 	parser.add_argument('--exp_tag', type=str)
+	parser.add_argument("--world_size", type=int, default=2)
+	parser.add_argument("--rank", type=int, default=0)
+	parser.add_argument("--master_addr", type=str, default="210.107.197.218")
+	parser.add_argument("--master_port", type=str, default="30002")
 
 	args = parser.parse_args()
-		#try :
+
+	world_size = int(get_args_or_env("WORLD_SIZE", "world_size", args))
+	rank = int(get_args_or_env("SLURM_PROCID", "rank", args))
+
+	set_env('MASTER_PORT', args, source_env_key_name='TRAINER_PORT', source_args_key_name='master_port')
+	set_env("MASTER_ADDR", args, source_args_key_name='master_addr',)
+
+
 	bucket_size = args.bucket_size
 	adaptive_shard_ratio = {}
 	adaptive_shard_ratio['dp'] = args.dp_ratio

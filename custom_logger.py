@@ -1,14 +1,15 @@
 import os
 import logging
 import logging.handlers
-
+from time import gmtime, strftime
 logging_rank_list = [0, 2]
 class customlogging:
     __logger = logging.getLogger('SnowLog')
     __logger.setLevel(logging.INFO)
 
     formatter = logging.Formatter('%(asctime)s > [%(levelname)s] %(message)s')
-    slurm_job_id = os.environ["SLURM_JOB_ID"]
+    slurm_job_id = os.environ.get("SLURM_JOB_ID", strftime("%Y-%m-%d-%H:%M:%S", gmtime()))
+    
     fileHandler = logging.FileHandler(f'logs/{slurm_job_id}_train_log.txt')
     fileHandler.setFormatter(formatter)
 
