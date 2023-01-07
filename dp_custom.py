@@ -702,7 +702,7 @@ class DataParallel_Custom(nn.Module, CommMixin):
         self.communicate_forward()
 
         self._rebuild_full_params()
-        self._register_post_backward_hooks()
+        #self._register_post_backward_hooks()
         outputs = self.module(*args, **kwargs)
        
         #self._use_fp32_param_shard()
@@ -747,17 +747,9 @@ class DataParallel_Custom(nn.Module, CommMixin):
         if not torch.is_grad_enabled():
             return outputs  # don't register hooks if grad isn't enabled
 
-        if self._is_root:
-            # This actually means that only root instance has
-            # _post_backward_callback_queued defined. Accidentally accessing this field
-            # will assert on all other instances, giving us a nice bug checker.
-            self._post_backward_callback_queued = False
 
         def _pre_backward_hook(*unused: Any) -> None:
-            
 
-            if not self._pre_backward_hook_has_run:
-                self._pre_backward_hook_has_run = True
             self.communicate_backward()
 
                      
