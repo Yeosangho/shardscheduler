@@ -313,14 +313,14 @@ class Trainer(CommMixin):
         #    #	self._schedule_comm_init[scheduled_comp]["None"] = []
         #    #	self._scheduled_comms[scheduled_comp]["None"] = [] 
         #    dist.barrier()
-#
-            
-            #if(self.rank == 0):
-            schedule(self.rank, self.world_size, self.adaptive_sdp_modules, max_param_num, \
-                    layer_bench_file_name='profile_data/layer_bench.csv', net_bench_file_name='profile_data/net_bench.csv')
-            dist.barrier()
-#	#
-            make_schedule_from_json(self.rank, params_list, params_name_list, self._schedule_comm_init, self._scheduled_comms, self._locks, self.adaptive_sdp_modules)
+##
+        #    
+        #    #if(self.rank == 0):
+        #    schedule(self.rank, self.world_size, self.adaptive_sdp_modules, max_param_num, \
+        #            layer_bench_file_name='profile_data/layer_bench.csv', net_bench_file_name='profile_data/net_bench.csv')
+        #    dist.barrier()
+#	##
+        #    make_schedule_from_json(self.rank, params_list, params_name_list, self._schedule_comm_init, self._scheduled_comms, self._locks, self.adaptive_sdp_modules)
 #	#
         dist.barrier()
 
