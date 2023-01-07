@@ -72,6 +72,7 @@ class ARBucketer:
 
         #customlogging.debug(self.rank, f"before allreduce {param_name} :: {torch.sum(grad.data)}")
         #self.direct_comm(param, grad, param_name, start_idx, end_idx, org_size, shard_size, callback_fn)
+        customlogging.debug(self.rank, f"before allreduce param grad sum {param_name}  :: {torch.sum(grad)}")  
         self.iterative_push(param, grad, param_name, start_idx, end_idx, org_size, shard_size, commType, callback_fn)
         #if(param_num > self.parameter_num):
         #    #dist.all_reduce(grad, async_op=False)
@@ -100,15 +101,9 @@ class ARBucketer:
     #    customlogging.debug(self.rank, f"after allreduce direct comm :: {torch.sum(grad[start_idx:end_idx])}")
     #    self.update_param(param, param_name, start_idx, end_idx, org_size)
 
-    def update_param(self, param, param_name, start_idx, end_idx, org_size):
-        self.synced_param_num_dict[param] += end_idx - start_idx                         
-        customlogging.debug(self.rank, f"scheduled communitcation param {param_name}, start_idx {start_idx}, end_idx {end_idx}, org_size {org_size} current communicated num {self.synced_param_num_dict[param] }")
-        if(org_size == end_idx):
-            customlogging.debug(self.rank, f"after allreduce {param_name} :: {torch.sum(param.grad.data)}")
-            customlogging.debug(self.rank, f"scheduled params is fully communicated  param {param_name}, start_idx {start_idx}, end_idx {end_idx}, org_size {org_size}")
-            self.optimize_param(param)
 
-    def optimize_param(self, param_wrap):
+
+    def post_allreduce(self, param_wrap):
         param = param_wrap.param
         start_idx = param_wrap.start_idx
         end_idx = param_wrap.end_idx 
@@ -122,9 +117,9 @@ class ARBucketer:
         #customlogging.debug(self.rank, f"after allreduce {param_name} :: {torch.sum(param.grad.data)}")
         #customlogging.debug(self.rank, f"scheduled params is fully communicated  param {param_name}, start_idx {start_idx}, end_idx {end_idx}, org_size {org_size}")
         param.grad.data[start_idx:end_idx].copy_(self.fusion_buffer[pre_offset:offset])
-        if self.synced_param_num_dict[param] + end_idx - start_idx == param._orig_size.numel():            
-            self.optimizer._adam(param)
-            self.optimizer._zero_one_grad(param)
+        #if self.synced_param_num_dict[param] + end_idx - start_idx == param._orig_size.numel():            
+        #    self.optimizer._adam(param)
+        #    self.optimizer._zero_one_grad(param)
         self.synced_param_num_dict[param] += end_idx - start_idx
 
     def iterative_push(self, param, grad, param_name, start_idx, end_idx, org_size, shard_size, commType, callback_fn):
@@ -155,7 +150,7 @@ class ARBucketer:
         self.offset += param_num - remains
         
         p = Param(param, start_idx, end_idx-remains, org_size, shard_size, grad=grad,  param_name=param_name, pre_offset=self.pre_offset, offset=self.offset)
-        callback_fn = functools.partial(self.optimize_param, p)
+        callback_fn = functools.partial(self.post_allreduce, p)
         self.params.add(p, callback_fn)
 
         start_idx = end_idx - remains
