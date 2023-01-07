@@ -2,7 +2,7 @@ import os
 import logging
 import logging.handlers
 from time import gmtime, strftime
-logging_rank_list = [0, 2]
+logging_rank_list = [0]
 class customlogging:
     __logger = logging.getLogger('SnowLog')
     __logger.setLevel(logging.INFO)

@@ -204,8 +204,8 @@ class Trainer(CommMixin):
 		self.data_index = 0
 		self.profile_target_layer = []
 		self.optim_dict = {}
-		ranks = [0,1,2,3,4,5,6,7]
-		self.group = dist.new_group(ranks=ranks)
+		proc_list = list(range(world_size))
+		self.group = dist.new_group(ranks=proc_list)
 		max_param_num = get_param_num_by_buffer_size(self.world_size, self.bucket_size)
 		self.bucketer = ARBucketer(max_param_num, self.world_size)
 
