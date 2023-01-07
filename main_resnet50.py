@@ -324,7 +324,7 @@ class Trainer(CommMixin):
 #	#
         dist.barrier()
 
-        self.optimizer = torch.optim.Adam(self.sharded_module.parameters(), lr=0.1, betas=(0.9, 0.999), eps=1e-08, weight_decay=0, amsgrad=False)
+        self.optimizer = torch.optim.Adam(self.model.parameters(), lr=0.1, betas=(0.9, 0.999), eps=1e-08, weight_decay=0, amsgrad=False)
         #self.optimizer = ShardScheduler(self.sharded_module, self.sharded_module.named_parameters(), self.world_size, self.rank, self.optimizer,
         #                            self.partition_threshold, self._done_counts, self._partition_counts,
         #                        self.health_check_scheduler_thread,
