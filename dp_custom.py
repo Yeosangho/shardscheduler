@@ -667,10 +667,18 @@ class DataParallel_Custom(nn.Module, CommMixin):
         for p in self.params :
             param_name = self.param_name_dict[p]
                      
-            torch.cuda.current_stream().wait_stream(self.comm_stream)
-            if p.grad is not None:
-                customlogging.debug(self.rank, f"after allreduce param grad sum {param_name} :: {torch.sum(p.grad)} param sum :: {torch.sum(p)}")                   
+            if self.synced_param_num_dict[p] == p._orig_size.numel() :
+                customlogging.debug(self.rank, f"param {param_name} is fully commnicated")
+            else:
+                torch.cuda.current_stream().wait_stream(self.comm_stream)
+                customlogging.debug(self.rank, f"param {param_name} is not fully commnicated!!! communicated parameter : {self.synced_param_num_dict[p]} orig size : {p._orig_size.numel()}")
+            #torch.cuda.current_stream().wait_stream(self.comm_stream)
+            #self.flush()
+            #torch.cuda.current_stream().wait_stream(self.comm_stream)
 
+            #customlogging.debug(self.rank, f"after allreduce param grad sum {param_name} :: {torch.sum(p.grad)} param sum :: {torch.sum(p)}")   
+
+            self.synced_param_num_dict[p]  = 0
             task = self.scheduled_task_per_param.get(p, None)
             customlogging.debug(self.rank, f"param_name :: {param_name} communicated param num : {self.synced_param_num_dict[p]}")
             if task is None:
