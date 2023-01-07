@@ -723,7 +723,7 @@ class DataParallel_Custom(nn.Module, CommMixin):
             customlogging.debug(self.rank, f"param_name :: {param_name} communicated param num : {self.synced_param_num_dict[p]}")
             if task is None:
                 param_name = self.param_name_dict[p]
-                task = self.search_scheduled_comm(self.comm_schedule, param_name, 'FW')
+                task = self.search_scheduled_comm(self.comm_schedule, param_name, 'BW')
                 self.scheduled_task_per_param_backward[p] = task
 #
                 customlogging.debug(self.rank, "########### task is not assigned to module############")
