@@ -673,6 +673,7 @@ class DataParallel_Custom(nn.Module, CommMixin):
             #    self.flush()
             #    torch.cuda.current_stream().wait_stream(self.comm_stream)
             #    customlogging.debug(self.rank, f"param {param_name} is not fully commnicated!!! communicated parameter : {self.synced_param_num_dict[p]} orig size : {p._orig_size.numel()}")
+            torch.cuda.current_stream().wait_stream(self.comm_stream)
             self.flush()
             torch.cuda.current_stream().wait_stream(self.comm_stream)
             if p.grad is not None:
