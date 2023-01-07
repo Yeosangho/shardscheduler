@@ -1,0 +1,441 @@
+2023-01-07 09:11:49,586 > [DEBUG] 0 :: communication is scheduled in BWTOFW
+2023-01-07 09:11:49,587 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:49,625 > [DEBUG] 0 :: param_name :: conv1._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:49,625 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:49,625 > [DEBUG] 0 :: scheduled task in conv1._dp_wrapped_module.flat_param_0 :: 0, FW, [AR, [[1, torch.Size([128]) 0 0], [4, torch.Size([36864]) 24374 24374]]]
+2023-01-07 09:11:49,625 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,469 > [DEBUG] 0 :: param_name :: bn1._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,469 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,469 > [DEBUG] 0 :: scheduled task in bn1._dp_wrapped_module.flat_param_0 :: 1, FW, [AR, [[2, torch.Size([4096]) 0 0], [4, torch.Size([36864]) 29806 29806]]]
+2023-01-07 09:11:50,469 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,471 > [DEBUG] 0 :: param_name :: layer1.0.conv1._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,471 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,471 > [DEBUG] 0 :: scheduled task in layer1.0.conv1._dp_wrapped_module.flat_param_0 :: 2, FW, [AR, [[4, torch.Size([36864]) 29895 29895]]]
+2023-01-07 09:11:50,471 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,472 > [DEBUG] 0 :: param_name :: layer1.0.bn1._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,472 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,472 > [DEBUG] 0 :: scheduled task in layer1.0.bn1._dp_wrapped_module.flat_param_0 :: 3, FW, [AR, [[4, torch.Size([36864]) 34135 34135]]]
+2023-01-07 09:11:50,472 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,473 > [DEBUG] 0 :: param_name :: layer1.0.conv2._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,473 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,473 > [DEBUG] 0 :: scheduled task in layer1.0.conv2._dp_wrapped_module.flat_param_0 :: 4, FW, [AR, [[5, torch.Size([128]) 0 0], [6, torch.Size([16384]) 0 0], [18, torch.Size([36864]) 16953 16953]]]
+2023-01-07 09:11:50,474 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,510 > [DEBUG] 0 :: param_name :: layer1.0.bn2._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,510 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,511 > [DEBUG] 0 :: scheduled task in layer1.0.bn2._dp_wrapped_module.flat_param_0 :: 5, FW, [AR, [[18, torch.Size([36864]) 19948 19948]]]
+2023-01-07 09:11:50,511 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,512 > [DEBUG] 0 :: param_name :: layer1.0.conv3._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,512 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,512 > [DEBUG] 0 :: scheduled task in layer1.0.conv3._dp_wrapped_module.flat_param_0 :: 6, FW, [AR, [[7, torch.Size([512]) 0 0], [10, torch.Size([16384]) 5999 5999]]]
+2023-01-07 09:11:50,512 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,513 > [DEBUG] 0 :: param_name :: layer1.0.bn3._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,513 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,513 > [DEBUG] 0 :: scheduled task in layer1.0.bn3._dp_wrapped_module.flat_param_0 :: 7, FW, [AR, [[12, torch.Size([36864]) 4826 4826]]]
+2023-01-07 09:11:50,514 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,514 > [DEBUG] 0 :: param_name :: layer1.0.downsample.0._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,514 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,514 > [DEBUG] 0 :: scheduled task in layer1.0.downsample.0._dp_wrapped_module.flat_param_0 :: 8, FW, [AR, [[12, torch.Size([36864]) 9052 9052]]]
+2023-01-07 09:11:50,515 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,515 > [DEBUG] 0 :: param_name :: layer1.0.downsample.1._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,515 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,516 > [DEBUG] 0 :: scheduled task in layer1.0.downsample.1._dp_wrapped_module.flat_param_0 :: 9, FW, [AR, [[12, torch.Size([36864]) 13245 13245]]]
+2023-01-07 09:11:50,516 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,517 > [DEBUG] 0 :: param_name :: layer1.1.conv1._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,517 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,517 > [DEBUG] 0 :: scheduled task in layer1.1.conv1._dp_wrapped_module.flat_param_0 :: 10, FW, [AR, [[11, torch.Size([128]) 0 0], [12, torch.Size([36864]) 15961 15961]]]
+2023-01-07 09:11:50,517 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,518 > [DEBUG] 0 :: param_name :: layer1.1.bn1._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,518 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,518 > [DEBUG] 0 :: scheduled task in layer1.1.bn1._dp_wrapped_module.flat_param_0 :: 11, FW, [AR, [[12, torch.Size([36864]) 35400 35400], [24, torch.Size([147456]) 133638 133638]]]
+2023-01-07 09:11:50,518 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,519 > [DEBUG] 0 :: param_name :: layer1.1.conv2._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,519 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,519 > [DEBUG] 0 :: scheduled task in layer1.1.conv2._dp_wrapped_module.flat_param_0 :: 12, FW, [AR, [[13, torch.Size([128]) 0 0], [14, torch.Size([16384]) 5438 5438]]]
+2023-01-07 09:11:50,519 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,520 > [DEBUG] 0 :: param_name :: layer1.1.bn2._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,520 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,520 > [DEBUG] 0 :: scheduled task in layer1.1.bn2._dp_wrapped_module.flat_param_0 :: 13, FW, [AR, [[18, torch.Size([36864]) 22600 22600]]]
+2023-01-07 09:11:50,520 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,521 > [DEBUG] 0 :: param_name :: layer1.1.conv3._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,521 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,521 > [DEBUG] 0 :: scheduled task in layer1.1.conv3._dp_wrapped_module.flat_param_0 :: 14, FW, [AR, [[16, torch.Size([16384]) 8376 8376]]]
+2023-01-07 09:11:50,522 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,522 > [DEBUG] 0 :: param_name :: layer1.1.bn3._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,522 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,523 > [DEBUG] 0 :: scheduled task in layer1.1.bn3._dp_wrapped_module.flat_param_0 :: 15, FW, [AR, [[16, torch.Size([16384]) 15379 15379], [18, torch.Size([36864]) 26760 26760]]]
+2023-01-07 09:11:50,523 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,524 > [DEBUG] 0 :: param_name :: layer1.2.conv1._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,524 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,524 > [DEBUG] 0 :: scheduled task in layer1.2.conv1._dp_wrapped_module.flat_param_0 :: 16, FW, [AR, [[18, torch.Size([36864]) 29950 29950]]]
+2023-01-07 09:11:50,524 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,525 > [DEBUG] 0 :: param_name :: layer1.2.bn1._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,525 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,525 > [DEBUG] 0 :: scheduled task in layer1.2.bn1._dp_wrapped_module.flat_param_0 :: 17, FW, [AR, [[18, torch.Size([36864]) 34171 34171]]]
+2023-01-07 09:11:50,525 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,526 > [DEBUG] 0 :: param_name :: layer1.2.conv2._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,526 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,526 > [DEBUG] 0 :: scheduled task in layer1.2.conv2._dp_wrapped_module.flat_param_0 :: 18, FW, [AR, [[19, torch.Size([128]) 0 0], [20, torch.Size([16384]) 0 0], [22, torch.Size([32768]) 14465 14465]]]
+2023-01-07 09:11:50,526 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,527 > [DEBUG] 0 :: param_name :: layer1.2.bn2._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,527 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,527 > [DEBUG] 0 :: scheduled task in layer1.2.bn2._dp_wrapped_module.flat_param_0 :: 19, FW, [AR, [[24, torch.Size([147456]) 134884 134884]]]
+2023-01-07 09:11:50,527 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,528 > [DEBUG] 0 :: param_name :: layer1.2.conv3._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,528 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,528 > [DEBUG] 0 :: scheduled task in layer1.2.conv3._dp_wrapped_module.flat_param_0 :: 20, FW, [AR, [[22, torch.Size([32768]) 24699 24699]]]
+2023-01-07 09:11:50,529 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,529 > [DEBUG] 0 :: param_name :: layer1.2.bn3._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,529 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,529 > [DEBUG] 0 :: scheduled task in layer1.2.bn3._dp_wrapped_module.flat_param_0 :: 21, FW, [AR, [[24, torch.Size([147456]) 137525 137525]]]
+2023-01-07 09:11:50,530 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,531 > [DEBUG] 0 :: param_name :: layer2.0.conv1._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,531 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,531 > [DEBUG] 0 :: scheduled task in layer2.0.conv1._dp_wrapped_module.flat_param_0 :: 22, FW, [AR, [[24, torch.Size([147456]) 140496 140496]]]
+2023-01-07 09:11:50,531 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,532 > [DEBUG] 0 :: param_name :: layer2.0.bn1._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,532 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,532 > [DEBUG] 0 :: scheduled task in layer2.0.bn1._dp_wrapped_module.flat_param_0 :: 23, FW, [AR, [[24, torch.Size([147456]) 144875 144875]]]
+2023-01-07 09:11:50,532 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,533 > [DEBUG] 0 :: param_name :: layer2.0.conv2._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,533 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,533 > [DEBUG] 0 :: scheduled task in layer2.0.conv2._dp_wrapped_module.flat_param_0 :: 24, FW, [AR, [[25, torch.Size([256]) 0 0], [26, torch.Size([65536]) 55354 55354]]]
+2023-01-07 09:11:50,533 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,534 > [DEBUG] 0 :: param_name :: layer2.0.bn2._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,534 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,535 > [DEBUG] 0 :: scheduled task in layer2.0.bn2._dp_wrapped_module.flat_param_0 :: 25, FW, [AR, [[26, torch.Size([65536]) 62932 62932]]]
+2023-01-07 09:11:50,535 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,536 > [DEBUG] 0 :: param_name :: layer2.0.conv3._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,536 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,536 > [DEBUG] 0 :: scheduled task in layer2.0.conv3._dp_wrapped_module.flat_param_0 :: 26, FW, [AR, [[27, torch.Size([1024]) 0 0], [28, torch.Size([131072]) 121409 121409]]]
+2023-01-07 09:11:50,536 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,537 > [DEBUG] 0 :: param_name :: layer2.0.bn3._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,537 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,537 > [DEBUG] 0 :: scheduled task in layer2.0.bn3._dp_wrapped_module.flat_param_0 :: 27, FW, [AR, [[28, torch.Size([131072]) 128101 128101]]]
+2023-01-07 09:11:50,537 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,538 > [DEBUG] 0 :: param_name :: layer2.0.downsample.0._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,538 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,538 > [DEBUG] 0 :: scheduled task in layer2.0.downsample.0._dp_wrapped_module.flat_param_0 :: 28, FW, [AR, [[30, torch.Size([65536]) 58518 58518]]]
+2023-01-07 09:11:50,538 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,539 > [DEBUG] 0 :: param_name :: layer2.0.downsample.1._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,539 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,539 > [DEBUG] 0 :: scheduled task in layer2.0.downsample.1._dp_wrapped_module.flat_param_0 :: 29, FW, [AR, [[30, torch.Size([65536]) 62926 62926]]]
+2023-01-07 09:11:50,539 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,540 > [DEBUG] 0 :: param_name :: layer2.1.conv1._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,540 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,541 > [DEBUG] 0 :: scheduled task in layer2.1.conv1._dp_wrapped_module.flat_param_0 :: 30, FW, [AR, [[31, torch.Size([256]) 0 0], [32, torch.Size([147456]) 137276 137276]]]
+2023-01-07 09:11:50,541 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,542 > [DEBUG] 0 :: param_name :: layer2.1.bn1._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,542 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,542 > [DEBUG] 0 :: scheduled task in layer2.1.bn1._dp_wrapped_module.flat_param_0 :: 31, FW, [AR, [[32, torch.Size([147456]) 144843 144843]]]
+2023-01-07 09:11:50,542 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,543 > [DEBUG] 0 :: param_name :: layer2.1.conv2._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,543 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,543 > [DEBUG] 0 :: scheduled task in layer2.1.conv2._dp_wrapped_module.flat_param_0 :: 32, FW, [AR, [[33, torch.Size([256]) 0 0], [34, torch.Size([65536]) 55010 55010]]]
+2023-01-07 09:11:50,543 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,544 > [DEBUG] 0 :: param_name :: layer2.1.bn2._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,544 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,544 > [DEBUG] 0 :: scheduled task in layer2.1.bn2._dp_wrapped_module.flat_param_0 :: 33, FW, [AR, [[34, torch.Size([65536]) 62519 62519]]]
+2023-01-07 09:11:50,544 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,545 > [DEBUG] 0 :: param_name :: layer2.1.conv3._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,545 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,545 > [DEBUG] 0 :: scheduled task in layer2.1.conv3._dp_wrapped_module.flat_param_0 :: 34, FW, [AR, [[36, torch.Size([65536]) 58337 58337]]]
+2023-01-07 09:11:50,546 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,546 > [DEBUG] 0 :: param_name :: layer2.1.bn3._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,546 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,546 > [DEBUG] 0 :: scheduled task in layer2.1.bn3._dp_wrapped_module.flat_param_0 :: 35, FW, [AR, [[36, torch.Size([65536]) 62837 62837]]]
+2023-01-07 09:11:50,547 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,548 > [DEBUG] 0 :: param_name :: layer2.2.conv1._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,548 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,548 > [DEBUG] 0 :: scheduled task in layer2.2.conv1._dp_wrapped_module.flat_param_0 :: 36, FW, [AR, [[37, torch.Size([256]) 0 0], [38, torch.Size([147456]) 136838 136838]]]
+2023-01-07 09:11:50,548 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,549 > [DEBUG] 0 :: param_name :: layer2.2.bn1._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,549 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,549 > [DEBUG] 0 :: scheduled task in layer2.2.bn1._dp_wrapped_module.flat_param_0 :: 37, FW, [AR, [[38, torch.Size([147456]) 144611 144611]]]
+2023-01-07 09:11:50,549 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,550 > [DEBUG] 0 :: param_name :: layer2.2.conv2._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,550 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,550 > [DEBUG] 0 :: scheduled task in layer2.2.conv2._dp_wrapped_module.flat_param_0 :: 38, FW, [AR, [[39, torch.Size([256]) 0 0], [40, torch.Size([65536]) 54391 54391]]]
+2023-01-07 09:11:50,550 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,551 > [DEBUG] 0 :: param_name :: layer2.2.bn2._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,551 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,551 > [DEBUG] 0 :: scheduled task in layer2.2.bn2._dp_wrapped_module.flat_param_0 :: 39, FW, [AR, [[40, torch.Size([65536]) 62211 62211]]]
+2023-01-07 09:11:50,551 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,552 > [DEBUG] 0 :: param_name :: layer2.2.conv3._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,552 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,552 > [DEBUG] 0 :: scheduled task in layer2.2.conv3._dp_wrapped_module.flat_param_0 :: 40, FW, [AR, [[41, torch.Size([1024]) 0 0], [42, torch.Size([65536]) 58457 58457]]]
+2023-01-07 09:11:50,552 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,553 > [DEBUG] 0 :: param_name :: layer2.2.bn3._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,553 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,553 > [DEBUG] 0 :: scheduled task in layer2.2.bn3._dp_wrapped_module.flat_param_0 :: 41, FW, [AR, [[42, torch.Size([65536]) 62434 62434]]]
+2023-01-07 09:11:50,554 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,554 > [DEBUG] 0 :: param_name :: layer2.3.conv1._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,555 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,555 > [DEBUG] 0 :: scheduled task in layer2.3.conv1._dp_wrapped_module.flat_param_0 :: 42, FW, [AR, [[43, torch.Size([256]) 0 0], [44, torch.Size([147456]) 136250 136250]]]
+2023-01-07 09:11:50,555 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,555 > [DEBUG] 0 :: param_name :: layer2.3.bn1._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,556 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,556 > [DEBUG] 0 :: scheduled task in layer2.3.bn1._dp_wrapped_module.flat_param_0 :: 43, FW, [AR, [[44, torch.Size([147456]) 144343 144343]]]
+2023-01-07 09:11:50,556 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,557 > [DEBUG] 0 :: param_name :: layer2.3.conv2._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,557 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,557 > [DEBUG] 0 :: scheduled task in layer2.3.conv2._dp_wrapped_module.flat_param_0 :: 44, FW, [AR, [[45, torch.Size([256]) 0 0], [46, torch.Size([65536]) 53786 53786]]]
+2023-01-07 09:11:50,557 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,558 > [DEBUG] 0 :: param_name :: layer2.3.bn2._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,558 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,558 > [DEBUG] 0 :: scheduled task in layer2.3.bn2._dp_wrapped_module.flat_param_0 :: 45, FW, [AR, [[46, torch.Size([65536]) 62012 62012]]]
+2023-01-07 09:11:50,558 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,559 > [DEBUG] 0 :: param_name :: layer2.3.conv3._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,559 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,559 > [DEBUG] 0 :: scheduled task in layer2.3.conv3._dp_wrapped_module.flat_param_0 :: 46, FW, [AR, [[47, torch.Size([1024]) 0 0], [48, torch.Size([131072]) 123183 123183]]]
+2023-01-07 09:11:50,559 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,560 > [DEBUG] 0 :: param_name :: layer2.3.bn3._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,560 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,560 > [DEBUG] 0 :: scheduled task in layer2.3.bn3._dp_wrapped_module.flat_param_0 :: 47, FW, [AR, [[48, torch.Size([131072]) 127567 127567]]]
+2023-01-07 09:11:50,560 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,562 > [DEBUG] 0 :: param_name :: layer3.0.conv1._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,562 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,562 > [DEBUG] 0 :: scheduled task in layer3.0.conv1._dp_wrapped_module.flat_param_0 :: 48, FW, [AR, [[49, torch.Size([512]) 0 0], [50, torch.Size([589824]) 577505 577505]]]
+2023-01-07 09:11:50,562 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,563 > [DEBUG] 0 :: param_name :: layer3.0.bn1._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,563 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,563 > [DEBUG] 0 :: scheduled task in layer3.0.bn1._dp_wrapped_module.flat_param_0 :: 49, FW, [AR, [[50, torch.Size([589824]) 586102 586102]]]
+2023-01-07 09:11:50,563 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,564 > [DEBUG] 0 :: param_name :: layer3.0.conv2._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,564 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,564 > [DEBUG] 0 :: scheduled task in layer3.0.conv2._dp_wrapped_module.flat_param_0 :: 50, FW, [AR, [[52, torch.Size([262144]) 248915 248915]]]
+2023-01-07 09:11:50,564 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,565 > [DEBUG] 0 :: param_name :: layer3.0.bn2._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,565 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,565 > [DEBUG] 0 :: scheduled task in layer3.0.bn2._dp_wrapped_module.flat_param_0 :: 51, FW, [AR, [[52, torch.Size([262144]) 258136 258136]]]
+2023-01-07 09:11:50,565 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,566 > [DEBUG] 0 :: param_name :: layer3.0.conv3._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,566 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,566 > [DEBUG] 0 :: scheduled task in layer3.0.conv3._dp_wrapped_module.flat_param_0 :: 52, FW, [AR, [[54, torch.Size([524288]) 514056 514056]]]
+2023-01-07 09:11:50,567 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,567 > [DEBUG] 0 :: param_name :: layer3.0.bn3._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,568 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,568 > [DEBUG] 0 :: scheduled task in layer3.0.bn3._dp_wrapped_module.flat_param_0 :: 53, FW, [AR, [[54, torch.Size([524288]) 520083 520083]]]
+2023-01-07 09:11:50,568 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,568 > [DEBUG] 0 :: param_name :: layer3.0.downsample.0._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,569 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,569 > [DEBUG] 0 :: scheduled task in layer3.0.downsample.0._dp_wrapped_module.flat_param_0 :: 54, FW, [AR, [[56, torch.Size([262144]) 251612 251612]]]
+2023-01-07 09:11:50,569 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,570 > [DEBUG] 0 :: param_name :: layer3.0.downsample.1._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,570 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,570 > [DEBUG] 0 :: scheduled task in layer3.0.downsample.1._dp_wrapped_module.flat_param_0 :: 55, FW, [AR, [[56, torch.Size([262144]) 258055 258055]]]
+2023-01-07 09:11:50,570 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,571 > [DEBUG] 0 :: param_name :: layer3.1.conv1._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,571 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,571 > [DEBUG] 0 :: scheduled task in layer3.1.conv1._dp_wrapped_module.flat_param_0 :: 56, FW, [AR, [[57, torch.Size([512]) 0 0], [58, torch.Size([589824]) 575870 575870]]]
+2023-01-07 09:11:50,571 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,572 > [DEBUG] 0 :: param_name :: layer3.1.bn1._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,572 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,572 > [DEBUG] 0 :: scheduled task in layer3.1.bn1._dp_wrapped_module.flat_param_0 :: 57, FW, [AR, [[58, torch.Size([589824]) 585646 585646]]]
+2023-01-07 09:11:50,572 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,573 > [DEBUG] 0 :: param_name :: layer3.1.conv2._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,573 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,573 > [DEBUG] 0 :: scheduled task in layer3.1.conv2._dp_wrapped_module.flat_param_0 :: 58, FW, [AR, [[60, torch.Size([262144]) 250298 250298]]]
+2023-01-07 09:11:50,573 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,574 > [DEBUG] 0 :: param_name :: layer3.1.bn2._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,575 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,575 > [DEBUG] 0 :: scheduled task in layer3.1.bn2._dp_wrapped_module.flat_param_0 :: 59, FW, [AR, [[60, torch.Size([262144]) 257996 257996]]]
+2023-01-07 09:11:50,575 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,576 > [DEBUG] 0 :: param_name :: layer3.1.conv3._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,576 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,576 > [DEBUG] 0 :: scheduled task in layer3.1.conv3._dp_wrapped_module.flat_param_0 :: 60, FW, [AR, [[62, torch.Size([262144]) 251486 251486]]]
+2023-01-07 09:11:50,576 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,577 > [DEBUG] 0 :: param_name :: layer3.1.bn3._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,577 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,577 > [DEBUG] 0 :: scheduled task in layer3.1.bn3._dp_wrapped_module.flat_param_0 :: 61, FW, [AR, [[62, torch.Size([262144]) 257960 257960]]]
+2023-01-07 09:11:50,577 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,578 > [DEBUG] 0 :: param_name :: layer3.2.conv1._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,578 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,578 > [DEBUG] 0 :: scheduled task in layer3.2.conv1._dp_wrapped_module.flat_param_0 :: 62, FW, [AR, [[64, torch.Size([589824]) 578797 578797]]]
+2023-01-07 09:11:50,578 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,579 > [DEBUG] 0 :: param_name :: layer3.2.bn1._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,579 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,579 > [DEBUG] 0 :: scheduled task in layer3.2.bn1._dp_wrapped_module.flat_param_0 :: 63, FW, [AR, [[64, torch.Size([589824]) 585633 585633]]]
+2023-01-07 09:11:50,579 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,580 > [DEBUG] 0 :: param_name :: layer3.2.conv2._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,580 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,580 > [DEBUG] 0 :: scheduled task in layer3.2.conv2._dp_wrapped_module.flat_param_0 :: 64, FW, [AR, [[66, torch.Size([262144]) 250265 250265]]]
+2023-01-07 09:11:50,581 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,581 > [DEBUG] 0 :: param_name :: layer3.2.bn2._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,581 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,581 > [DEBUG] 0 :: scheduled task in layer3.2.bn2._dp_wrapped_module.flat_param_0 :: 65, FW, [AR, [[66, torch.Size([262144]) 257992 257992]]]
+2023-01-07 09:11:50,582 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,582 > [DEBUG] 0 :: param_name :: layer3.2.conv3._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,583 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,583 > [DEBUG] 0 :: scheduled task in layer3.2.conv3._dp_wrapped_module.flat_param_0 :: 66, FW, [AR, [[68, torch.Size([262144]) 251489 251489]]]
+2023-01-07 09:11:50,583 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,583 > [DEBUG] 0 :: param_name :: layer3.2.bn3._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,584 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,584 > [DEBUG] 0 :: scheduled task in layer3.2.bn3._dp_wrapped_module.flat_param_0 :: 67, FW, [AR, [[68, torch.Size([262144]) 257975 257975]]]
+2023-01-07 09:11:50,584 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,585 > [DEBUG] 0 :: param_name :: layer3.3.conv1._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,585 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,585 > [DEBUG] 0 :: scheduled task in layer3.3.conv1._dp_wrapped_module.flat_param_0 :: 68, FW, [AR, [[70, torch.Size([589824]) 578834 578834]]]
+2023-01-07 09:11:50,585 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,586 > [DEBUG] 0 :: param_name :: layer3.3.bn1._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,586 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,586 > [DEBUG] 0 :: scheduled task in layer3.3.bn1._dp_wrapped_module.flat_param_0 :: 69, FW, [AR, [[70, torch.Size([589824]) 585643 585643]]]
+2023-01-07 09:11:50,586 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,587 > [DEBUG] 0 :: param_name :: layer3.3.conv2._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,587 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,587 > [DEBUG] 0 :: scheduled task in layer3.3.conv2._dp_wrapped_module.flat_param_0 :: 70, FW, [AR, [[72, torch.Size([262144]) 250221 250221]]]
+2023-01-07 09:11:50,587 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,588 > [DEBUG] 0 :: param_name :: layer3.3.bn2._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,588 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,588 > [DEBUG] 0 :: scheduled task in layer3.3.bn2._dp_wrapped_module.flat_param_0 :: 71, FW, [AR, [[72, torch.Size([262144]) 257983 257983]]]
+2023-01-07 09:11:50,588 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,589 > [DEBUG] 0 :: param_name :: layer3.3.conv3._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,589 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,589 > [DEBUG] 0 :: scheduled task in layer3.3.conv3._dp_wrapped_module.flat_param_0 :: 72, FW, [AR, [[74, torch.Size([262144]) 251508 251508]]]
+2023-01-07 09:11:50,590 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,590 > [DEBUG] 0 :: param_name :: layer3.3.bn3._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,590 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,590 > [DEBUG] 0 :: scheduled task in layer3.3.bn3._dp_wrapped_module.flat_param_0 :: 73, FW, [AR, [[74, torch.Size([262144]) 257957 257957]]]
+2023-01-07 09:11:50,591 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,592 > [DEBUG] 0 :: param_name :: layer3.4.conv1._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,592 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,592 > [DEBUG] 0 :: scheduled task in layer3.4.conv1._dp_wrapped_module.flat_param_0 :: 74, FW, [AR, [[76, torch.Size([589824]) 578817 578817]]]
+2023-01-07 09:11:50,592 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,593 > [DEBUG] 0 :: param_name :: layer3.4.bn1._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,593 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,593 > [DEBUG] 0 :: scheduled task in layer3.4.bn1._dp_wrapped_module.flat_param_0 :: 75, FW, [AR, [[76, torch.Size([589824]) 585626 585626]]]
+2023-01-07 09:11:50,593 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,594 > [DEBUG] 0 :: param_name :: layer3.4.conv2._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,594 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,594 > [DEBUG] 0 :: scheduled task in layer3.4.conv2._dp_wrapped_module.flat_param_0 :: 76, FW, [AR, [[78, torch.Size([262144]) 250146 250146]]]
+2023-01-07 09:11:50,594 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,595 > [DEBUG] 0 :: param_name :: layer3.4.bn2._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,595 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,595 > [DEBUG] 0 :: scheduled task in layer3.4.bn2._dp_wrapped_module.flat_param_0 :: 77, FW, [AR, [[78, torch.Size([262144]) 258090 258090]]]
+2023-01-07 09:11:50,595 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,596 > [DEBUG] 0 :: param_name :: layer3.4.conv3._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,596 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,596 > [DEBUG] 0 :: scheduled task in layer3.4.conv3._dp_wrapped_module.flat_param_0 :: 78, FW, [AR, [[80, torch.Size([262144]) 252751 252751]]]
+2023-01-07 09:11:50,596 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,597 > [DEBUG] 0 :: param_name :: layer3.4.bn3._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,597 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,597 > [DEBUG] 0 :: scheduled task in layer3.4.bn3._dp_wrapped_module.flat_param_0 :: 79, FW, [AR, [[80, torch.Size([262144]) 258004 258004]]]
+2023-01-07 09:11:50,597 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,598 > [DEBUG] 0 :: param_name :: layer3.5.conv1._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,598 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,598 > [DEBUG] 0 :: scheduled task in layer3.5.conv1._dp_wrapped_module.flat_param_0 :: 80, FW, [AR, [[82, torch.Size([589824]) 579303 579303]]]
+2023-01-07 09:11:50,599 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,599 > [DEBUG] 0 :: param_name :: layer3.5.bn1._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,599 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,599 > [DEBUG] 0 :: scheduled task in layer3.5.bn1._dp_wrapped_module.flat_param_0 :: 81, FW, [AR, [[82, torch.Size([589824]) 585666 585666]]]
+2023-01-07 09:11:50,600 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,601 > [DEBUG] 0 :: param_name :: layer3.5.conv2._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,601 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,601 > [DEBUG] 0 :: scheduled task in layer3.5.conv2._dp_wrapped_module.flat_param_0 :: 82, FW, [AR, [[84, torch.Size([262144]) 249049 249049]]]
+2023-01-07 09:11:50,601 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,602 > [DEBUG] 0 :: param_name :: layer3.5.bn2._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,602 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,602 > [DEBUG] 0 :: scheduled task in layer3.5.bn2._dp_wrapped_module.flat_param_0 :: 83, FW, [AR, [[84, torch.Size([262144]) 258029 258029]]]
+2023-01-07 09:11:50,602 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,603 > [DEBUG] 0 :: param_name :: layer3.5.conv3._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,603 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,603 > [DEBUG] 0 :: scheduled task in layer3.5.conv3._dp_wrapped_module.flat_param_0 :: 84, FW, [AR, [[86, torch.Size([524288]) 513996 513996]]]
+2023-01-07 09:11:50,603 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,604 > [DEBUG] 0 :: param_name :: layer3.5.bn3._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,604 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,604 > [DEBUG] 0 :: scheduled task in layer3.5.bn3._dp_wrapped_module.flat_param_0 :: 85, FW, [AR, [[86, torch.Size([524288]) 520257 520257]]]
+2023-01-07 09:11:50,604 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,605 > [DEBUG] 0 :: param_name :: layer4.0.conv1._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,605 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,605 > [DEBUG] 0 :: scheduled task in layer4.0.conv1._dp_wrapped_module.flat_param_0 :: 86, FW, [AR, [[88, torch.Size([2359296]) 2348986 2348986]]]
+2023-01-07 09:11:50,605 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,606 > [DEBUG] 0 :: param_name :: layer4.0.bn1._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,606 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,606 > [DEBUG] 0 :: scheduled task in layer4.0.bn1._dp_wrapped_module.flat_param_0 :: 87, FW, [AR, [[88, torch.Size([2359296]) 2355264 2355264]]]
+2023-01-07 09:11:50,606 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,607 > [DEBUG] 0 :: param_name :: layer4.0.conv2._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,607 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,608 > [DEBUG] 0 :: scheduled task in layer4.0.conv2._dp_wrapped_module.flat_param_0 :: 88, FW, [AR, [[90, torch.Size([1048576]) 1038739 1038739]]]
+2023-01-07 09:11:50,608 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,609 > [DEBUG] 0 :: param_name :: layer4.0.bn2._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,609 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,609 > [DEBUG] 0 :: scheduled task in layer4.0.bn2._dp_wrapped_module.flat_param_0 :: 89, FW, [AR, [[90, torch.Size([1048576]) 1044678 1044678]]]
+2023-01-07 09:11:50,609 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,610 > [DEBUG] 0 :: param_name :: layer4.0.conv3._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,610 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,610 > [DEBUG] 0 :: scheduled task in layer4.0.conv3._dp_wrapped_module.flat_param_0 :: 90, FW, [AR, [[92, torch.Size([2097152]) 2086529 2086529]]]
+2023-01-07 09:11:50,610 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,611 > [DEBUG] 0 :: param_name :: layer4.0.bn3._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,611 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,611 > [DEBUG] 0 :: scheduled task in layer4.0.bn3._dp_wrapped_module.flat_param_0 :: 91, FW, [AR, [[92, torch.Size([2097152]) 2093335 2093335]]]
+2023-01-07 09:11:50,611 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,612 > [DEBUG] 0 :: param_name :: layer4.0.downsample.0._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,612 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,612 > [DEBUG] 0 :: scheduled task in layer4.0.downsample.0._dp_wrapped_module.flat_param_0 :: 92, FW, [AR, [[94, torch.Size([1048576]) 1039183 1039183]]]
+2023-01-07 09:11:50,612 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,613 > [DEBUG] 0 :: param_name :: layer4.0.downsample.1._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,613 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,613 > [DEBUG] 0 :: scheduled task in layer4.0.downsample.1._dp_wrapped_module.flat_param_0 :: 93, FW, [AR, [[94, torch.Size([1048576]) 1044932 1044932]]]
+2023-01-07 09:11:50,613 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,614 > [DEBUG] 0 :: param_name :: layer4.1.conv1._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,614 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,614 > [DEBUG] 0 :: scheduled task in layer4.1.conv1._dp_wrapped_module.flat_param_0 :: 94, FW, [AR, [[96, torch.Size([2359296]) 2350332 2350332]]]
+2023-01-07 09:11:50,614 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,615 > [DEBUG] 0 :: param_name :: layer4.1.bn1._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,615 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,615 > [DEBUG] 0 :: scheduled task in layer4.1.bn1._dp_wrapped_module.flat_param_0 :: 95, FW, [AR, [[96, torch.Size([2359296]) 2355789 2355789]]]
+2023-01-07 09:11:50,615 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,616 > [DEBUG] 0 :: param_name :: layer4.1.conv2._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,617 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,617 > [DEBUG] 0 :: scheduled task in layer4.1.conv2._dp_wrapped_module.flat_param_0 :: 96, FW, [AR, [[98, torch.Size([1048576]) 1038824 1038824]]]
+2023-01-07 09:11:50,617 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,618 > [DEBUG] 0 :: param_name :: layer4.1.bn2._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,618 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,618 > [DEBUG] 0 :: scheduled task in layer4.1.bn2._dp_wrapped_module.flat_param_0 :: 97, FW, [AR, [[98, torch.Size([1048576]) 1045258 1045258]]]
+2023-01-07 09:11:50,618 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,619 > [DEBUG] 0 :: param_name :: layer4.1.conv3._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,619 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,619 > [DEBUG] 0 :: scheduled task in layer4.1.conv3._dp_wrapped_module.flat_param_0 :: 98, FW, [AR, [[100, torch.Size([1048576]) 1041045 1041045]]]
+2023-01-07 09:11:50,619 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,620 > [DEBUG] 0 :: param_name :: layer4.1.bn3._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,620 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,620 > [DEBUG] 0 :: scheduled task in layer4.1.bn3._dp_wrapped_module.flat_param_0 :: 99, FW, [AR, [[100, torch.Size([1048576]) 1045245 1045245]]]
+2023-01-07 09:11:50,620 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,621 > [DEBUG] 0 :: param_name :: layer4.2.conv1._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,621 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,621 > [DEBUG] 0 :: scheduled task in layer4.2.conv1._dp_wrapped_module.flat_param_0 :: 100, FW, [AR, [[102, torch.Size([2359296]) 2351012 2351012]]]
+2023-01-07 09:11:50,621 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,622 > [DEBUG] 0 :: param_name :: layer4.2.bn1._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,622 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,622 > [DEBUG] 0 :: scheduled task in layer4.2.bn1._dp_wrapped_module.flat_param_0 :: 101, FW, [AR, [[102, torch.Size([2359296]) 2356170 2356170]]]
+2023-01-07 09:11:50,622 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,623 > [DEBUG] 0 :: param_name :: layer4.2.conv2._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,623 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,624 > [DEBUG] 0 :: scheduled task in layer4.2.conv2._dp_wrapped_module.flat_param_0 :: 102, FW, [AR, [[104, torch.Size([1048576]) 1040523 1040523]]]
+2023-01-07 09:11:50,624 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,624 > [DEBUG] 0 :: param_name :: layer4.2.bn2._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,625 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,625 > [DEBUG] 0 :: scheduled task in layer4.2.bn2._dp_wrapped_module.flat_param_0 :: 103, FW, [AR, [[104, torch.Size([1048576]) 1045407 1045407]]]
+2023-01-07 09:11:50,625 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,626 > [DEBUG] 0 :: param_name :: layer4.2.conv3._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,626 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,626 > [DEBUG] 0 :: scheduled task in layer4.2.conv3._dp_wrapped_module.flat_param_0 :: 104, FW, [AR, [[106, torch.Size([2049000]) 2039302 2039302]]]
+2023-01-07 09:11:50,626 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,627 > [DEBUG] 0 :: param_name :: layer4.2.bn3._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,627 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,627 > [DEBUG] 0 :: scheduled task in layer4.2.bn3._dp_wrapped_module.flat_param_0 :: 105, FW, [AR, [[106, torch.Size([2049000]) 2045884 2045884]]]
+2023-01-07 09:11:50,627 > [DEBUG] 0 :: before allreduce fusion buffer :: 0.0
+2023-01-07 09:11:50,628 > [DEBUG] 0 :: param_name :: fc._dp_wrapped_module.flat_param_0 communicated param num : 0
+2023-01-07 09:11:50,628 > [DEBUG] 0 :: ########### task is not assigned to module############
+2023-01-07 09:11:50,628 > [DEBUG] 0 :: scheduled task in fc._dp_wrapped_module.flat_param_0 :: No scheduled
+2023-01-07 09:11:50,630 > [DEBUG] 0 :: 7.142703056335449
+2023-01-07 09:11:50,634 > [DEBUG] 0 :: do all reduce async
+2023-01-07 09:11:50,634 > [DEBUG] 0 :: add param_num to self.comm_param_size_dict
+2023-01-07 09:11:50,635 > [DEBUG] 0 :: before allreduce param grad sum fc._dp_wrapped_module.flat_param_0  :: 0.0140380859375
+2023-01-07 09:11:50,635 > [DEBUG] 0 :: before allreduce fusion buffer :: -378.96533203125
+2023-01-07 09:11:50,640 > [DEBUG] 0 :: do all reduce async
+2023-01-07 09:11:50,640 > [DEBUG] 0 :: add param_num to self.comm_param_size_dict
+2023-01-07 09:11:50,640 > [DEBUG] 0 :: before allreduce param grad sum layer4.2.bn3._dp_wrapped_module.flat_param_0  :: 0.2654637098312378
+2023-01-07 09:11:50,640 > [DEBUG] 0 :: do all reduce async
+2023-01-07 09:11:50,641 > [DEBUG] 0 :: same parameter is in the dictionary
+2023-01-07 09:11:50,641 > [DEBUG] 0 :: before allreduce param grad sum fc._dp_wrapped_module.flat_param_0  :: 0.0140380859375
+2023-01-07 09:11:50,641 > [DEBUG] 0 :: before allreduce fusion buffer :: -372.073974609375

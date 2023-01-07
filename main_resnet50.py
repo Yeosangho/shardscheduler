@@ -281,63 +281,63 @@ class Trainer(CommMixin):
         adaptive_sdp['DP'] = dp_num
         adaptive_sdp['SDP'] = sdp_num 
         #register_memory_profiling_hooks(self.model, "")
-        #with enable_wrap(**self.wrap_params):
-        #    self.sharded_module = auto_wrap(adaptive_sdp, self.model)
-        #    #self.sharded_module = DP(self.sharded_module)
-        #    #self.sharded_module._lazy_init()
-        #    
-        #    self.adaptive_sdp_modules = {}
-        #    self.adaptive_sdp_modules['FSDP'] = 0 
-        #    self.adaptive_sdp_modules['SDP'] = 0
-        #    self.adaptive_sdp_modules['DP'] = 0
+        with enable_wrap(**self.wrap_params):
+            self.sharded_module = auto_wrap(adaptive_sdp, self.model)
+            #self.sharded_module = DP(self.sharded_module)
+            #self.sharded_module._lazy_init()
+            
+            self.adaptive_sdp_modules = {}
+            self.adaptive_sdp_modules['FSDP'] = 0 
+            self.adaptive_sdp_modules['SDP'] = 0
+            self.adaptive_sdp_modules['DP'] = 0
 ##
-        #    params_list = []
-        #    params_name_list = []
-        #    for n, p in self.sharded_module.named_parameters():
-        #        print(n)
-        #        if('_fsdp_wrapped_module' in n):
-        #            self.adaptive_sdp_modules['FSDP'] += 1
-        #        elif('_sdp_wrapped_module' in n):
-        #            self.adaptive_sdp_modules['SDP'] += 1
-        #        elif('_dp_wrapped_module' in n):
-        #            self.adaptive_sdp_modules['DP'] += 1
-        #        for scheduled_comp in ["FW", "BW"]:
-        #            self._schedule_comm_init[scheduled_comp][n] = None
-        #            self._scheduled_comms[scheduled_comp][n] = None
-        #        self.model_parameter_names[p] = n
-        #        self.synced_param_num_dict[p] = 0	
-        #        params_name_list.append(n)
-        #        params_list.append(p)
-        #        print(p)
-        #    #for scheduled_comp in ["BWTOFW", "FWTOBW"]:
-        #    #	self._schedule_comm_init[scheduled_comp]["None"] = []
-        #    #	self._scheduled_comms[scheduled_comp]["None"] = [] 
-        #    dist.barrier()
+            params_list = []
+            params_name_list = []
+            for n, p in self.sharded_module.named_parameters():
+                print(n)
+                if('_fsdp_wrapped_module' in n):
+                    self.adaptive_sdp_modules['FSDP'] += 1
+                elif('_sdp_wrapped_module' in n):
+                    self.adaptive_sdp_modules['SDP'] += 1
+                elif('_dp_wrapped_module' in n):
+                    self.adaptive_sdp_modules['DP'] += 1
+                for scheduled_comp in ["FW", "BW"]:
+                    self._schedule_comm_init[scheduled_comp][n] = None
+                    self._scheduled_comms[scheduled_comp][n] = None
+                self.model_parameter_names[p] = n
+                self.synced_param_num_dict[p] = 0	
+                params_name_list.append(n)
+                params_list.append(p)
+                print(p)
+            #for scheduled_comp in ["BWTOFW", "FWTOBW"]:
+            #	self._schedule_comm_init[scheduled_comp]["None"] = []
+            #	self._scheduled_comms[scheduled_comp]["None"] = [] 
+            dist.barrier()
 ##
-        #    
-        #    #if(self.rank == 0):
-        #    schedule(self.rank, self.world_size, self.adaptive_sdp_modules, max_param_num, \
-        #            layer_bench_file_name='profile_data/layer_bench.csv', net_bench_file_name='profile_data/net_bench.csv')
-        #    dist.barrier()
+            
+            #if(self.rank == 0):
+            schedule(self.rank, self.world_size, self.adaptive_sdp_modules, max_param_num, \
+                    layer_bench_file_name='profile_data/layer_bench.csv', net_bench_file_name='profile_data/net_bench.csv')
+            dist.barrier()
 #	##
-        #    make_schedule_from_json(self.rank, params_list, params_name_list, self._schedule_comm_init, self._scheduled_comms, self._locks, self.adaptive_sdp_modules)
+            make_schedule_from_json(self.rank, params_list, params_name_list, self._schedule_comm_init, self._scheduled_comms, self._locks, self.adaptive_sdp_modules)
 #	#
         dist.barrier()
 
-        self.optimizer = torch.optim.Adam(self.model.parameters(), lr=0.1, betas=(0.9, 0.999), eps=1e-08, weight_decay=0, amsgrad=False)
-        #self.optimizer = ShardScheduler(self.sharded_module, self.sharded_module.named_parameters(), self.world_size, self.rank, self.optimizer,
-        #                            self.partition_threshold, self._done_counts, self._partition_counts,
-        #                        self.health_check_scheduler_thread,
-        #                        self.health_check_thread_ready,
-        #                        self.trial_info,
-        #                        thread,
-        #                        self._locks,
+        self.optimizer = torch.optim.Adam(self.sharded_module.parameters(), lr=0.1, betas=(0.9, 0.999), eps=1e-08, weight_decay=0, amsgrad=False)
+        self.optimizer = ShardScheduler(self.sharded_module, self.sharded_module.named_parameters(), self.world_size, self.rank, self.optimizer,
+                                    self.partition_threshold, self._done_counts, self._partition_counts,
+                                self.health_check_scheduler_thread,
+                                self.health_check_thread_ready,
+                                self.trial_info,
+                                thread,
+                                self._locks,
 ###
-        #                        self._conditions,
+                                self._conditions,
 ###
-        #                        self.profile_target_layer, 
-        #                        self.bucket_size,
-        #                        10**6, self.comm_stream, self._schedule_comm_init, self._scheduled_comms)
+                                self.profile_target_layer, 
+                                self.bucket_size,
+                                10**6, self.comm_stream, self._schedule_comm_init, self._scheduled_comms)
         self.bucketer.set_optimizer(self.optimizer)
         self.optim_dict["optimizer"] = self.optimizer
         
@@ -368,19 +368,18 @@ class Trainer(CommMixin):
         count = 0
         start = time.time()
         self.set_comm_mixin()
-        self.model.train()     
+        self.sharded_module.train()     
         for data, target in tqdm(self.train_loader):
             data = data.cuda()
             target = target.cuda()          
-            #self.communicate_nonoverlap("BWTOFW")
-            output = self.model(data)
-            #self.communicate_nonoverlap("FWTOBW")           
+            self.communicate_nonoverlap("BWTOFW")
+            output = self.sharded_module(data)
+            self.communicate_nonoverlap("FWTOBW")           
             loss = output[0]
             loss = self.criterion(output, target)
             customlogging.debug(self.rank, loss)
             loss.backward()
-            self.optimizer.step()
-            self.optimizer.zero_grad()                
+            
             #print(f"after backward  {(torch.cuda.memory_allocated() + torch.cuda.memory_reserved()) / 1024 /1024}") 
             count += 1
             #if(not self.train_continue or count ==5):
