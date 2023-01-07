@@ -122,7 +122,7 @@ class ARBucketer:
         
         if param_count + end_idx - start_idx == param._orig_size.numel():            
             self.optimizer._adam(param)
-            #self.optimizer._zero_one_grad(param)
+            self.optimizer._zero_one_grad(param)
         param_count += end_idx - start_idx
 
     def iterative_push(self, param, grad, param_name, start_idx, end_idx, org_size, shard_size, commType, callback_fn):
