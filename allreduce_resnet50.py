@@ -320,7 +320,7 @@ class Trainer(CommMixin):
             target = target.cuda()          
             output = self.model(data)
             loss = output[0]
-            loss = self.model(output, target)
+            loss = self.criterion(output, target)
             customlogging.debug(self.rank, loss)
             loss.backward()
             for param in self.model.parameters():
