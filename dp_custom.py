@@ -669,7 +669,7 @@ class DataParallel_Custom(nn.Module, CommMixin):
             param_name = self.param_name_dict[p]
                      
 
-            torch.cuda.current_stream().wait_stream(self.comm_stream)
+            #torch.cuda.current_stream().wait_stream(self.comm_stream)
 
             task = self.scheduled_task_per_param.get(p, None)
             customlogging.debug(self.rank, f"param_name :: {param_name} communicated param num : {self.synced_param_num_dict[p]}")
@@ -725,7 +725,7 @@ class DataParallel_Custom(nn.Module, CommMixin):
 #
                 customlogging.debug(self.rank, "########### task is not assigned to module############")
                 customlogging.debug(self.rank, f"scheduled task in {param_name} :: {self.scheduled_task_per_param[p]}")
-                
+
             if(type(task) != str):
                 
                 for comm in task.comms : 

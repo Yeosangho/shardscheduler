@@ -460,7 +460,7 @@ if __name__ == '__main__':
     parser.add_argument('--sdp_ratio', default=0, type=float)
     parser.add_argument('--fsdp_ratio', default=0, type=float)
     parser.add_argument('--dp_ratio', default=0, type=float)
-    parser.add_argument('--bucket_size', default=100, type=float)
+    parser.add_argument('--bucket_size', default=1, type=float)
     parser.add_argument('--exp_tag', type=str)
     parser.add_argument("--world_size", type=int, default=2)
     parser.add_argument("--rank", type=int, default=0)
