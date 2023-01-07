@@ -117,7 +117,7 @@ class ARBucketer:
         if self.synced_param_num_dict[param] + end_idx - start_idx == param._orig_size.numel():            
             self.optimizer._adam(param)
             self.optimizer._zero_one_grad(param)
-        self.synced_param_num_dict[param] += end_idx - start_idx                         
+        #self.synced_param_num_dict[param] += end_idx - start_idx                         
 
 
     def iterative_push(self, param, grad, param_name, start_idx, end_idx, org_size, shard_size, commType):
@@ -158,8 +158,8 @@ class ARBucketer:
         customlogging.debug(self.rank, f"before allreduce fusion buffer :: {torch.sum(self.fusion_buffer[:self.offset])}")
         with torch.cuda.stream(self.comm_stream):
             dist.all_reduce(self.fusion_buffer[:self.offset], group=self.group)
-            #for param_wrap, callback_fn in zip(self.params.params, self.params.callbacks):
-            #    callback_fn()  
+            for param_wrap, callback_fn in zip(self.params.params, self.params.callbacks):
+                callback_fn()  
             
         #handle = dist.all_reduce(self.fusion_buffer[:self.offset], async_op=True)
         #handle.wait()
