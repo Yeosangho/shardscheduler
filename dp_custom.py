@@ -279,6 +279,7 @@ class DataParallel_Custom(nn.Module, CommMixin):
         super().__init__()
         self.synced_param_num_dict = synced_param_num_dict
         self.scheduled_task_per_param = {}
+        self.scheduled_task_per_param_backward = {}
         self.bucketer=bucketer
         self.param_name_dict = param_name_dict
         self.set_bucketer(self.bucketer)
@@ -680,11 +681,11 @@ class DataParallel_Custom(nn.Module, CommMixin):
                 customlogging.debug(self.rank, "########### task is not assigned to module############")
                 customlogging.debug(self.rank, f"scheduled task in {param_name} :: {self.scheduled_task_per_param[p]}")
 #
-            elif task is not None:
-                customlogging.debug(self.rank, "########### task is assigned to module############")
-                if task != "No scheduled" :
-                    param_name = self.param_name_dict[task.comms[0].params[0].param]
-                    customlogging.debug(self.rank, f"param variable tracking model? rank :: {self.rank} param name ::  {param_name} value:: {torch.sum(task.comms[0].params[0].param.data)}")
+            #elif task is not None:
+            #    customlogging.debug(self.rank, "########### task is assigned to module############")
+            #    if task != "No scheduled" :
+            #        param_name = self.param_name_dict[task.comms[0].params[0].param]
+            #        customlogging.debug(self.rank, f"param variable tracking model? rank :: {self.rank} param name ::  {param_name} value:: {torch.sum(task.comms[0].params[0].param.data)}")
             if(type(task) != str):
                 for comm in task.comms : 
                     self.do_communication(comm)
@@ -715,10 +716,16 @@ class DataParallel_Custom(nn.Module, CommMixin):
         for p in self.params :
             #torch.cuda.current_stream().wait_stream(self.comm_stream)
             param_name = self.param_name_dict[p]
-            task = self.search_scheduled_comm(self.comm_schedule, param_name, 'BW')
-            if task is not None:
-                    
-                assigned_comms = task
+            task = self.scheduled_task_per_param_backward.get(p, None)
+            customlogging.debug(self.rank, f"param_name :: {param_name} communicated param num : {self.synced_param_num_dict[p]}")
+            if task is None:
+                param_name = self.param_name_dict[p]
+                task = self.search_scheduled_comm(self.comm_schedule, param_name, 'FW')
+                self.scheduled_task_per_param_backward[p] = task
+#
+                customlogging.debug(self.rank, "########### task is not assigned to module############")
+                customlogging.debug(self.rank, f"scheduled task in {param_name} :: {self.scheduled_task_per_param[p]}")
+                
             if(type(task) != str):
                 
                 for comm in task.comms : 
