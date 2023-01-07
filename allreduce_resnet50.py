@@ -318,7 +318,7 @@ class Trainer(CommMixin):
         for data, target in tqdm(self.train_loader):
             data = data.cuda()
             target = target.cuda()          
-            output = self.sharded_module(data)
+            output = self.model(data)
             loss = output[0]
             loss = self.model(output, target)
             customlogging.debug(self.rank, loss)
