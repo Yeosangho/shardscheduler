@@ -156,7 +156,7 @@ class Trainer(CommMixin):
             print("main")
             time.sleep(0.5)
 
-        self.batch_size = 128
+        self.batch_size = batch_size
         #self.model = models.resnet101()
 
 
@@ -473,6 +473,7 @@ if __name__ == '__main__':
     parser.add_argument("--master_port", type=str, default="30002")
     parser.add_argument("--profile", type=str, default="false")
     parser.add_argument("--max_iter", type=int, default="-1")
+    parser.add_argument("--batch_size", type=int, default=128)
     args = parser.parse_args()
 
     world_size = int(get_args_or_env("WORLD_SIZE", "world_size", args))
@@ -484,6 +485,8 @@ if __name__ == '__main__':
 
     bucket_size = args.bucket_size
     max_iter = args.max_iter
+    batch_size = args.batch_size 
+
     adaptive_shard_ratio = {}
     adaptive_shard_ratio['dp'] = args.dp_ratio
     adaptive_shard_ratio['sdp'] = args.sdp_ratio
@@ -539,7 +542,7 @@ if __name__ == '__main__':
         thread.daemon = True
         #thread.start()	
 
-        trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread, max_iter)
+        trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread, max_iter, batch_size)
         if args.profile == "true" :
             with profile(activities=[ProfilerActivity.CPU, ProfilerActivity.CUDA]) as prof:	
             	with record_function("test_model"):
