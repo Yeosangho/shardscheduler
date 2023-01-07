@@ -101,12 +101,13 @@ class ARBucketer:
     #    self.update_param(param, param_name, start_idx, end_idx, org_size)
 
     def update_param(self, param, param_name, start_idx, end_idx, org_size):
-        self.synced_param_num_dict[param] += end_idx - start_idx                         
         customlogging.debug(self.rank, f"scheduled communitcation param {param_name}, start_idx {start_idx}, end_idx {end_idx}, org_size {org_size} current communicated num {self.synced_param_num_dict[param] }")
-        if(org_size == end_idx):
+        if(org_size == self.synced_param_num_dict[param] + end_idx - start_idx ):
             customlogging.debug(self.rank, f"after allreduce {param_name} :: {torch.sum(param.grad.data)}")
             customlogging.debug(self.rank, f"scheduled params is fully communicated  param {param_name}, start_idx {start_idx}, end_idx {end_idx}, org_size {org_size}")
             self.optimize_param(param)
+        self.synced_param_num_dict[param] += end_idx - start_idx                         
+
 
     def optimize_param(self, param_wrap):
         param = param_wrap.param

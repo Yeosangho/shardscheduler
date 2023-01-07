@@ -1,0 +1,8 @@
+the new group's world size should be less or equal to the world size set by init_process_groupTraceback (most recent call last):
+  File "main_gpt2_with_health_checker.py", line 550, in <module>
+    trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread)
+  File "main_gpt2_with_health_checker.py", line 208, in __init__
+    self.group = dist.new_group(ranks=ranks)
+  File "/opt/conda/lib/python3.8/site-packages/torch/distributed/distributed_c10d.py", line 2944, in new_group
+    raise RuntimeError(
+RuntimeError: the new group's world size should be less or equal to the world size set by init_process_group
