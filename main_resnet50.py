@@ -372,9 +372,9 @@ class Trainer(CommMixin):
         for data, target in tqdm(self.train_loader):
             data = data.cuda()
             target = target.cuda()          
-            self.communicate_nonoverlap("BWTOFW")
+            #self.communicate_nonoverlap("BWTOFW")
             output = self.sharded_module(data)
-            self.communicate_nonoverlap("FWTOBW")           
+            #self.communicate_nonoverlap("FWTOBW")           
             loss = output[0]
             loss = self.criterion(output, target)
             customlogging.debug(self.rank, loss)
