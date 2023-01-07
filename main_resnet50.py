@@ -156,7 +156,7 @@ class Trainer(CommMixin):
             print("main")
             time.sleep(0.5)
 
-        self.batch_size = 32
+        self.batch_size = 128
         #self.model = models.resnet101()
 
 
