@@ -307,7 +307,8 @@ class Trainer(CommMixin):
                     self._schedule_comm_init[scheduled_comp][n] = None
                     self._scheduled_comms[scheduled_comp][n] = None
                 self.model_parameter_names[p] = n
-                self.synced_param_num_dict[p] = 0
+                #self.synced_param_num_dict[p] = 0
+                self.synced_param_num_dict[p] = torch.zeros(1).cuda()
                 params_name_list.append(n)
                 params_list.append(p)
                 print(p)
