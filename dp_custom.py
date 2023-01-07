@@ -678,7 +678,7 @@ class DataParallel_Custom(nn.Module, CommMixin):
             if p.grad is not None:
                 # Not sure whether to do detach_ or not
                 p.grad.detach_()
-                customlogging.debug(self.rank, f"after allreduce param grad sum {param_name} :: {torch.sum(p.grad)}")   
+                customlogging.debug(self.rank, f"after allreduce param grad sum {param_name} :: {torch.sum(p.grad)} param sum :: {torch.sum(p)}")   
                 p.grad.zero_()
             self.synced_param_num_dict[p] = 0    
             task = self.scheduled_task_per_param.get(p, None)

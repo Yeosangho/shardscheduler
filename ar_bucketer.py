@@ -117,8 +117,8 @@ class ARBucketer:
         #customlogging.debug(self.rank, f"after allreduce {param_name} :: {torch.sum(param.grad.data)}")
         #customlogging.debug(self.rank, f"scheduled params is fully communicated  param {param_name}, start_idx {start_idx}, end_idx {end_idx}, org_size {org_size}")
         param.grad.data[start_idx:end_idx].copy_(self.fusion_buffer[pre_offset:offset])
-        #if self.synced_param_num_dict[param] + end_idx - start_idx == param._orig_size.numel():            
-        #    self.optimizer._adam(param)
+        if self.synced_param_num_dict[param] + end_idx - start_idx == param._orig_size.numel():            
+            self.optimizer._adam(param)
         #    self.optimizer._zero_one_grad(param)
         self.synced_param_num_dict[param] += end_idx - start_idx
 

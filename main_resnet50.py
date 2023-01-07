@@ -532,12 +532,12 @@ if __name__ == '__main__':
         #thread.start()	
 
         trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread) 
-        with profile(activities=[ProfilerActivity.CPU, ProfilerActivity.CUDA]) as prof:	
-        	with record_function("test_model"):
-        		trainer.benchmark_step()
-        if(rank == 0):		
-        	prof.export_chrome_trace("trace.json")
-        #trainer.benchmark_step()
+        #with profile(activities=[ProfilerActivity.CPU, ProfilerActivity.CUDA]) as prof:	
+        #	with record_function("test_model"):
+        #		trainer.benchmark_step()
+        #if(rank == 0):		
+        #	prof.export_chrome_trace("trace.json")
+        trainer.benchmark_step()
 
     except RuntimeError as error :
         print("line 550 in main.py")
