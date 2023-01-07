@@ -131,7 +131,8 @@ class GPT2Dataset(Dataset):
     return self.input_ids[idx], self.attn_masks[idx] 
 
 class Trainer(CommMixin):
-    def __init__(self, world_size, rank,  bucket_size, count, adaptive_shard_ratio,  health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread):
+    def __init__(self, world_size, rank,  bucket_size, count, adaptive_shard_ratio,  health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread, max_iter):
+
         self.health_check_scheduler_thread = health_check_scheduler_thread
         self.health_check_main_proc = health_check_main_proc
         self.health_check_thread_ready = health_check_thread_ready
@@ -139,6 +140,7 @@ class Trainer(CommMixin):
         self.trial_info = trial_info
         self.world_size = world_size
         self.bucket_size = bucket_size
+        self.max_iter = max_iter
         print(f'world_size : {world_size}')
 
         self.rank = rank
@@ -383,8 +385,10 @@ class Trainer(CommMixin):
             #print(f"after backward  {(torch.cuda.memory_allocated() + torch.cuda.memory_reserved()) / 1024 /1024}") 
             count += 1
             #if(not self.train_continue or count ==5):
-            if(not self.train_continue):
-                break
+            if(self.max_iter != -1):
+                if(self.max_iter == count):
+                    break
+            
 
         trial_info["time"] = time.time() - start
         write_trial(trial_info)			
@@ -467,6 +471,7 @@ if __name__ == '__main__':
     parser.add_argument("--master_addr", type=str, default="210.107.197.218")
     parser.add_argument("--master_port", type=str, default="30002")
     parser.add_argument("--profile", type=str, default="false")
+    parser.add_arugment("--max_iter", type=int, default="-1")
     args = parser.parse_args()
 
     world_size = int(get_args_or_env("WORLD_SIZE", "world_size", args))
@@ -477,6 +482,7 @@ if __name__ == '__main__':
 
 
     bucket_size = args.bucket_size
+    max_iter = args.max_iter
     adaptive_shard_ratio = {}
     adaptive_shard_ratio['dp'] = args.dp_ratio
     adaptive_shard_ratio['sdp'] = args.sdp_ratio
@@ -532,7 +538,7 @@ if __name__ == '__main__':
         thread.daemon = True
         #thread.start()	
 
-        trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread)
+        trainer = Trainer(world_size, rank, bucket_size, count, adaptive_shard_ratio, health_check_scheduler_thread, health_check_main_proc, health_check_thread_ready, trial_info, thread, max_iter)
         if args.profile == "true" :
             with profile(activities=[ProfilerActivity.CPU, ProfilerActivity.CUDA]) as prof:	
             	with record_function("test_model"):
